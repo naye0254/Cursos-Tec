@@ -1,0 +1,47 @@
+<div class="container l-confirm-dialog">
+  <form [formGroup]="formPrinciple">
+    <div class="l-title">
+      <i class="fas fa-comment-dots fa-3x icon"></i>
+      <h1 class="c-dialog-title mt-3" translate>{{ translatePath }}.title</h1>
+      <p translate>
+        {{ translatePath }}.text <b translate> {{ data.principleName }} </b>
+      </p>
+      <mat-form-field class="c-area" appearance="outline">
+        <mat-label translate>{{ translatePath }}.label</mat-label>
+        <textarea
+          class="c-input"
+          #messageRecommendation
+          matInput
+          formControlName="recommendation"
+          cdkAutosizeMinRows="1"
+          cdkAutosizeMaxRows="15"
+          maxLength="2500"
+        >
+        </textarea>
+        <mat-hint class="mb-3" align="end">
+          <span class="sr-only"
+            >{{ 2500 - messageRecommendation.value.length }}
+            {{
+              'shared.profile.editInformation.charactersRemaining' | translate
+            }}
+          </span>
+          <span class="c-hint" aria-hidden="true">
+            {{ messageRecommendation.value.length }} / 2500
+          </span>
+        </mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="v-buttons">
+      <button mat-raised-button class="c-button b-gray mr-5" (click)="cancel()">
+        {{ translatePath + '.cancelBtn' | translate }}
+      </button>
+      <button
+        mat-raised-button
+        class="c-button b-primary"
+        (click)="confirm(formPrinciple.value)"
+      >
+        {{ translatePath + '.confirmBtn' | translate }}
+      </button>
+    </div>
+  </form>
+</div>

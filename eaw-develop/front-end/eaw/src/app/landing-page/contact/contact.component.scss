@@ -1,0 +1,136 @@
+@import '../../../styles/main-theme.scss';
+@import url('https://fonts.googleapis.com/css?family=Varela+Round&display=swap');
+$VarelaRound-font: 'Varela Round', sans-serif;
+
+.v-container-introduction {
+  h1 {
+    color: $firefly;
+    font-family: $VarelaRound-font;
+    margin-bottom: 6%;
+  }
+
+  .c-span {
+    font-family: $VarelaRound-font;
+    font-size: 80%;
+    color: mat-color($error);
+  }
+
+  p {
+    color: mat-color($dark-gray);
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .c-sub-p {
+    color: $blue-chill;
+    font-size: 20px;
+    font-weight: bold;
+  }
+}
+
+.v-container-contact-form {
+  text-align: center;
+
+  .c-button {
+    font-weight: bold;
+    margin-top: 10%;
+    margin-bottom: 2%;
+    min-width: 175px;
+    border-radius: 33px;
+    border: 1px solid transparent;
+    &:hover {
+      filter: brightness(0.8);
+    }
+  }
+
+  .v-form {
+    padding-right: 5%;
+    padding-left: 5%;
+    .inp-wrapper {
+      position: relative;
+
+      .inp {
+        background-color: transparent;
+        border-radius: 10px;
+        border: 1.5px solid $concrete;
+        color: mat-color($black);
+        font-size: 17px;
+        height: 40px;
+        margin-top: 3%;
+        position: relative;
+        top: 50%;
+        width: 100%;
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .inp::-webkit-input-placeholder {
+        color: mat-color($black);
+      }
+
+      .inp:-webkit-autofill,
+      .inp:-webkit-autofill:hover,
+      .inp:-webkit-autofill:focus {
+        -webkit-text-fill-color: mat-color($dark-gray);
+        -webkit-box--shadow: 0 0 0px 1000px transparent inset;
+        transition: background-color 5000s ease-in-out 0s;
+      }
+
+      .inp:focus {
+        border-color: $blue-chill;
+      }
+
+      .inp-padding-label {
+        padding-right: 40px;
+        padding-left: 15px;
+      }
+
+      .input-label-phone {
+        position: absolute;
+        right: 15px;
+        top: calc(40% - 0.5em);
+        color: mat-color($dark-turquoise);
+        font-size: 22px;
+        transition: opacity 0.3s linear;
+        pointer-events: none;
+      }
+
+      .input-label {
+        position: absolute;
+        right: 15px;
+        top: calc(50% - 0.5em);
+        color: mat-color($dark-turquoise);
+        font-size: 22px;
+        transition: opacity 0.3s linear;
+        pointer-events: none;
+      }
+
+      .textarea {
+        resize: none;
+        height: 200px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        outline: none;
+      }
+
+      .input-label-textarea {
+        position: absolute;
+        right: 15px;
+        top: calc(12% - 0.5em);
+        color: mat-color($dark-turquoise);
+        font-size: 22px;
+        transition: opacity 0.3s linear;
+        pointer-events: none;
+      }
+    }
+
+    .errormsg {
+      color: mat-color($error);
+      text-align: left;
+      font-size: 15px;
+      padding-left: 1%;
+      font-weight: bold;
+    }
+  }
+}

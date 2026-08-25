@@ -1,0 +1,30 @@
+<div class="container-fluid d-flex h-100 bg">
+  <div class="row align-self-center w-100">
+    <div class="col-6 mx-auto">
+      <div class="container top">
+        <img
+          aria-hidden="true"
+          src="./assets/img/layout/Evaluador_logo.png"
+          height="60"
+          width="auto"
+          [attr.alt]="translatePath + '.eaw' | translate"
+        />
+      </div>
+      <div class="container message">
+        <h1 translate>{{ translatePath }}.title</h1>
+        <img
+          src="./assets/img/session-expired/session_expired.png"
+          aria-hidden="true"
+          height="200"
+          width="auto"
+          class="mt-3 mb-3"
+          [attr.alt]="translatePath + '.imageAlt' | translate"
+        />
+        <p [innerHTML]="translatePath + '.text' | translate"></p>
+        <button mat-raised-button (click)="goLogin()">
+          {{ translatePath + '.buttonText' | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

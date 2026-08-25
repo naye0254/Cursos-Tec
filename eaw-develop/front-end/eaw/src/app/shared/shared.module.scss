@@ -1,0 +1,190 @@
+@import '../../styles/main-theme.scss';
+
+.l-list {
+  width: 100%;
+  .l-list-head {
+    width: 100%;
+    padding-left: 9vh;
+    padding-top: 4vh;
+    .c-title {
+      align-self: flex-end;
+      font-size: 24px;
+      text-align: left;
+      letter-spacing: 0;
+      font-weight: bold;
+      color: mat-color($primary);
+      opacity: 1;
+    }
+    .c-secondary-title {
+      font-size: 35px;
+      text-align: left;
+      letter-spacing: 0;
+      font-weight: bold;
+      color: mat-color($primary);
+    }
+  }
+  .l-a-add {
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    display: flex;
+    justify-content: space-around;
+    .c-a-add {
+      margin-right: 28vw;
+      margin-bottom: 2vh;
+      margin-top: 2vh;
+      font-weight: bold;
+      cursor: pointer;
+      width: 30%;
+      color: mat-color($primary);
+      &:hover {
+        filter: brightness(0.7);
+      }
+      i {
+        font-size: 30px;
+        margin-right: 1%;
+        position: relative;
+        top: 4px;
+        color: mat-color($primary) !important;
+      }
+    }
+  }
+  .l-state-menu {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .c-border-search {
+    border: 1px solid transparent;
+  }
+  .l-table {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    .c-table {
+      ::ng-deep th.mat-header-cell {
+        width: 100px;
+        min-width: 100px;
+        text-align: center;
+      }
+      td {
+        word-wrap: break-word;
+        max-width: 10px;
+        text-align: center;
+      }
+      box-shadow: none;
+      width: 60%;
+    }
+    .c-edit {
+      cursor: pointer;
+      color: mat-color($primary);
+    }
+  }
+  .l-paginator {
+    width: 100%;
+    margin-top: 3vh;
+    display: flex;
+    justify-content: center;
+  }
+  .hide {
+    display: none;
+  }
+}
+
+.l-confirm-dialog {
+  .c-dialog-title {
+    font-size: 25px;
+    font-weight: bold;
+    color: mat-color($primary);
+  }
+
+  .c-dialog-text {
+    font-weight: bold;
+    color: mat-color($dark-gray);
+  }
+
+  .l-confirm-dialog {
+    .c-dialog-title {
+      font-size: 14px;
+      font-weight: 400;
+      color: mat-color($primary);
+    }
+
+    .c-dialog-text {
+      font-size: 12px;
+      font-weight: 300;
+    }
+
+    .l-buttons {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 4vh;
+      button {
+        font-weight: 300;
+        border-radius: 10px;
+        margin-right: 1vw;
+      }
+      .c-submit-btn {
+        color: #ffffff;
+        background-color: mat-color($primary);
+      }
+      .c-cancel-btn {
+        border: 1px solid mat-color($secondary);
+        background-color: #ffffff;
+        color: mat-color($secondary);
+      }
+    }
+
+    .l-form {
+      .l-form-field {
+        width: 100%;
+        display: block;
+        margin-bottom: 5% !important;
+      }
+    }
+  }
+
+  .l-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    button {
+      font-weight: 300;
+      border-radius: 10px;
+      margin-right: 2vw;
+      margin-top: 3vh;
+      margin-bottom: 3vh;
+    }
+    .c-submit-btn {
+      color: #ffffff;
+      background-color: mat-color($primary);
+    }
+    .c-cancel-btn {
+      border: 1px solid mat-color($secondary);
+      background-color: #ffffff;
+      color: mat-color($secondary);
+    }
+  }
+
+  .l-modal-content {
+    height: auto;
+    margin-top: 1vh;
+    .l-form {
+      .l-form-field {
+        width: 100%;
+        display: block;
+        margin-bottom: 2%;
+        .c-hint {
+          font-size: 14px;
+        }
+      }
+      .l-state {
+        display: flex;
+        justify-content: flex-start;
+        .c-radio {
+          margin-left: 1vw;
+        }
+      }
+    }
+  }
+}

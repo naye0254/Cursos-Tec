@@ -1,0 +1,191 @@
+<div class="mx-auto" lang="es" style="margin-left: 4.5%; width: 91%;">
+  <div class="c-notice-selection-msg" *ngIf="chart == null">
+    {{
+      'directClient.evaluations.seeEvaluations.results.visualzation.statistics.seeGraphicLabel'
+        | translate
+    }}
+  </div>
+  ​
+  <div class="c-notice-selection-msg" *ngIf="!graphicWithResults">
+    {{
+      'directClient.evaluations.seeEvaluations.results.visualzation.statistics.noResults'
+        | translate
+    }}
+  </div>
+  <div *ngIf="graphicWithResults">
+    <div *ngIf="chart">
+      <div [hidden]="!displayGraphic">
+        <div aria-relevant="all" [chart]="chart"></div>
+      </div>
+      <div class="container">
+        <div [hidden]="!displayTable" class="v-box">
+          <table class="table v-table">
+            <thead>
+              <tr>
+                <th *ngFor="let columnHeader of dataTableColumnHeaders">
+                  {{ columnHeader }}
+                </th>
+              </tr>
+            </thead>
+            <hr class="c-invisible-line" />
+            <tbody>
+              <tr
+                *ngFor="
+                  let variable of dataTableMatrixVariables
+                    | orderBy: key:reverse
+                    | filter: filter
+                    | paginate: {itemsPerPage: 13, currentPage: pH};
+                  let i = index
+                "
+              >
+                <td *ngFor="let cell of variable">
+                  {{ cell }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <pagination-custom
+            (emitPage)="handlePageEmitted($event)"
+          ></pagination-custom>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="chart">
+      <div class="mx-auto row" style="width: inherit;">
+        <div
+          class="col-lg-12 col-md-12 col-sm-6 col-xs-4 mt-3 mb-4 v-buttons-bottom"
+        >
+          <div class="btn-group">
+            <button
+              role="button"
+              type="button"
+              class="btn btn-primary c-button-round-little c-button-round-LeftSide c-button-round-minSize"
+              (click)="showGraphic()"
+            >
+              <i class="fa fa-bar-chart mr-1"></i>
+              {{
+                'directClient.evaluations.seeEvaluations.results.visualzation.statistics.graphicButton'
+                  | translate
+              }}
+            </button>
+            <button
+              type="button"
+              class="btn dropdown-toggle c-button-round-little c-button-round-RightSide"
+              style="height: inherit"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <span class="sr-only">
+                {{
+                  'directClient.evaluations.seeEvaluations.results.visualzation.statistics.chooseGraphicLabel'
+                    | translate
+                }}</span
+              >
+            </button>
+            <div class="dropdown-menu">
+              <div *ngIf="true">
+                <button
+                  class="dropdown-item c-toggle-style"
+                  (click)="changeChartType(0)"
+                >
+                  {{
+                    'directClient.evaluations.seeEvaluations.results.visualzation.statistics.bar'
+                      | translate
+                  }}
+                </button>
+                <button
+                  class="dropdown-item c-toggle-style"
+                  (click)="changeChartType(1)"
+                >
+                  {{
+                    'directClient.evaluations.seeEvaluations.results.visualzation.statistics.column'
+                      | translate
+                  }}
+                </button>
+              </div>
+              <div *ngIf="true">
+                <button
+                  class="dropdown-item c-toggle-style"
+                  (click)="changeChartType(5)"
+                >
+                  {{
+                    'directClient.evaluations.seeEvaluations.results.visualzation.statistics.stackedBar'
+                      | translate
+                  }}
+                </button>
+                <button
+                  class="dropdown-item c-toggle-style"
+                  (click)="changeChartType(6)"
+                >
+                  {{
+                    'directClient.evaluations.seeEvaluations.results.visualzation.statistics.stackedColumn'
+                      | translate
+                  }}
+                </button>
+                <button
+                  class="dropdown-item c-toggle-style"
+                  (click)="changeChartType(4)"
+                >
+                  {{
+                    'directClient.evaluations.seeEvaluations.results.visualzation.statistics.line'
+                      | translate
+                  }}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <button
+            role="button"
+            type="button"
+            class="btn c-button-round-little c-button-round c-button-round-minSize"
+            (click)="showTable()"
+          >
+            <i class="fas fa-table mr-1"></i>
+            {{
+              'directClient.evaluations.seeEvaluations.results.visualzation.statistics.seeTable'
+                | translate
+            }}
+          </button>
+          <button
+            [hidden]="!displayGraphic"
+            role="button"
+            type="button"
+            class="btn c-button-round-little c-button-round c-button-round-minSize"
+            (click)="changeGraphicPattern()"
+            attr.aria-label="{{
+              'directClient.evaluations.seeEvaluations.results.visualzation.statistics.seeTable'
+                | translate
+            }}:  {{ patternStateAriaLabel }}"
+          >
+            <i class="fab fa-firstdraft mr-1"></i>
+            {{
+              'directClient.evaluations.seeEvaluations.results.visualzation.statistics.pattern'
+                | translate
+            }}
+          </button>
+          <button
+            [hidden]="!displayGraphic"
+            role="button"
+            type="button"
+            class="btn c-button-round-little c-button-round c-button-round-minSize"
+            (click)="changeGraphicContrast()"
+            attr.aria-label="{{
+              'directClient.evaluations.seeEvaluations.results.visualzation.statistics.applyContrast'
+                | translate
+            }}: {{ highContrastStateAriaLabel }}"
+          >
+            <i class="fas fa-adjust mr-1"></i>
+            {{
+              'directClient.evaluations.seeEvaluations.results.visualzation.statistics.contrast'
+                | translate
+            }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  ​
+</div>

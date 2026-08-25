@@ -1,0 +1,24 @@
+<div class="container l-confirm-dialog">
+  <div class="l-title">
+    <span class="icon">
+      <i class="fas fa-info fa-5x"></i>
+    </span>
+    <h1 class="c-dialog-title mt-3">
+      {{ data.numberCriteria + ' ' + data.title }}
+    </h1>
+    <p>
+      {{ data.text }} <br /><br />
+      {{ translatePath + '.seeWCAG' | translate }}
+      <a [href]="data.referenceLink" target="_blank">{{
+        data.referenceLink
+      }}</a>
+    </p>
+  </div>
+  <div class="v-buttons">
+    <button mat-raised-button class="c-button b-primary" (click)="confirm()">
+      {{
+        'administrator.evaluations.detail.modalCounterList.button' | translate
+      }}
+    </button>
+  </div>
+</div>

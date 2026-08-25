@@ -1,0 +1,22 @@
+{
+  "name": "ScrapingDesertedLinks",
+  "idInjection": false,
+  "properties": {
+    "_id": {
+      "type": "string",
+      "id": 1,
+      "required": true
+    },
+    "idEvaluation": {
+      "type": "Number",
+      "required": true,
+      "length": null,
+      "precision": 10,
+      "scale": 0
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

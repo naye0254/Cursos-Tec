@@ -1,0 +1,67 @@
+<div class="l-filter-client container-fluid mb-5">
+  <div class="row l-head">
+    <h1 class="col-3 c-title" translate>
+      administrator.clients.listClients.title
+    </h1>
+  </div>
+  <div class="row  l-subtitle">
+    <h2 class="col-8 c-subtitle">
+      {{ subtitle }}
+    </h2>
+    <div class="col-sm-4">
+      <mat-form-field class="c-border-search">
+        <mat-label>{{
+          'superAdministrator.manage.searchInput' | translate
+        }}</mat-label>
+        <input
+          [(ngModel)]="searchFilter"
+          matInput
+          (keyup)="applyFilter($event)"
+        />
+      </mat-form-field>
+    </div>
+  </div>
+  <app-selection-list
+    [list]="list"
+    (selectedItem)="getSelectedItem($event)"
+  ></app-selection-list>
+
+  <div class="board">
+    <div class="board-inner" id="status-buttons">
+      <ul class="nav nav-tabs wizard" id="myTab">
+        <li>
+          <a
+            (click)="goStepOne()"
+            [ngClass]="step === 0 ? 'active-bullet' : 'active'"
+            data-toggle="tab"
+            title=""
+            [attr.aria-label]="'administrator.shared.stepOne' | translate"
+            tabindex="0"
+            role="button"
+          >
+            <div class="round-tabs all">
+              <span>1</span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a
+            role="button"
+            [ngClass]="step === 1 ? 'active-bullet' : ''"
+            [class.disabled]="step !== 1"
+            data-toggle="tab"
+            title=""
+            [attr.aria-disabled]="step != 1"
+            [attr.aria-label]="'administrator.shared.stepTwo' | translate"
+            tabindex="0"
+          >
+            <div class="round-tabs all">
+              <span>2</span>
+            </div>
+          </a>
+        </li>
+      </ul>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,71 @@
+{
+  "name": "ClientsByCountries",
+  "options": {
+    "idInjection": false,
+    "mysql": {
+      "schema": "DS_EAW",
+      "table": "ClientsByCountries"
+    },
+    "relations": {
+      "clientsByCountriesClients": {
+        "model": "Clients",
+        "type": "belongsTo",
+        "foreignKey": "clientsId"
+      },
+      "clientsByCountriesCountries": {
+        "model": "Countries",
+        "type": "belongsTo",
+        "foreignKey": "countriesId"
+      }
+    },
+    "acls": [
+      {
+        "accessType": "*",
+        "principalType": "ROLE",
+        "principalId": "$everyone",
+        "permission": "ALLOW"
+      },
+      {
+        "accessType": "EXECUTE",
+        "principalType": "ROLE",
+        "principalId": "$authenticated",
+        "permission": "ALLOW",
+        "property": "*"
+      }
+    ]
+  },
+  "properties": {
+    "clientsId": {
+      "type": "Number",
+      "required": true,
+      "length": null,
+      "precision": 10,
+      "scale": 0,
+      "id": 1,
+      "mysql": {
+        "columnName": "clientsId",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      }
+    },
+    "countriesId": {
+      "type": "Number",
+      "required": true,
+      "length": null,
+      "precision": 10,
+      "scale": 0,
+      "id": 2,
+      "mysql": {
+        "columnName": "countriesId",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      }
+    }
+  }
+}

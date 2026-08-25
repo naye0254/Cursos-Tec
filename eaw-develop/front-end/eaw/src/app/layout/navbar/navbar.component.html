@@ -1,0 +1,91 @@
+<nav class="navbar navbar-expand-lg navbar-div navbar-light">
+  <div class="container-fluid">
+    <a class="navbar-brand ml-4" [routerLink]="['']">
+      <img
+        src="./assets/img/layout/Evaluador_logo.png"
+        height="50"
+        width="auto"
+        [attr.alt]="'layout.navbar.logo' | translate"
+      />
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      [attr.aria-label]="'layout.navbar.navigation-menu' | translate"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto mr-3">
+        <li class="nav-item item" *ngFor="let navOption of navOptions">
+          <a
+            *ngIf="navOption.root == true"
+            class="nav-link Itemlink"
+            [routerLinkActiveOptions]="{exact: true}"
+            [routerLink]="navOption.routerLink"
+            routerLinkActive
+            #rla="routerLinkActive"
+            [ngClass]="rla.isActive ? 'active' : ''"
+            >{{ navOption.label }}</a
+          >
+          <a
+            *ngIf="navOption.root == undefined"
+            class="nav-link Itemlink"
+            [routerLink]="navOption.routerLink"
+            routerLinkActive
+            #rla="routerLinkActive"
+            [ngClass]="rla.isActive ? 'active' : ''"
+            >{{ navOption.label }}</a
+          >
+        </li>
+        <li class="nav-item item dropdown " auto-close="disabled">
+          <a
+            class="nav-link Itemlink dropdown-toggle-ellipsis"
+            id="navbarDropdownMenuLink"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            >{{ 'layout.navbar.language' | translate }}</a
+          >
+          <div class="dropdown-menu dropdown-menu-right dropdown-default ">
+            <span class="s-lang">{{
+              'layout.navbar.language' | translate
+            }}</span>
+            <button
+              class="dropdown-item c-item"
+              (click)="useLanguage('es')"
+              [ngClass]="actualLang === 'es' ? 'lang-active' : 'lang-inactive'"
+            >
+              Español
+            </button>
+            <button
+              class="dropdown-item c-item"
+              (click)="useLanguage('en')"
+              [ngClass]="actualLang === 'en' ? 'lang-active' : 'lang-inactive'"
+            >
+              English
+            </button>
+          </div>
+        </li>
+        <li
+          *ngIf="menuOptions"
+          class="nav-item  dropdown dropdown-notifications"
+        >
+          <app-notifications-menu
+            [menuOptions]="menuOptions"
+          ></app-notifications-menu>
+        </li>
+        <li *ngIf="!menuOptions">
+          <button (click)="logout()" class="c-close-button" mat-button>
+            {{ 'layout.navbar.exit' | translate }}
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,18 @@
+@import '../../../shared/list-evaluations/list-evaluations/list-evaluations.component.scss';
+
+.c-button-like-link {
+  background: none !important;
+  color: mat-color($dark-gray);
+  font-size: 15px !important;
+  border: none;
+  padding: 0 !important;
+  display: table;
+  position: relative;
+  left: -26px;
+  font: inherit;
+  cursor: pointer;
+  .c-icon {
+    margin-right: 5px;
+    font-size: 15px;
+  }
+}

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.15.0.final using JasperReports Library version 6.15.0-dd49bfb94918336b8321d5507193f0169ead4e95  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="principles_by_manual_page" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="88889d1e-e990-49be-a9df-0e58aebb732c">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DA_EAW"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="manualPageId" class="java.lang.Integer"/>
+	<parameter name="specificationsByManualPagesId" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT *  FROM DS_EAW.Principles;]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Principles"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="name"/>
+		<property name="com.jaspersoft.studio.field.label" value="name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Principles"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="referenceLink" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="referenceLink"/>
+		<property name="com.jaspersoft.studio.field.label" value="referenceLink"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Principles"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="descriptionPath" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="descriptionPath"/>
+		<property name="com.jaspersoft.studio.field.label" value="descriptionPath"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Principles"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="60" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="22" width="595" height="18" uuid="729b9ae7-a026-4690-8ed7-e46a24637b08">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato&#xA;" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Para más información acerca del principio, puede visitar el siguiente enlace en:]]></text>
+			</staticText>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="0" y="0" width="595" height="20" forecolor="#377A81" uuid="3d556748-baff-4f0a-91dc-02b8588b88c7"/>
+				<textElement>
+					<font fontName="Lato" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Principio " + $F{name}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="0" y="42" width="595" height="18" forecolor="#000000" uuid="75443f73-ed36-46c2-a49a-5b8362734f0b">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{referenceLink}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="60">
+			<subreport>
+				<reportElement x="0" y="0" width="500" height="60" uuid="237b6f8c-3efc-4d5a-89e5-d0a5e9e0427b">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<subreportParameter name="principleId">
+					<subreportParameterExpression><![CDATA[$F{id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="manualPageId">
+					<subreportParameterExpression><![CDATA[$P{manualPageId}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="specificationsByManualPagesId">
+					<subreportParameterExpression><![CDATA[$P{specificationsByManualPagesId}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["/Results_Summary/Manual/observations_by_evaluator.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="60">
+			<subreport>
+				<reportElement x="0" y="0" width="500" height="60" uuid="3844fcc2-a574-41e1-b8cb-aa2efcd6435a"/>
+				<subreportParameter name="principlesId">
+					<subreportParameterExpression><![CDATA[$F{id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="specificationsByManualPagesId">
+					<subreportParameterExpression><![CDATA[$P{specificationsByManualPagesId}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="manualPageId">
+					<subreportParameterExpression><![CDATA[$P{manualPageId}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["/Results_Summary/Manual/criterions_by_principle.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

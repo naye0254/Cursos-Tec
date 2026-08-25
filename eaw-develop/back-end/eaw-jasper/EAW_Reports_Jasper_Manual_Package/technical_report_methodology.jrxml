@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.14.0.final using JasperReports Library version 6.14.0-2ab0d8625be255bf609c78e1181801213e51db8f  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="technical_report_methodology" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7f61b141-2c33-4089-968f-86de2c4febc4">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DA_EAW"/>
+	<parameter name="g_evaluationId" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[select id from Evaluations where id = $P{g_evaluationId} ;]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Evaluations"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<detail>
+		<band height="525" splitType="Stretch">
+			<staticText>
+				<reportElement x="18" y="0" width="524" height="30" forecolor="#377A81" uuid="65260c4d-0946-4264-a827-9e10134846cd">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[2  DESCRIPCIÓN DE LA METODOLOGÍA EMPLEADA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="30" width="524" height="260" uuid="c877c5e6-acb2-4fe2-91c3-ef22a975f5ad">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato&#xA;" size="14"/>
+				</textElement>
+				<text><![CDATA[La metodología empleada en el estudio de la evaluación con el paquete de Manual específico se basa en la selección de una muestra aleatoria de 32 páginas del portal web. En caso que el portal no tenga ese número de páginas, o bien que algunos enlaces estén erróneos, la evaluación incluirá solamente las páginas que fueron iden ficadas por el sistema.
+
+Se tomarán como parte de la selección únicamente páginas públicas, aquellas denominadas transaccionales o que requieran algún nivel de autenticación por contraseña o bien por medio de firma digital, no serán contempladas.
+
+A través de nuestro sistema de evaluación automática se obtiene un reporte de accesibilidad según grado de cumplimiento de las diferentes secciones del si o web seleccionadas de forma aleatoria. El sistema revisa el si o web basado en cada una de las pautas de internacionales de accesibilidad establecidas en la WCAG 2.1 (Web Content Accessibility Guidelines), determinando de esta forma errores, advertencias.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="302" width="60" height="30" uuid="91f9394f-1c63-43a9-b5c0-6166c4c8397c">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato&#xA;" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Errores:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="340" width="100" height="30" uuid="1c757126-cefb-4fc0-987e-9fe69a2fa7a1"/>
+				<textElement>
+					<font fontName="Lato&#xA;" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Advertencias:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="81" y="302" width="464" height="30" uuid="9cfbd0e2-950e-4bf1-8721-10c53668b8b5"/>
+				<textElement>
+					<font fontName="Lato&#xA;" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Indica que existe un error en el elemento o sección, por lo cual no es accesible.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="340" width="525" height="40" uuid="45ae979a-3bcf-4c59-aacc-64fffd8f534f">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato&#xA;" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[		   Indica que el elemento o sección debe ser revisado, pues su construcción no permite determinar si es accesible o no.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="81" y="400" width="199" height="34" uuid="91fcb67f-472a-4009-b719-3e600ec7c9c1"/>
+				<textElement textAlignment="Center">
+					<font fontName="Lato&#xA;" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Evaluación realizada por el]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="293" y="400" width="200" height="34" uuid="1743d899-c27c-400f-963b-421a3ce075b5"/>
+				<textElement textAlignment="Center">
+					<font fontName="Lato&#xA;" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Por medio de]]></text>
+			</staticText>
+			<image>
+				<reportElement x="83" y="425" width="179" height="62" uuid="ff3a9281-d9c8-45eb-b0e2-0afbfebfbdfb"/>
+				<imageExpression><![CDATA["/media/logo_TEC.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="291" y="415" width="199" height="67" uuid="71034320-14d5-4d48-8117-6df67e7d1661"/>
+				<imageExpression><![CDATA["/media/logo_OTAI.png"]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+</jasperReport>

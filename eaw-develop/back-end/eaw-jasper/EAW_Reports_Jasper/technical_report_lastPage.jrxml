@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.15.0.final using JasperReports Library version 6.15.0-dd49bfb94918336b8321d5507193f0169ead4e95  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="technical_report_lastPage" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="25c64e08-2f3e-4abf-aaec-e99520d43cb4">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DA_EAW"/>
+	<parameter name="g_evaluationId" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[Select  `DS_EAW`.`Evaluations`.`evaluationCode`,  `DS_EAW`.`Evaluations`.`mainUrl`   from `DS_EAW`.`Evaluations` where `DS_EAW`.`Evaluations`.id =  $P{g_evaluationId};]]>
+	</queryString>
+	<field name="evaluationCode" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="evaluationCode"/>
+		<property name="com.jaspersoft.studio.field.label" value="evaluationCode"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Evaluations"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mainUrl" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="mainUrl"/>
+		<property name="com.jaspersoft.studio.field.label" value="mainUrl"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Evaluations"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<detail>
+		<band height="802" splitType="Stretch">
+			<image>
+				<reportElement x="10" y="16" width="535" height="770" uuid="766bc0cc-35df-447f-8722-3a4dae404b82"/>
+				<imageExpression><![CDATA["/media/Information.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="168" y="462" width="322" height="30" forecolor="#377A81" uuid="b865553b-872a-4bce-a071-81e421d9c047"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Lato" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mainUrl}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="168" y="493" width="322" height="30" forecolor="#377A81" uuid="d4fd6c84-ad61-44df-a47e-3fe019bbffec"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Lato" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{evaluationCode}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.15.0.final using JasperReports Library version 6.15.0-dd49bfb94918336b8321d5507193f0169ead4e95  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report_pages_by_finding" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="119d1f07-b972-4b87-a953-5528bba0c231">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DA_EAW_PRODUCTION"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="evaluationsId" class="java.lang.Integer"/>
+	<parameter name="automaticDescriptionsId" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[select DISTINCT
+    aep.pagesId
+from
+    Pages p,
+    AutomaticEvaluatorPages aep,
+    Findings f
+where
+    p.id = aep.pagesId
+    and f.automaticEvaluatorPagesId = aep.id
+    and p.evaluationsId =  $P{evaluationsId} 
+    and f.automaticDescriptionsId =  $P{automaticDescriptionsId} ;]]>
+	</queryString>
+	<field name="pagesId" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="pagesId"/>
+		<property name="com.jaspersoft.studio.field.label" value="pagesId"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="AutomaticEvaluatorPages"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<detail>
+		<band height="221" splitType="Stretch">
+			<subreport isUsingCache="false" runToBottom="false">
+				<reportElement x="0" y="0" width="570" height="221" uuid="a3b3b3f2-0df2-4301-a417-77aeb8ddb998">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<subreportParameter name="pagesId">
+					<subreportParameterExpression><![CDATA[$F{pagesId}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="automaticDescriptionsId">
+					<subreportParameterExpression><![CDATA[$P{automaticDescriptionsId}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["/Results_Summary/Automatic/report_by_page_finding.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

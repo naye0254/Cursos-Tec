@@ -1,0 +1,58 @@
+<div class="board">
+  <div class="board-inner" id="status-buttons">
+    <ul class="nav nav-tabs wizard" id="myTab">
+      <li>
+        <a
+          (click)="onStepChange(0)"
+          [class.active-bullet]="step == 0"
+          [class.active]="step > 0"
+          data-toggle="tab"
+          title=""
+          [attr.aria-label]="'administrator.shared.stepOne' | translate"
+          tabindex="0"
+          role="button"
+        >
+          <div class="round-tabs all">
+            <span>1</span>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a
+          role="button"
+          [class.active-bullet]="step === 1"
+          [class.active]="step > 1"
+          (click)="onStepChange(1)"
+          data-toggle="tab"
+          title=""
+          [class.disabled]="!(step >= 1)"
+          [attr.aria-label]="'administrator.shared.stepTwo' | translate"
+          tabindex="0"
+          [attr.aria-disabled]="!(step >= 1)"
+        >
+          <div class="round-tabs all">
+            <span>2</span>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a
+          role="button"
+          [class.active-bullet]="step === 2"
+          (click)="onStepChange(2)"
+          data-toggle="tab"
+          title=""
+          [class.disabled]="!(step >= 2)"
+          [attr.aria-label]="'administrator.shared.stepTwo' | translate"
+          tabindex="0"
+          [attr.aria-disabled]="!(step >= 1)"
+        >
+          <div class="round-tabs all">
+            <span>3</span>
+          </div>
+        </a>
+      </li>
+    </ul>
+    <div class="clearfix"></div>
+  </div>
+</div>

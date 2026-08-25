@@ -1,0 +1,43 @@
+<div class="container l-confirm-dialog">
+  <div class="row">
+    <div class="col-12 mx-auto text-center">
+      <div mat-dialog-title class="mt-4 mb-4">
+        <h1 class="c-dialog-title" color="primary">{{ data.title }}</h1>
+      </div>
+      <div mat-dialog-content class="mb-4">
+        <p id="description" class="c-dialog-text">{{ data.body }}</p>
+      </div>
+    </div>
+  </div>
+<ol>
+  <h3 class="c-dialog-subtitle" color="primary">Ingrese la justificación de la eliminación</h3>
+  <mat-form-field style="margin-left: 40px; margin-top: 20px;" appearance="fill">
+    <mat-label>Justificación de eliminación</mat-label>
+    <input matInput [(ngModel)]="deletionJustification">
+  </mat-form-field>
+</ol>
+
+<div mat-dialog-actions class="row l-buttons mt-4 mb-4">
+  <button
+    class="c-cancel-btn"
+    mat-raised-button
+    type="button"
+    aria-describedby="description"
+    id="cancel-button"
+    (click)="cancel()"
+  >
+    {{ data.cancel }}
+  </button>
+  <button
+    class="c-submit-btn"
+    mat-raised-button
+    type="button"
+    id="ok-button"
+    (click)="confirmFunction()"
+  >
+    {{ data.next }}
+  </button>
+</div>
+</div>
+
+

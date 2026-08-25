@@ -1,0 +1,278 @@
+<div class="l-list">
+  <div class="l-list-head row">
+    <div class="col-sm-8">
+      <h1 class="c-title" *ngIf="evaluatorRole === userRole">
+        {{ 'superAdministrator.evaluations-reports.title' | translate }} {{ title }}
+      </h1>
+      <h1 class="c-title" *ngIf="evaluatorRole !== userRole">
+        {{ 'superAdministrator.evaluations-reports.title' | translate }}
+      </h1>
+    </div>
+    <div class="col-sm-4" *ngIf="promoterRole !== userRole">
+      <mat-form-field class="l-form-field" appearance="outline">
+        <mat-label translate>{{ 'superAdministrator.evaluations.evaluationsYear' }} </mat-label>
+        <mat-select [(ngModel)]="yearFilter" name="year" (selectionChange)="filterYear($event)">
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let year of years" [value]="year.id">
+            {{ year.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <!-- To do: add translation -->
+      <mat-label style="margin-left: 2%;" > Reporte Técnico </mat-label>
+      <mat-checkbox [(ngModel)]="downloadTechnical">
+      </mat-checkbox>
+
+      <mat-label style="margin-left: 2%;" > Reporte Gerencial </mat-label>
+      <mat-checkbox [(ngModel)]="downloadManagerial">
+      </mat-checkbox>
+
+      <button class="c-submit-btn" mat-raised-button type="button" (click)="downloadEvaluationsZip()" tabindex="0">
+        Descargar
+      </button>
+    </div>
+    <div class="c-numbers" *ngIf="promoterRole === userRole">
+      <div class="c-counter">
+        <span *ngIf="listEvaluations" class="counter"> {{ listEvaluations.length }}</span>
+        <div class="c-description" *ngIf="evaluationState === evaluationsStates.FINISHED">
+          <span class="c-title"> {{ 'administrator.evaluations.list.finishState' | translate }}</span>
+          <span class="c-description">
+            {{ 'administrator.evaluations.list.title' | translate }}
+            {{ 'administrator.evaluations.list.finishState' | translate }}</span>
+
+        </div>
+      </div>
+    </div>
+    <p
+      *ngIf="
+        this.tableDataSource?.filteredData.length && this.tableDataSource?.filteredData.length > 0
+      "
+      class="c-counter-page text-right"
+      aria-hidden="true"
+    >
+      {{
+        +(+this.paginationState.beginRange) +
+          ' - ' +
+          this.paginationState.endRange +
+          ' de ' +
+          this.tableDataSource.filteredData.length +
+          ' resultados'
+      }}
+    </p>
+  </div>
+  <p *ngIf="
+      this.tableDataSource?.filteredData.length && this.tableDataSource?.filteredData.length > 0
+    " class="sr-only" aria-live="polite">
+    {{
+    ' Mostrando resultados desde ' +
+    +(+this.paginationState.beginRange) +
+    ' hasta ' +
+    this.paginationState.endRange +
+    ' de un total de ' +
+    this.tableDataSource?.filteredData.length +
+    ' resultados'
+    }}
+  </p>
+
+  <div class="l-table">
+    <table mat-table [dataSource]="tableDataSource" class="mat-elevation-z8 c-table">
+
+      <!-- checkbox to download the selected files -->
+
+      <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+            [indeterminate]="selection.hasValue() && !isAllSelected()">
+          </mat-checkbox>
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+            [checked]="selection.isSelected(row)">
+          </mat-checkbox>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ 'superAdministrator.evaluations.table.name' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.siteName }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="package">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ 'administrator.evaluations.list.table.package' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.evaluationsPackages.name }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="segment">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ 'administrator.evaluations.list.table.segment' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.evaluationsSegments.name }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="url">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ 'superAdministrator.evaluations.table.url' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.mainUrl }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="initialDate">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ 'administrator.evaluations.list.table.initDate' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.createdAt.slice(0, 10) }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="endDate">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ 'administrator.evaluations.list.table.endDate' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element?.evaluationsDates[0]?.expirationDate.slice(0, 10) }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="inCharge">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ 'superAdministrator.evaluations.table.inCharge' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.inCharge.firstName }} {{ element.inCharge.lastName }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="evaluator">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ 'superAdministrator.evaluations.table.evaluator' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.evaluators }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="remainingDays">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ 'superAdministrator.evaluations.table.remainingDays' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.remainingDays }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef>
+          <div *ngIf="
+              evaluationState === evaluationsStates.PENDING ||
+              evaluationState === evaluationsStates.PROGRESS
+            ">
+            {{ 'superAdministrator.evaluations.table.action' | translate }}
+          </div>
+          <div *ngIf="evaluationState === evaluationsStates.FINISHED">
+            {{ 'superAdministrator.evaluations.table.state' | translate }}
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="c-action" *ngIf="evaluationState === evaluationsStates.PENDING">
+            <i class="fas fa-mouse-pointer"></i>
+            <a class="c-link" (click)="sendEvaluationSelected(element)" translate>
+              evaluator.evaluations.table.startRevision
+            </a>
+          </div>
+          <div class="c-action" *ngIf="evaluationState === evaluationsStates.PROGRESS">
+            <i class="fas fa-mouse-pointer"></i>
+            <a class="c-link" (click)="sendEvaluationSelected(element)" translate>
+              evaluator.evaluations.table.continueRevision
+            </a>
+          </div>
+          <div *ngIf="evaluationState === evaluationsStates.FINISHED" translate>
+            evaluator.evaluations.table.pendingReport
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="state">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ 'administrator.evaluations.list.table.state' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+
+          <div class="c-action" *ngIf="evaluationState === evaluationsStates.FINISHED">
+            <button class="c-button-like-link" *ngIf="
+                (element.manualEvaluationState === evaluationsStates.FINISHED ||
+                  element.automaticEvaluationState === evaluationsStates.FINISHED) &&
+                element.managerialReportState === reportStates.PENDING &&
+                element.technicalReportState === reportStates.PENDING
+              " type="button" (click)="generateReport(element.id, element.evaluationCode)">
+              <i class="fas fa-file-pdf"></i>
+              {{ 'administrator.evaluations.list.generateReport' | translate }}
+            </button>
+            <button class="c-button-like-link" *ngIf="
+                (element.manualEvaluationState === evaluationsStates.FINISHED ||
+                  element.automaticEvaluationState === evaluationsStates.FINISHED) &&
+                element.managerialReportState === reportStates.FINISHED &&
+                element.technicalReportState === reportStates.FINISHED
+              " type="button" (click)="goResults(element.id)">
+              <i class="fas fa-poll"></i>
+              {{ 'administrator.evaluations.list.seeResults' | translate }}
+            </button>
+            <i *ngIf="
+                ((element.manualEvaluationState === evaluationsStates.FINISHED ||
+                  element.automaticEvaluationState === evaluationsStates.FINISHED) &&
+                  element.managerialReportState === reportStates.PROGRESS) ||
+                element.technicalReportState === reportStates.PROGRESS
+              " class="fas fa-spinner"></i>
+            <a *ngIf="
+                ((element.manualEvaluationState === evaluationsStates.FINISHED ||
+                  element.automaticEvaluationState === evaluationsStates.FINISHED) &&
+                  element.managerialReportState === reportStates.PROGRESS) ||
+                element.technicalReportState === reportStates.PROGRESS
+              " class="c-link" translate>
+              administrator.evaluations.list.generatingReport
+            </a>
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="mapSite">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ 'administrator.evaluations.list.table.map' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="c-action">
+            <a class="c-link" [routerLink]="['detail-evaluation', element.id]" translate
+              *ngIf="element.pagesChoosed === 1">
+              administrator.evaluations.list.see
+            </a>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+  <div [ngClass]="!isEmpty && !noResults ? 'show' : 'hide'" class="l-paginator">
+    <p class="c-available-page text-center" [ngClass]="!isEmpty && !noResults ? 'show' : 'hide'">
+      Página
+      {{
+      +(+paginationState.pageIndex) +
+      ' de ' +
+      ((this.tableDataSource?.filteredData.length -
+      (this.tableDataSource?.filteredData.length % 50)) /
+      50 +
+      1)
+      }}
+    </p>
+  </div>
+  <div [ngClass]="!isEmpty && !noResults ? 'show' : 'hide'" class="l-paginator">
+    <mat-paginator [pageSize]="5" (page)="setPaginationState($event)" showFirstLastButtons hidePageSize></mat-paginator>
+  </div>
+</div>

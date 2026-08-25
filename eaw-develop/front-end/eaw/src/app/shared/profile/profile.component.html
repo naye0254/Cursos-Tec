@@ -1,0 +1,324 @@
+<mat-drawer-container class="l-sidenav" autosize aria-live="assertive">
+  <mat-drawer #drawer class="l-left-sidenav" mode="side" opened>
+    <div class="c-top">
+      <img
+        [src]="'assets/img/profile/' + gender + '.png'"
+        height="115"
+        width="auto"
+        aria-hidden="true"
+        [attr.alt]="translatePathCardInformation + '.profileAlt' | translate"
+      />
+      <h1 class="mt-3">
+        <span>{{ userDetail.firstName }}</span
+        ><br />{{ userDetail.lastName }}
+      </h1>
+    </div>
+    <hr />
+    <div class="c-bottom">
+      <p>
+        <i
+          class="fas fa-user icon"
+          [attr.aria-label]="translatePathCardInformation + '.role' | translate"
+        ></i
+        >{{ userDetail.nameRole }}
+      </p>
+      <p>
+        <i
+          class="fas fa-envelope icon"
+          [attr.aria-label]="
+            translatePathCardInformation + '.email' | translate
+          "
+        ></i
+        >{{ userDetail.email }}
+      </p>
+      <p>
+        <i
+          class="fas fa-phone icon"
+          [attr.aria-label]="
+            translatePathCardInformation + '.telephone' | translate
+          "
+        ></i
+        >{{ userDetail.telephone }}
+      </p>
+    </div>
+  </mat-drawer>
+  <div class="container-fluid l-right-sidenav">
+    <div class="row">
+      <div class="col-6 offset-1 box-style l-left-container">
+        <h2 translate>{{ translatePathEdit }}.title</h2>
+        <form [formGroup]="profileForm">
+          <mat-form-field class="c-input mt-4">
+            <mat-label translate>{{ translatePathEdit }}.name</mat-label>
+            <input
+              matInput
+              #messageName
+              formControlName="firstName"
+              [attr.placeholder]="translatePathEdit + '.name' | translate"
+              maxLength="{{ formOptions.lengthInputFirstName }}"
+            />
+            <mat-error
+              *ngIf="profileForm.get('firstName').hasError('required')"
+              translate
+              >{{ translatePathEdit }}.nameError
+            </mat-error>
+            <mat-hint *ngIf="isEditing" class="mb-3" align="end">
+              <span class="sr-only"
+                >{{
+                  formOptions.lengthInputFirstName - messageName.value.length
+                }}
+                {{ translatePathEdit + '.charactersRemaining' | translate }}
+              </span>
+              <span class="c-hint" aria-hidden="true">
+                {{ messageName.value.length }} /
+                {{ formOptions.lengthInputFirstName }}
+              </span>
+            </mat-hint>
+          </mat-form-field>
+
+          <mat-form-field class="c-input">
+            <mat-label translate>{{ translatePathEdit }}.lastName</mat-label>
+            <input
+              matInput
+              #messageLastName
+              formControlName="lastName"
+              [attr.placeholder]="translatePathEdit + '.lastName' | translate"
+              maxLength="{{ formOptions.lengthInputLastName }}"
+            />
+            <mat-error
+              *ngIf="profileForm.get('lastName').hasError('required')"
+              translate
+              >{{ translatePathEdit }}.lastNameError
+            </mat-error>
+            <mat-hint *ngIf="isEditing" class="mb-3" align="end">
+              <span class="sr-only"
+                >{{
+                  formOptions.lengthInputLastName - messageLastName.value.length
+                }}
+                {{ translatePathEdit + '.charactersRemaining' | translate }}
+              </span>
+              <span class="c-hint" aria-hidden="true">
+                {{ messageLastName.value.length }} /
+                {{ formOptions.lengthInputLastName }}
+              </span>
+            </mat-hint>
+          </mat-form-field>
+
+          <mat-form-field class="c-input">
+            <mat-label translate>{{ translatePathEdit }}.email</mat-label>
+            <input
+              matInput
+              #messageEmail
+              formControlName="email"
+              [attr.placeholder]="
+                translatePathEdit + '.emailExample' | translate
+              "
+              maxlength="{{ formOptions.lengthInputEmail }}"
+            />
+            <mat-error
+              *ngIf="
+                profileForm.get('email').hasError('email') &&
+                !profileForm.get('email').hasError('required')
+              "
+              translate
+              >{{ translatePathEdit }}.emailError2
+            </mat-error>
+            <mat-error
+              *ngIf="profileForm.get('email').hasError('required')"
+              translate
+              >{{ translatePathEdit }}.emailError
+            </mat-error>
+            <mat-hint *ngIf="isEditing" class="mb-3" align="end">
+              <span class="sr-only"
+                >{{ formOptions.lengthInputEmail - messageEmail.value.length }}
+                {{ translatePathEdit + '.charactersRemaining' | translate }}
+              </span>
+              <span class="c-hint" aria-hidden="true">
+                {{ messageEmail.value.length }} /
+                {{ formOptions.lengthInputEmail }}
+              </span>
+            </mat-hint>
+          </mat-form-field>
+
+          <mat-form-field class="c-input">
+            <mat-label translate>{{ translatePathEdit }}.phone</mat-label>
+            <input
+              matInput
+              #messageTelephone
+              formControlName="telephone"
+              [attr.placeholder]="translatePathEdit + '.phone' | translate"
+              maxLength="{{ formOptions.lengthInputTelephone }}"
+            />
+            <mat-error
+              *ngIf="profileForm.get('telephone').hasError('required')"
+              translate
+              >{{ translatePathEdit }}.phoneError
+            </mat-error>
+            <mat-hint *ngIf="isEditing" class="mb-3" align="end">
+              <span class="sr-only"
+                >{{
+                  formOptions.lengthInputTelephone -
+                    messageTelephone.value.length
+                }}
+                {{ translatePathEdit + '.charactersRemaining' | translate }}
+              </span>
+              <span class="c-hint" aria-hidden="true">
+                {{ messageTelephone.value.length }} /
+                {{ formOptions.lengthInputTelephone }}
+              </span>
+            </mat-hint>
+          </mat-form-field>
+
+          <mat-form-field class="c-input">
+            <mat-label translate>{{ translatePathEdit }}.role</mat-label>
+            <input
+              matInput
+              formControlName="roleType"
+              [attr.placeholder]="translatePathEdit + '.role' | translate"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="c-input">
+            <mat-label translate>{{ translatePathEdit }}.username</mat-label>
+            <input
+              matInput
+              #messageUserName
+              formControlName="username"
+              [attr.placeholder]="translatePathEdit + '.username' | translate"
+              maxLength="{{ formOptions.lengthInputUserName }}"
+            />
+            <mat-error
+              *ngIf="profileForm.get('username').hasError('required')"
+              translate
+              >{{ translatePathEdit }}.usernameError
+            </mat-error>
+            <mat-hint *ngIf="isEditing" class="mb-3" align="end">
+              <span class="sr-only"
+                >{{
+                  formOptions.lengthInputUserName - messageUserName.value.length
+                }}
+                {{ translatePathEdit + '.charactersRemaining' | translate }}
+              </span>
+              <span class="c-hint" aria-hidden="true">
+                {{ messageUserName.value.length }} /
+                {{ formOptions.lengthInputUserName }}
+              </span>
+            </mat-hint>
+          </mat-form-field>
+
+          <mat-form-field class="c-input">
+            <mat-label translate>{{ translatePathEdit }}.language</mat-label>
+            <mat-select
+              #lang
+              formControlName="language"
+              (selectionChange)="onLanguageChange()"
+            >
+              <mat-option *ngFor="let lang of langs" value="{{ lang.id }}">
+                {{ lang.name }}
+              </mat-option>
+            </mat-select>
+            <mat-hint class="c-hint mt-1" translate
+              >{{ translatePathEdit }}.languageHint</mat-hint
+            >
+          </mat-form-field>
+          <div *ngIf="isEditing" class="v-buttons">
+            <button
+              (click)="patchValuesForm()"
+              mat-raised-button
+              class="mr-5 c-button b-gray"
+            >
+              {{ translatePathEdit + '.cancelButton' | translate }}
+            </button>
+            <button
+              [ngClass]="{disabled: !profileForm.valid}"
+              [disabled]="!profileForm.valid"
+              (click)="updateUserData(profileForm.value, profileForm.valid)"
+              mat-raised-button
+              color="primary"
+              class="c-button"
+            >
+              {{ translatePathEdit + '.saveButton' | translate }}
+            </button>
+          </div>
+          <div *ngIf="!isEditing" class="v-buttons">
+            <button
+              (click)="editPassword()"
+              mat-raised-button
+              class="mr-5 c-button b-gray"
+            >
+              {{ translatePathEdit + '.changePasswordButton' | translate }}
+            </button>
+            <button
+              (click)="formEnable()"
+              mat-raised-button
+              class="c-button b-gray"
+            >
+              {{ translatePathEdit + '.editButton' | translate }}
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="col-4 offset-1 box-style l-right-container">
+        <h2 translate>{{ translatePathNotifications }}.title</h2>
+        <div class="l-notifications mt-4">
+          <div
+            *ngFor="let notification of notifications"
+            class="c-notification row"
+          >
+            <div class="col-1">
+              <i
+                aria-hidden="true"
+                *ngIf="notification.viewed === 0"
+                class="fas fa-circle notseen-circle"
+              ></i>
+              <span *ngIf="notification.viewed === 0" class="sr-only" translate
+                >{{ translatePathNotifications }}.notseen</span
+              >
+              <span *ngIf="notification.viewed === 1" class="sr-only" translate
+                >{{ translatePathNotifications }}.seen</span
+              >
+            </div>
+            <div class="col-9 c-center">
+              <h3>
+                {{
+                  notification.descriptionPath + '.title'
+                    | translate: notification.parameters
+                }}
+              </h3>
+              <p>
+                {{
+                  notification.descriptionPath + '.text'
+                    | translate: notification.parameters
+                }}
+              </p>
+            </div>
+            <div class="col-1">
+              <button
+                (click)="setNotificationAsSeen(notification.id)"
+                class="button-without-style"
+                [disabled]="notification.viewed === 1"
+              >
+                <i
+                  aria-hidden="true"
+                  class="fas fa-check-circle"
+                  [ngClass]="notification.viewed === 0 ? 'notseen' : 'seen'"
+                ></i>
+                <span
+                  *ngIf="notification.viewed === 0"
+                  class="sr-only"
+                  translate
+                  >{{ translatePathNotifications }}.checkAsSeen</span
+                >
+                <span
+                  *ngIf="notification.viewed === 1"
+                  class="sr-only"
+                  translate
+                  >{{ translatePathNotifications }}.checkedAsSeen</span
+                >
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-drawer-container>

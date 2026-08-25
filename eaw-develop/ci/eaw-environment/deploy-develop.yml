@@ -1,0 +1,30 @@
+# This job deploys the project to the develop server.
+# It uses the ./docker-compose.yml file to deploy the modules as connected container services.
+# Environment variables to be set:
+#   EAW_DEV_SERVER_HOST
+#  Used in Compose:
+#     EAW_FRONTEND_DOCKER_OUT
+alfa-deployment:
+  stage: deploy-develop
+  tags:
+    - eaw-develop
+  only:
+    - develop
+  dependencies:
+    - frontend-dev-build
+  variables:
+    RELEASE_TAG: "alfa"
+  script:
+    - cd ./ci/eaw-environment/
+    - docker compose down
+    - docker rmi evaluator-accesibility-web-db:${RELEASE_TAG} || true
+    - docker rmi evaluator-accesibility-web-mongo:${RELEASE_TAG} || true
+    - docker rmi evaluator-accesibility-web-api:${RELEASE_TAG} || true
+    - docker rmi evaluator-accesibility-queue-api:${RELEASE_TAG} || true
+    - docker rmi evaluator-accesibility-web-app:${RELEASE_TAG} || true
+    - docker compose up -d
+    - docker rmi $(docker images -f "dangling=true" -q) || true
+  environment:
+    name: "EAW Develop Server"
+    # This URL is assumed to be configured at the web server proxy.
+    url: "http://localhost/eaw/"

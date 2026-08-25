@@ -1,0 +1,123 @@
+<div class="l-list-evaluations">
+  <div class="row l-head">
+    <div class="col-sm-4 l-evaluator">
+      <p class="c-evaluator-name">
+        <i class="fas fa-user"></i>
+        {{ evaluatorInfo?.firstName }} {{ evaluatorInfo?.lastName }}
+      </p>
+    </div>
+    <div class="col-sm-8">
+      <div class="l-state-menu">
+        <mat-tab-group
+          class="c-state-menu"
+          animationDuration="0ms"
+          (selectedTabChange)="applyStateFilter($event)"
+        >
+          <mat-tab
+            label="{{
+              'administrator.tracking.listEvaluations.menuState.pendingLabel'
+                | translate
+            }}"
+          ></mat-tab>
+          <mat-tab
+            label="{{
+              'administrator.tracking.listEvaluations.menuState.progressLabel'
+                | translate
+            }}"
+          ></mat-tab>
+          <mat-tab
+            label="{{
+              'administrator.tracking.listEvaluations.menuState.finishedLabel'
+                | translate
+            }}"
+          ></mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </div>
+
+  <div class="l-table" *ngIf="!isEmpty">
+    <table
+      mat-table
+      [dataSource]="tableDataSource"
+      class="mat-elevation-z8 c-table"
+    >
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ 'administrator.tracking.listEvaluations.table.name' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.domain }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="segment">
+        <th mat-header-cell *matHeaderCellDef>
+          {{
+            'administrator.tracking.listEvaluations.table.segment' | translate
+          }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.segmentData.name }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="specifications">
+        <th mat-header-cell *matHeaderCellDef>
+          {{
+            'administrator.tracking.listEvaluations.table.specificiation'
+              | translate
+          }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.specificationsQuantity }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="beginDate">
+        <th mat-header-cell *matHeaderCellDef>
+          {{
+            'administrator.tracking.listEvaluations.table.startDate' | translate
+          }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ formatDate(element.manualStartDate) }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="endDate">
+        <th mat-header-cell *matHeaderCellDef>
+          {{
+            'administrator.tracking.listEvaluations.table.endDate' | translate
+          }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ formatDate(element.manualFinishDate) }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="stats" stickyEnd>
+        <th mat-header-cell *matHeaderCellDef>
+          {{ 'administrator.tracking.listEvaluations.table.stats' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element" (click)="goToStats(element.id)">
+          <mat-icon class="c-edit">timeline</mat-icon>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+
+  <div [ngClass]="isEmpty ? 'show' : 'hide'" class="l-paginator">
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons
+      hidePageSize
+    ></mat-paginator>
+  </div>
+
+  <app-not-result-filter
+    *ngIf="isEmpty"
+    [notResultMessage]="emptyMessages.notFilterResults"
+  ></app-not-result-filter>
+</div>

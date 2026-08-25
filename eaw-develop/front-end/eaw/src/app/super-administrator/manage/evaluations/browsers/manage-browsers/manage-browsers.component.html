@@ -1,0 +1,118 @@
+<div class="container l-confirm-dialog">
+  <div class="row">
+    <div class="col-12 mx-auto text-center">
+      <div mat-dialog-title>
+        <h1 class="c-dialog-title" color="primary">{{ data.title }}</h1>
+      </div>
+      <div mat-dialog-content class="l-modal-content">
+        <form class="l-form" [formGroup]="browserForm">
+          <mat-form-field appearance="outline" class="l-form-field">
+            <mat-label translate
+              >superAdministrator.manage.evaluations.browsers.modal-manage.input-name</mat-label
+            >
+            <input
+              type="text"
+              matInput
+              #messageName
+              maxLength="{{ formOptions.lengthInputName }}"
+              formControlName="name"
+              required
+            />
+            <mat-error *ngIf="browserForm.get('name').hasError('required')">
+              {{
+                'superAdministrator.manage.evaluations.browsers.modal-manage.error-input-name'
+                  | translate
+              }}
+            </mat-error>
+            <mat-hint class="mb-3 c-hint" align="end">
+              <span class="sr-only"
+                >{{ formOptions.lengthInputName - messageName.value.length }}
+                caracteres restantes
+              </span>
+              <span aria-hidden="true">
+                {{ messageName.value.length }} /
+                {{ formOptions.lengthInputName }}
+              </span>
+            </mat-hint>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="l-form-field">
+            <mat-label translate
+              >superAdministrator.manage.evaluations.browsers.modal-manage.input-browser-version</mat-label
+            >
+            <input
+              type="text"
+              matInput
+              #messageBrowserVersion
+              maxLength="{{ formOptions.lengthInputBrowserVersion }}"
+              formControlName="browserVersion"
+              required
+            />
+            <mat-error
+              *ngIf="browserForm.get('browserVersion').hasError('required')"
+            >
+              {{
+                'superAdministrator.manage.evaluations.browsers.modal-manage.error-input-browser-version'
+                  | translate
+              }}
+            </mat-error>
+            <mat-hint class="mb-3 c-hint" align="end">
+              <span class="sr-only"
+                >{{
+                  formOptions.lengthInputBrowserVersion -
+                    messageBrowserVersion.value.length
+                }}
+                caracteres restantes
+              </span>
+              <span aria-hidden="true">
+                {{ messageBrowserVersion.value.length }} /
+                {{ formOptions.lengthInputBrowserVersion }}
+              </span>
+            </mat-hint>
+          </mat-form-field>
+
+          <div appearance="outline" class="l-state">
+            <mat-label translate
+              >superAdministrator.manage.evaluations.browsers.modal-manage.input-state</mat-label
+            >
+            <mat-radio-group formControlName="isActive">
+              <mat-radio-button class="c-radio" value="1">
+                {{
+                  'superAdministrator.manage.evaluations.browsers.modal-manage.input-state-active'
+                    | translate
+                }}
+              </mat-radio-button>
+              <mat-radio-button class="c-radio" value="0">
+                {{
+                  'superAdministrator.manage.evaluations.browsers.modal-manage.input-state-inactive'
+                    | translate
+                }}
+              </mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="row" class="l-buttons">
+    <button
+      class="c-cancel-btn"
+      mat-raised-button
+      type="button"
+      (click)="cancel()"
+    >
+      {{ data.cancel }}
+    </button>
+    <button
+      class="c-submit-btn"
+      mat-raised-button
+      type="button"
+      (click)="confirmFunction()"
+      attr.aria-disabled="{{ !browserForm.valid }}"
+      tabindex="0"
+      [ngClass]="{disabled: !browserForm.valid}"
+    >
+      {{ data.next }}
+    </button>
+  </div>
+</div>

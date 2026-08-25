@@ -1,0 +1,16 @@
+@import '../../../../super-administrator.module.scss';
+
+.c-table {
+  width: 90% !important;
+  ::ng-deep th.mat-header-cell {
+    width: 100px;
+    min-width: 100px;
+    text-align: center;
+  }
+  td {
+    word-wrap: break-word;
+    max-width: 10px;
+    text-align: center;
+    font-size: 15px !important;
+  }
+}

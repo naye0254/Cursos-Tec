@@ -1,0 +1,54 @@
+<mat-drawer-container class="l-sidenav" autosize aria-live="assertive">
+  <mat-drawer #drawer class="l-left-sidenav" mode="side" opened>
+    <div class="l-top mt-2">
+      <img
+        [src]="'assets/img/profile/' + gender + '.png'"
+        height="115"
+        width="auto"
+        aria-hidden="true"
+        [attr.alt]="translatePathCardInformation + '.profileAlt' | translate"
+      />
+      <h1 class="mt-3">
+        <span>{{ userDetail.firstName }}</span
+        ><br />{{ userDetail.lastName }}
+      </h1>
+    </div>
+    <hr />
+    <div class="l-quantity">
+      <p class="c-number-evaluations c-first-text">
+        <span *ngIf="quantityByEvaluators !== null"
+          >{{ quantityByEvaluators?.pending }} /
+        </span>
+        {{ quantityEvaluations.pending }}
+      </p>
+      <p class="c-label">
+        {{ 'administrator.tracking.dashboard.pendigEvaluation' | translate }}
+      </p>
+    </div>
+    <div class="l-quantity">
+      <p class="c-number-evaluations c-second-text">
+        <span *ngIf="quantityByEvaluators !== null"
+          >{{ quantityByEvaluators?.progress }} /
+        </span>
+        {{ quantityEvaluations.progress }}
+      </p>
+      <p class="c-label">
+        {{ 'administrator.tracking.dashboard.progressEvaluation' | translate }}
+      </p>
+    </div>
+    <div class="l-quantity">
+      <p class="c-number-evaluations c-third-text">
+        <span *ngIf="quantityByEvaluators !== null"
+          >{{ quantityByEvaluators?.finished }} /
+        </span>
+        {{ quantityEvaluations.finished }}
+      </p>
+      <p class="c-label">
+        {{ 'administrator.tracking.dashboard.finishedEvaluation' | translate }}
+      </p>
+    </div>
+  </mat-drawer>
+  <div class="container-fluid">
+    <router-outlet></router-outlet>
+  </div>
+</mat-drawer-container>

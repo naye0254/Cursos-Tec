@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.15.0.final using JasperReports Library version 6.15.0-dd49bfb94918336b8321d5507193f0169ead4e95  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="disability_by_user" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="8d2990c4-7eb8-4c24-bb88-1b5481c63ae2">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DA_EAW"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="evaluationsId" class="java.lang.Integer"/>
+	<parameter name="idSpecification" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT d.name,
+	s.usersId
+FROM `DS_EAW`.`Specifications` s
+	inner join `DS_EAW`.`Disabilities` d ON 
+	 s.`disabilitiesId` = d.id 
+WHERE 
+	 s.`evaluationsId` =  $P{evaluationsId} 
+	 AND s.id =  $P{idSpecification}]]>
+	</queryString>
+	<field name="name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="name"/>
+		<property name="com.jaspersoft.studio.field.label" value="name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Disabilities"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="usersId" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="usersId"/>
+		<property name="com.jaspersoft.studio.field.label" value="usersId"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Specifications"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="21" splitType="Stretch">
+			<textField textAdjust="StretchHeight">
+				<reportElement x="0" y="0" width="595" height="20" forecolor="#377A81" uuid="804c66e8-f6a7-4656-9b41-7654599ac278">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+				<textElement markup="none">
+					<font fontName="Lato" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Usuario: " + $F{name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="231">
+			<subreport>
+				<reportElement x="0" y="0" width="595" height="231" uuid="5b82c080-ab32-40e0-860e-46c72bfccf47">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<subreportParameter name="evaluationsId">
+					<subreportParameterExpression><![CDATA[$P{evaluationsId}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="usersId">
+					<subreportParameterExpression><![CDATA[$F{usersId}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["/Results_Summary/Manual/specifications.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

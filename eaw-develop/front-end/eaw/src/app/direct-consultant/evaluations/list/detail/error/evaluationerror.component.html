@@ -1,0 +1,62 @@
+<div class="c-button-back">
+    <button mat-button (click)="goListEvaluations()">
+      <i class="fas fa-chevron-left"></i>
+      {{ 'directClient.evaluations.seeEvaluations.backButton' | translate }}
+    </button>
+</div>
+
+<div class="v-content mt-5">
+    <div class="v-box">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-8 col-no-padding">
+                <h2 class="c-title-card">
+                    {{ 'directClient.evaluations.seeEvaluations.evaluationErrors.evaluation' | translate }} : {{ datos }}
+                </h2>
+            </div>
+        </div>
+    </div>
+    <table class="table v-table">
+        <thead>
+            <tr>
+                <th>
+                    {{
+                        'directClient.evaluations.seeEvaluations.evaluationErrors.id' | translate
+                    }}
+                </th>
+                <th>
+                    {{
+                        'directClient.evaluations.seeEvaluations.evaluationErrors.errorDescription'  | translate
+                    }}
+                </th>
+                <th>
+                    {{
+                        'directClient.evaluations.seeEvaluations.evaluationErrors.locationName'  | translate
+                    }}
+                </th>
+                <th>
+                    {{
+                        'directClient.evaluations.seeEvaluations.evaluationErrors.errorDateAt'  | translate
+                    }}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let evaluationErrorDebug of evaluationErrorDebugs">
+                <td>
+                    {{ evaluationErrorDebug.id }}
+                </td>
+                <td>
+                    {{ evaluationErrorDebug.errorDescription }}
+                </td>
+                <td>
+                    {{ evaluationErrorDebug.locationName }}
+                </td>
+                <td>
+                    {{ evaluationErrorDebug.errorDateAt }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+</div>

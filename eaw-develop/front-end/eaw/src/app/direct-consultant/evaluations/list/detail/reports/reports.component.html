@@ -1,0 +1,67 @@
+<div class="l-report">
+  <div *ngIf="getReportFinishedState()" class="text-center">
+    <div class="l-card-report col-sm-3 ml-auto mr-5">
+      <div class="l-content">
+        <img
+          aria-hidden="true"
+          class="c-image-menu img-fluid"
+          src="./assets/img/results/reports.png"
+          alt="Reports icon"
+        />
+        <h3 translate>
+          directClient.evaluations.seeEvaluations.results.visualzation.reports.technicalReport.title
+        </h3>
+        <p translate>
+          directClient.evaluations.seeEvaluations.results.visualzation.reports.technicalReport.description
+        </p>
+      </div>
+      <div class="l-actions">
+        <button
+          (click)="downloadTechnicalReport()"
+          class="c-button"
+          mat-raised-button
+          color="primary"
+        >
+          {{
+            'directClient.evaluations.seeEvaluations.results.visualzation.reports.downloadButton'
+              | translate
+          }}
+        </button>
+      </div>
+    </div>
+    <div class="l-card-report col-sm-3 mr-auto ml-5">
+      <div class="l-content">
+        <img
+          aria-hidden="true"
+          class="c-image-menu img-fluid"
+          src="./assets/img/results/reports.png"
+          alt="Reports icon"
+        />
+        <h3 translate>
+          directClient.evaluations.seeEvaluations.results.visualzation.reports.managerialReport.title
+        </h3>
+        <p translate>
+          directClient.evaluations.seeEvaluations.results.visualzation.reports.managerialReport.description
+        </p>
+      </div>
+      <div class="l-actions">
+        <button
+          (click)="downloadManagerialReport()"
+          class="c-button"
+          mat-raised-button
+          color="primary"
+        >
+          {{
+            'directClient.evaluations.seeEvaluations.results.visualzation.reports.downloadButton'
+              | translate
+          }}
+        </button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!getReportFinishedState()" class="l-notice text-center">
+    <h3 translate>
+      directClient.evaluations.seeEvaluations.results.visualzation.reports.noReports
+    </h3>
+  </div>
+</div>

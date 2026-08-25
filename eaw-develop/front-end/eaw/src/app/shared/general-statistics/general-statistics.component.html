@@ -1,0 +1,57 @@
+<div>
+  <div class="row">
+    <div class="col-sm-6 c-no-padding-right">
+      <ng-multiselect-dropdown
+        [placeholder]="'Clientes'"
+        [settings]="clientsDropdownSettings"
+        [data]="listClients"
+        [(ngModel)]="selectedClients"
+        (onSelect)="fetchGeneralStatistics()"
+        (onSelectAll)="fetchGeneralStatistics($event, true)"
+        (onDeSelect)="fetchGeneralStatistics()"
+        (onDeSelectAll)="fetchGeneralStatistics($event, true)"
+      >
+      </ng-multiselect-dropdown>
+    </div>
+    <div class="col-sm-6">
+      <ng-multiselect-dropdown
+        [placeholder]="'Segmentos'"
+        [settings]="segmentsDropdownSettings"
+        [data]="listSegments"
+        [(ngModel)]="selectedSegments"
+        (onSelect)="fetchGeneralStatistics()"
+        (onSelectAll)="fetchGeneralStatistics($event, false)"
+        (onDeSelect)="fetchGeneralStatistics()"
+        (onDeSelectAll)="fetchGeneralStatistics($event, false)"
+      >
+      </ng-multiselect-dropdown>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6 to-right">
+        <mat-form-field appearance="outline" class="l-form-field">
+          <mat-label translate>Fecha Inicial</mat-label>
+          <input
+            matInput
+            type="date"
+            [(ngModel)]="initialDate"
+            (focusout)="fetchGeneralStatistics()"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="col-sm-6 to-left">
+        <mat-form-field appearance="outline" class="l-form-field">
+          <mat-label translate>Fecha Final</mat-label>
+          <input
+            matInput
+            type="date"
+            [(ngModel)]="finalDate"
+            (focusout)="fetchGeneralStatistics()"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+</div>
+<div [chart]="chart"></div>

@@ -1,0 +1,263 @@
+<div class="container l-confirm-dialog">
+  <div class="row">
+    <div class="col-12 mx-auto text-center">
+      <div mat-dialog-content class="l-modal-content">
+        <h1 class="c-dialog-title" color="primary">{{ data.title }}</h1>
+        <p class="c-dialog-text" translate>
+          superAdministrator.manage.promoters.modal-manage.sub-title
+        </p>
+        <form class="l-form" [formGroup]="promoterForm">
+          <mat-form-field appearance="outline" class="l-form-field">
+            <mat-label translate
+              >superAdministrator.manage.promoters.modal-manage.name-input</mat-label
+            >
+            <input
+              type="text"
+              matInput
+              #messageFirstName
+              maxLength="{{ formOptions.lengthInputFirstName }}"
+              formControlName="firstName"
+              required
+            />
+            <mat-error
+              *ngIf="promoterForm.get('firstName').hasError('required')"
+            >
+              {{
+                'superAdministrator.manage.promoters.modal-manage.error-name-input'
+                  | translate
+              }}
+            </mat-error>
+            <mat-hint class="mb-3 c-hint" align="end">
+              <span class="sr-only"
+                >{{
+                  formOptions.lengthInputFirstName -
+                    messageFirstName.value.length
+                }}
+                caracteres restantes
+              </span>
+              <span aria-hidden="true">
+                {{ messageFirstName.value.length }} /
+                {{ formOptions.lengthInputFirstName }}
+              </span>
+            </mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="l-form-field">
+            <mat-label translate
+              >superAdministrator.manage.promoters.modal-manage.last-name-input</mat-label
+            >
+            <input
+              type="text"
+              matInput
+              #messageLastName
+              maxLength="{{ formOptions.lengthInputLastName }}"
+              formControlName="lastName"
+              required
+            />
+            <mat-error
+              *ngIf="promoterForm.get('lastName').hasError('required')"
+            >
+              {{
+                'superAdministrator.manage.promoters.modal-manage.error-last-name-input'
+                  | translate
+              }}
+            </mat-error>
+            <mat-hint class="mb-3 c-hint" align="end">
+              <span class="sr-only"
+                >{{
+                  formOptions.lengthInputLastName - messageLastName.value.length
+                }}
+                caracteres restantes
+              </span>
+              <span aria-hidden="true">
+                {{ messageLastName.value.length }} /
+                {{ formOptions.lengthInputLastName }}
+              </span>
+            </mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="l-form-field">
+            <mat-label translate
+              >superAdministrator.manage.promoters.modal-manage.email-input</mat-label
+            >
+            <input
+              type="email"
+              matInput
+              #messageEmail
+              maxLength="{{ formOptions.lengthInputEmail }}"
+              formControlName="email"
+              required
+            />
+            <mat-error *ngIf="promoterForm.get('email').hasError('required')">
+              {{
+                'superAdministrator.manage.promoters.modal-manage.error-email-input'
+                  | translate
+              }}
+            </mat-error>
+            <mat-hint class="mb-3 c-hint" align="end">
+              <!--TODO: TRANSLATE THIS SPAN-->
+              <span class="sr-only"
+                >{{ formOptions.lengthInputEmail - messageEmail.value.length }}
+                caracteres restantes
+              </span>
+              <span aria-hidden="true">
+                {{ messageEmail.value.length }} /
+                {{ formOptions.lengthInputEmail }}
+              </span>
+            </mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="l-form-field">
+            <mat-label translate
+              >superAdministrator.manage.promoters.modal-manage.user-name-input</mat-label
+            >
+            <input
+              type="text"
+              matInput
+              #messageUserName
+              maxLength="{{ formOptions.lengthInputUserName }}"
+              formControlName="username"
+              required
+            />
+            <mat-error
+              *ngIf="promoterForm.get('username').hasError('required')"
+            >
+              {{
+                'superAdministrator.manage.promoters.modal-manage.error-user-name-input'
+                  | translate
+              }}
+            </mat-error>
+            <mat-hint class="mb-3 c-hint" align="end">
+              <span class="sr-only"
+                >{{
+                  formOptions.lengthInputUserName - messageUserName.value.length
+                }}
+                caracteres restantes
+              </span>
+              <span aria-hidden="true">
+                {{ messageUserName.value.length }} /
+                {{ formOptions.lengthInputUserName }}
+              </span>
+            </mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="l-form-field">
+            <mat-label translate
+              >superAdministrator.manage.promoters.modal-manage.phone-input</mat-label
+            >
+            <input
+              type="text"
+              matInput
+              #messageTelephone
+              maxLength="{{ formOptions.lengthInputTelephone }}"
+              formControlName="telephone"
+              required
+            />
+            <mat-error
+              *ngIf="promoterForm.get('telephone').hasError('required')"
+            >
+              {{
+                'superAdministrator.manage.promoters.modal-manage.error-phone-input'
+                  | translate
+              }}
+            </mat-error>
+            <mat-hint class="mb-3 c-hint" align="end">
+              <span class="sr-only"
+                >{{
+                  formOptions.lengthInputTelephone -
+                    messageTelephone.value.length
+                }}
+                caracteres restantes
+              </span>
+              <span aria-hidden="true">
+                {{ messageTelephone.value.length }} /
+                {{ formOptions.lengthInputTelephone }}
+              </span>
+            </mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="l-form-field">
+            <mat-label translate
+              >superAdministrator.manage.promoters.modal-manage.password-input</mat-label
+            >
+            <input
+              type="password"
+              matInput
+              #messagePassword
+              maxLength="{{ formOptions.lengthInputPassword }}"
+              formControlName="password"
+              required
+            />
+            <mat-error
+              *ngIf="promoterForm.get('password').hasError('required')"
+            >
+              {{
+                'superAdministrator.manage.promoters.modal-manage.error-password-input'
+                  | translate
+              }}
+            </mat-error>
+            <mat-hint class="mb-3 c-hint" align="end">
+              <span class="sr-only"
+                >{{
+                  formOptions.lengthInputPassword - messagePassword.value.length
+                }}
+                caracteres restantes
+              </span>
+              <span aria-hidden="true">
+                {{ messagePassword.value.length }} /
+                {{ formOptions.lengthInputPassword }}
+              </span>
+            </mat-hint>
+          </mat-form-field>
+          <mat-form-field class="l-form-field" appearance="outline">
+            <mat-label translate
+              >superAdministrator.manage.promoters.modal-manage.sex-input</mat-label
+            >
+            <mat-select formControlName="sex" name="sex">
+              <mat-option
+                *ngFor="let sexOrientation of listSexOrientations"
+                [value]="sexOrientation.id"
+              >
+                {{ sexOrientation.text }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div appearance="outline" class="l-state">
+            <mat-label translate
+              >superAdministrator.manage.promoters.modal-manage.state-input</mat-label
+            >
+            <mat-radio-group formControlName="isActive">
+              <mat-radio-button class="c-radio" value="1">{{
+                'superAdministrator.manage.promoters.modal-manage.active-input-label'
+                  | translate
+              }}</mat-radio-button>
+              <mat-radio-button class="c-radio" value="0">{{
+                'superAdministrator.manage.promoters.modal-manage.inactive-input-label'
+                  | translate
+              }}</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="row" class="l-buttons">
+    <button
+      class="c-cancel-btn"
+      mat-raised-button
+      type="button"
+      (click)="cancel()"
+    >
+      {{
+        'superAdministrator.manage.promoters.modal-manage.btn-cancel'
+          | translate
+      }}
+    </button>
+    <button
+      class="c-submit-btn"
+      mat-raised-button
+      type="button"
+      (click)="confirmFunction()"
+      attr.aria-disabled="{{ !promoterForm.valid }}"
+      tabindex="0"
+      [ngClass]="{disabled: !promoterForm.valid}"
+    >
+      {{ data.next }}
+    </button>
+  </div>
+</div>

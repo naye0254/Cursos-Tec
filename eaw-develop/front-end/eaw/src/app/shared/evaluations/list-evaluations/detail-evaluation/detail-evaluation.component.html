@@ -1,0 +1,351 @@
+<div class="container-fluid l-top">
+  <button
+    class="btn c-button-like-link ml-4 mb-3"
+    type="button"
+    (click)="goBack()"
+    translate
+  >
+    <i class="fas fa-chevron-left c-icon"></i>
+    {{ translatePathDetail + '.back' }}
+  </button>
+  <div class="row ml-2">
+    <div class="col-lg-6 l-left">
+      <h1 translate>{{ translatePathDetail + '.title' }}</h1>
+      <h2
+        *ngIf="!isAlreadySelected"
+        translate
+        [translateParams]="{value: siteName}"
+      >
+        {{ translatePathDetail + '.subtitle' }}
+      </h2>
+      <h2
+        *ngIf="isAlreadySelected"
+        translate
+        [translateParams]="{package: packageName, value: siteName}"
+      >
+        {{ translatePathDetail + '.subtitleWithPackage' }}
+      </h2>
+    </div>
+    <div class="col-lg-6 l-right">
+      <button
+        *ngIf="!isAlreadySelected"
+        class="btn c-button-round mb-3"
+        type="button"
+        (click)="setSelectedPages()"
+        [ngClass]="selectedPages.length == 0 ? 'disabled' : ''"
+        [disabled]="selectedPages.length == 0"
+        translate
+      >
+        {{ translatePathDetail + '.saveButton' }}
+      </button>
+      <button
+        *ngIf="isAlreadySelected"
+        class="btn c-button-round download-button mb-3"
+        (click)="downloadZip()"
+        type="button"
+        translate
+      >
+        {{ translatePathDetail + '.downloadButton' }}
+      </button>
+    </div>
+  </div>
+</div>
+<mat-drawer-container class="l-sidenav" autosize aria-live="assertive">
+  <p *ngIf="!isAlreadySelected" class="c-text" translate>
+    {{ translatePathDetail + '.selectPages' }}
+  </p>
+  <span
+    *ngIf="!seeOnlyMap"
+    class="c-span"
+    [innerHTML]="translatePathDetail + '.selectedPages' | translate"
+  ></span>
+  <span *ngIf="!seeOnlyMap" aria-hidden="true" class="v-dot">
+    <span
+      class="c-count-top"
+      [ngClass]="9 >= selectedPages.length ? 'natural-number' : ''"
+      >{{ selectedPages.length }}</span
+    >
+    <span class="c-count-line">/</span>
+    <span class="c-count-bottom">32</span>
+  </span>
+  <span
+    *ngIf="!seeOnlyMap"
+    class="sr-only"
+    translate
+    [translateParams]="{count: selectedPages.length}"
+  >
+    {{ translatePathDetail + '.ariaCounter' }}
+  </span>
+  <mat-drawer #drawer class="l-left-sidenav" mode="side" opened>
+    <div class="c-stats">
+      <div class="c-top-stats" translate>
+        {{ translatePathDetail + '.stats' }}
+      </div>
+      <div class="c-bottom-stats">
+        <div class="c-item">
+          <h3 translate>
+            {{ translatePathDetail + '.domain' }}
+          </h3>
+          <span>{{ siteData?.domain }}</span>
+        </div>
+        <div class="c-item">
+          <h3 translate>
+            {{ translatePathDetail + '.mainURL' }}
+          </h3>
+          <span
+            ><a [href]="siteData.data?.topic" target="_blank">{{
+              siteData.data?.topic
+            }}</a></span
+          >
+        </div>
+        <div class="c-item">
+          <h3 translate>
+            {{ translatePathDetail + '.totalPages' }}
+          </h3>
+          <span>{{ siteData?.scrapedPagesCounter }}</span>
+        </div>
+        <div class="c-item">
+          <h3 translate>
+            {{ translatePathDetail + '.brokenLinks' }}
+          </h3>
+          <span class="c-number">{{ siteData?.brokenLinksCounter }}</span
+          ><br />
+          <button
+            class="c-button-like-href"
+            (click)="
+              seeList(
+                siteData?.brokenLinksCounter,
+                '.broken.title',
+                '.broken.text',
+                siteData?.brokenLinksList
+              )
+            "
+            translate
+          >
+            {{ translatePathDetail + '.see' }}
+          </button>
+        </div>
+        <div class="c-item">
+          <h3 translate>
+            {{ translatePathDetail + '.absoluteLinks' }}
+          </h3>
+          <span class="c-number">{{ siteData?.absoluteLinksCounter }}</span
+          ><br />
+          <button
+            class="c-button-like-href"
+            (click)="
+              seeList(
+                siteData?.absoluteLinksCounter,
+                '.absolute.title',
+                '.absolute.text',
+                siteData?.absoluteLinksList
+              )
+            "
+            translate
+          >
+            {{ translatePathDetail + '.see' }}
+          </button>
+        </div>
+        <div class="c-item">
+          <h3 translate>
+            {{ translatePathDetail + '.relativeLinks' }}
+          </h3>
+          <span class="c-number">{{ siteData?.relativeLinksCounter }}</span
+          ><br />
+          <button
+            class="c-button-like-href"
+            (click)="
+              seeList(
+                siteData?.relativeLinksCounter,
+                '.relative.title',
+                '.relative.text',
+                siteData?.relativeLinksList
+              )
+            "
+            translate
+          >
+            {{ translatePathDetail + '.see' }}
+          </button>
+        </div>
+        <div class="c-item">
+          <h3 translate>
+            {{ translatePathDetail + '.exceptions' }}
+          </h3>
+          <span class="c-number">{{ siteData?.linkExceptionsCounter }}</span
+          ><br />
+          <button
+            class="c-button-like-href"
+            (click)="
+              seeList(
+                siteData?.linkExceptionsCounter,
+                '.exceptions.title',
+                '.exceptions.text',
+                siteData?.linkExceptionsList
+              )
+            "
+            translate
+          >
+            {{ translatePathDetail + '.see' }}
+          </button>
+        </div>
+        <div class="c-item">
+          <h3 translate>
+            {{ translatePathDetail + '.files' }}
+          </h3>
+          <span class="c-number">{{ siteData?.fileCounter }}</span
+          ><br />
+          <button
+            class="c-button-like-href"
+            (click)="
+              seeList(
+                siteData?.fileCounter,
+                '.files.title',
+                '.files.text',
+                siteData?.fileList
+              )
+            "
+            translate
+          >
+            {{ translatePathDetail + '.see' }}
+          </button>
+        </div>
+        <div class="c-item">
+          <h3 translate>
+            {{ translatePathDetail + '.desertedLinks' }}
+          </h3>
+          <span class="c-number">{{ siteData?.desertedLinksCounter }}</span
+          ><br />
+          <button
+            class="c-button-like-href"
+            (click)="
+              seeList(
+                siteData?.desertedLinksCounter,
+                '.deserted.title',
+                '.deserted.text',
+                siteData?.desertedLinksList
+              )
+            "
+            translate
+          >
+            {{ translatePathDetail + '.see' }}
+          </button>
+        </div>
+        <div class="c-item">
+          <h3 translate>
+            {{ translatePathDetail + '.deep' }}
+          </h3>
+          <span class="c-number">{{ siteData?.treeDepthCounter }}</span
+          ><br />
+        </div>
+      </div>
+    </div>
+  </mat-drawer>
+  <div *ngIf="isAlreadySelected" class="l-state-menu mb-5">
+    <mat-tab-group
+      class="c-state-menu"
+      animationDuration="0ms"
+      (selectedTabChange)="applyStateFilter($event)"
+    >
+      <mat-tab
+        label="{{ translatePathDetail + '.optionSiteMap' | translate }}"
+      ></mat-tab>
+      <mat-tab
+        label="{{ translatePathDetail + '.optionSelectedPages' | translate }}"
+      ></mat-tab>
+    </mat-tab-group>
+  </div>
+  <ngx-graph
+    class="chart-container"
+    [draggingEnabled]="false"
+    [links]="hierarchialGraph.links"
+    [nodes]="hierarchialGraph.nodes"
+    [layout]="layout"
+    [curve]="curve"
+    [update$]="update$"
+    [panToNode$]="panToNodeObservable"
+  >
+    <ng-template #defsTemplate>
+      <svg:marker
+        id="arrow"
+        viewBox="0 -5 10 10"
+        refX="8"
+        refY="0"
+        markerWidth="4"
+        markerHeight="4"
+        orient="auto"
+      >
+        <svg:path d="M0,-5L10,0L0,5" class="arrow-head" />
+      </svg:marker>
+    </ng-template>
+
+    <ng-template #nodeTemplate let-node>
+      <svg:g
+        class="node"
+        (click)="selectNode(node)"
+        focusable="true"
+        ngx-tooltip
+        [tooltipPlacement]="'top'"
+        [tooltipType]="'tooltip'"
+        [tooltipTitle]="node.options.url"
+      >
+        <svg:rect
+          [attr.width]="node.dimension.width"
+          [attr.height]="node.dimension.height"
+          [attr.fill]="node.options.color"
+          rx="4"
+        />
+        <svg:text
+          alignment-baseline="central"
+          [attr.x]="10"
+          [attr.y]="node.dimension.height / 2"
+          [attr.fill]="node.options.textcolor"
+        >
+          {{ node.label }}
+        </svg:text>
+        <svg:text
+          aria-live="polite"
+          aria-atomic="true"
+          alignment-baseline="central"
+          class="sr-only-svg"
+          [attr.x]="10"
+          [attr.y]="node.dimension.height / 2"
+          [attr.fill]="node.options.textcolor"
+        >
+          URL: {{ node.options.url }}
+          {{ getSelectedLabel(node) }}
+        </svg:text>
+      </svg:g>
+      <svg:a [attr.href]="node.options.url" target="_blank">
+        <svg:rect
+          [attr.aria-label]="translatePathDetail + '.openLink' | translate"
+          (click)="goToLink()"
+          class="c-goLink-rect"
+          [attr.x]="node.dimension.width - 5"
+          [attr.y]="node.dimension.height / 5"
+          rx="20"
+          ry="20"
+          width="20"
+          height="20"
+        />
+        <svg:text
+          class="c-goLink-icon"
+          alignment-baseline="central"
+          [attr.x]="node.dimension.width - 1"
+          [attr.y]="node.dimension.height - 13"
+        >
+          &#xf08e;
+        </svg:text>
+      </svg:a>
+    </ng-template>
+
+    <ng-template #linkTemplate let-link>
+      <svg:g class="edge">
+        <svg:path
+          class="line"
+          stroke-width="2"
+          marker-end="url(#arrow)"
+        ></svg:path>
+      </svg:g>
+    </ng-template>
+  </ngx-graph>
+</mat-drawer-container>

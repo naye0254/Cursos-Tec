@@ -1,0 +1,52 @@
+@import '../../../../styles/main-theme.scss';
+
+.l-sidenav {
+  width: 95%;
+  height: auto;
+  min-height: 84%;
+  background-color: mat-color($white);
+}
+
+.l-left-sidenav {
+  height: auto;
+  width: 270px;
+  .l-top {
+    text-align: center;
+    h1 {
+      font-size: 22px;
+      color: mat-color($primary);
+      font-weight: 400;
+      span {
+        font-size: 36px;
+        color: mat-color($secondary);
+        font-weight: bold;
+      }
+    }
+  }
+  hr {
+    height: 1.5px;
+    width: 70%;
+    background-color: $silver;
+  }
+  .l-quantity {
+    width: 100%;
+    text-align: center;
+    .c-number-evaluations {
+      font-size: 30px;
+      font-weight: 700;
+      margin-bottom: 1vh;
+    }
+    .c-label {
+      font-size: 14px;
+    }
+    .c-first-text {
+      color: #727272 !important;
+    }
+    .c-second-text {
+      color: #2862a7 !important;
+    }
+    .c-third-text {
+      color: #157b25 !important;
+    }
+  }
+}

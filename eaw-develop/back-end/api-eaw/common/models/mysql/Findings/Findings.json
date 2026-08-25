@@ -1,0 +1,145 @@
+{
+  "name": "Findings",
+  "options": {
+    "idInjection": false,
+    "mysql": {
+      "schema": "DS_EAW",
+      "table": "Findings"
+    },
+    "relations": {
+      "findingsAutomaticEvaluatorPages": {
+        "model": "AutomaticEvaluatorPages",
+        "type": "belongsTo",
+        "foreignKey": "automaticEvaluatorPagesId"
+      },
+      "findingsCriterions": {
+        "model": "Criterions",
+        "type": "belongsTo",
+        "foreignKey": "criterionsId"
+      }
+    },
+    "acls": [
+      {
+        "accessType": "*",
+        "principalType": "ROLE",
+        "principalId": "$everyone",
+        "permission": "ALLOW"
+      },
+      {
+        "accessType": "EXECUTE",
+        "principalType": "ROLE",
+        "principalId": "$authenticated",
+        "permission": "ALLOW",
+        "property": "*"
+      }
+    ]
+  },
+  "properties": {
+    "automaticEvaluatorPagesId": {
+      "type": "Number",
+      "required": true,
+      "length": null,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "automaticEvaluatorPagesId",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      }
+    },
+    "criterionsId": {
+      "type": "Number",
+      "required": true,
+      "length": null,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "criterionsId",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      }
+    },
+    "automaticDescriptionsId": {
+      "type": "Number",
+      "required": false,
+      "length": null,
+      "precision": 5,
+      "scale": null,
+      "mysql": {
+        "columnName": "automaticDescriptionsId",
+        "dataType": "SMALLINT",
+        "dataLength": null,
+        "dataPrecision": 5,
+        "dataScale": null,
+        "nullable": "Y"
+      }
+    },
+    "findingType": {
+      "type": "String",
+      "required": false,
+      "length": 10,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "findingType",
+        "dataType": "varchar",
+        "dataLength": 10,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "Y"
+      }
+    },
+    "htmlCode": {
+      "type": "String",
+      "required": false,
+      "length": 255,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "htmlCode",
+        "dataType": "varchar",
+        "dataLength": 255,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "Y"
+      }
+    },
+    "htmlSelectorPath": {
+      "type": "String",
+      "required": false,
+      "length": 255,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "htmlSelectorPath",
+        "dataType": "varchar",
+        "dataLength": 255,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "Y"
+      }
+    },
+    "id": {
+      "type": "Number",
+      "required": true,
+      "length": null,
+      "precision": 19,
+      "scale": 0,
+      "id": 1,
+      "mysql": {
+        "columnName": "id",
+        "dataType": "bigint",
+        "dataLength": null,
+        "dataPrecision": 19,
+        "dataScale": 0,
+        "nullable": "N"
+      }
+    }
+  }
+}

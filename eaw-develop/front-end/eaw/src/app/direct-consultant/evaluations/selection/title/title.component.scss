@@ -1,0 +1,29 @@
+@import '../../../../../styles/main-theme.scss';
+.l-head {
+  padding-left: 9vh;
+  padding-top: 4vh;
+  .c-title {
+    align-self: flex-end;
+    font-size: 24px;
+    text-align: left;
+    letter-spacing: 0;
+    font-weight: bold;
+    color: mat-color($primary);
+    opacity: 1;
+  }
+  .c-delimiter {
+    background-color: mat-color($primary);
+    border-top: 3px solid mat-color($primary);
+  }
+}
+
+.l-subtitle {
+  padding-left: 9vh;
+  .c-border-search {
+    border: 1px solid transparent;
+  }
+  .c-subtitle {
+    color: mat-color($dark-gray);
+    font-size: 18px;
+  }
+}

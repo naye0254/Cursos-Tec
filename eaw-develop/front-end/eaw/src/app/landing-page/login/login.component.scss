@@ -1,0 +1,125 @@
+@import '../../../styles/main-theme.scss';
+
+.v-switch {
+  text-align: center;
+
+  .btn-switch {
+    cursor: pointer;
+  }
+
+  .c-button-div-active {
+    background-color: $blue-chill;
+    color: mat-color($white);
+    font-weight: bold;
+    height: 50px;
+  }
+
+  .c-button-div-desactive {
+    background-color: mat-color($white);
+    color: mat-color($dark-gray, 300);
+    border: 1px solid $alto;
+    font-weight: bold;
+    height: 50px;
+  }
+
+  label {
+    font-size: 1.2em;
+    margin-top: 0.6rem;
+  }
+}
+
+.col-centered {
+  float: none;
+  margin: 0 auto;
+}
+
+.v-login {
+  background-color: $firefly;
+  color: mat-color($white);
+  border-radius: 0px 0px 20px 20px;
+  min-height: 320px;
+
+  .v-input-form {
+    text-align: left;
+    padding: 10% 20% 10% 20%;
+
+    .c-label {
+      font-size: 17px;
+    }
+
+    .inp-wrapper {
+      position: relative;
+      .inp {
+        background-color: mat-color($white);
+        border-radius: 10px;
+        border: 1px solid mat-color($dark-gray, 300);
+        color: mat-color($black);
+        font-size: 17px;
+        height: 40px;
+        position: relative;
+        top: 50%;
+        width: 100%;
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .inp-padding-label {
+        padding-right: 40px;
+        padding-left: 15px;
+      }
+
+      .input-label {
+        position: absolute;
+        right: 10px;
+        top: calc(45% - 0.5em);
+        color: mat-color($dark-turquoise);
+        transition: opacity 0.3s linear;
+        pointer-events: none;
+        i {
+          font-size: 22px;
+        }
+      }
+    }
+  }
+  .v-bottom-form {
+    text-align: center;
+    .c-button-round {
+      text-align: center !important;
+      background-color: $blue-chill;
+      color: mat-color($white);
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 50px;
+      width: 30%;
+      padding: 5px 20px 5px 20px;
+    }
+
+    .c-link {
+      text-decoration: underline;
+      color: mat-color($white);
+      font-size: 15px;
+      font-style: italic;
+    }
+  }
+
+  .errormsg {
+    color: $apricot;
+    text-align: left;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  .c-span {
+    text-align: left;
+    height: 2px;
+    span {
+      color: $apricot;
+      padding-top: 8px;
+      border: none;
+      .svg-inline--fa {
+        margin-top: 8px;
+      }
+    }
+  }
+}

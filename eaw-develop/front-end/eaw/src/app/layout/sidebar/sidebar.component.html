@@ -1,0 +1,40 @@
+<mat-drawer-container class="l-sidenav" autosize aria-live="assertive">
+  <button
+    [attr.aria-expanded]="_isOpen"
+    aria-controls="drawer"
+    type="button"
+    id="sidebarCollapse"
+    (click)="toggleSideBar()"
+    class="btn btn-info c-button"
+  >
+    <i [ngClass]="_isOpen ? 'fas fa-chevron-left' : 'fas fa-chevron-right'" aria-hidden="true"></i>
+  </button>
+  <mat-drawer #drawer [opened]="_isOpen" class="l-left-sidenav" mode="side" opened>
+    <nav class="menu">
+      <ul class="sidebar-menu">
+        <li
+          routerLinkActive
+          #rla="routerLinkActive"
+          routerLinkActive="sidebar-active"
+          *ngFor="let sideOption of sideOptions"
+        >
+          <a
+            *ngIf="sideOption.action"
+            (click)="sideOption.action()"
+            [routerLink]="[sideOption.routerLink]"
+            >{{ sideOption.label }}</a
+          >
+          <a *ngIf="!sideOption.action" [routerLink]="[sideOption.routerLink]">{{
+            sideOption.label
+          }}</a>
+          <ul *ngIf="rla.isActive" class="sub-ul">
+            <li routerLinkActive="sub-sidebar-active" *ngFor="let subOption of sideOption.children">
+              <a [routerLink]="[subOption.routerLink]">{{ subOption.label }}</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </mat-drawer>
+  <router-outlet></router-outlet>
+</mat-drawer-container>

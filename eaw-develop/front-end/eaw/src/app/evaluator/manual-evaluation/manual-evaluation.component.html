@@ -1,0 +1,683 @@
+<mat-drawer-container class="l-sidenav" autosize aria-live="assertive">
+  <mat-drawer #drawer class="l-left-sidenav" mode="side" opened>
+    <div class="c-top">
+      <span translate> {{ translatePath }}.evaluationProgress </span>
+      <h1 class="mt-1" translate>{{ translatePath }}.manualEvaluation</h1>
+      <p class="p-item" translate>
+        {{ translatePath }}.title
+        <span> {{ pageInfo?.title }} </span>
+      </p>
+      <p class="p-item" translate>
+        {{ translatePath }}.url
+        <span> {{ pageInfo?.url }} </span>
+      </p>
+      <p class="p-item" translate>
+        {{ translatePath }}.domain
+        <span> {{ pageInfo?.domain }} </span>
+      </p>
+      <div class="c-button text-center mt-5 mb-5">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="openEvaluationUnfinishModal(true)"
+        >
+          {{ translatePath + '.selectPages' | translate }}
+        </button>
+      </div>
+    </div>
+    <hr />
+    <button
+      class="btn c-button-like-link mt-1 ml-2"
+      type="button"
+      (click)="openEvaluationUnfinishModal(false)"
+    >
+      <i class="fas fa-chevron-left c-icon"></i>
+      {{ translatePath + '.allEvaluations' | translate }}
+    </button>
+  </mat-drawer>
+  <div class="container-fluid l-right-sidenav l-list">
+    <div class="row">
+      <div class="col-6 l-header">
+        <h2 translate>{{ translatePath }}.spectsEvaluation</h2>
+      </div>
+    </div>
+    <div class="row l-specification" [formGroup]="formEvaluation">
+      <div class="col-2">
+        <span class="c-spect"
+          >- {{ specificationInfo?.specificationsDevices.name }} -</span
+        >
+      </div>
+      <div class="col-2">
+        <span class="c-spect"
+          >-
+          {{ specificationInfo?.specificationsOperativeSystems.name }} -</span
+        >
+      </div>
+      <div class="col-2">
+        <span class="c-spect"
+          >- {{ specificationInfo?.specificationsBrowsers.name }} -</span
+        >
+      </div>
+      <div class="col-2">
+        <span class="c-spect"
+          >- {{ specificationInfo?.specificationsSupportTools.name }} -</span
+        >
+      </div>
+    </div>
+    <form [formGroup]="formEvaluation" aria-live="polite">
+      <div class="row l-principle mt-5">
+        <div class="col-10" aria-live="polite" aria-atomic="true">
+          <h3>{{ principleInfo?.descriptionPath + '.title' | translate }}</h3>
+          <p>{{ principleInfo?.descriptionPath + '.text' | translate }}</p>
+        </div>
+        <div class="col-2 pt-2">
+          <button
+            class="ml-4 mb-1"
+            [ngClass]="isSaved ? 'c-btn-saved' : ''"
+            mat-raised-button
+            (click)="saveManualAnswersFromButton()"
+          >
+            <span class="sr-only" translate>{{ translatePath }}.saveBtn</span>
+            <i class="fas fa-save" aria-hidden="true"></i>
+          </button>
+          <br />
+          <span *ngIf="isSaved" class="c-saved" role="alert" translate
+            >{{ translatePath }}.saved</span
+          >
+        </div>
+      </div>
+      <div class="l-criteria-menu">
+        <mat-tab-group
+          class="c-state-menu"
+          animationDuration="0ms"
+          (selectedTabChange)="applyStateFilter($event)"
+        >
+          <mat-tab
+            label="{{ translatePath + '.seeAll' | translate }}"
+          ></mat-tab>
+          <mat-tab
+            label="{{ translatePath + '.seeNotAll' | translate }}"
+          ></mat-tab>
+        </mat-tab-group>
+      </div>
+      <div class="row mt-2 l-table">
+        <table class="table c-table">
+          <thead>
+            <tr>
+              <th scope="col" translate>{{ translatePathTable }}.criteria</th>
+              <th scope="col" translate>{{ translatePathTable }}.profile</th>
+              <th scope="col" translate>{{ translatePathTable }}.comply</th>
+              <th scope="col" translate>{{ translatePathTable }}.noComply</th>
+              <th scope="col" translate>{{ translatePathTable }}.noApply</th>
+              <th scope="col" translate>{{ translatePathTable }}.finding</th>
+            </tr>
+          </thead>
+          <tbody class="l-table-body" formArrayName="{{ currentPrinciple }}">
+            <div *ngIf="lengthA !== 0" class="v-DynamicalTable">
+              <tr>
+                <th class="l-level" scope="row" colspan="6">
+                  <div class="c-level">
+                    <span translate>{{ translatePathTable }}.levelA </span>
+                  </div>
+                </th>
+              </tr>
+              <tr
+                *ngFor="let criterion of criterionForm.A; index as i"
+                class="l-criterion-row"
+                [formGroupName]="i"
+              >
+                <ng-container
+                  *ngIf="checkSwitch(i, criterion.id)"
+                  class="v-DynamicalTable"
+                >
+                  <td scope="row" class="v-criterion-cell">
+                    <b>{{
+                      criterion.numberCriterion + ' ' + criterion.name
+                    }}</b>
+                    <br />
+                    <button
+                      (click)="
+                        openInfoModal(
+                          criterion.numberCriterion,
+                          criterion.name,
+                          criterion.criterionDescription,
+                          criterion.referenceLink
+                        )
+                      "
+                      class="btn icon-btn"
+                    >
+                      <span class="sr-only" translate
+                        >{{ translatePathTable }}.seeInfo</span
+                      >
+                      <i class="fas fa-info fa-2x" aria-hidden="true"></i>
+                    </button>
+                  </td>
+                  <td>
+                    <ul>
+                      <li *ngFor="let disability of criterion.disabilitiesId">
+                        {{ disability.disabilityName }}
+                      </li>
+                    </ul>
+                  </td>
+                  <ng-container class="v-DynamicalTable" formArrayName="roles">
+                    <td class="v-cumply-cell">
+                      <ul>
+                        <li
+                          *ngFor="
+                            let disability of criterion.disabilitiesId;
+                            index as r
+                          "
+                          [formGroupName]="r"
+                        >
+                          <mat-radio-group
+                            [attr.aria-label]="
+                              translatePath + '.selectOption' | translate
+                            "
+                            formControlName="cumply"
+                          >
+                            <mat-radio-button
+                              [value]="RADIO_VALUES.COMPLY"
+                              [checked]="
+                                checkedRadio(RADIO_VALUES.COMPLY, i, r)
+                              "
+                            ></mat-radio-button>
+                          </mat-radio-group>
+                        </li>
+                      </ul>
+                    </td>
+                    <td class="v-cumply-cell">
+                      <ul>
+                        <li
+                          *ngFor="
+                            let disability of criterion.disabilitiesId;
+                            index as r
+                          "
+                          [formGroupName]="r"
+                        >
+                          <mat-radio-group
+                            [attr.aria-label]="
+                              translatePath + '.selectOption' | translate
+                            "
+                            formControlName="cumply"
+                          >
+                            <mat-radio-button
+                              [value]="RADIO_VALUES.NO_COMPLY"
+                              [checked]="
+                                checkedRadio(RADIO_VALUES.NO_COMPLY, i, r)
+                              "
+                            ></mat-radio-button>
+                          </mat-radio-group>
+                        </li>
+                      </ul>
+                    </td>
+                    <td class="v-cumply-cell">
+                      <ul>
+                        <li
+                          *ngFor="
+                            let disability of criterion.disabilitiesId;
+                            index as r
+                          "
+                          [formGroupName]="r"
+                        >
+                          <mat-radio-group
+                            [attr.aria-label]="
+                              translatePath + '.selectOption' | translate
+                            "
+                            formControlName="cumply"
+                          >
+                            <mat-radio-button
+                              [value]="RADIO_VALUES.NOT_APPLY"
+                              [checked]="
+                                checkedRadio(RADIO_VALUES.NOT_APPLY, i, r)
+                              "
+                            ></mat-radio-button>
+                          </mat-radio-group>
+                        </li>
+                      </ul>
+                    </td>
+                    <td class="v-findings-cell">
+                      <ul>
+                        <li
+                          *ngFor="
+                            let disability of criterion.disabilitiesId;
+                            index as f
+                          "
+                          [formGroupName]="f"
+                        >
+                          <ng-multiselect-dropdown
+                            formControlName="recommendations"
+                            [placeholder]="
+                              translatePathTable + '.selectFindings' | translate
+                            "
+                            [data]="criterion.recommendations"
+                            [settings]="dropdownSettings"
+                            [attr.disabled]="checkDisabled(i, f)"
+                            [selectedItemsValue]="getSelected(i, f)"
+                          >
+                          </ng-multiselect-dropdown>
+                          <mat-error *ngIf="checkRequired(i, f)" translate
+                            >{{ translatePathTable }}.required
+                          </mat-error>
+                        </li>
+                      </ul>
+                    </td>
+                  </ng-container>
+                </ng-container>
+              </tr>
+            </div>
+
+            <div *ngIf="lengthAA !== 0" class="v-DynamicalTable">
+              <tr>
+                <th class="l-level" scope="row" colspan="6">
+                  <div class="c-level">
+                    <span translate>{{ translatePathTable }}.levelAA </span>
+                  </div>
+                </th>
+              </tr>
+              <tr
+                *ngFor="let criterion of criterionForm.AA; index as i"
+                class="l-criterion-row"
+                [formGroupName]="lengthA + i"
+              >
+                <ng-container
+                  *ngIf="checkSwitch(lengthA + i, criterion.id)"
+                  class="v-DynamicalTable"
+                >
+                  <td scope="row" class="v-criterion-cell">
+                    <b>{{
+                      criterion.numberCriterion + ' ' + criterion.name
+                    }}</b>
+                    <br />
+                    <button
+                      (click)="
+                        openInfoModal(
+                          criterion.numberCriterion,
+                          criterion.name,
+                          criterion.criterionDescription,
+                          criterion.referenceLink
+                        )
+                      "
+                      class="btn icon-btn"
+                    >
+                      <span class="sr-only" translate
+                        >{{ translatePathTable }}.seeInfo</span
+                      >
+                      <i class="fas fa-info fa-2x" aria-hidden="true"></i>
+                    </button>
+                  </td>
+                  <td>
+                    <ul>
+                      <li *ngFor="let disability of criterion.disabilitiesId">
+                        {{ disability.disabilityName }}
+                      </li>
+                    </ul>
+                  </td>
+                  <ng-container class="v-DynamicalTable" formArrayName="roles">
+                    <td class="v-cumply-cell">
+                      <ul>
+                        <li
+                          *ngFor="
+                            let disability of criterion.disabilitiesId;
+                            index as r
+                          "
+                          [formGroupName]="r"
+                        >
+                          <mat-radio-group
+                            [attr.aria-label]="
+                              translatePath + '.selectOption' | translate
+                            "
+                            formControlName="cumply"
+                          >
+                            <mat-radio-button
+                              [value]="RADIO_VALUES.COMPLY"
+                              [checked]="
+                                checkedRadio(
+                                  RADIO_VALUES.COMPLY,
+                                  lengthA + i,
+                                  r
+                                )
+                              "
+                            ></mat-radio-button>
+                          </mat-radio-group>
+                        </li>
+                      </ul>
+                    </td>
+                    <td class="v-cumply-cell">
+                      <ul>
+                        <li
+                          *ngFor="
+                            let disability of criterion.disabilitiesId;
+                            index as r
+                          "
+                          [formGroupName]="r"
+                        >
+                          <mat-radio-group
+                            [attr.aria-label]="
+                              translatePath + '.selectOption' | translate
+                            "
+                            formControlName="cumply"
+                          >
+                            <mat-radio-button
+                              [value]="RADIO_VALUES.NO_COMPLY"
+                              [checked]="
+                                checkedRadio(
+                                  RADIO_VALUES.NO_COMPLY,
+                                  lengthA + i,
+                                  r
+                                )
+                              "
+                            ></mat-radio-button>
+                          </mat-radio-group>
+                        </li>
+                      </ul>
+                    </td>
+                    <td class="v-cumply-cell">
+                      <ul>
+                        <li
+                          *ngFor="
+                            let disability of criterion.disabilitiesId;
+                            index as r
+                          "
+                          [formGroupName]="r"
+                        >
+                          <mat-radio-group
+                            [attr.aria-label]="
+                              translatePath + '.selectOption' | translate
+                            "
+                            formControlName="cumply"
+                          >
+                            <mat-radio-button
+                              [value]="RADIO_VALUES.NOT_APPLY"
+                              [checked]="
+                                checkedRadio(
+                                  RADIO_VALUES.NOT_APPLY,
+                                  lengthA + i,
+                                  r
+                                )
+                              "
+                            ></mat-radio-button>
+                          </mat-radio-group>
+                        </li>
+                      </ul>
+                    </td>
+                    <td class="v-findings-cell">
+                      <ul>
+                        <li
+                          *ngFor="
+                            let disability of criterion.disabilitiesId;
+                            index as f
+                          "
+                          [formGroupName]="f"
+                        >
+                          <ng-multiselect-dropdown
+                            formControlName="recommendations"
+                            [placeholder]="
+                              translatePathTable + '.selectFindings' | translate
+                            "
+                            [data]="criterion.recommendations"
+                            [settings]="dropdownSettings"
+                            [attr.disabled]="checkDisabled(lengthA + i, f)"
+                            [selectedItemsValue]="getSelected(lengthA + i, f)"
+                          >
+                          </ng-multiselect-dropdown>
+                          <mat-error
+                            *ngIf="checkRequired(lengthA + i, f)"
+                            translate
+                            >{{ translatePathTable }}.required
+                          </mat-error>
+                        </li>
+                      </ul>
+                    </td>
+                  </ng-container>
+                </ng-container>
+              </tr>
+            </div>
+
+            <div *ngIf="lengthAAA !== 0" class="v-DynamicalTable">
+              <tr>
+                <th class="l-level" scope="row" colspan="6">
+                  <div class="c-level">
+                    <span translate>{{ translatePathTable }}.levelAAA </span>
+                  </div>
+                </th>
+              </tr>
+              <tr
+                *ngFor="let criterion of criterionForm.AAA; index as i"
+                class="l-criterion-row"
+                [formGroupName]="lengthA + lengthAA + i"
+              >
+                <ng-container
+                  *ngIf="checkSwitch(lengthA + lengthAA + i, criterion.id)"
+                  class="v-DynamicalTable"
+                >
+                  <td scope="row" class="v-criterion-cell">
+                    <b>{{
+                      criterion.numberCriterion + ' ' + criterion.name
+                    }}</b>
+                    <br />
+                    <button
+                      (click)="
+                        openInfoModal(
+                          criterion.numberCriterion,
+                          criterion.name,
+                          criterion.criterionDescription,
+                          criterion.referenceLink
+                        )
+                      "
+                      class="btn icon-btn"
+                    >
+                      <span class="sr-only" translate
+                        >{{ translatePathTable }}.seeInfo</span
+                      >
+                      <i class="fas fa-info fa-2x" aria-hidden="true"></i>
+                    </button>
+                  </td>
+                  <td>
+                    <ul>
+                      <li *ngFor="let disability of criterion.disabilitiesId">
+                        {{ disability.disabilityName }}
+                      </li>
+                    </ul>
+                  </td>
+                  <ng-container class="v-DynamicalTable" formArrayName="roles">
+                    <td class="v-cumply-cell">
+                      <ul>
+                        <li
+                          *ngFor="
+                            let disability of criterion.disabilitiesId;
+                            index as r
+                          "
+                          [formGroupName]="r"
+                        >
+                          <mat-radio-group
+                            [attr.aria-label]="
+                              translatePath + '.selectOption' | translate
+                            "
+                            formControlName="cumply"
+                          >
+                            <mat-radio-button
+                              [value]="RADIO_VALUES.COMPLY"
+                              [checked]="
+                                checkedRadio(
+                                  RADIO_VALUES.COMPLY,
+                                  lengthA + lengthAA + i,
+                                  r
+                                )
+                              "
+                            ></mat-radio-button>
+                          </mat-radio-group>
+                        </li>
+                      </ul>
+                    </td>
+                    <td class="v-cumply-cell">
+                      <ul>
+                        <li
+                          *ngFor="
+                            let disability of criterion.disabilitiesId;
+                            index as r
+                          "
+                          [formGroupName]="r"
+                        >
+                          <mat-radio-group
+                            [attr.aria-label]="
+                              translatePath + '.selectOption' | translate
+                            "
+                            formControlName="cumply"
+                          >
+                            <mat-radio-button
+                              [value]="RADIO_VALUES.NO_COMPLY"
+                              [checked]="
+                                checkedRadio(
+                                  RADIO_VALUES.NO_COMPLY,
+                                  lengthA + lengthAA + i,
+                                  r
+                                )
+                              "
+                            ></mat-radio-button>
+                          </mat-radio-group>
+                        </li>
+                      </ul>
+                    </td>
+                    <td class="v-cumply-cell">
+                      <ul>
+                        <li
+                          *ngFor="
+                            let disability of criterion.disabilitiesId;
+                            index as r
+                          "
+                          [formGroupName]="r"
+                        >
+                          <mat-radio-group
+                            [attr.aria-label]="
+                              translatePath + '.selectOption' | translate
+                            "
+                            formControlName="cumply"
+                          >
+                            <mat-radio-button
+                              [value]="RADIO_VALUES.NOT_APPLY"
+                              [checked]="
+                                checkedRadio(
+                                  RADIO_VALUES.NOT_APPLY,
+                                  lengthA + lengthAA + i,
+                                  r
+                                )
+                              "
+                            ></mat-radio-button>
+                          </mat-radio-group>
+                        </li>
+                      </ul>
+                    </td>
+                    <td class="v-findings-cell">
+                      <ul>
+                        <li
+                          *ngFor="
+                            let disability of criterion.disabilitiesId;
+                            index as f
+                          "
+                          [formGroupName]="f"
+                        >
+                          <ng-multiselect-dropdown
+                            formControlName="recommendations"
+                            [placeholder]="
+                              translatePathTable + '.selectFindings' | translate
+                            "
+                            [data]="criterion.recommendations"
+                            [settings]="dropdownSettings"
+                            [attr.disabled]="
+                              checkDisabled(lengthA + lengthAA + i, f)
+                            "
+                            [selectedItemsValue]="
+                              getSelected(lengthA + lengthAA + i, f)
+                            "
+                          >
+                          </ng-multiselect-dropdown>
+                          <mat-error
+                            *ngIf="checkRequired(lengthA + lengthAA + i, f)"
+                            translate
+                            >{{ translatePathTable }}.required
+                          </mat-error>
+                        </li>
+                      </ul>
+                    </td>
+                  </ng-container>
+                </ng-container>
+              </tr>
+            </div>
+          </tbody>
+        </table>
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="c-button text-center mt-5 mb-5">
+                <button
+                  mat-raised-button
+                  color="primary"
+                  (click)="openRecommendationModal()"
+                >
+                  {{ translatePath + '.addRecommendation' | translate }}
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-center v-pagination">
+            <div class="col-1 pages">
+              <button
+                (click)="changePrinciplePageBehind()"
+                class="btn btn-icon"
+              >
+                <span class="sr-only" translate>
+                  {{ translatePath }}.paginationBehind</span
+                >
+                <i class="fas fa-chevron-left fa-sm"></i>
+              </button>
+            </div>
+            <div class="col-1 pages">
+              <button
+                class="btn"
+                (click)="changePrinciplePage(1)"
+                [ngClass]="principlePage === 1 ? 'active' : ''"
+              >
+                1
+              </button>
+            </div>
+            <div class="col-1 pages">
+              <button
+                class="btn"
+                (click)="changePrinciplePage(2)"
+                [ngClass]="principlePage === 2 ? 'active' : ''"
+              >
+                2
+              </button>
+            </div>
+            <div class="col-1 pages">
+              <button
+                class="btn"
+                (click)="changePrinciplePage(3)"
+                [ngClass]="principlePage === 3 ? 'active' : ''"
+              >
+                3
+              </button>
+            </div>
+            <div class="col-1 pages">
+              <button
+                class="btn"
+                (click)="changePrinciplePage(4)"
+                [ngClass]="principlePage === 4 ? 'active' : ''"
+              >
+                4
+              </button>
+            </div>
+            <div class="col-1 pages">
+              <button (click)="changePrinciplePageAhead()" class="btn btn-icon">
+                <span class="sr-only" translate>
+                  {{ translatePath }}.paginationAhead</span
+                >
+                <i class="fas fa-chevron-right fa-sm"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</mat-drawer-container>

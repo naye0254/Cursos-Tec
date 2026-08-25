@@ -1,0 +1,221 @@
+<div class="v-content">
+  <div class="v-box">
+    <h4 class="c-tittle">
+      {{
+        'directClient.evaluations.seeEvaluations.results.visualzation.statistics.title'
+          | translate
+      }}
+      {{ evaluationName }} -
+      {{
+        'directClient.evaluations.seeEvaluations.results.visualzation.statistics.package'
+          | translate
+      }}
+      {{ currentPackageName }}
+    </h4>
+
+    <form [formGroup]="filterForm">
+      <div class="v-dropdowns">
+        <div
+          class="inp-wrapper mr-auto"
+          *ngIf="specifications.length > 0 && evaluationType === 'manual'"
+        >
+          <select
+            class="inp little-inp"
+            #spec
+            formControlName="specifications"
+            (change)="reloadDataSpecifications(spec.value)"
+          >
+            <option value="" disabled="true" [selected]="true">
+              {{
+                'directClient.evaluations.seeEvaluations.results.visualzation.statistics.specifications'
+                  | translate
+              }}</option
+            >
+            <option [value]="0">
+              {{
+                'directClient.evaluations.seeEvaluations.results.visualzation.all'
+                  | translate
+              }}
+            </option>
+            <option
+              *ngFor="let specification of specifications; let i = index"
+              [value]="specification.id"
+            >
+              {{
+                'directClient.evaluations.seeEvaluations.results.visualzation.statistics.specificationLabel'
+                  | translate
+              }}
+              {{ i + 1 }}</option
+            >
+          </select>
+          <label for="stuff" class="input-label"
+            ><span class="c-arrow-select"></span
+          ></label>
+        </div>
+        <div class="inp-wrapper ml-auto">
+          <select
+            class="inp little-inp"
+            #principlesField
+            formControlName="pages"
+            (change)="reloadDataPage(principlesField.value)"
+          >
+            <option value="" disabled="true" [selected]="true">
+              {{
+                'directClient.evaluations.seeEvaluations.results.visualzation.pageLabel'
+                  | translate
+              }}</option
+            >
+            <option [value]="0">
+              {{
+                'directClient.evaluations.seeEvaluations.results.visualzation.all'
+                  | translate
+              }}
+            </option>
+            <option *ngFor="let page of pages" [value]="page.id">{{
+              page.title
+            }}</option>
+          </select>
+          <label for="stuff" class="input-label"
+            ><span class="c-arrow-select"></span
+          ></label>
+        </div>
+      </div>
+    </form>
+    <div class=" v-buttons-left">
+      <div *ngIf="automatic && manual" class="v-no-content">
+        <button
+          role="button"
+          [ngClass]="
+            evaluationType == 'manual'
+              ? 'btn c-button-round'
+              : 'btn c-button-round c-button-bg-transparent'
+          "
+          type="button"
+          (click)="reloadEvaluationType('manual')"
+          attr.aria-label="{{
+            'directClient.evaluations.seeEvaluations.results.visualzation.manual'
+              | translate
+          }} : {{
+            evaluationType == 'manual'
+              ? ('directClient.evaluations.seeEvaluations.results.visualzation.selected'
+                | translate)
+              : ''
+          }}"
+        >
+          {{
+            'directClient.evaluations.seeEvaluations.results.visualzation.manual'
+              | translate
+          }}
+        </button>
+        <button
+          role="button"
+          [ngClass]="
+            evaluationType == 'automatic'
+              ? 'btn c-button-round'
+              : 'btn c-button-round c-button-bg-transparent'
+          "
+          type="button"
+          attr.aria-label="{{
+            'directClient.evaluations.seeEvaluations.results.visualzation.automatic'
+              | translate
+          }} : {{
+            evaluationType == 'automatic'
+              ? ('directClient.evaluations.seeEvaluations.results.visualzation.selected'
+                | translate)
+              : ''
+          }}"
+          (click)="reloadEvaluationType('automatic')"
+        >
+          {{
+            'directClient.evaluations.seeEvaluations.results.visualzation.automatic'
+              | translate
+          }}
+        </button>
+        <hr class="c-button-separator" />
+      </div>
+      <button
+        role="button"
+        [ngClass]="
+          conformityLevel == 'A'
+            ? 'btn c-button-round'
+            : 'btn c-button-round c-button-bg-transparent'
+        "
+        type="button"
+        (click)="reloadConformityLevel('A')"
+        attr.aria-label="{{
+          'directClient.evaluations.seeEvaluations.results.visualzation.statistics.levelAButton'
+            | translate
+        }} : {{
+          conformityLevel == 'A'
+            ? ('directClient.evaluations.seeEvaluations.results.visualzation.selected'
+              | translate)
+            : ''
+        }}"
+      >
+        {{
+          'directClient.evaluations.seeEvaluations.results.visualzation.statistics.levelAButton'
+            | translate
+        }}
+      </button>
+      <button
+        role="button"
+        [ngClass]="
+          conformityLevel == 'AA'
+            ? 'btn c-button-round'
+            : 'btn c-button-round c-button-bg-transparent'
+        "
+        type="button"
+        (click)="reloadConformityLevel('AA')"
+        attr.aria-label="{{
+          'directClient.evaluations.seeEvaluations.results.visualzation.statistics.levelAAButton'
+            | translate
+        }} : {{
+          conformityLevel == 'AA'
+            ? ('directClient.evaluations.seeEvaluations.results.visualzation.selected'
+              | translate)
+            : ''
+        }}"
+      >
+        {{
+          'directClient.evaluations.seeEvaluations.results.visualzation.statistics.levelAAButton'
+            | translate
+        }}
+      </button>
+      <button
+        role="button"
+        [ngClass]="
+          conformityLevel == 'AAA'
+            ? 'btn c-button-round'
+            : 'btn c-button-round c-button-bg-transparent'
+        "
+        type="button"
+        (click)="reloadConformityLevel('AAA')"
+        attr.aria-label="{{
+          'directClient.evaluations.seeEvaluations.results.visualzation.statistics.levelAAAButton'
+            | translate
+        }} : {{
+          conformityLevel == 'AAA'
+            ? ('directClient.evaluations.seeEvaluations.results.visualzation.selected'
+              | translate)
+            : ''
+        }}"
+      >
+        {{
+          'directClient.evaluations.seeEvaluations.results.visualzation.statistics.levelAAAButton'
+            | translate
+        }}
+      </button>
+    </div>
+  </div>
+  <div *ngIf="isServicesException">
+    {{
+      'directClient.evaluations.seeEvaluations.results.visualzation.statistics.connectionError'
+        | translate
+    }}
+  </div>
+  <div *ngIf="!isServicesException">
+    <div class="v-graphic">
+      <app-highchart-selector></app-highchart-selector>
+    </div>
+  </div>
+</div>

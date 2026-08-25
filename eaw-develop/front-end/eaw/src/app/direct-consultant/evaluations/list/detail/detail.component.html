@@ -1,0 +1,125 @@
+<div class="l-list l-result-header">
+  <div class="l-list-head row">
+    <div class="col-12">
+      <button
+        class="btn c-button-like-link ml-4 mb-1 text-left"
+        type="button"
+        (click)="goBack()"
+        translate
+      >
+        <i class="fas fa-chevron-left c-icon"></i>
+        {{ 'directClient.evaluations.seeEvaluations.backButton' }}
+      </button>
+    </div>
+    <br aria-hidden="true" />
+    <div class="col-sm-8">
+      <h1 class="c-title">
+        {{ 'superAdministrator.evaluations.title' | translate }}
+      </h1>
+      <h2 class="c-title c-subtitle">{{ evaluation?.siteName }}</h2>
+    </div>
+    <div *ngIf="userRole" class="col-sm-4 text-right">
+      <button class="c-send-results" mat-raised-button (click)="sendResults()">
+        {{
+          'directClient.evaluations.seeEvaluations.results.header.sendResultsButton'
+            | translate
+        }}
+      </button>
+    </div>
+  </div>
+  <div class="row l-menu mt-3">
+    <div class="col-sm-3 l-details text-left">
+      <h3>
+        <button
+          class="btn c-detail-button"
+          type="button"
+          data-toggle="collapse"
+          data-target="#collapseDetail"
+          aria-expanded="false"
+          aria-controls="collapseDetail"
+          translate
+        >
+          directClient.evaluations.seeEvaluations.results.header.viewDetails.title
+          <i aria-hidden="true" class="fa text-right"></i>
+        </button>
+      </h3>
+      <div class="collapse" id="collapseDetail">
+        <div class="l-detail-info">
+          <span class="c-title" translate>
+            directClient.evaluations.seeEvaluations.results.header.viewDetails.titlePage
+          </span>
+          <span> {{ evaluation?.siteName }}</span>
+          <span class="c-title mt-3" translate>
+            directClient.evaluations.seeEvaluations.results.header.viewDetails.URL
+          </span>
+          <span> {{ evaluation?.mainUrl }} </span>
+          <span class="c-title mt-3" translate>
+            directClient.evaluations.seeEvaluations.results.header.viewDetails.domain
+          </span>
+          <span> {{ evaluation?.domain }} </span>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-9 l-cards">
+      <div class="row mx-auto text-center" role="tablist">
+        <div
+          role="tab"
+          class="col-3 c-card-menu btn"
+          routerLinkActive="card-active"
+          #stats="routerLinkActive"
+          routerLink="statistics/stats"
+          [attr.aria-selected]="stats.isActive"
+        >
+          <img
+            aria-hidden="true"
+            class="c-image-menu img-fluid"
+            src="./assets/img/results/stats.png"
+            alt="Statistics icon"
+          />
+          <h3 class="c-h3" translate>
+            directClient.evaluations.seeEvaluations.results.header.statistics
+          </h3>
+        </div>
+        <div
+          role="tab"
+          class="col-3 c-card-menu btn"
+          routerLinkActive="card-active"
+          #findings="routerLinkActive"
+          routerLink="findings/findings"
+          [attr.aria-selected]="findings.isActive"
+        >
+          <img
+            aria-hidden="true"
+            class="c-image-menu img-fluid"
+            src="./assets/img/results/findings.png"
+            alt="findings icon"
+          />
+          <h3 class="c-h3" translate>
+            directClient.evaluations.seeEvaluations.results.header.issues
+          </h3>
+        </div>
+        <div
+          role="tab"
+          class="col-3 c-card-menu btn"
+          routerLinkActive="card-active"
+          routerLink="reports/reports"
+          #reports="routerLinkActive"
+          [attr.aria-selected]="reports.isActive"
+        >
+          <img
+            aria-hidden="true"
+            class="c-image-menu img-fluid"
+            src="./assets/img/results/reports.png"
+            alt="Evaluations icon"
+          />
+          <h3 class="c-h3" translate>
+            directClient.evaluations.seeEvaluations.results.header.reports
+          </h3>
+        </div>
+      </div>
+    </div>
+    <hr class="mt-5 c-divider" />
+  </div>
+
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,47 @@
+@import '../../../../styles/main-theme.scss';
+.l-request-evaluation {
+  margin-top: 4%;
+  .l-header {
+    margin: 1%;
+    .l-title {
+      h1 {
+        font-weight: bold;
+        font-size: 35px;
+        color: mat-color($primary);
+      }
+    }
+    p {
+      color: mat-color($dark-gray);
+    }
+  }
+  .l-form {
+    margin: 1%;
+  }
+  .l-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 7%;
+    margin-bottom: 10%;
+    button {
+      font-weight: 300;
+      border-radius: 10px;
+      margin-right: 1vw;
+      border: unset;
+      height: 37px;
+      font-weight: bold;
+    }
+    .c-cancel-button {
+      width: 200px;
+      border-radius: 33px;
+      color: mat-color($dark-gray);
+      background-color: mat-color($light-gray);
+    }
+    .c-submit-button {
+      width: 200px;
+      border-radius: 33px;
+      color: mat-color($white);
+      background-color: mat-color($primary);
+    }
+  }
+}

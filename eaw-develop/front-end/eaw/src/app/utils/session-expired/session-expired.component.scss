@@ -1,0 +1,66 @@
+@import '../../../styles/main-theme.scss';
+
+.bg {
+  width: 100%;
+  height: 100%;
+  background-image: url(../../../assets/img/session-expired/fondo_expired.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-color: #07577493;
+}
+
+.top {
+  width: 600px;
+  height: 100px;
+  background-color: white;
+  box-shadow: 0px 3px 6px #00000029;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.message {
+  padding: 25px 80px;
+  text-align: center;
+  width: 600px;
+  min-height: 300px;
+  height: auto;
+  background-color: white;
+  -webkit-box-shadow: inset 0px 5px 9px -1px #00000029, 0px 3px 6px #00000029;
+  box-shadow: inset 0px 5px 9px -1px #00000029, 0px 3px 6px #00000029;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+
+  h1 {
+    font-size: 23px;
+    font-weight: bold;
+    letter-spacing: 0;
+    color: mat-color($mat-accent, 500);
+  }
+
+  p {
+    font-size: 15px;
+    text-align: left;
+    color: mat-color($dark-gray);
+    b {
+      font-size: 15px;
+      color: mat-color($primary);
+    }
+  }
+
+  button {
+    background-color: #12959e;
+    border-radius: 18px;
+    color: mat-color($white);
+    font-weight: bold;
+    border: 1px solid transparent;
+    &:hover {
+      filter: brightness(0.8);
+    }
+    &:focus {
+      outline: 0;
+    }
+  }
+}

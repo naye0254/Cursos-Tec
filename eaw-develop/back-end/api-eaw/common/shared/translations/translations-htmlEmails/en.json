@@ -1,0 +1,104 @@
+{
+  "administrator": {
+    "DirectConsultantResult": {
+      "cardInfo": "has provided access to the evaluation results of the web site:",
+      "emailTag": "[EAW] Accessibility evaluation results",
+      "imageAlt": "Open card draw.",
+      "lables": {
+        "URL": "URL",
+        "password": "Password"
+      },
+      "linkText": "Web Accesibility Evaluator",
+      "registrationText1": "Now can access our site by the following link:",
+      "registrationText2": "Once inside, can search and press the button with the label 'Login', then search the tab with the label 'URL', and finally input the url and password (without blank spaces) that are in the bottom part of this screen"
+    },
+    "contactEmail": {
+      "bodyInfo1": "send you an email to apply for information on",
+      "bodyInfo2": "at",
+      "bodyInfo3": "The information is the following",
+      "contact": "request to contact the Accessibillity Evaluator team.",
+      "emailTag": "[EAW] Contact form. ",
+      "imageAlt": "Open card draw.",
+      "lables": {
+        "company": "Company",
+        "mail": "Email",
+        "message": "Message",
+        "name": "Name",
+        "phone": "Telephone"
+      }
+    },
+    "evaluationRequest": {
+      "bodyInfo1": "has requested an evaluation on",
+      "bodyInfo2": "at",
+      "bodyInfo3": "The information is the following",
+      "contact": "has requested an evaluation.",
+      "emailTag": "[EAW] New evaluation request.",
+      "imageAlt": "Open card draw.",
+      "lables": {
+        "name": "Name",
+        "mail": "Email",
+        "phone": "Telephone",
+        "message": "Client message"
+      }
+    },
+    "forgotPasswordRequest": {
+      "altDraw": "Ilustration of a person changing password",
+      "altEvaluator": "Web Accessibility Evaluator",
+      "contact": "Contact",
+      "emailTag": "[EAW] Change password request",
+      "evaluatorTeam": "Web Evaluator Team",
+      "headerText": "Forgot your password? No problem, click or copy the link below of this message to redirect the web site and be able to change your password. This link will stop working in 15 minutes.",
+      "link": "Link",
+      "enter": "Click here"
+    },
+    "reportSuccessfullFinished": {
+      "greeting": "Greetings,",
+      "cardInfo": "Report has been finished successfully for the web site:",
+      "emailTag": "[EAW] Accessibility evaluation reports. Success.",
+      "imageAlt": "Open card draw.",
+      "lables": {
+        "URL": "URL",
+        "password": "Password"
+      },
+      "linkText": "Web Accesibility Evaluator",
+      "registrationText1": "Now can access our site by the following link:",
+      "registrationText2": "Once inside, can search and press the button with the label 'Login', then search the tab with the label 'URL', and finally input the url and password (without blank spaces) that are in the bottom part of this screen"
+    },
+    "reportCreationFailed": {
+      "cardInfo": "Report generation has failed. Web site:",
+      "emailTag": "[EAW] Accessibility evaluation reports. Fail.",
+      "imageAlt": "Open card draw.",
+      "lables": {
+        "Error": "Error",
+        "URL": "URL",
+        "identification": "ID"
+      },
+      "bodyText": "The report has been failed, pealse try again or contact support team. In the bottom part of this screen, we provided some data that could be sent to support team to improve the fixes"
+    },
+    "otaiToClientReportResults": {
+      "cardInfo": "You have been granted access to the evaluation results of the following web site",
+      "emailTag": "[EAW] Accessibility evaluation results",
+      "imageAlt": "Open card draw.",
+      "lables": {
+        "URL": "URL",
+        "password": "Password"
+      },
+      "linkText": "Web Accesibility Evaluator",
+      "registrationText1": "Thank you for contributing to accessible web development! Now can access our site by the following link:",
+      "registrationText2": "Once inside, can search and press the button with the label 'Login', then search the tab with the label 'URL', and finally input the url and password (without blank spaces) that are in the bottom part of this screen"
+    },
+    "userRegisteredEmail": {
+      "cardInfo1": "The administrator has registered you as a new",
+      "cardInfo2": "user!",
+      "emailTag": "[EAW] User registration",
+      "imageAlt": "Open card draw.",
+      "lables": {
+        "mail": "Email",
+        "password": "Password"
+      },
+      "registrationText1": "Thank you for applying with us, ",
+      "registrationText2": "At the bottom we provide you with the necessary information to enter the system"
+    }
+  },
+  "lang": "en"
+}

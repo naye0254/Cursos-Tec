@@ -1,0 +1,93 @@
+<div class="container l-confirm-dialog">
+  <div class="row">
+    <div class="col-12 mx-auto text-center">
+      <div mat-dialog-title>
+        <h1 class="c-dialog-title" color="primary">
+          {{ data.title }}
+        </h1>
+        <p class="c-dialog-text" translate>
+          superAdministrator.manage.disability.type-disability.modal-manage.sub-title
+        </p>
+      </div>
+      <div mat-dialog-content class="l-modal-content">
+        <form class="l-form" [formGroup]="disabilityForm">
+          <mat-form-field appearance="outline" class="l-form-field">
+            <mat-label translate
+              >superAdministrator.manage.disability.type-disability.modal-manage.name-input</mat-label
+            >
+            <input
+              type="text"
+              matInput
+              #messageFirstName
+              maxLength="{{ formOptions.lengthInputName }}"
+              formControlName="name"
+              required
+            />
+            <mat-error *ngIf="disabilityForm.get('name').hasError('required')">
+              {{
+                'superAdministrator.manage.disability.type-disability.modal-manage.error-name-input'
+                  | translate
+              }}
+            </mat-error>
+            <mat-hint class="mb-3 c-hint" align="end">
+              <span class="sr-only"
+                >{{
+                  formOptions.lengthInputName - messageFirstName.value.length
+                }}
+                caracteres restantes
+              </span>
+              <span aria-hidden="true">
+                {{ messageFirstName.value.length }} /
+                {{ formOptions.lengthInputName }}
+              </span>
+            </mat-hint>
+          </mat-form-field>
+
+          <div appearance="outline" class="l-state">
+            <mat-label translate
+              >superAdministrator.manage.disability.type-disability.modal-manage.state-label</mat-label
+            >
+            <mat-radio-group formControlName="isActive">
+              <mat-radio-button class="c-radio" value="1" translate>
+                {{
+                  'superAdministrator.manage.disability.type-disability.modal-manage.active-input'
+                    | translate
+                }}
+              </mat-radio-button>
+              <mat-radio-button class="c-radio" value="0" translate>
+                {{
+                  'superAdministrator.manage.disability.type-disability.modal-manage.inactive-input'
+                    | translate
+                }}
+              </mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="row" class="l-buttons">
+    <button
+      class="c-cancel-btn"
+      mat-raised-button
+      type="button"
+      (click)="cancel()"
+    >
+      {{
+        'superAdministrator.manage.disability.type-disability.modal-manage.btn-cancel'
+          | translate
+      }}
+    </button>
+    <button
+      class="c-submit-btn"
+      mat-raised-button
+      type="button"
+      (click)="confirmFunction()"
+      attr.aria-disabled="{{ !disabilityForm.valid }}"
+      tabindex="0"
+      [ngClass]="{disabled: !disabilityForm.valid}"
+    >
+      {{ data.next }}
+    </button>
+  </div>
+</div>

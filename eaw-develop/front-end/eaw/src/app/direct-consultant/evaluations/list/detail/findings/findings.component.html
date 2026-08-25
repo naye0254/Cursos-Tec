@@ -1,0 +1,543 @@
+<div class="v-content mt-5">
+  <div class="v-box">
+    <form [formGroup]="findingsForm">
+      <div class="container-fluid l-header mb-5">
+        <div class="row">
+          <div class="col-5 text-left c-title-section ">
+            {{
+              'directClient.evaluations.seeEvaluations.results.visualzation.issues.chooseEvaluationLabel'
+                | translate
+            }}
+          </div>
+          <div
+            *ngIf="package != packages.SPECIFIC_MANUAL && package != packages.RANDOM_MANUAL"
+            class="col-3 ml-2"
+          >
+            <button
+              class="btn c-evaluation-btn "
+              mat-raised-button
+              [ngClass]="selectedEvaluation === 0 ? 'btn-selected' : 'btn-not-selected'"
+              (click)="changeEvaluationType(0)"
+              attr.aria-label="{{
+                'directClient.evaluations.seeEvaluations.results.visualzation.issues.automaticEvaluationButton'
+                  | translate
+              }} : {{
+                selectedEvaluation === 0
+                  ? ('directClient.evaluations.seeEvaluations.results.visualzation.selected'
+                    | translate)
+                  : ''
+              }}"
+            >
+              {{
+                'directClient.evaluations.seeEvaluations.results.visualzation.issues.automaticEvaluationButton'
+                  | translate
+              }}
+            </button>
+          </div>
+          <div
+            *ngIf="
+              package == packages.SPECIFIC_MANUAL ||
+              package == packages.RAMDOM_COMPLETE ||
+              package == packages.RANDOM_MANUAL
+            "
+            class="col-3 ml-auto"
+          >
+            <button
+              class="btn c-evaluation-btn btn-selected"
+              [ngClass]="selectedEvaluation === 0 ? 'btn-not-selected' : 'btn-selected'"
+              (click)="changeEvaluationType(1)"
+              mat-raised-button
+              attr.aria-label="{{
+                'directClient.evaluations.seeEvaluations.results.visualzation.issues.manualEvaluationButton'
+                  | translate
+              }} : {{
+                selectedEvaluation !== 0
+                  ? ('directClient.evaluations.seeEvaluations.results.visualzation.selected'
+                    | translate)
+                  : ''
+              }}"
+            >
+              {{
+                'directClient.evaluations.seeEvaluations.results.visualzation.issues.manualEvaluationButton'
+                  | translate
+              }}
+            </button>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="selectedEvaluation === 0">
+        <div class="card-body">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-sm-8 col-no-padding">
+                <h2 class="c-title-card">
+                  {{
+                    'directClient.evaluations.seeEvaluations.results.visualzation.issues.automaticEvaluation.title'
+                      | translate
+                  }}
+                </h2>
+              </div>
+
+              <div class="col-sm-4 col-no-padding">
+                <div class="v-dropdowns">
+                  <div class="inp-wrapper">
+                    <select class="inp" formControlName="page">
+                      <option value="" disabled="true">
+                        {{
+                          'directClient.evaluations.seeEvaluations.results.visualzation.issues.automaticEvaluation.choosePage'
+                            | translate
+                        }}</option
+                      >
+                      <option *ngFor="let page of pages" [value]="page.id">{{ page.title }}</option>
+                    </select>
+                    <label for="stuff" class="input-label"
+                      ><span class="c-arrow-select"></span
+                    ></label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-8 col-no-padding">
+                <p class="c-p mt-3">
+                  {{
+                    'directClient.evaluations.seeEvaluations.results.visualzation.issues.automaticEvaluation.description'
+                      | translate
+                  }}
+                </p>
+              </div>
+            </div>
+            <div class="row mb-5">
+              <div class="col-sm-4 col-no-padding">
+                <div class="v-dropdowns">
+                  <div class="inp-wrapper">
+                    <select
+                      class="inp"
+                      formControlName="guidelines"
+                      #guidelinesField
+                      (change)="getCriterionsByGuideline(guidelinesField.value)"
+                    >
+                      <option value="" disabled="true">
+                        {{
+                          'directClient.evaluations.seeEvaluations.results.visualzation.issues.automaticEvaluation.chooseGuideline'
+                            | translate
+                        }}</option
+                      >
+                      <option value="0">
+                        {{
+                          'directClient.evaluations.seeEvaluations.results.visualzation.all'
+                            | translate
+                        }}</option
+                      >
+                      <option *ngFor="let guideline of guidelines" [value]="guideline.id">{{
+                        guideline.name
+                      }}</option>
+                    </select>
+                    <label for="stuff" class="input-label"
+                      ><span class="c-arrow-select"></span
+                    ></label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4 ml-auto">
+                <div class="v-dropdowns text-left">
+                  <div class="inp-wrapper">
+                    <select class="inp" formControlName="criterions">
+                      <option value="" disabled="true" [selected]="true">
+                        {{
+                          'directClient.evaluations.seeEvaluations.results.visualzation.issues.automaticEvaluation.criteria'
+                            | translate
+                        }}</option
+                      >
+                      <option [value]="0">
+                        {{
+                          'directClient.evaluations.seeEvaluations.results.visualzation.all'
+                            | translate
+                        }}</option
+                      >
+                      <option *ngFor="let criterio of criterions" [value]="criterio.id">{{
+                        criterio.name
+                      }}</option>
+                    </select>
+                    <label for="stuff" class="input-label"
+                      ><span class="c-arrow-select"></span
+                    ></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <table class="table v-table">
+            <thead>
+              <tr>
+                <th>
+                  {{
+                    'directClient.evaluations.seeEvaluations.results.visualzation.issues.automaticEvaluation.table.criteria'
+                      | translate
+                  }}
+                </th>
+                <th>
+                  {{
+                    'directClient.evaluations.seeEvaluations.results.visualzation.issues.automaticEvaluation.table.htmlCode'
+                      | translate
+                  }}
+                </th>
+                <th>
+                  {{
+                    'directClient.evaluations.seeEvaluations.results.visualzation.issues.automaticEvaluation.table.htmlPath'
+                      | translate
+                  }}
+                </th>
+                <th>
+                  {{
+                    'directClient.evaluations.seeEvaluations.results.visualzation.issues.automaticEvaluation.table.description'
+                      | translate
+                  }}
+                </th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let finding of findings | paginate: pagConfig; let i = index">
+                <td>
+                  {{ finding.findingsCriterions }}
+                </td>
+                <td *ngIf="finding.htmlCode">
+                  <code [highlight]="finding.htmlCode"></code>
+                </td>
+                <td class="c-pathlink">
+                  {{ finding.htmlSelectorPath }}
+                </td>
+                <td>{{ finding.recommendation }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <div aria-live="polite">
+            <div
+              class="c-notice-selection-msg"
+              *ngIf="findings.length == 0 && automaticLoading == 0"
+            >
+              {{
+                'directClient.evaluations.seeEvaluations.results.visualzation.issues.noFindings'
+                  | translate
+              }}
+            </div>
+            <div class="card" *ngIf="automaticLoading == 1">
+              <div class="card-body v-loading">
+                <ngx-spinner
+                  name="spinnerAutomatic"
+                  [fullScreen]="false"
+                  type="ball-clip-rotate"
+                  size="large"
+                  bdColor="#fff"
+                  color="#4B4B4B"
+                >
+                  <p class="loading">
+                    {{
+                      'directClient.evaluations.seeEvaluations.results.visualzation.issues.loading'
+                        | translate
+                    }}
+                  </p>
+                </ngx-spinner>
+              </div>
+            </div>
+
+            <div *ngIf="this.findings && this.findings.length != 0">
+              <pagination-controls
+                (pageChange)="onPageChange($event)"
+                class="list-paginator-controls"
+                previousLabel="{{ 'paginatorLabels.previousLabel' | translate }}"
+                nextLabel="{{ 'paginatorLabels.nextLabel' | translate }}"
+                screenReaderPaginationLabel="{{
+                  'paginatorLabels.screenReaderPaginationLabel' | translate
+                }}"
+                screenReaderPageLabel="{{ 'paginatorLabels.screenReaderPageLabel' | translate }}"
+                screenReaderCurrentLabel="{{
+                  'paginatorLabels.screenReaderCurrentLabel' | translate
+                }}"
+              ></pagination-controls>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="selectedEvaluation === 1">
+        <div class="card-body">
+          <div class="container-fluid nomargin">
+            <div class="row">
+              <div class="col-sm-8 col-no-padding">
+                <h2 class="c-title-card">
+                  {{
+                    'directClient.evaluations.seeEvaluations.results.visualzation.issues.manualEvaluation.title'
+                      | translate
+                  }}
+                </h2>
+              </div>
+              <div class="col-sm-8 col-no-padding">
+                <p class="c-p">
+                  {{
+                    'directClient.evaluations.seeEvaluations.results.visualzation.issues.manualEvaluation.description'
+                      | translate
+                  }}
+                </p>
+              </div>
+            </div>
+            <div class="row mb-5">
+              <div class="col-sm-4 col-no-padding">
+                <div class="v-dropdowns">
+                  <div class="inp-wrapper">
+                    <select
+                      [(ngModel)]="selectedPlaceholderManualPage"
+                      class="inp"
+                      formControlName="disabilityRole"
+                    >
+                      <option value="" disabled="true">
+                        {{
+                          'directClient.evaluations.seeEvaluations.results.visualzation.issues.manualEvaluation.chooseRolLabel'
+                            | translate
+                        }}</option
+                      >
+                      <option
+                        *ngFor="let disabilityRole of disabilityRoles"
+                        [value]="disabilityRole.id"
+                        >{{ disabilityRole.name }}</option
+                      >
+                    </select>
+                    <label for="stuff" class="input-label"
+                      ><span class="c-arrow-select"></span
+                    ></label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4 ml-auto">
+                <div class="v-dropdowns text-left">
+                  <div class="inp-wrapper">
+                    <select class="inp" formControlName="page">
+                      <option value="" disabled="true" [selected]="true">{{
+                        'directClient.evaluations.seeEvaluations.results.visualzation.issues.manualEvaluation.choosePage'
+                          | translate
+                      }}</option>
+                      <option [value]="0">{{
+                        'directClient.evaluations.seeEvaluations.results.visualzation.all'
+                          | translate
+                      }}</option>
+                      <option *ngFor="let pageManual of pages" [value]="pageManual.id">{{
+                        pageManual.title
+                      }}</option>
+                    </select>
+                    <label for="stuff" class="input-label"
+                      ><span class="c-arrow-select"></span
+                    ></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container-fluid nomargin l-table">
+            <div class="row">
+              <div class="col-sm-12 c-table-title">
+                <h3 class="c-principle-title">
+                  {{ getPrincipleTitle() }}
+                  <button
+                    aria-label="Consultar información del principio"
+                    mat-button
+                    (click)="openModalPrincipleInfo()"
+                  >
+                    <i class="fas fa-info-circle"></i>
+                  </button>
+                </h3>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-no-padding">
+                <table class="table v-table">
+                  <thead>
+                    <tr>
+                      <th>
+                        {{
+                          'directClient.evaluations.seeEvaluations.results.visualzation.issues.manualEvaluation.table.criteria'
+                            | translate
+                        }}
+                      </th>
+                      <th>
+                        {{
+                          'directClient.evaluations.seeEvaluations.results.visualzation.issues.manualEvaluation.table.issues'
+                            | translate
+                        }}
+                      </th>
+                      <th>
+                        {{
+                          'directClient.evaluations.seeEvaluations.results.visualzation.issues.manualEvaluation.table.specifications'
+                            | translate
+                        }}
+                      </th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr *ngFor="let answer of answers; let i = index">
+                      <td class="l-criterion">
+                        {{ answer.criterionNumberCriterion }}
+                        <br aria-hidden="true" />
+                        <button
+                          class="c-info-button"
+                          aria-label="Consultar información del criterio"
+                          mat-button
+                          (click)="openModalCriteriaInfo(answer)"
+                        >
+                          <i class="fas fa-info-circle"></i>
+                        </button>
+                      </td>
+                      <td>{{ answer.recommendation }}</td>
+                      <td>
+                        <div class="v-especif-container">
+                          <div class="v-devices-container">
+                            <p>
+                              <b>
+                                {{
+                                  'directClient.evaluations.seeEvaluations.results.visualzation.issues.manualEvaluation.table.specificiationDef.device'
+                                    | translate
+                                }}:</b
+                              >
+                              {{
+                                answer.specificationInfo.specificationInfo.specificationsDevices
+                                  .name
+                              }}
+                            </p>
+                            <p>
+                              <b
+                                >{{
+                                  'directClient.evaluations.seeEvaluations.results.visualzation.issues.manualEvaluation.table.specificiationDef.operativeSystem'
+                                    | translate
+                                }}:</b
+                              >
+                              {{
+                                answer.specificationInfo.specificationInfo
+                                  .specificationsOperativeSystems.name
+                              }}
+                            </p>
+                            <p>
+                              <b
+                                >{{
+                                  'directClient.evaluations.seeEvaluations.results.visualzation.issues.manualEvaluation.table.specificiationDef.browser'
+                                    | translate
+                                }}:</b
+                              >
+                              {{
+                                answer.specificationInfo.specificationInfo.specificationsBrowsers
+                                  .name
+                              }}
+                              V{{
+                                answer.specificationInfo.specificationInfo.specificationsBrowsers
+                                  .browserVersion
+                              }}
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <br />
+                  <div
+                    class="c-notice-selection-msg"
+                    *ngIf="answers.length == 0 && manualLoading == 0"
+                  >
+                    {{
+                      'directClient.evaluations.seeEvaluations.results.visualzation.issues.manualEvaluation.noResults'
+                        | translate
+                    }}
+                  </div>
+                  <div class="card  c-spinner" *ngIf="manualLoading == 1">
+                    <div class="card-body v-loading">
+                      <ngx-spinner
+                        name="spinnerManual"
+                        [fullScreen]="false"
+                        type="ball-clip-rotate"
+                        size="large"
+                        bdColor="#fff"
+                        color="#4B4B4B"
+                      >
+                        <p class="loading">
+                          {{
+                            'directClient.evaluations.seeEvaluations.results.visualzation.issues.loading'
+                              | translate
+                          }}
+                        </p>
+                      </ngx-spinner>
+                    </div>
+                  </div>
+                </table>
+              </div>
+              <div class="col-sm-12">
+                <div class="v-observation-container">
+                  <h3 class="c-tittle-observation">
+                    {{
+                      'directClient.evaluations.seeEvaluations.results.visualzation.issues.manualEvaluation.recomendationsEvaluatorLabel'
+                        | translate
+                    }}
+                  </h3>
+                  <p *ngIf="recomendationList.length === 0" class="c-p-observation">
+                    {{ manualInfo.observation }}
+                  </p>
+                  <ul *ngIf="recomendationList.length > 0" class="text-left">
+                    <li *ngFor="let recommendation of recomendationList">
+                      {{ recommendation }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="row justify-content-center v-pagination">
+              <div class="col-1 pages">
+                <button (click)="changePrinciplePageBehind()" class="btn btn-icon">
+                  <span class="sr-only" translate> {{ translatePath }}.paginationBehind</span>
+                  <i class="fas fa-chevron-left fa-sm"></i>
+                </button>
+              </div>
+              <div class="col-1 pages">
+                <button
+                  class="btn"
+                  (click)="changePrinciplePage(1)"
+                  [ngClass]="principlePage === 1 ? 'active' : ''"
+                >
+                  1
+                </button>
+              </div>
+              <div class="col-1 pages">
+                <button
+                  class="btn"
+                  (click)="changePrinciplePage(2)"
+                  [ngClass]="principlePage === 2 ? 'active' : ''"
+                >
+                  2
+                </button>
+              </div>
+              <div class="col-1 pages">
+                <button
+                  class="btn"
+                  (click)="changePrinciplePage(3)"
+                  [ngClass]="principlePage === 3 ? 'active' : ''"
+                >
+                  3
+                </button>
+              </div>
+              <div class="col-1 pages">
+                <button
+                  class="btn"
+                  (click)="changePrinciplePage(4)"
+                  [ngClass]="principlePage === 4 ? 'active' : ''"
+                >
+                  4
+                </button>
+              </div>
+              <div class="col-1 pages">
+                <button (click)="changePrinciplePageAhead()" class="btn btn-icon">
+                  <span class="sr-only" translate> {{ translatePath }}.paginationAhead</span>
+                  <i class="fas fa-chevron-right fa-sm"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

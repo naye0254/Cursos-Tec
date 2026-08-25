@@ -1,0 +1,86 @@
+@import '../navbar.component.scss';
+
+.btn-perfil {
+  border-top-left-radius: 23px;
+  border-bottom-left-radius: 23px;
+  background-color: mat-color($white);
+  border-color: mat-color($secondary);
+  color: mat-color($secondary);
+  font-size: 16px;
+}
+
+.perfil-active {
+  background-color: mat-color($secondary);
+  color: mat-color($white);
+}
+
+.dropdown-menu-long {
+  width: 300px;
+  padding-bottom: 0px;
+}
+
+.btn-notification {
+  border-top-right-radius: 23px !important;
+  border-bottom-right-radius: 23px !important;
+  background-color: $gulf-stream;
+}
+
+.btn-perfil[aria-expanded='true'],
+.btn-notification[aria-expanded='true'] {
+  background-color: mat-color($secondary);
+  color: mat-color($white);
+}
+
+.seen::before {
+  display: inline-block;
+  padding-right: 0.2rem;
+  color: $forest-green;
+  font: normal normal normal 15px/1 FontAwesome;
+  content: '\f111';
+}
+
+.notseen::before {
+  display: inline-block;
+  padding-right: 0.2rem;
+  color: mat-color($error);
+  font: normal normal normal 15px/1 FontAwesome;
+  content: '\f111';
+}
+
+::ng-deep.dropdown-item {
+  white-space: normal !important;
+  -ms-word-break: break-all;
+  -ms-word-wrap: break-all;
+  -webkit-word-break: break-word;
+  -webkit-word-wrap: break-word;
+  word-break: break-word;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+}
+
+.c-notification-button {
+  color: mat-color($dark-gray);
+  font-size: 16px;
+  font-weight: 600;
+  border-bottom: 1px solid $mercury;
+
+  span {
+    display: inline-block;
+    padding-left: 1.5em;
+    font-size: 14px;
+    font-weight: 400;
+  }
+}
+
+.more-notifications {
+  border-bottom-left-radius: 13px;
+  border-bottom-right-radius: 13px;
+  padding: 5px;
+  text-align: center;
+  background-color: $gray;
+  font-size: 16px;
+  color: mat-color($white);
+  cursor: pointer;
+}

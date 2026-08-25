@@ -1,0 +1,170 @@
+<div class="container l-confirm-dialog">
+  <div class="row">
+    <div class="col-12 mx-auto text-center">
+      <div mat-dialog-title>
+        <h1 class="c-dialog-title" color="primary">{{ data.title }}</h1>
+      </div>
+      <div mat-dialog-content class="l-modal-content">
+        <form class="l-form" [formGroup]="deviceForm">
+          <mat-form-field appearance="outline" class="l-form-field">
+            <mat-label translate
+              >superAdministrator.manage.evaluations.devices.modal-manage.input-name</mat-label
+            >
+            <input
+              type="text"
+              matInput
+              #messageName
+              maxLength="{{ formOptions.lengthInputName }}"
+              formControlName="name"
+              required
+            />
+            <mat-error *ngIf="deviceForm.get('name').hasError('required')">
+              {{
+                'superAdministrator.manage.evaluations.devices.modal-manage.error-input-name'
+                  | translate
+              }}
+            </mat-error>
+            <mat-hint class="mb-3 c-hint" align="end">
+              <span class="sr-only"
+                >{{ formOptions.lengthInputName - messageName.value.length }}
+                caracteres restantes
+              </span>
+              <span aria-hidden="true">
+                {{ messageName.value.length }} /
+                {{ formOptions.lengthInputName }}
+              </span>
+            </mat-hint>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="l-form-field">
+            <mat-label translate
+              >superAdministrator.manage.evaluations.devices.modal-manage.input-brand</mat-label
+            >
+            <input
+              type="text"
+              matInput
+              #messageBrand
+              maxLength="{{ formOptions.lengthInputBrand }}"
+              formControlName="brand"
+              required
+            />
+            <mat-error *ngIf="deviceForm.get('brand').hasError('required')">
+              {{
+                'superAdministrator.manage.evaluations.devices.modal-manage.error-input-brand'
+                  | translate
+              }}
+            </mat-error>
+            <mat-hint class="mb-3 c-hint" align="end">
+              <span class="sr-only"
+                >{{ formOptions.lengthInputBrand - messageBrand.value.length }}
+                caracteres restantes
+              </span>
+              <span aria-hidden="true">
+                {{ messageBrand.value.length }} /
+                {{ formOptions.lengthInputBrand }}
+              </span>
+            </mat-hint>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="l-form-field">
+            <mat-label translate
+              >superAdministrator.manage.evaluations.devices.modal-manage.input-version</mat-label
+            >
+            <input
+              type="text"
+              matInput
+              #messageVersion
+              maxLength="{{ formOptions.lengthInputVersion }}"
+              formControlName="version"
+              required
+            />
+            <mat-error *ngIf="deviceForm.get('version').hasError('required')">
+              {{
+                'superAdministrator.manage.evaluations.devices.modal-manage.error-input-version'
+                  | translate
+              }}
+            </mat-error>
+            <mat-hint class="mb-3 c-hint" align="end">
+              <span class="sr-only"
+                >{{
+                  formOptions.lengthInputVersion - messageVersion.value.length
+                }}
+                caracteres restantes
+              </span>
+              <span aria-hidden="true">
+                {{ messageVersion.value.length }} /
+                {{ formOptions.lengthInputVersion }}
+              </span>
+            </mat-hint>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="l-form-field">
+            <mat-label translate
+              >superAdministrator.manage.evaluations.devices.modal-manage.input-operative-system</mat-label
+            >
+            <mat-select
+              name="operativeSystem"
+              formControlName="operativeSystemId"
+            >
+              <mat-option
+                *ngFor="let operativeSystem of listOperativeSystems"
+                [value]="operativeSystem.id"
+              >
+                {{ operativeSystem.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="deviceForm.get('operativeSystemId').hasError('required')"
+            >
+              {{
+                'superAdministrator.manage.evaluations.devices.modal-manage.error-input-operative-system'
+                  | translate
+              }}
+            </mat-error>
+          </mat-form-field>
+
+          <div appearance="outline" class="l-state">
+            <mat-label translate
+              >superAdministrator.manage.evaluations.devices.modal-manage.input-state</mat-label
+            >
+            <mat-radio-group formControlName="isActive">
+              <mat-radio-button class="c-radio" value="1">
+                {{
+                  'superAdministrator.manage.evaluations.devices.modal-manage.input-state-active'
+                    | translate
+                }}
+              </mat-radio-button>
+              <mat-radio-button class="c-radio" value="0">
+                {{
+                  'superAdministrator.manage.evaluations.devices.modal-manage.input-state-inactive'
+                    | translate
+                }}
+              </mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="row" class="l-buttons">
+    <button
+      class="c-cancel-btn"
+      mat-raised-button
+      type="button"
+      (click)="cancel()"
+    >
+      {{ data.cancel }}
+    </button>
+    <button
+      class="c-submit-btn"
+      mat-raised-button
+      type="button"
+      (click)="confirmFunction()"
+      attr.aria-disabled="{{ !deviceForm.valid }}"
+      tabindex="0"
+      [ngClass]="{disabled: !deviceForm.valid}"
+    >
+      {{ data.next }}
+    </button>
+  </div>
+</div>

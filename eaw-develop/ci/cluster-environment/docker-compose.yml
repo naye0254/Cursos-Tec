@@ -1,0 +1,72 @@
+version: "2"
+
+services:
+  evaluator-accesibility-web-mongo:
+    build:
+      context: ../../db/mongo/
+      args:
+        db_user: ${EAW_MONGO_OWNER}
+        db_pwd: ${EAW_MONGO_PASS}
+        db_name: ${EAW_MONGO_NAME}
+    image: evaluator-accesibility-web-mongo:${RELEASE_TAG}
+    container_name: eaw-mongo
+    depends_on:
+      - evaluator-accesibility-web-db
+    ports:
+      - "${EAW_MONGO_DOCKER_OUT}:27017"
+    networks:
+      - net
+    volumes:
+      - /mongo-data/eaw:/data/db
+    restart: unless-stopped
+
+  evaluator-accesibility-web-api:
+    build:
+      context: ../../back-end/api-eaw/
+    image: evaluator-accesibility-web-api:${RELEASE_TAG}
+    container_name: eaw-api
+    depends_on:
+      - evaluator-accesibility-web-mongo
+    ports:
+      - "${EAW_BACKEND_DOCKER_OUT}:${EAW_BACKEND_DOCKER_OUT}"
+    networks:
+      - net
+    restart: unless-stopped
+    volumes:
+      - /eaw-api/eaw:/eaw-api/server/local-storage
+    environment:
+      - ERP_DB_DOCKER_NAME=${ERP_DB_DOCKER_NAME}
+      - ERP_DB_HOST_MYSQL=${ERP_DB_HOST_MYSQL_MASTER_NODE}
+      - ERP_DB_PORT_MYSQL=${ERP_DB_PORT_MYSQL_SLAVE_NODE}
+      - EAW_MONGO_DOCKER_NAME=${EAW_MONGO_DOCKER_NAME}
+      - EAW_DB_NAME=${EAW_DB_NAME}
+      - EAW_DB_PASS=${EAW_DB_PASS}
+      - EAW_DB_OWNER=${EAW_DB_OWNER}
+      - EAW_MONGO_OWNER=${EAW_MONGO_OWNER}
+      - EAW_MONGO_PASS=${EAW_MONGO_PASS}
+      - EAW_MONGO_NAME=${EAW_MONGO_NAME}
+      - EAW_MAIL_HOST=${EAW_MAIL_HOST}
+      - EAW_MAIL_PORT=${EAW_MAIL_PORT}
+      - EAW_MAIL_USER=${EAW_MAIL_USER}
+      - EAW_MAIL_PASS=${EAW_MAIL_PASS}
+
+  evaluator-accesibility-queue-api:
+    build:
+      context: ../../back-end/api-queue/
+    image: evaluator-accesibility-queue-api:${RELEASE_TAG}
+    container_name: eaw-api-queue
+    depends_on:
+      - evaluator-accesibility-web-api
+    ports:
+      - "${EAW_BACKEND_QUEUE_DOCKER_OUT}:${EAW_BACKEND_QUEUE_DOCKER_OUT}"
+    networks:
+      - net
+    restart: unless-stopped
+
+networks:
+  net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: ${EAW_DOCKER_COMPOSE_SUBNET}

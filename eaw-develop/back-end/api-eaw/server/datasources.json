@@ -1,0 +1,51 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory",
+    "file": "./server/local-memory.json"
+  },
+  "MySqlDS_EAW": {
+    "host": "localhost",
+    "port": 5106,
+    "url": "",
+    "database": "DS_EAW",
+    "password": "inclutecDevAdmin",
+    "name": "MySqlDS_EAW",
+    "user": "inclutec-db-admin",
+    "connector": "mysql"
+  },
+  "emailDs": {
+    "name": "emailDs",
+    "connector": "mail",
+    "transports": [
+      {
+        "type": "smtp",
+        "host": "smtp.gmail.com",
+        "secure": true,
+        "port": 465,
+        "tls": {
+          "rejectUnauthorized": false
+        },
+        "auth": {
+          "user": "cosmictopo@gmail.com",
+          "pass": "jose1995"
+        }
+      }
+    ]
+  },
+  "files_local": {
+    "name": "files_local",
+    "connector": "loopback-component-storage",
+    "provider": "filesystem",
+    "root": "./server/local-storage"
+  },
+  "MONGO_EAW": {
+    "host": "localhost",
+    "port": 27017,
+    "database": "mongo",
+    "password": "mongo",
+    "name": "MONGO_EAW",
+    "user": "mongo",
+    "connector": "mongodb"
+  }
+}

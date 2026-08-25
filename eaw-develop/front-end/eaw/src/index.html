@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Evaluador Accesibilidad Web</title>
+    <base href="./" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="Description"
+      content="Project to analyze usability and accesibility from different web sites"
+    />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.0.4/popper.js"></script>
+  </head>
+  <body>
+    <app-root></app-root>
+  </body>
+  <script type="text/javascript">
+    var _userway_config = {
+      account: 'AQNJhs7Y5R',
+      size: 'small',
+      mobile: true,
+    };
+  </script>
+  <script type="text/javascript">
+    window.addEventListener(
+      'load',
+      function() {
+        includeJs('https://cdn.userway.org/widget.js');
+      },
+      {passive: true},
+    );
+
+    function includeJs(jsFilePath) {
+      var js = document.createElement('script');
+
+      js.type = 'text/javascript';
+      js.src = jsFilePath;
+      document.body.appendChild(js);
+    }
+  </script>
+</html>

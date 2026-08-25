@@ -1,0 +1,113 @@
+{
+  "name": "ScrapingSiteMap",
+  "idInjection": false,
+  "properties": {
+    "idEvaluation": {
+      "type": "Number",
+      "required": true,
+      "precision": 10
+    },
+    "idClient": {
+      "type": "Number",
+      "required": false,
+      "precision": 10
+    },
+    "idPackage": {
+      "type": "Number",
+      "required": false,
+      "precision": 10
+    },
+    "domain": {
+      "type": "string",
+      "required": false
+    },
+    "format": {
+      "type": "string",
+      "required": false
+    },
+    "scrapedPagesCounter": {
+      "type": "Number",
+      "required": false,
+      "precision": 10
+    },
+    "treeDepthCounter": {
+      "type": "Number",
+      "required": false,
+      "precision": 10
+    },
+    "absoluteLinksCounter": {
+      "type": "Number",
+      "required": false,
+      "precision": 10
+    },
+    "brokenLinksCounter": {
+      "type": "Number",
+      "required": false,
+      "precision": 10
+    },
+    "relativeLinksCounter": {
+      "type": "Number",
+      "required": false,
+      "precision": 10
+    },
+    "linkExceptionsCounter": {
+      "type": "Number",
+      "required": false,
+      "precision": 10
+    },
+    "desertedLinksCounter": {
+      "type": "Number",
+      "required": false,
+      "precision": 10
+    },
+    "fileCounter": {
+      "type": "Number",
+      "required": false,
+      "precision": 10
+    },
+    "absoluteLinksList": {
+      "type": "array",
+      "required": false
+    },
+    "brokenLinksList": {
+      "type": "array",
+      "required": false
+    },
+    "relativeLinksList": {
+      "type": "array",
+      "required": false
+    },
+    "linkExceptionsList": {
+      "type": "array",
+      "required": false
+    },
+    "desertedLinksList": {
+      "type": "array",
+      "required": false
+    },
+    "fileList": {
+      "type": "array",
+      "required": false
+    },
+    "actualCheckpoint": {
+      "type": "number",
+      "required": false
+    },
+    "actualCheckpointDate": {
+      "type": "Date",
+      "required": false
+    },
+    "isFinished": {
+      "type": "boolean",
+      "required": false
+    },
+    "data": {
+      "type": "Object",
+      "required": false
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

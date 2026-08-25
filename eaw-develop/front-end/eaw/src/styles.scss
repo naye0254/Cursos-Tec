@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '~@angular/material/theming';
+@import './styles/main-theme.scss';
+@import './styles/common.scss';
+@import './styles/international-phone-number-style.scss';
+
+@import '~highlight.js/styles/tomorrow.css';
+@import '~highlight.js/styles/arduino-light.css';
+
+@include angular-material-theme($theme);
+
+@media screen and (max-width: 992px) {
+  body .userway.userway_p1 {
+    top: 75px !important;
+  }
+}

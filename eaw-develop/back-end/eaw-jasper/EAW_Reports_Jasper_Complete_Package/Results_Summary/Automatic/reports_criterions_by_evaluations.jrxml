@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.15.0.final using JasperReports Library version 6.15.0-dd49bfb94918336b8321d5507193f0169ead4e95  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reports_criterions_by_evaluations" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9e05962e-12c8-47a6-8c99-b5e5453f2be6">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DA_EAW"/>
+	<parameter name="evaluationsId" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[select distinct
+    f.criterionsId
+from
+    Pages p,
+    AutomaticEvaluatorPages aep,
+    Findings f
+where
+    p.id = aep.pagesId
+    and f.automaticEvaluatorPagesId = aep.id
+    and p.evaluationsId =  $P{evaluationsId} ;]]>
+	</queryString>
+	<field name="criterionsId" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="criterionsId"/>
+		<property name="com.jaspersoft.studio.field.label" value="criterionsId"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Findings"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<title>
+		<band height="142">
+			<staticText>
+				<reportElement x="0" y="0" width="516" height="20" forecolor="#377A81" uuid="336dd2a5-a440-4303-9f23-8c09e7bdfba6">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[7 EVALUACIÓN AUTOMÁTICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="27" width="516" height="115" uuid="6994f71c-d93b-47eb-95b8-095e8df654df">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato" size="12"/>
+				</textElement>
+				<text><![CDATA[Nuestro sistema de evaluación automática revisa cada página web seleccionada manual o automaticamente, indicando únicamente errores y advertencias (errores potenciales). Los resultados mostrados en esta sección (Evaluación Automática) se agrupan por criterios y tipos de hallazgos, según cumplimientos de las pautas internacionales de accesibilidad establecidas en la WCAG 2.0 (Web Content Accessibility Guidelines). Para las siguientes tablas es importante tomar en cuenta que la columna HTML Path se refiere al nivel de anidamiento del elemento que presenta el error o advertencia.]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="254" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="10" width="555" height="236" uuid="a6ad0dbc-447a-401c-9d25-76531ad7b389"/>
+				<subreportParameter name="criterionsId">
+					<subreportParameterExpression><![CDATA[$F{criterionsId}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="evaluationsId">
+					<subreportParameterExpression><![CDATA[$P{evaluationsId}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["/Results_Summary/Automatic/reports_findings_by_criteria.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,202 @@
+@import '../../../../../styles/main-theme.scss';
+
+.chart-container {
+  display: flex;
+  overflow: hidden;
+  // background-color: lightgray;
+}
+
+.sr-only-svg {
+  font: italic 0px serif;
+}
+
+.c-goLink-rect {
+  fill: mat-color($dark-turquoise);
+}
+
+.c-goLink-icon {
+  font-size: 12px;
+  font-family: FontAwesome;
+  fill: mat-color($white);
+}
+
+.l-top {
+  margin-top: 2%;
+
+  .c-button-like-link {
+    background: none !important;
+    color: mat-color($dark-gray);
+    font-size: 15px !important;
+    border: none;
+    padding: 0 !important;
+    font: inherit;
+    cursor: pointer;
+    .c-icon {
+      margin-right: 5px;
+      font-size: 15px;
+    }
+  }
+
+  .l-left {
+    h1 {
+      font-size: 30px;
+      color: mat-color($primary);
+      font-weight: bold;
+    }
+    h2 {
+      font-size: 20px;
+      color: mat-color($primary);
+    }
+  }
+  .l-right {
+    .c-button-round {
+      position: absolute;
+      right: 100px;
+      top: 15px;
+
+      text-align: center !important;
+      background-color: mat-color($white);
+      color: mat-color($primary);
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 50px;
+      border: 2px solid mat-color($primary);
+      width: auto;
+      padding: 5px 30px 5px 30px;
+    }
+
+    .download-button {
+      color: mat-color($white);
+      background-color: mat-color($primary);
+    }
+  }
+}
+
+.l-state-menu {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+::ng-deep.mat-drawer-content {
+  overflow: hidden !important;
+}
+
+.l-sidenav {
+  width: 100%;
+  height: 170vh;
+  background-color: mat-color($white);
+  .mat-drawer-side {
+    border-right: solid 0px;
+  }
+
+  .c-text {
+    position: absolute;
+    top: 35px;
+    font-size: 17px;
+    font-weight: bold;
+    color: mat-color($dark-gray);
+    background-color: mat-color($white);
+    border-radius: 5px;
+  }
+
+  .c-span {
+    position: absolute;
+    top: 85px;
+    font-size: 17px;
+    color: mat-color($primary);
+    background-color: mat-color($white);
+    border-radius: 5px;
+  }
+
+  .v-dot {
+    position: absolute;
+    top: 140px;
+    left: 10px;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    display: inline-block;
+    background-color: mat-color($primary);
+    color: mat-color($white);
+
+    .c-count-top {
+      position: absolute;
+      font-weight: bold;
+      font-size: 20px;
+      top: 7px;
+      left: 10px;
+    }
+
+    .natural-number {
+      left: 16px;
+    }
+
+    .c-count-line {
+      position: absolute;
+      font-size: 12px;
+      top: 24px;
+      left: 32px;
+    }
+
+    .c-count-bottom {
+      position: absolute;
+      font-size: 12px;
+      top: 29px;
+      left: 37px;
+    }
+  }
+}
+
+.l-left-sidenav {
+  padding: 2%;
+  width: 300px;
+  .c-stats {
+    .c-top-stats {
+      padding: 2% 10%;
+      font-size: 17px;
+      color: mat-color($white);
+      font-weight: bold;
+      background-color: mat-color($dark-turquoise);
+    }
+    .c-bottom-stats {
+      padding: 2% 10%;
+      background-color: #f2f2f2;
+      .c-item {
+        margin-top: 10%;
+        margin-bottom: 10%;
+        h3 {
+          font-size: 15px;
+          font-weight: bold;
+          color: mat-color($dark-gray);
+          margin-bottom: 0.5em;
+        }
+        span {
+          font-size: 15px;
+          color: mat-color($dark-gray);
+          word-break: break-all;
+        }
+
+        a {
+          font-size: 15px;
+          color: mat-color($dark-gray);
+        }
+
+        .c-number {
+          font-size: 17px;
+          font-weight: bold;
+        }
+      }
+
+      .c-button-like-href {
+        background: none !important;
+        border: none;
+        padding: 0 !important;
+        font-size: 14px;
+        color: mat-color($primary);
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+  }
+}

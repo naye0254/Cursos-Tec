@@ -1,0 +1,20 @@
+include:
+  - local: "/ci/eaw-environment/build.yml"
+  #- local: "/ci/eaw-environment/test.yml"
+  - local: "/ci/eaw-environment/deploy-develop.yml"
+  - local: "/ci/eaw-environment/deploy-release.yml"
+  - local: "/ci/eaw-environment/deploy-production.yml"
+  - local: "/ci/cluster-environment/build.yml"
+  - local: "/ci/cluster-environment/deploy-production-node.yml"
+
+stages:
+  - build
+  - build-cluster
+  # - test TEMPORALY OMITTED
+  - deploy-develop
+  - deploy-release
+  - deploy-production
+  - deploy-production-cluster
+
+variables:
+  COMPOSE_PROJECT_NAME: "eaw"

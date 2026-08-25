@@ -1,0 +1,248 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "../common/models/mysql/AutomaticDescriptions",
+      "../common/models/mysql/AutomaticEvaluatorPages",
+      "../common/models/mysql/Browsers",
+      "../common/models/mysql/Clients",
+      "../common/models/mysql/ClientsByCountries",
+      "../common/models/mysql/ClientsBySegments",
+      "../common/models/mysql/Countries",
+      "../common/models/mysql/Criterions",
+      "../common/models/mysql/CriterionsByDisabilityRoles",
+      "../common/models/mysql/DatesByEvaluations",
+      "../common/models/mysql/Devices",
+      "../common/models/mysql/Disabilities",
+      "../common/models/mysql/DisabilitiesByUsers",
+      "../common/models/mysql/ErrorDebugs",
+      "../common/models/mysql/Evaluations",
+      "../common/models/mysql/Findings",
+      "../common/models/mysql/Guidelines",
+      "../common/models/mysql/Languages",
+      "../common/models/mysql/ManualAnswers",
+      "../common/models/mysql/ManualPages",
+      "../common/models/mysql/Notices",
+      "../common/models/mysql/Notifications",
+      "../common/models/mysql/OperativeSystems",
+      "../common/models/mysql/OperativeSystemsByDevices",
+      "../common/models/mysql/OperativeSystemVersions",
+      "../common/models/mysql/Packages",
+      "../common/models/mysql/Pages",
+      "../common/models/mysql/Principles",
+      "../common/models/mysql/Recommendations",
+      "../common/models/mysql/Reports",
+      "../common/models/mysql/RoleTypes",
+      "../common/models/mysql/Rules",
+      "../common/models/mysql/RulesPackages",
+      "../common/models/mysql/Segments",
+      "../common/models/mysql/Specifications",
+      "../common/models/mysql/SpecificationsByManualPages",
+      "../common/models/mysql/SupportTools",
+      "../common/models/mysql/SupportToolsByManualPages",
+      "../common/models/mysql/Tags",
+      "../common/models/mysql/TagsByEvaluations",
+      "../common/models/mysql/Users",
+      "../common/models/mysql/SupportToolsByDisabilities",
+      "../common/models/mysql/Container",
+      "../common/models/mysql/NodesServes",
+      "../common/models/mongo/ScrapingErrorLogs",
+      "../common/models/mongo/ScrapingSiteMap",
+      "../common/models/mongo/ScrapingSiteMapUrls",
+      "../common/models/mongo/ScrapingAbsoluteLinks",
+      "../common/models/mongo/ScrapingBrokenLinks",
+      "../common/models/mongo/ScrapingRelativeLinks",
+      "../common/models/mongo/ScrapingExceptionLinks",
+      "../common/models/mongo/ScrapingDesertedLinks",
+      "../common/models/mongo/ScrapingFileLinks",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "ACL": {
+    "dataSource": "db",
+    "public": false
+  },
+  "AccessToken": {
+    "dataSource": "MySqlDS_EAW",
+    "public": false,
+    "relations": {
+      "user": {
+        "type": "belongsTo",
+        "model": "Users",
+        "foreingKey": "userId"
+      }
+    }
+  },
+  "container": {
+    "dataSource": "files_local",
+    "public": true
+  },
+  "Email": {
+    "dataSource": "emailDs"
+  },
+  "AutomaticEvaluatorPages": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "AutomaticDescriptions": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "Browsers": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "Clients": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "ClientsByCountries": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "ClientsBySegments": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "Countries": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "Criterions": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "CriterionsByDisabilityRoles": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "DatesByEvaluations": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "Devices": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "Disabilities": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "DisabilitiesByUsers": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "ErrorDebugs": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "Evaluations": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "Findings": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "Guidelines": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "Languages": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "ManualAnswers": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "ManualPages": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "Notices": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "Notifications": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "OperativeSystemVersions": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "OperativeSystems": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "OperativeSystemsByDevices": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "Packages": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "Pages": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "Principles": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "Recommendations": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "Reports": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "RoleTypes": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "Rules": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "RulesPackages": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "Segments": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "Specifications": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "SpecificationsByManualPages": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "SupportTools": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "SupportToolsByManualPages": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "Tags": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "TagsByEvaluations": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "Users": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "SupportToolsByDisabilities": {
+    "dataSource": "MySqlDS_EAW"
+  },
+  "NodesServes": {
+    "dataSource": "MySqlDS_EAW",
+    "public": true
+  },
+  "ScrapingErrorLogs": {
+    "dataSource": "MONGO_EAW"
+  },
+  "ScrapingSiteMap": {
+    "dataSource": "MONGO_EAW"
+  },
+  "ScrapingSiteMapUrls": {
+    "dataSource": "MONGO_EAW"
+  },
+  "ScrapingAbsoluteLinks": {
+    "dataSource": "MONGO_EAW"
+  },
+  "ScrapingBrokenLinks": {
+    "dataSource": "MONGO_EAW"
+  },
+  "ScrapingRelativeLinks": {
+    "dataSource": "MONGO_EAW"
+  },
+  "ScrapingExceptionLinks": {
+    "dataSource": "MONGO_EAW"
+  },
+  "ScrapingDesertedLinks": {
+    "dataSource": "MONGO_EAW"
+  },
+  "ScrapingFileLinks": {
+    "dataSource": "MONGO_EAW"
+  }
+}

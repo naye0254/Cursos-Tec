@@ -1,0 +1,10 @@
+.l-step {
+  width: 98%;
+  min-height: 66vh;
+}
+.c-delete-btn {
+  text-decoration-line: underline;
+  text-decoration-color: mat-color($white);
+  background-color: mat-color($light-red);
+  color: mat-color($white);
+}

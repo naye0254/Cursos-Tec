@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.14.0.final using JasperReports Library version 6.14.0-2ab0d8625be255bf609c78e1181801213e51db8f  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="introduction" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="76f0ea7e-72d1-4336-a3c0-540826355a33">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DA_EAW"/>
+	<subDataset name="Dataset1" uuid="87b5295a-ed27-41ca-a9bc-d6c7f2e2039f">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+	</subDataset>
+	<queryString language="SQL">
+		<![CDATA[select  `DS_EAW`.`Evaluations`.id from  `DS_EAW`.`Evaluations`limit 1;]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Evaluations"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="639" splitType="Stretch">
+			<staticText>
+				<reportElement x="18" y="40" width="221" height="30" forecolor="#377A81" uuid="3153fcd3-dd2c-457f-ada6-c7d6417cdac0">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato&#xA;" size="14"/>
+				</textElement>
+				<text><![CDATA[1 INTRODUCCIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="9" width="221" height="30" forecolor="#000000" uuid="f0c72e82-0307-49e5-b7ac-c676e2966755">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato&#xA;" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INFORME DE EVALUACIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="66" width="526" height="190" uuid="ffd105ec-a72f-460c-8988-05c1ae098fb7"/>
+				<textElement textAlignment="Left">
+					<font fontName="Lato&#xA;" size="12"/>
+				</textElement>
+				<text><![CDATA[En la actualidad gran cantidad de información circula en los portales web, desde la que se publica con fines promocionales, reglamentos, eventos y agendas, hasta información que permite a las organizaciones descargar responsabilidades de notificación o socialización. Sin embargo esta información no siempre se publica en los formatos recomendados o contemplando todas las necesidades de la población meta. Lo que podría con llevar a denuncias y hasta demandas. 
+
+El derecho a la información es un derecho que tienen todas las personas, independientemente de sus necesidades particulares. Estos derechos son garantizados para las personas con discapacidad a través de diferentes leyes, entre las que se destacan:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="210" width="505" height="160" uuid="579fded4-ec6b-4ec9-a415-9a0a758586b2">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Top">
+					<font fontName="Lato" size="12"/>
+				</textElement>
+				<text><![CDATA[1. Ley 7600 de Igualdad de Oportunidades para las Personas con Discapacidad (PcD) y su reglamento (1996)
+2. Ley 7948 Ratificación de la Convención Interamericana para la Eliminación de todas las Formas de Discriminación contra las PcD (1999) 
+3. Ley 8661 Convención de los Derechos de las PcD y su protocolo facultativo (2008) 
+4. Ley 8662 Inclusión y Protección de las PcD en el Sector Público (2008)
+5. Directriz Nº 051-MTSS-MICITT Implementación de sitios Web accesibles en el sector público costarricense (04/2019)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="344" width="526" height="295" uuid="8f0fd33a-46a6-47a2-afe6-ee0169904158">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato" size="12"/>
+				</textElement>
+				<text><![CDATA[Sin embargo, más allá del cumplimiento de las leyes, el compromiso de lograr una sociedad más inclusiva es el que lleva a generar instrumentos e informes del nivel de accesibilidad de los diversos servicios que brindan organizaciones y empresas. Esta es la razón que sustenta los estudios realizados por el Observatorio de Tecnologías Accesibles e Inclusivas (OTAI).
+
+Este informe es el resultado del estudio de evaluación de accesibilidad web y fue realizado para conocer el grado de cumplimiento de los principios de accesibilidad, cómo éste va evolucionando a lo largo del tiempo, y los principales problemas que hay que resolver. 
+
+El informe es producido inicialmente por un análisis automático, luego es revisado y complementado en forma manual por personas con discapacidad validando el cumplimiento real de las pautas de accesibilidad. Las evaluaciones se fundamenta en una abstracción de los principios de accesibilidad, basados en las normas WCAG 2.1 y en la norma INTE ISO/IEC 40500:2017. De este modo se consigue una estimación del estado deaccesibilidad de las plataformas digitales.]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

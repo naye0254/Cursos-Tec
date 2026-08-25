@@ -1,0 +1,104 @@
+variables:
+  ANGULAR_CLI_VERSION: "@angular/cli@8.3.25"
+
+# This job makes a develop build of the Angular client.
+# Environment variables to be set:
+#   EAW_DEV_SERVER_HOST
+#   EAW_BACKEND_CLIENT_PORT
+frontend-dev-build:
+  stage: build
+  tags:
+    - eaw-dev-docker
+  image: node:12.18.1
+  only:
+    - develop
+  script:
+    - npm i npm@6.14.16 -g
+    - npm install -g $ANGULAR_CLI_VERSION
+    - cd ./front-end/eaw/
+    - npm install --save --legacy-peer-deps
+    #- echo "export const environment={production:false,apiHost:\"$EAW_DEV_SERVER_HOST\",apiPort:\"$EAW_BACKEND_CLIENT_PORT\"};" > src/environments/environment.ts
+    - ng build
+    - mv dist/eaw/ frontend-dist/
+  artifacts:
+    paths:
+      - front-end/eaw/frontend-dist/
+dev-api-base-image:
+  stage: build
+  tags:
+    - eaw-develop
+  only:
+    - develop
+  script:
+    - cd ./back-end/!api-loopback
+    - chmod +x ./check-image.sh
+    - ./check-image.sh
+
+# This job makes a testing build of the Angular client, almost ready for production environment.
+# Environment variables to be set:
+#   EAW_TEST_SERVER_HOST
+#   EAW_BACKEND_CLIENT_PORT
+frontend-test-build:
+  stage: build
+  tags:
+    - eaw-testing-docker
+  image: node:12.18.1
+  only:
+    - /^release.*/
+  script:
+    - npm i npm@6.14.16 -g
+    - npm install -g $ANGULAR_CLI_VERSION
+    - cd ./front-end/eaw/
+    - npm install --save --legacy-peer-deps
+    - echo "export const environment={production:false,apiHost:\"$EAW_TEST_SERVER_HOST\",apiPort:\"$EAW_BACKEND_CLIENT_PORT\"};" > src/environments/environment.prod.ts
+    - node --max_old_space_size=2024 ./node_modules/@angular/cli/bin/ng build --prod
+    - mv dist/eaw/ frontend-dist/
+  artifacts:
+    paths:
+      - front-end/eaw/frontend-dist/
+test-api-base-image:
+  stage: build
+  tags:
+    - eaw-testing
+  only:
+    - /^release.*/
+  script:
+    - cd ./back-end/!api-loopback
+    - chmod +x ./check-image.sh
+    - ./check-image.sh
+
+# This job makes the main build (production) of the Angular client.
+# Environment variables to be set:
+#   EAW_PROD_SERVER_HOST
+#   EAW_BACKEND_CLIENT_PORT
+frontend-prod-build:
+  stage: build
+  tags:
+    - eaw-production-docker
+  image: node:12.18.1
+  only:
+    - master
+    - /^hotfix.*/
+  script:
+    - npm i npm@6.14.16 -g
+    - npm install -g $ANGULAR_CLI_VERSION
+    - cd ./front-end/eaw/
+    - npm install --save --legacy-peer-deps
+    - echo "export const environment={production:false,apiHost:\"$EAW_DEV_SERVER_HOST\",apiPort:\"$EAW_BACKEND_CLIENT_PORT\"};" > src/environments/environment.prod.ts
+    - node --max_old_space_size=2024 ./node_modules/@angular/cli/bin/ng build --prod
+    - compodoc --disableSourceCode -p ./tsconfig.json -d ./dist/EAW/doc
+    - mv dist/eaw/ frontend-dist/
+  artifacts:
+    paths:
+      - front-end/eaw/frontend-dist/
+prod-api-base-image:
+  stage: build
+  tags:
+    - eaw-production
+  only:
+    - master
+    - /^hotfix.*/
+  script:
+    - cd ./back-end/!api-loopback
+    - chmod +x ./check-image.sh
+    - ./check-image.sh

@@ -1,0 +1,16 @@
+{
+  "plugins": ["eslint-plugin", "mocha"],
+  "env": {
+    "es6": true,
+    "node": true,
+    "mocha": true
+  },
+  "extends": ["eslint:recommended", "prettier"],
+  "rules": {
+    "prefer-const": "error",
+    "no-mixed-operators": "off",
+    "no-console": "off",
+    "no-inner-declarations": "off",
+    "no-unused-vars": "off" // this rule is temporal
+  }
+}

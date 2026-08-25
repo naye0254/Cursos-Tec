@@ -1,0 +1,74 @@
+{
+  "name": "AutomaticDescriptions",
+  "options": {
+    "idInjection": false,
+    "mysql": {
+      "schema": "DS_EAW",
+      "table": "AutomaticDescriptions"
+    },
+    "relations": {},
+    "acls": [
+      {
+        "accessType": "*",
+        "principalType": "ROLE",
+        "principalId": "$everyone",
+        "permission": "ALLOW"
+      },
+      {
+        "accessType": "EXECUTE",
+        "principalType": "ROLE",
+        "principalId": "$authenticated",
+        "permission": "ALLOW",
+        "property": "*"
+      }
+    ]
+  },
+  "properties": {
+    "id": {
+      "type": "Number",
+      "required": true,
+      "length": null,
+      "precision": 10,
+      "scale": 0,
+      "id": 1,
+      "mysql": {
+        "columnName": "id",
+        "dataType": "SMALLINT",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      }
+    },
+    "codeSnifferCode": {
+      "type": "String",
+      "required": false,
+      "length": 100,
+      "precision": null,
+      "scale": 0,
+      "mysql": {
+        "columnName": "codeSnifferCode",
+        "dataType": "VARCHAR",
+        "dataLength": 100,
+        "dataPrecision": null,
+        "dataScale": 0,
+        "nullable": "Y"
+      }
+    },
+    "description": {
+      "type": "String",
+      "required": false,
+      "length": 1200,
+      "precision": null,
+      "scale": 0,
+      "mysql": {
+        "columnName": "description",
+        "dataType": "VARCHAR",
+        "dataLength": 1200,
+        "dataPrecision": null,
+        "dataScale": 0,
+        "nullable": "Y"
+      }
+    }
+  }
+}

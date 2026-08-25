@@ -1,0 +1,86 @@
+@import '../../../../../../styles/main-theme.scss';
+
+.l-confirm-dialog {
+  .l-title {
+    text-align: center;
+    padding: 5%;
+
+    .c-dialog-title {
+      font-size: 25px;
+      font-weight: bold;
+      color: mat-color($primary);
+    }
+    p {
+      padding-top: 5%;
+      color: mat-color($dark-gray);
+      text-align: left;
+      font-size: 18px;
+    }
+  }
+
+  .l-sidenav {
+    padding-left: 5%;
+    padding-right: 5%;
+    width: 100%;
+    min-height: 200px;
+    height: auto;
+    background-color: mat-color($white);
+  }
+
+  .l-left-sidenav {
+    padding-top: 2%;
+    width: 200px;
+    text-align: center;
+    h2 {
+      font-size: 18px;
+      color: mat-color($primary);
+      font-weight: bold;
+    }
+    .v-dot {
+      height: 60px;
+      width: 60px;
+      border-radius: 50%;
+      display: inline-block;
+      background-color: mat-color($primary);
+      color: mat-color($white);
+      font-size: 24px;
+      font-weight: bold;
+      padding-top: 10px;
+    }
+  }
+
+  .v-list {
+    padding: 1% 5%;
+    overflow: auto;
+    max-height: 450px;
+    a {
+      color: mat-color($dark-gray);
+      font-size: 16px;
+    }
+  }
+
+  .v-buttons {
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+
+    .c-button {
+      min-width: 175px;
+      border-radius: 33px;
+      border: 1px solid transparent;
+      &:hover {
+        filter: brightness(0.8);
+      }
+    }
+
+    .b-primary {
+      background-color: mat-color($primary);
+      color: mat-color($white);
+    }
+
+    .b-primary:disabled {
+      background-color: $mercury;
+      color: mat-color($dark-gray, 100);
+    }
+  }
+}

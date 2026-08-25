@@ -1,0 +1,54 @@
+<div class="l-new-evaluation">
+  <div class="row l-head">
+    <h1 class="col-3 c-title" translate>
+      administrator.evaluations.manage.title
+    </h1>
+    <hr class="col-8 c-delimiter" />
+  </div>
+  <router-outlet></router-outlet>
+  <div class="l-board">
+    <div class="board-inner" id="status-buttons">
+      <ul class="nav nav-tabs wizard" id="myTab">
+        <li>
+          <a
+            [routerLinkActiveOptions]="{exact: true}"
+            [routerLink]="stepOne"
+            routerLinkActive
+            #rla="routerLinkActive"
+            (click)="goToStepOne()"
+            [ngClass]="step === 0 ? 'active-bullet' : 'active'"
+            data-toggle="tab"
+            title=""
+            [attr.aria-label]="'administrator.shared.stepOne' | translate"
+            tabindex="0"
+            role="button"
+          >
+            <div class="round-tabs all">
+              <span>1</span>
+            </div>
+          </a>
+        </li>
+        <li *ngIf="!isHideStepTwo">
+          <a
+            role="button"
+            [routerLinkActiveOptions]="{exact: true}"
+            [routerLink]="stepTwo"
+            routerLinkActive
+            #rla="routerLinkActive"
+            (click)="goToStepTwo()"
+            [ngClass]="step === 1 ? 'active-bullet' : ''"
+            data-toggle="tab"
+            title=""
+            [attr.aria-label]="'administrator.shared.stepTwo' | translate"
+            tabindex="0"
+          >
+            <div class="round-tabs all">
+              <span>2</span>
+            </div>
+          </a>
+        </li>
+      </ul>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>

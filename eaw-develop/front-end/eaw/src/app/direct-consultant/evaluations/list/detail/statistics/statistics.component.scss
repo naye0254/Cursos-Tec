@@ -1,0 +1,387 @@
+@import '../../../../../../styles/main-theme.scss';
+$color-light-blue: $blue-chill;
+$color-wh: mat-color($white);
+$color-background: mat-color($dark-turquoise);
+$color-error: $apricot;
+$color-gray: $gray;
+$color-darkgray: mat-color($dark-gray);
+$color-ultralight-gray: $cultured-pearl;
+
+$radioSize: 18px;
+$radioBorder: $radioBorder;
+$radioActive: mat-color($dark-turquoise);
+
+$lato-font: 'Lato', sans-serif;
+
+.row-no-padding {
+  [class*='col-'] {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+.col-sm-3 {
+  background-color: $color-background;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.v-stats {
+  height: 100%;
+  padding: 20% 5% 5% 15%;
+  .l-inf {
+    width: 90%;
+    height: 90%;
+    word-break: break-word;
+  }
+
+  .c-line {
+    background: $color-wh;
+    height: 1px;
+    width: 120%;
+    margin: 25% 0% 10% -10%;
+  }
+
+  .c-h3 {
+    color: $color-wh;
+    font-size: 35px;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 20%;
+  }
+
+  .c-h5 {
+    margin-top: 10%;
+    color: $color-wh;
+    font-size: 16px;
+    text-align: left;
+  }
+
+  .c-h4 {
+    color: $color-wh;
+    font-size: 23px;
+  }
+
+  .c-button-fontsize-adjust {
+    font-size: 23px !important;
+    width: inherit !important;
+    height: inherit !important;
+    white-space: normal !important;
+    overflow-wrap: break-word !important;
+  }
+
+  .c-button-round {
+    background-color: $color-light-blue;
+    color: $color-wh;
+    font-size: 1.5em;
+    font-weight: bold;
+    border-radius: 25px;
+    margin-top: 15%;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    margin-bottom: 0%;
+    transition: background-color 0.5s ease;
+    border: 4px solid transparent !important;
+  }
+
+  .c-button-fontsize-little {
+    font-size: 1.2em !important;
+  }
+
+  .c-button-round:disabled {
+    background-color: $color-gray !important;
+  }
+
+  .c-button-round:hover {
+    box-shadow: 0px 4px 4px opacify($blue-chill, $amount: 0.5);
+  }
+
+  .c-button-like-link {
+    text-align: center;
+    background: none !important;
+    color: $color-wh;
+    border: none;
+    padding: 0 !important;
+    font: inherit;
+    cursor: pointer;
+    .c-icon {
+      margin-right: 5px;
+      font-size: 20px;
+    }
+  }
+
+  // iPads
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    .c-h3 {
+      font-size: 25px;
+    }
+    .c-h5 {
+      font-size: 10px;
+    }
+    .c-h4 {
+      font-size: 15px;
+    }
+    .c-button-round {
+      height: 25px;
+      font-size: 0.6em;
+    }
+    .c-button-fontsize-little {
+      font-size: 0.7em !important;
+    }
+
+    .c-button-like-link {
+      height: 25px;
+      font-size: 0.8em;
+      .c-icon {
+        font-size: 15px;
+      }
+    }
+  }
+}
+
+.v-content {
+  text-align: center;
+  margin-top: 3%;
+  .v-box {
+    width: 90%;
+    height: auto;
+    background-color: $color-wh;
+    border-radius: 12px;
+    display: inline-block;
+    margin-bottom: 5%;
+
+    thead > tr > th {
+      cursor: pointer;
+    }
+
+    .v-table {
+      text-align: left;
+      th {
+        padding-left: 0%;
+        color: $color-darkgray;
+        border: none;
+        border-bottom: 1px solid $color-gray;
+        font-weight: 400;
+      }
+
+      td {
+        padding-left: 0%;
+        color: $color-darkgray;
+        border: none;
+        border-bottom: 1px solid $color-gray;
+      }
+
+      .c-th-center {
+        text-align: center !important;
+      }
+
+      .c-a-href {
+        color: $color-light-blue;
+      }
+
+      .v-DynamicalTable {
+        display: contents !important;
+      }
+
+      .c-criterion-td {
+        font-weight: bold;
+        width: 280px;
+      }
+
+      .c-invisible-line {
+        visibility: hidden;
+        height: 1px;
+        margin-bottom: -1px;
+      }
+
+      .c-button-like-link {
+        background: none !important;
+        color: $color-light-blue;
+        border: none;
+        padding: 0 !important;
+        font: inherit;
+        cursor: pointer;
+        font-style: italic;
+        text-decoration: underline;
+      }
+
+      .radio {
+        margin-left: 40%;
+        display: block;
+        cursor: pointer;
+        input {
+          display: none;
+          & + span {
+            line-height: $radioSize;
+            height: $radioSize;
+            padding-left: $radioSize;
+            display: block;
+            position: relative;
+            &:not(:empty) {
+              padding-left: $radioSize + 8;
+            }
+            &:before,
+            &:after {
+              content: '';
+              width: $radioSize;
+              height: $radioSize;
+              display: block;
+              border-radius: 50%;
+              left: 0;
+              top: 0;
+              position: absolute;
+            }
+            &:before {
+              background: $radioBorder;
+            }
+            &:after {
+              background: #fff;
+              transform: scale(0.78);
+              transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.4);
+            }
+          }
+          &:checked + span {
+            &:before {
+              transform: scale(1.04);
+              background: $radioActive;
+            }
+            &:after {
+              transform: scale(0.4);
+              transition: transform 0.3s ease;
+            }
+          }
+        }
+        &:hover {
+          input {
+            & + span {
+              &:before {
+                transform: scale(0.92);
+              }
+              &:after {
+                transform: scale(0.74);
+              }
+            }
+            &:checked + span {
+              &:after {
+                transform: scale(0.4);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .c-tittle {
+      color: $color-background;
+
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .c-a-href {
+      color: $color-light-blue;
+    }
+
+    .c-button-round {
+      margin-top: 3%;
+      margin-right: 2%;
+      background-color: $color-light-blue;
+      color: $color-wh;
+
+      font-size: 1.5em;
+      font-weight: bold;
+      margin-bottom: 3%;
+      border-radius: 50px;
+      width: 30%;
+      border: 8px solid transparent;
+    }
+
+    .c-button-separator {
+      margin-top: 4%;
+      margin-left: 2%;
+      margin-right: 4%;
+      background-color: $radioBorder;
+      width: 3px;
+      height: 70px;
+    }
+
+    .v-no-content {
+      display: contents !important;
+    }
+
+    .v-buttons-left {
+      display: flex;
+      width: 100%;
+    }
+
+    .c-button-bg-transparent {
+      background-color: transparent;
+      color: $color-light-blue !important;
+      border-width: 2px;
+      border-color: $color-light-blue;
+    }
+
+    .c-button-round:disabled {
+      background-color: $color-gray !important;
+    }
+    .v-dropdowns {
+      text-align: left;
+      display: -webkit-box;
+
+      select {
+        -webkit-appearance: none;
+        appearance: none;
+      }
+
+      .c-arrow-select::before {
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        content: '\f078';
+        color: $color-darkgray;
+      }
+
+      .inp {
+        padding-right: 20px;
+        background-color: transparent;
+        border: none;
+        border-bottom: 1.5px solid $color-darkgray;
+        color: $color-darkgray;
+
+        font-size: 17px;
+        height: 50px;
+        margin-top: 2%;
+        top: 50%;
+        width: 100%;
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .inp:focus {
+        border-bottom: 3px solid $color-light-blue;
+      }
+
+      .input-label {
+        position: absolute;
+        right: 3px;
+        top: calc(50% - 0.5em);
+        color: $color-darkgray;
+        pointer-events: none;
+      }
+
+      .inp-wrapper {
+        position: relative;
+        width: 24%;
+        margin: 1%;
+      }
+    }
+  }
+
+  .v-graphic {
+    margin-left: 1%;
+    margin-bottom: 5%;
+  }
+}

@@ -1,0 +1,999 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.14.0.final using JasperReports Library version 6.14.0-2ab0d8625be255bf609c78e1181801213e51db8f  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="technical_report_rs_findingsByGuideline" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3ecbc216-505d-489d-9f7a-b7a27b6b8968">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DA_EAW"/>
+	<subDataset name="failedCriterionByGuidelineCountAll" uuid="48b4b6e9-363d-498b-b24c-658a5afff796">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DA_EAW"/>
+		<parameter name="evaluationId" class="java.lang.Integer"/>
+		<queryString language="SQL">
+			<![CDATA[call DS_EAW.SP_CountAllFindingsCriterionsByGuidelineForAutomaticForJasper($P{evaluationId});]]>
+		</queryString>
+		<field name="Pautas" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="Pautas"/>
+			<property name="com.jaspersoft.studio.field.label" value="Pautas"/>
+		</field>
+		<field name="Criterios(Cantidad)" class="java.lang.Long">
+			<property name="com.jaspersoft.studio.field.name" value="Criterios(Cantidad)"/>
+			<property name="com.jaspersoft.studio.field.label" value="Criterios(Cantidad)"/>
+		</field>
+		<field name="Hallazgos(Cantidad)" class="java.lang.Long">
+			<property name="com.jaspersoft.studio.field.name" value="Hallazgos(Cantidad)"/>
+			<property name="com.jaspersoft.studio.field.label" value="Hallazgos(Cantidad)"/>
+		</field>
+		<field name="CriteriosPorPauta" class="java.lang.Long">
+			<property name="com.jaspersoft.studio.field.name" value="CriteriosPorPauta"/>
+			<property name="com.jaspersoft.studio.field.label" value="CriteriosPorPauta"/>
+		</field>
+	</subDataset>
+	<subDataset name="failedCriterionByPagesCountAll" uuid="735ac7a1-3d2b-4385-9e60-f2f755b1c35b">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DA_EAW"/>
+		<parameter name="evaluationId" class="java.lang.Integer"/>
+		<queryString language="SQL">
+			<![CDATA[call DS_EAW.SP_CountAllFindingsCriterionsByPageForAutomaticForJasper($P{evaluationId});]]>
+		</queryString>
+		<field name="Páginas" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="Páginas"/>
+			<property name="com.jaspersoft.studio.field.label" value="Páginas"/>
+		</field>
+		<field name="Criterios(Cantidad)" class="java.lang.Long">
+			<property name="com.jaspersoft.studio.field.name" value="Criterios(Cantidad)"/>
+			<property name="com.jaspersoft.studio.field.label" value="Criterios(Cantidad)"/>
+		</field>
+		<field name="Hallazgos(Cantidad)" class="java.lang.Long">
+			<property name="com.jaspersoft.studio.field.name" value="Hallazgos(Cantidad)"/>
+			<property name="com.jaspersoft.studio.field.label" value="Hallazgos(Cantidad)"/>
+		</field>
+		<field name="url" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="url"/>
+			<property name="com.jaspersoft.studio.field.label" value="url"/>
+		</field>
+		<field name="totalCriterios" class="java.lang.Long">
+			<property name="com.jaspersoft.studio.field.name" value="totalCriterios"/>
+			<property name="com.jaspersoft.studio.field.label" value="totalCriterios"/>
+		</field>
+	</subDataset>
+	<parameter name="g_evaluationId" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[select  `DS_EAW`.`Evaluations`.id from  `DS_EAW`.`Evaluations`limit 1;]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Evaluations"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<detail>
+		<band height="637" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="544" height="40" uuid="2a51bc3e-9ce7-464e-808c-f4e91035ac8c">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="html">
+					<font fontName="Lato" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["El siguiente gráfico corresponde a los criterios <b>incumplidos</b>, encontrados por la evaluación automática, organizados por pauta."]]></textFieldExpression>
+			</textField>
+			<barChart>
+				<chart isShowLegend="false" evaluationTime="Report">
+					<reportElement x="0" y="50" width="520" height="430" backcolor="#FFFFFF" uuid="f2ea63fc-0a1f-447f-b942-bfa18af99460">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value=""/>
+					</reportElement>
+					<box leftPadding="0" rightPadding="0">
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<chartTitle position="Bottom">
+						<font fontName="Lato" size="14" pdfEncoding=""/>
+					</chartTitle>
+					<chartSubtitle/>
+					<chartLegend>
+						<font fontName="Lato" size="12" isBold="true" pdfEncoding=""/>
+					</chartLegend>
+				</chart>
+				<categoryDataset>
+					<dataset resetType="Report">
+						<datasetRun subDataset="failedCriterionByGuidelineCountAll" uuid="f0c90bea-3905-4d55-9920-916ffa884f86">
+							<datasetParameter name="evaluationId">
+								<datasetParameterExpression><![CDATA[$P{g_evaluationId}]]></datasetParameterExpression>
+							</datasetParameter>
+							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						</datasetRun>
+					</dataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Pautas"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{Pautas}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{Criterios(Cantidad)}]]></valueExpression>
+						<labelExpression><![CDATA[$F{Criterios(Cantidad)}+"  de  "+$F{CriteriosPorPauta}]]></labelExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot isShowLabels="true" isShowTickLabels="true" isShowTickMarks="true">
+					<plot orientation="Horizontal" labelRotation="0.01">
+						<seriesColor seriesOrder="0" color="#590F80"/>
+						<seriesColor seriesOrder="1" color="#105A60"/>
+						<seriesColor seriesOrder="2" color="#22BECA"/>
+					</plot>
+					<itemLabel color="#000000" backgroundColor="rgba(194, 140, 140, 0.0)"/>
+					<categoryAxisLabelExpression><![CDATA["Pautas"]]></categoryAxisLabelExpression>
+					<categoryAxisFormat labelRotation="0.01">
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</categoryAxisFormat>
+					<valueAxisLabelExpression><![CDATA["Cantidad de criterios incumplidos"]]></valueAxisLabelExpression>
+					<valueAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</valueAxisFormat>
+					<rangeAxisMaxValueExpression><![CDATA[13]]></rangeAxisMaxValueExpression>
+				</barPlot>
+			</barChart>
+			<ellipse>
+				<reportElement x="220" y="494" width="21" height="21" forecolor="#590F80" backcolor="#590F80" uuid="9d0bbfad-a50d-4d22-91db-e43538752b3a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineColor="#FFFFFF"/>
+				</graphicElement>
+			</ellipse>
+			<staticText>
+				<reportElement x="250" y="494" width="101" height="21" uuid="ccdaad8a-2358-4714-86c3-53404a847aae">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Lato" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No cumple]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="-2" y="520" width="546" height="20" uuid="cf5f21d6-6e78-4c1c-904d-28c39384ce51">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lato" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Gráfico 5: Criterios incumplidos por pauta"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="551" width="544" height="50" uuid="e8c1b7ef-4625-4754-8d3d-67c29febf21d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato&#xA;" size="12"/>
+				</textElement>
+				<text><![CDATA[El gráfico anterior muestra una barra pora cada pauta que presenta al menos un hallazgo, cada barra pertenece a una pauta evaluada en la evaluación automática e indica la cantidad de criterios que no cumplen en dicha pauta.]]></text>
+			</staticText>
+			<break>
+				<reportElement x="0" y="621" width="100" height="1" uuid="dabc3fa4-6fe7-4d12-9094-4d8c514525ea"/>
+			</break>
+		</band>
+		<band height="164">
+			<staticText>
+				<reportElement x="0" y="1" width="545" height="30" forecolor="#377A81" uuid="85e0a79d-307b-497d-a12f-f0942a1abbc1">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Lato" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tabla de cantidad de criterios incumplidos por pauta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="30" width="545" height="60" uuid="39e6c9a9-2cc9-4e2d-a97f-40990da10f66">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato" size="12"/>
+				</textElement>
+				<text><![CDATA[La siguiente tabla contiene dos cabeceras de columnas: Pautas, Criterios(Cantidad). La primer columna de la tabla, corresponde a la pauta a la que pertenecen los hallazgos encontrados; y la segunda columna es la cantidad de criterios que no cumplen para dicha pauta.]]></text>
+			</staticText>
+			<break>
+				<reportElement x="0" y="163" width="99" height="1" uuid="b5114981-d8a0-4c5d-b02b-cdddc0098807"/>
+			</break>
+			<componentElement>
+				<reportElement x="99" y="90" width="360" height="60" uuid="4a1259c6-c16f-417e-902a-86d0f2f06338">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="failedCriterionByGuidelineCountAll" uuid="149ea830-f1f2-4174-9282-fe0f0f0101c2">
+						<datasetParameter name="evaluationId">
+							<datasetParameterExpression><![CDATA[$P{g_evaluationId}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="200" uuid="d5c2a25f-716e-4406-aedc-2784a18a55bb">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+						<jr:columnHeader height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="200" height="30" forecolor="#377A81" uuid="213658e8-3967-413d-8005-29b18b148bac"/>
+								<box>
+									<pen lineWidth="0.25" lineColor="#000000"/>
+									<topPen lineWidth="1.0" lineColor="#000000"/>
+									<leftPen lineWidth="1.0" lineColor="#000000"/>
+									<bottomPen lineWidth="1.0" lineColor="#000000"/>
+									<rightPen lineWidth="1.0" lineColor="#000000"/>
+								</box>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font fontName="Lato&#xA;" size="12"/>
+								</textElement>
+								<text><![CDATA[  Pautas]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="30">
+							<textField>
+								<reportElement x="0" y="0" width="200" height="30" forecolor="#002D2E" uuid="b82b9aae-43d2-457e-8203-115b731670ab"/>
+								<box>
+									<pen lineWidth="0.5" lineColor="#000000"/>
+								</box>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font fontName="Lato&#xA;" size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[' '+$F{Pautas}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="160" uuid="e5415e9a-55d9-4a2e-922f-0bf5a36ab4f5">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+						<jr:columnHeader height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="160" height="30" forecolor="#377A81" uuid="fc095d23-b686-4e25-9683-824f5a6ec65c"/>
+								<box>
+									<pen lineColor="#000000"/>
+									<topPen lineWidth="1.0" lineColor="#000000"/>
+									<leftPen lineWidth="1.0" lineColor="#000000"/>
+									<bottomPen lineWidth="1.0" lineColor="#000000"/>
+									<rightPen lineWidth="1.0" lineColor="#000000"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Lato&#xA;" size="12"/>
+								</textElement>
+								<text><![CDATA[Criterios(Cantidad)]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="30">
+							<textField>
+								<reportElement x="0" y="0" width="160" height="30" forecolor="#002D2E" uuid="9d937748-6dea-4896-bfae-d3d4d6065747"/>
+								<box>
+									<pen lineColor="#000000"/>
+									<topPen lineWidth="1.0" lineColor="#000000"/>
+									<leftPen lineWidth="1.0" lineColor="#000000"/>
+									<bottomPen lineWidth="1.0" lineColor="#000000"/>
+									<rightPen lineWidth="1.0" lineColor="#000000"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Lato&#xA;" size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{Criterios(Cantidad)} + " de un total de "+$F{CriteriosPorPauta}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+		<band height="622">
+			<textField>
+				<reportElement x="0" y="0" width="544" height="40" uuid="234c5e8d-bd3a-4415-8ba7-62b11e8a35d2">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="html">
+					<font fontName="Lato" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["El siguiente gráfico muestra los hallazgos de  <b> incumplimientos </b>, identificados por la evaluación automática, organizados por pauta."]]></textFieldExpression>
+			</textField>
+			<barChart>
+				<chart isShowLegend="false" evaluationTime="Report">
+					<reportElement x="-10" y="50" width="554" height="430" backcolor="#FFFFFF" uuid="f2614df4-7b15-40d8-b473-0e34e19b7d59">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value=""/>
+					</reportElement>
+					<box leftPadding="0" rightPadding="0">
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<chartTitle position="Bottom">
+						<font fontName="Lato" size="14" pdfEncoding=""/>
+					</chartTitle>
+					<chartSubtitle/>
+					<chartLegend>
+						<font fontName="Lato" size="12" isBold="true" pdfEncoding=""/>
+					</chartLegend>
+				</chart>
+				<categoryDataset>
+					<dataset resetType="Report">
+						<datasetRun subDataset="failedCriterionByGuidelineCountAll" uuid="f92e1e7b-7102-4778-92a2-26543cd7b023">
+							<datasetParameter name="evaluationId">
+								<datasetParameterExpression><![CDATA[$P{g_evaluationId}]]></datasetParameterExpression>
+							</datasetParameter>
+							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						</datasetRun>
+					</dataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Pautas"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{Pautas}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{Hallazgos(Cantidad)}]]></valueExpression>
+						<labelExpression><![CDATA[$F{Hallazgos(Cantidad)}+" "]]></labelExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot isShowLabels="true" isShowTickLabels="true" isShowTickMarks="true">
+					<plot orientation="Horizontal" labelRotation="0.01">
+						<seriesColor seriesOrder="0" color="#590F80"/>
+						<seriesColor seriesOrder="1" color="#105A60"/>
+						<seriesColor seriesOrder="2" color="#22BECA"/>
+					</plot>
+					<itemLabel color="#000000" backgroundColor="rgba(194, 140, 140, 0.0)"/>
+					<categoryAxisLabelExpression><![CDATA["Pautas"]]></categoryAxisLabelExpression>
+					<categoryAxisFormat labelRotation="0.01">
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</categoryAxisFormat>
+					<valueAxisLabelExpression><![CDATA["Cantidad de hallazgos"]]></valueAxisLabelExpression>
+					<valueAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" tickLabelMask="0" axisLineColor="#000000"/>
+					</valueAxisFormat>
+				</barPlot>
+			</barChart>
+			<ellipse>
+				<reportElement x="220" y="494" width="21" height="21" forecolor="#590F80" backcolor="#590F80" uuid="29ee02c3-f8ef-431b-9e9f-eb5571ec537a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineColor="#FFFFFF"/>
+				</graphicElement>
+			</ellipse>
+			<staticText>
+				<reportElement x="250" y="494" width="101" height="21" uuid="c06c1955-c381-4fb7-a048-39c96a33e5ea">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Lato" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No cumple]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="-2" y="520" width="546" height="20" uuid="3fda31b9-2e64-41f9-8f38-b0e0518ea75c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lato" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Gráfico 6: Hallazgos de incumplimientos por pauta"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="551" width="544" height="50" uuid="bd9f981a-e722-454f-b63f-858a20c51378">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato&#xA;" size="12"/>
+				</textElement>
+				<text><![CDATA[El gráfico anterior muestra barras para pautas que presentan algún hallazgo, cada barra pertenece a una pauta evaluada en la evaluación automática e indica la cantidad de veces que se incumple cada criterio en la pauta correspondiente.]]></text>
+			</staticText>
+			<break>
+				<reportElement x="0" y="621" width="100" height="1" uuid="f6cc7c8c-9acb-4482-ab9e-e4be0db5389c"/>
+			</break>
+		</band>
+		<band height="164">
+			<staticText>
+				<reportElement x="0" y="1" width="545" height="30" forecolor="#377A81" uuid="0dc01251-f754-4811-891a-8d6ec3092a44">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Lato" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tabla de cantidad de hallazgos automáticos por pauta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="30" width="545" height="60" uuid="a98e52b6-beba-4c22-b653-8dd06570da79">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato" size="12"/>
+				</textElement>
+				<text><![CDATA[La siguiente tabla contiene dos cabeceras de columnas: Pautas, Hallazgos(Cantidad). La primer columna de la tabla, corresponde a la pauta a la que pertenecen los hallazgos encontrados; y la segunda columna es la cantidad de veces que se incumplen criterios para dicha pauta.]]></text>
+			</staticText>
+			<break>
+				<reportElement x="0" y="163" width="99" height="1" uuid="570b8856-2407-498d-8495-049e0f12e621"/>
+			</break>
+			<componentElement>
+				<reportElement x="99" y="90" width="360" height="60" uuid="ae776530-3243-4db8-b25a-06738a6a8b5e">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="failedCriterionByGuidelineCountAll" uuid="a2bb41ef-60c3-449e-a11d-6a4344dade0b">
+						<datasetParameter name="evaluationId">
+							<datasetParameterExpression><![CDATA[$P{g_evaluationId}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="200" uuid="efed2031-d6d2-4efd-8e8e-45c9e3207452">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+						<jr:columnHeader height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="200" height="30" forecolor="#377A81" uuid="9edecb6d-3b46-429c-b386-879446fa150e"/>
+								<box>
+									<pen lineWidth="0.25" lineColor="#000000"/>
+									<topPen lineWidth="1.0" lineColor="#000000"/>
+									<leftPen lineWidth="1.0" lineColor="#000000"/>
+									<bottomPen lineWidth="1.0" lineColor="#000000"/>
+									<rightPen lineWidth="1.0" lineColor="#000000"/>
+								</box>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font fontName="Lato&#xA;" size="12"/>
+								</textElement>
+								<text><![CDATA[  Pautas]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="30">
+							<textField>
+								<reportElement x="0" y="0" width="200" height="30" forecolor="#002D2E" uuid="f43eae41-7c4a-4042-b31a-9afcc06994f9"/>
+								<box>
+									<pen lineWidth="0.5" lineColor="#000000"/>
+								</box>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font fontName="Lato&#xA;" size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[' '+$F{Pautas}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="160" uuid="6445bc80-a9a7-4683-9e61-2417641f62f9">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+						<jr:columnHeader height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="160" height="30" forecolor="#377A81" uuid="be7c02ab-057d-4242-84b4-a35bca8d4bd6"/>
+								<box>
+									<pen lineColor="#000000"/>
+									<topPen lineWidth="1.0" lineColor="#000000"/>
+									<leftPen lineWidth="1.0" lineColor="#000000"/>
+									<bottomPen lineWidth="1.0" lineColor="#000000"/>
+									<rightPen lineWidth="1.0" lineColor="#000000"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Lato&#xA;" size="12"/>
+								</textElement>
+								<text><![CDATA[Hallazgos(Cantidad)]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="30">
+							<textField>
+								<reportElement x="0" y="0" width="160" height="30" forecolor="#002D2E" uuid="9053ec3c-0af9-42d8-b29f-66ddf9b9690b"/>
+								<box>
+									<pen lineColor="#000000"/>
+									<topPen lineWidth="1.0" lineColor="#000000"/>
+									<leftPen lineWidth="1.0" lineColor="#000000"/>
+									<bottomPen lineWidth="1.0" lineColor="#000000"/>
+									<rightPen lineWidth="1.0" lineColor="#000000"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Lato&#xA;" size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{Hallazgos(Cantidad)}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+		<band height="610">
+			<staticText>
+				<reportElement x="0" y="1" width="544" height="40" uuid="2b860ac4-0d3c-4103-b2d4-c2886094ea3f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="html">
+					<font fontName="Lato" size="12"/>
+				</textElement>
+				<text><![CDATA["El siguiente gráfico corresponde a los criterios <b>incumplidos</b>, identificados por la evaluación automática, organizados por página."]]></text>
+			</staticText>
+			<barChart>
+				<chart isShowLegend="false" evaluationTime="Report">
+					<reportElement x="19" y="50" width="480" height="430" uuid="8832006d-9847-4a2f-a639-e50257fe4a4c">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box leftPadding="0" rightPadding="0">
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<chartTitle position="Bottom">
+						<font fontName="Lato" size="14" pdfEncoding=""/>
+					</chartTitle>
+					<chartSubtitle/>
+					<chartLegend>
+						<font fontName="Lato" size="12" isBold="true" pdfEncoding=""/>
+					</chartLegend>
+				</chart>
+				<categoryDataset>
+					<dataset resetType="Report">
+						<datasetRun subDataset="failedCriterionByPagesCountAll" uuid="62a4b9b3-165c-409d-a15c-476ede195278">
+							<datasetParameter name="evaluationId">
+								<datasetParameterExpression><![CDATA[$P{g_evaluationId}]]></datasetParameterExpression>
+							</datasetParameter>
+							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						</datasetRun>
+					</dataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Páginas"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{Páginas}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{Criterios(Cantidad)}]]></valueExpression>
+						<labelExpression><![CDATA["  "+$F{Criterios(Cantidad)}+" de "+$F{totalCriterios}]]></labelExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot isShowLabels="true" isShowTickLabels="true" isShowTickMarks="true">
+					<plot orientation="Horizontal" labelRotation="0.01">
+						<seriesColor seriesOrder="0" color="#590F80"/>
+						<seriesColor seriesOrder="1" color="#105A60"/>
+						<seriesColor seriesOrder="2" color="#22BECA"/>
+					</plot>
+					<itemLabel color="#000000"/>
+					<categoryAxisLabelExpression><![CDATA["Páginas"]]></categoryAxisLabelExpression>
+					<categoryAxisFormat labelRotation="0.01">
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" tickLabelMask="0" axisLineColor="#000000"/>
+					</categoryAxisFormat>
+					<valueAxisLabelExpression><![CDATA["Cantidad de criterios incumplidos"]]></valueAxisLabelExpression>
+					<valueAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" tickLabelMask="0" axisLineColor="#000000"/>
+					</valueAxisFormat>
+					<rangeAxisMaxValueExpression><![CDATA[53]]></rangeAxisMaxValueExpression>
+				</barPlot>
+			</barChart>
+			<staticText>
+				<reportElement x="0" y="540" width="544" height="50" uuid="1c91a6bf-98bb-4475-8bd2-aed110d0ba84">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato&#xA;" size="12"/>
+				</textElement>
+				<text><![CDATA[El gráfico anterior se muestra cada página evaluada en la evaluación automática como un grupo de barras, cada barra muestra la cantidad de veces que se incumple un criterio en la página correspondiente.]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement x="220" y="490" width="21" height="21" forecolor="#590F80" backcolor="#590F80" uuid="e8a640bd-b805-4a13-b494-12248aee88a9">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineColor="#FFFFFF"/>
+				</graphicElement>
+			</ellipse>
+			<staticText>
+				<reportElement x="250" y="490" width="101" height="21" uuid="99edcae9-ba54-45bb-a445-47e4627ad136"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Lato" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No cumple]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="518" width="544" height="20" uuid="1efe76c0-f388-41d4-9ead-456e2f9ef151">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lato" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Gráfico 7: Criterios incumplidos por página"]]></textFieldExpression>
+			</textField>
+			<break>
+				<reportElement x="0" y="599" width="100" height="1" uuid="8173f1ec-6568-4598-870d-819608153f3c"/>
+			</break>
+		</band>
+		<band height="164">
+			<staticText>
+				<reportElement x="0" y="1" width="545" height="30" forecolor="#377A81" uuid="58d66ac0-97cf-47c7-8c59-068ed6458da9">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Lato" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tabla de cantidad de hallazgos automáticos por página]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="30" width="545" height="60" uuid="8ddfd6a1-bc41-477d-9b6d-dae796e83fde">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato" size="12"/>
+				</textElement>
+				<text><![CDATA[La siguiente tabla contiene tres cabeceras de columnas: Páginas, No Cumple y URL. La primer columna de la tabla, corresponde al número de página evaluada; la segunda columna es la cantidad de criterios encontrados que no cumplen en esa página; y la tercer columna es la dirección ’URL’ de la respectiva página.]]></text>
+			</staticText>
+			<break>
+				<reportElement x="0" y="163" width="99" height="1" uuid="a185e476-6d70-4e23-aa88-48fbc60fbe2a"/>
+			</break>
+			<componentElement>
+				<reportElement x="40" y="100" width="470" height="60" uuid="ea2852cd-0b11-4036-99bd-05b162b311c2">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="failedCriterionByPagesCountAll" uuid="4e65a3b5-92af-42e7-a101-fc37ca4a4caa">
+						<datasetParameter name="evaluationId">
+							<datasetParameterExpression><![CDATA[$P{g_evaluationId}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="80" uuid="b671cc95-dd2f-4a25-8bd3-1740c5cee986">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+						<jr:columnHeader height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="80" height="30" forecolor="#377A81" uuid="83acbef9-21a0-42a8-b643-86ee4dff0cfc"/>
+								<box>
+									<pen lineWidth="0.25" lineColor="#000000"/>
+									<topPen lineWidth="1.0" lineColor="#000000"/>
+									<leftPen lineWidth="1.0" lineColor="#000000"/>
+									<bottomPen lineWidth="1.0" lineColor="#000000"/>
+									<rightPen lineWidth="1.0" lineColor="#000000"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Lato&#xA;" size="12"/>
+								</textElement>
+								<text><![CDATA[  Páginas]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="30">
+							<textField>
+								<reportElement x="0" y="0" width="80" height="30" forecolor="#002D2E" uuid="735046fa-d790-47ff-a542-f9005765098f"/>
+								<box>
+									<pen lineWidth="0.5" lineColor="#000000"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Lato&#xA;" size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{Páginas}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="80" uuid="326bc9fa-0686-48bd-9e12-188f0ad2b454">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+						<jr:columnHeader height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="80" height="30" forecolor="#377A81" uuid="edf7b4ab-c06a-41b3-9273-ed67760f9d89"/>
+								<box>
+									<pen lineColor="#000000"/>
+									<topPen lineWidth="1.0" lineColor="#000000"/>
+									<leftPen lineWidth="1.0" lineColor="#000000"/>
+									<bottomPen lineWidth="1.0" lineColor="#000000"/>
+									<rightPen lineWidth="1.0" lineColor="#000000"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Lato&#xA;" size="12"/>
+								</textElement>
+								<text><![CDATA[Criterios(Cantidad)]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="30">
+							<textField>
+								<reportElement x="0" y="0" width="80" height="30" forecolor="#002D2E" uuid="aad4326c-779d-41d1-8e21-ad2df1c915b2"/>
+								<box>
+									<pen lineColor="#000000"/>
+									<topPen lineWidth="1.0" lineColor="#000000"/>
+									<leftPen lineWidth="1.0" lineColor="#000000"/>
+									<bottomPen lineWidth="1.0" lineColor="#000000"/>
+									<rightPen lineWidth="1.0" lineColor="#000000"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Lato&#xA;" size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{Criterios(Cantidad)} + " de 53"]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="310" uuid="098bdeb5-3449-4474-a86e-60fc550348b2">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<jr:columnHeader height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="310" height="30" forecolor="#377A81" uuid="32ade88d-71e3-4ff9-a40a-25c2e68ff66e"/>
+								<box>
+									<pen lineColor="#000000"/>
+									<topPen lineWidth="1.0" lineColor="#000000"/>
+									<leftPen lineWidth="1.0" lineColor="#000000"/>
+									<bottomPen lineWidth="1.0" lineColor="#000000"/>
+									<rightPen lineWidth="1.0" lineColor="#000000"/>
+								</box>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font fontName="Lato&#xA;" size="12"/>
+								</textElement>
+								<text><![CDATA[  URL]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="30">
+							<textField>
+								<reportElement x="0" y="0" width="310" height="30" forecolor="#002D2E" uuid="aba1d208-8be6-45e5-8d96-e4d5745aa339"/>
+								<box>
+									<pen lineColor="#000000"/>
+									<topPen lineWidth="1.0" lineColor="#000000"/>
+									<leftPen lineWidth="1.0" lineColor="#000000"/>
+									<bottomPen lineWidth="1.0" lineColor="#000000"/>
+									<rightPen lineWidth="1.0" lineColor="#000000"/>
+								</box>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font fontName="Lato&#xA;" size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[' ' + $F{url}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+		<band height="622">
+			<textField>
+				<reportElement x="0" y="0" width="544" height="40" uuid="11a02b35-959d-44b0-9c99-c737fc659ab6">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="html">
+					<font fontName="Lato" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["El siguiente gráfico  muestra los hallazgos de  <b> incumplimientos </b>, encontrados por la evaluación automática, organizados por página."]]></textFieldExpression>
+			</textField>
+			<barChart>
+				<chart isShowLegend="false" evaluationTime="Report">
+					<reportElement x="-10" y="50" width="554" height="430" backcolor="#FFFFFF" uuid="add01205-167b-408d-bc88-6baf69a14399">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value=""/>
+					</reportElement>
+					<box leftPadding="0" rightPadding="0">
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<chartTitle position="Bottom">
+						<font fontName="Lato" size="14" pdfEncoding=""/>
+					</chartTitle>
+					<chartSubtitle/>
+					<chartLegend>
+						<font fontName="Lato" size="12" isBold="true" pdfEncoding=""/>
+					</chartLegend>
+				</chart>
+				<categoryDataset>
+					<dataset resetType="Report">
+						<datasetRun subDataset="failedCriterionByPagesCountAll" uuid="9f3c9f56-b1b1-480a-8796-93b2b671ef36">
+							<datasetParameter name="evaluationId">
+								<datasetParameterExpression><![CDATA[$P{g_evaluationId}]]></datasetParameterExpression>
+							</datasetParameter>
+							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						</datasetRun>
+					</dataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Página"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{Páginas}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{Hallazgos(Cantidad)}]]></valueExpression>
+						<labelExpression><![CDATA[$F{Hallazgos(Cantidad)}+" "]]></labelExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot isShowLabels="true" isShowTickLabels="true" isShowTickMarks="true">
+					<plot orientation="Horizontal" labelRotation="0.01">
+						<seriesColor seriesOrder="0" color="#590F80"/>
+						<seriesColor seriesOrder="1" color="#105A60"/>
+						<seriesColor seriesOrder="2" color="#22BECA"/>
+					</plot>
+					<itemLabel color="#000000" backgroundColor="rgba(194, 140, 140, 0.0)"/>
+					<categoryAxisLabelExpression><![CDATA["Pautas"]]></categoryAxisLabelExpression>
+					<categoryAxisFormat labelRotation="0.01">
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</categoryAxisFormat>
+					<valueAxisLabelExpression><![CDATA["Cantidad de hallazgos"]]></valueAxisLabelExpression>
+					<valueAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" tickLabelMask="0" axisLineColor="#000000"/>
+					</valueAxisFormat>
+				</barPlot>
+			</barChart>
+			<ellipse>
+				<reportElement x="220" y="494" width="21" height="21" forecolor="#590F80" backcolor="#590F80" uuid="97c839bc-abcb-40a7-a1f3-a34ea71ab9e5">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineColor="#FFFFFF"/>
+				</graphicElement>
+			</ellipse>
+			<staticText>
+				<reportElement x="250" y="494" width="101" height="21" uuid="1625b874-bc93-41e5-96f6-b2a5ce638102">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Lato" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No cumple]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="-2" y="520" width="546" height="20" uuid="062587cd-1371-4cf3-b1f4-45cbf1724e00">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lato" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Gráfico 8: Hallazgos de incumplimientos por página"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="551" width="544" height="50" uuid="7ede2b54-8b9a-4b94-861d-5f8d995f49a7">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato&#xA;" size="12"/>
+				</textElement>
+				<text><![CDATA[El gráfico anterior muestra diferentes grupos de barras, cada grupo pertenece a una página evaluada en la evaluación automática. Cada barra del gráfico indica la cantidad de veces que se incumple cada criterio en la página correspondiente.]]></text>
+			</staticText>
+			<break>
+				<reportElement x="0" y="621" width="100" height="1" uuid="28a47aa9-8240-44ce-ab5e-e9cab3180d6d"/>
+			</break>
+		</band>
+		<band height="174">
+			<staticText>
+				<reportElement x="0" y="1" width="545" height="30" forecolor="#377A81" uuid="8c7b12e6-0c32-4922-b068-d7cf562fa65d">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Lato" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tabla de cantidad de hallazgos automáticos por página]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="30" width="545" height="64" uuid="c51ce580-73c5-4d07-829e-eb67e4d2ad04">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato" size="12"/>
+				</textElement>
+				<text><![CDATA[La siguiente tabla contiene tres cabeceras de columnas: Páginas, Hallazgos(Cantidad) y URL. La primer columna de la tabla, corresponde al número de página evaluada; la segunda columna es la cantidad veces que se incumple un criterio en esa página; y la tercer columna es la dirección ’URL’ de la respectiva página.]]></text>
+			</staticText>
+			<break>
+				<reportElement x="0" y="173" width="99" height="1" uuid="a8df6b7c-d492-495d-b041-830f89cbbee7">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+			</break>
+			<componentElement>
+				<reportElement x="40" y="100" width="470" height="60" uuid="c2902ef7-d83b-4b22-adfb-a084ee7ecfb0">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="failedCriterionByPagesCountAll" uuid="f0cce442-d209-4cf4-8307-53b6f53d2e07">
+						<datasetParameter name="evaluationId">
+							<datasetParameterExpression><![CDATA[$P{g_evaluationId}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="80" uuid="1add64b1-c49e-44db-8288-d9833d580c79">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+						<jr:columnHeader height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="80" height="30" forecolor="#377A81" uuid="a0fdfa95-1fbe-46a2-b66d-6a0a145c49f8"/>
+								<box>
+									<pen lineWidth="0.25" lineColor="#000000"/>
+									<topPen lineWidth="1.0" lineColor="#000000"/>
+									<leftPen lineWidth="1.0" lineColor="#000000"/>
+									<bottomPen lineWidth="1.0" lineColor="#000000"/>
+									<rightPen lineWidth="1.0" lineColor="#000000"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Lato&#xA;" size="12"/>
+								</textElement>
+								<text><![CDATA[  Páginas]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="30">
+							<textField>
+								<reportElement x="0" y="0" width="80" height="30" forecolor="#002D2E" uuid="cf101a35-67f0-4861-9887-e332b3858d80"/>
+								<box>
+									<pen lineWidth="0.5" lineColor="#000000"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Lato&#xA;" size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{Páginas}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="80" uuid="b8ace79d-c843-4ac5-9683-78a99bcde64f">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+						<jr:columnHeader height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="80" height="30" forecolor="#377A81" uuid="ce1f83fb-052a-4a5a-b782-edca647caa63"/>
+								<box>
+									<pen lineColor="#000000"/>
+									<topPen lineWidth="1.0" lineColor="#000000"/>
+									<leftPen lineWidth="1.0" lineColor="#000000"/>
+									<bottomPen lineWidth="1.0" lineColor="#000000"/>
+									<rightPen lineWidth="1.0" lineColor="#000000"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Lato&#xA;" size="12"/>
+								</textElement>
+								<text><![CDATA[Hallazgos(Cantidad)]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="30">
+							<textField>
+								<reportElement x="0" y="0" width="80" height="30" forecolor="#002D2E" uuid="65410428-e18d-46c3-90bc-be203458ebb5"/>
+								<box>
+									<pen lineColor="#000000"/>
+									<topPen lineWidth="1.0" lineColor="#000000"/>
+									<leftPen lineWidth="1.0" lineColor="#000000"/>
+									<bottomPen lineWidth="1.0" lineColor="#000000"/>
+									<rightPen lineWidth="1.0" lineColor="#000000"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Lato&#xA;" size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{Hallazgos(Cantidad)}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="310" uuid="cd3c02f0-7129-4c3c-8a94-2c7af349421d">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<jr:columnHeader height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="310" height="30" forecolor="#377A81" uuid="2ad10fba-87b1-4bfa-a3bc-bf16e798077f"/>
+								<box>
+									<pen lineColor="#000000"/>
+									<topPen lineWidth="1.0" lineColor="#000000"/>
+									<leftPen lineWidth="1.0" lineColor="#000000"/>
+									<bottomPen lineWidth="1.0" lineColor="#000000"/>
+									<rightPen lineWidth="1.0" lineColor="#000000"/>
+								</box>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font fontName="Lato&#xA;" size="12"/>
+								</textElement>
+								<text><![CDATA[  URL]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="30">
+							<textField>
+								<reportElement x="0" y="0" width="310" height="30" forecolor="#002D2E" uuid="896c008b-2201-4fd1-8e3e-0a3a1b6376f9"/>
+								<box>
+									<pen lineColor="#000000"/>
+									<topPen lineWidth="1.0" lineColor="#000000"/>
+									<leftPen lineWidth="1.0" lineColor="#000000"/>
+									<bottomPen lineWidth="1.0" lineColor="#000000"/>
+									<rightPen lineWidth="1.0" lineColor="#000000"/>
+								</box>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font fontName="Lato&#xA;" size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[' ' + $F{url}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+</jasperReport>

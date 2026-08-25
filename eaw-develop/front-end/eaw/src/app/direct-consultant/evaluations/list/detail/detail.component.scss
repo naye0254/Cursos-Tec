@@ -1,0 +1,104 @@
+@import '../../../../shared/list-evaluations/list-evaluations/list-evaluations.component.scss';
+
+.l-result-header {
+  .c-button-like-link {
+    background: none !important;
+    color: mat-color($dark-gray);
+    font-size: 15px !important;
+    border: none;
+    padding: 0 !important;
+    display: table;
+    position: relative;
+    left: -26px;
+    font: inherit;
+    cursor: pointer;
+    .c-icon {
+      margin-right: 5px;
+      font-size: 15px;
+    }
+  }
+
+  .c-title {
+    font-size: 16px !important;
+    &.c-subtitle {
+      font-size: 35px !important;
+    }
+  }
+  .c-send-results {
+    color: mat-color($primary);
+    font-weight: bold;
+    border: 1px solid mat-color($primary);
+    border-radius: 33px;
+    margin-top: 4%;
+  }
+  .c-sended-results {
+    color: mat-color($primary);
+    font-weight: bold;
+    margin-top: 4%;
+  }
+  .l-menu {
+    width: 100%;
+    padding-left: 9vh;
+    .l-details {
+      .c-detail-button {
+        background-color: mat-color($dark-turquoise);
+        color: mat-color($white);
+        width: 100%;
+        text-align: left;
+        i {
+          margin-left: 56%;
+        }
+      }
+      .l-detail-info {
+        word-break: break-all;
+        background: $gallery 0% 0% no-repeat padding-box;
+        padding: 6%;
+        display: grid;
+        .c-title {
+          font-weight: bold;
+        }
+      }
+    }
+    .l-cards {
+      .c-card-menu {
+        margin-left: 2%;
+        margin-right: 2%;
+        box-shadow: 0px 3px 6px $shadow-box;
+        border: 1px solid $gallery;
+        border-radius: 10px;
+        opacity: 0.5;
+        .c-image-menu {
+          margin-top: 10%;
+          padding-top: 10%;
+          max-width: 100px;
+          max-height: 120px;
+        }
+        .c-h3 {
+          margin-top: 15%;
+          padding-bottom: 10%;
+          color: mat-color($dark-turquoise);
+          font-weight: bold;
+          font-size: 22px;
+        }
+      }
+    }
+  }
+}
+
+.c-divider {
+  width: 90%;
+  margin: 0 auto;
+  background: $silver;
+}
+
+[data-toggle='collapse'] .fa:before {
+  content: '\f106';
+}
+
+[data-toggle='collapse'].collapsed .fa:before {
+  content: '\f107';
+}
+
+.card-active {
+  opacity: 1 !important;
+}

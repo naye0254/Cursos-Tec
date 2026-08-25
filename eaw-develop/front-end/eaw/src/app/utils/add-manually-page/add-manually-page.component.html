@@ -1,0 +1,99 @@
+<div class="container-fluid d-flex h-100 bg">
+  <div class="row align-self-center w-100">
+    <div class="col-6 mx-auto">
+      <div class="container top">
+        <img
+          aria-hidden="true"
+          src="./assets/img/layout/Evaluador_logo.png"
+          height="60"
+          width="auto"
+          alt="Evaluador de Accesibilidad Web"
+        />
+      </div>
+      <div class="container message">
+        <h1>Agregar página manualmente</h1>
+        <form [formGroup]="manuallyForm" class="mt-4 mb-4">
+          <div class="row mb-2">
+            <div class="col-4">
+              <label class="c-label">ID Evaluación: </label>
+            </div>
+            <div class="col-8">
+              <input type="text" class="inp" formControlName="idEvaluation" />
+              <div aria-live="polite">
+                <div
+                  *ngIf="
+                    manuallyForm.controls.idEvaluation.hasError('required') &&
+                    manuallyForm.controls.idEvaluation.touched
+                  "
+                  class="errormsg"
+                >
+                  <span role="heading" aria-level="2"
+                    >El ID de evaluación es requerido.</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-4">
+              <label class="c-label">URL: </label>
+            </div>
+            <div class="col-8">
+              <input type="text" class="inp" formControlName="url" />
+              <div aria-live="polite">
+                <div
+                  *ngIf="
+                    manuallyForm.controls.url.hasError('required') &&
+                    manuallyForm.controls.url.touched
+                  "
+                  class="errormsg"
+                >
+                  <span role="heading" aria-level="2"
+                    >El URL es requerido.</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-4">
+              <label class="c-label">Título: </label>
+            </div>
+            <div class="col-8">
+              <input type="text" class="inp" formControlName="title" />
+              <div aria-live="polite">
+                <div
+                  *ngIf="
+                    manuallyForm.controls.title.hasError('required') &&
+                    manuallyForm.controls.title.touched
+                  "
+                  class="errormsg"
+                >
+                  <span role="heading" aria-level="2"
+                    >El título es requerido.</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+        <button
+          mat-raised-button
+          id="btnStart"
+          (click)="startEvaluation(manuallyForm.value)"
+        >
+          Iniciar evaluación
+        </button>
+        <button
+          mat-raised-button
+          class="ml-5"
+          [ngClass]="{disabled: !manuallyForm.valid}"
+          [disabled]="!manuallyForm.valid"
+          (click)="addPage(manuallyForm.value, manuallyForm.valid)"
+        >
+          Agregar página
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

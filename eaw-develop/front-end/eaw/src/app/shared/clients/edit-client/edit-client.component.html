@@ -1,0 +1,380 @@
+<div class="container l-confirm-dialog l-client">
+  <div class="row">
+    <div class="col-12 mx-auto text-center">
+      <div mat-dialog-title>
+        <h1 class="c-dialog-title" color="primary" translate>
+          administrator.clients.manage.titleEdit
+        </h1>
+      </div>
+      <div mat-dialog-content class="l-modal-content">
+        <form class="row  l-form mt-3" [formGroup]="clientForm">
+          <fieldset class="col-12">
+            <legend class="c-title-section" translate>
+              administrator.clients.manage.generalInfo.title
+            </legend>
+            <mat-form-field appearance="outline" class="l-form-field">
+              <mat-label translate>
+                administrator.clients.manage.generalInfo.name</mat-label
+              >
+              <input
+                matInput
+                #messageName
+                maxLength="{{ formOptions.lengthInputName }}"
+                formControlName="firstName"
+                required
+                type="text"
+              />
+              <mat-error
+                *ngIf="clientForm.get('firstName').hasError('required')"
+              >
+                {{
+                  'administrator.clients.manage.generalInfo.errorName'
+                    | translate
+                }}
+              </mat-error>
+              <mat-hint class="mb-3 c-hint" align="end">
+                <span class="sr-only"
+                  >{{ formOptions.lengthInputName - messageName.value.length }}
+                  caracteres restantes
+                </span>
+                <span aria-hidden="true">
+                  {{ messageName.value.length }} /
+                  {{ formOptions.lengthInputName }}
+                </span>
+              </mat-hint>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="l-form-field">
+              <mat-label translate
+                >administrator.clients.manage.generalInfo.email
+              </mat-label>
+              <input
+                matInput
+                #email
+                maxLength="{{ formOptions.lengthInputEmail }}"
+                formControlName="email"
+                required
+                type="email"
+              />
+              <mat-error *ngIf="clientForm.get('email').hasError('required')">
+                {{
+                  'administrator.clients.manage.generalInfo.errorEmail'
+                    | translate
+                }}
+              </mat-error>
+              <mat-hint class="mb-3 c-hint" align="end">
+                <span class="sr-only"
+                  >{{ formOptions.lengthInputEmail - email.value.length }}
+                  caracteres restantes
+                </span>
+                <span aria-hidden="true">
+                  {{ email.value.length }} /
+                  {{ formOptions.lengthInputEmail }}
+                </span>
+              </mat-hint>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="l-form-field">
+              <mat-label translate
+                >administrator.clients.manage.generalInfo.phone
+              </mat-label>
+              <input
+                matInput
+                #phone
+                maxLength="{{ formOptions.lengthInputTelephone }}"
+                formControlName="telephone"
+                required
+                type="text"
+              />
+              <mat-error
+                *ngIf="clientForm.get('telephone').hasError('required')"
+              >
+                {{
+                  'administrator.clients.manage.generalInfo.errorPhone'
+                    | translate
+                }}
+              </mat-error>
+              <mat-hint class="mb-3 c-hint" align="end">
+                <span class="sr-only"
+                  >{{ formOptions.lengthInputTelephone - phone.value.length }}
+                  caracteres restantes
+                </span>
+                <span aria-hidden="true">
+                  {{ phone.value.length }} /
+                  {{ formOptions.lengthInputTelephone }}
+                </span>
+              </mat-hint>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="l-form-field">
+              <mat-label translate
+                >administrator.clients.manage.generalInfo.password
+              </mat-label>
+              <input
+                matInput
+                #password
+                maxLength="{{ formOptions.lengthInputPassword }}"
+                formControlName="password"
+                required
+                type="password"
+              />
+              <mat-error
+                *ngIf="clientForm.get('password').hasError('required')"
+              >
+                {{
+                  'administrator.clients.manage.generalInfo.errorPassword'
+                    | translate
+                }}
+              </mat-error>
+              <mat-hint class="mb-3 c-hint" align="end">
+                <span class="sr-only"
+                  >{{ formOptions.lengthInputPassword - password.value.length }}
+                  caracteres restantes
+                </span>
+                <span aria-hidden="true">
+                  {{ password.value.length }} /
+                  {{ formOptions.lengthInputPassword }}
+                </span>
+              </mat-hint>
+            </mat-form-field>
+          </fieldset>
+          <fieldset class="col-12 c-second-column">
+            <legend class="c-title-section" translate>
+              administrator.clients.manage.address.title
+            </legend>
+            <div class="row">
+              <mat-form-field
+                appearance="outline"
+                class="col-md-5 col-sm-12 l-form-field "
+              >
+                <mat-label translate>
+                  administrator.clients.manage.address.country</mat-label
+                >
+                <mat-select
+                  (selectionChange)="getSegmentsByCountry($event.value)"
+                  formControlName="countriesId"
+                  required
+                  name="countries"
+                >
+                  <mat-option
+                    *ngFor="let country of countries"
+                    [value]="country.id"
+                  >
+                    {{ country.name }}
+                  </mat-option>
+                </mat-select>
+                <mat-error
+                  *ngIf="clientForm.get('countriesId').hasError('required')"
+                >
+                  {{
+                    'administrator.clients.manage.address.countryError'
+                      | translate
+                  }}
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field
+                appearance="outline"
+                class="col-md-6 col-sm-12 l-form-field ml-auto"
+              >
+                <mat-label translate>
+                  administrator.clients.manage.address.city</mat-label
+                >
+                <input
+                  matInput
+                  #city
+                  maxLength="{{ formOptions.lengthInputCity }}"
+                  formControlName="city"
+                  required
+                  type="text"
+                />
+                <mat-error *ngIf="clientForm.get('city').hasError('required')">
+                  {{
+                    'administrator.clients.manage.address.cityError' | translate
+                  }}
+                </mat-error>
+                <mat-hint class="mb-3 c-hint" align="end">
+                  <span class="sr-only"
+                    >{{ formOptions.lengthInputCity - city.value.length }}
+                    caracteres restantes
+                  </span>
+                  <span aria-hidden="true">
+                    {{ city.value.length }} /
+                    {{ formOptions.lengthInputCity }}
+                  </span>
+                </mat-hint>
+              </mat-form-field>
+            </div>
+            <mat-form-field appearance="outline" class="l-form-field">
+              <mat-label translate
+                >administrator.clients.manage.address.region
+              </mat-label>
+              <input
+                matInput
+                #region
+                maxLength="{{ formOptions.lengthInputCountryRegion }}"
+                formControlName="countryRegion"
+                required
+                type="text"
+              />
+              <mat-error
+                *ngIf="clientForm.get('countryRegion').hasError('required')"
+              >
+                {{
+                  'administrator.clients.manage.address.regionError' | translate
+                }}
+              </mat-error>
+              <mat-hint class="mb-3 c-hint" align="end">
+                <span class="sr-only"
+                  >{{
+                    formOptions.lengthInputCountryRegion - region.value.length
+                  }}
+                  caracteres restantes
+                </span>
+                <span aria-hidden="true">
+                  {{ region.value.length }} /
+                  {{ formOptions.lengthInputCountryRegion }}
+                </span>
+              </mat-hint>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="l-form-field">
+              <mat-label translate
+                >administrator.clients.manage.address.code
+              </mat-label>
+              <input
+                matInput
+                #postalCode
+                maxLength="{{ formOptions.lengthInputPostalCode }}"
+                formControlName="postalCode"
+                required
+                type="text"
+              />
+              <mat-error
+                *ngIf="clientForm.get('postalCode').hasError('required')"
+              >
+                {{
+                  'administrator.clients.manage.address.codeError' | translate
+                }}
+              </mat-error>
+              <mat-hint class="mb-3 c-hint" align="end">
+                <span class="sr-only"
+                  >{{
+                    formOptions.lengthInputPostalCode - postalCode.value.length
+                  }}
+                  caracteres restantes
+                </span>
+                <span aria-hidden="true">
+                  {{ postalCode.value.length }} /
+                  {{ formOptions.lengthInputPostalCode }}
+                </span>
+              </mat-hint>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="l-form-field">
+              <mat-label translate
+                >administrator.clients.manage.address.address
+              </mat-label>
+              <input
+                matInput
+                #address
+                maxLength="{{ formOptions.lengthInputAddress }}"
+                formControlName="address"
+                required
+                type="text"
+              />
+              <mat-error *ngIf="clientForm.get('address').hasError('required')">
+                {{
+                  'administrator.clients.manage.address.addressError'
+                    | translate
+                }}
+              </mat-error>
+              <mat-hint class="mb-3 c-hint" align="end">
+                <span class="sr-only"
+                  >{{ formOptions.lengthInputAddress - address.value.length }}
+                  caracteres restantes
+                </span>
+                <span aria-hidden="true">
+                  {{ address.value.length }} /
+                  {{ formOptions.lengthInputAddress }}
+                </span>
+              </mat-hint>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="l-form-field">
+              <mat-label translate>
+                administrator.clients.manage.address.segment</mat-label
+              >
+              <mat-select
+                required
+                formControlName="segments"
+                name="segments"
+                multiple
+              >
+                <mat-option
+                  *ngFor="let segment of segmentsByCountry"
+                  [value]="segment.id"
+                >
+                  {{ segment.name }}
+                </mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="clientForm.get('segments').hasError('required')"
+              >
+                {{
+                  'administrator.clients.manage.address.segmentError'
+                    | translate
+                }}
+              </mat-error>
+            </mat-form-field>
+            <div appearance="outline" class="l-state">
+              <mat-label translate
+                >superAdministrator.manage.promoters.modal-manage.state-input</mat-label
+              >
+              <mat-radio-group formControlName="isActive">
+                <mat-radio-button class="c-radio" value="1">{{
+                  'superAdministrator.manage.promoters.modal-manage.active-input-label'
+                    | translate
+                }}</mat-radio-button>
+                <mat-radio-button class="c-radio" value="0">{{
+                  'superAdministrator.manage.promoters.modal-manage.inactive-input-label'
+                    | translate
+                }}</mat-radio-button>
+              </mat-radio-group>
+            </div>
+            <div class="c-button-aling">
+              <button
+              class="c-delete-btn"
+              mat-button
+              type="button"
+              (click)="deleteFunction()"
+              attr.aria-disabled="{{ !clientForm.valid }}"
+              tabindex="0"
+              [ngClass]="{disabled: !clientForm.valid}"
+              translate
+              >
+                {{ 'administrator.shared.deleteButton' | translate }}
+              </button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-actions class="row" class="l-buttons c-buttons">
+    <button
+      class="c-cancel-btn"
+      mat-raised-button
+      type="button"
+      (click)="cancel()"
+      translate
+    >
+      {{ 'administrator.shared.cancelButton' | translate }}
+    </button>
+    <button
+      class="c-submit-btn"
+      mat-raised-button
+      type="button"
+      (click)="confirmFunction()"
+      attr.aria-disabled="{{ !clientForm.valid }}"
+      tabindex="0"
+      [ngClass]="{disabled: !clientForm.valid}"
+      translate
+    >
+      {{ 'administrator.shared.editButton' | translate }}
+    </button>
+  </div>
+</div>

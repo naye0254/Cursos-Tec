@@ -1,0 +1,40 @@
+<div id="confirmationModal" role="alertdialog">
+  <div class="c-alert">
+    <div>
+      <div class="{{ getClassModal(data.type) }}">
+        <div class="modal-header">
+          <div
+            class="{{ getClassModalHeader(data.type) }}"
+            [innerHtml]="getIcon(data.type)"
+          ></div>
+          <div>
+            <h1 mat-dialog-title class="{{ getClassModalHeader(data.type) }}">
+              {{ data.title }}
+            </h1>
+          </div>
+        </div>
+        <div class="modal-body text-align">
+          <span role="alert" id="description" [innerHtml]="getText(data.text)">
+          </span>
+        </div>
+        <div
+          mat-dialog-actions
+          class="modal-footer center-block  space-bottom-20 mt-3"
+        >
+          <label id="btn-text" class="sr-only" aria-hidden="true">
+            {{ 'utils.alerts.btnOk' | translate }}
+          </label>
+          <button
+            id="focusable"
+            #focusable
+            mat-raised-button
+            aria-labelledby="description btn-text"
+            (click)="confirmFunction()"
+          >
+            {{ 'utils.alerts.btnOk' | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,95 @@
+<div class="btn-group" role="group">
+  <div class="btn-group" role="group">
+    <button
+      id="btnGroupDrop1"
+      type="button"
+      class="btn btn-perfil"
+      data-toggle="dropdown"
+      aria-haspopup="true"
+      aria-expanded="false"
+      [ngClass]="rla.isActive ? 'perfil-active' : ''"
+    >
+      {{ name }}
+    </button>
+    <div
+      class="dropdown-menu dropdown-menu-right"
+      aria-labelledby="btnGroupDrop1"
+    >
+      <span class="s-lang">{{ name }}</span>
+      <a
+        class="dropdown-item c-item"
+        routerLinkActive
+        #rla="routerLinkActive"
+        [routerLink]="[menuOptions.routerLink]"
+        [ngClass]="rla.isActive ? 'lang-active' : 'lang-inactive'"
+        >{{ 'layout.navbar.profile' | translate }}</a
+      >
+      <button class="dropdown-item c-item lang-inactive" (click)="logout()">
+        {{ 'layout.navbar.signoff' | translate }}
+      </button>
+    </div>
+  </div>
+  <div class="btn-group" role="group">
+    <button
+      id="btnGroupDrop1"
+      type="button"
+      class="btn btn-notification"
+      data-toggle="dropdown"
+      aria-haspopup="true"
+      aria-expanded="false"
+      [attr.aria-label]="'layout.navbar.notifications' | translate"
+    >
+      <span *ngIf="newNotifications" class="sr-only" role="alert" translate
+        >layout.navbar.notificationsAlert</span
+      >
+      <img
+        [attr.src]="
+          newNotifications
+            ? './assets/img/layout/bell-solid-red.png'
+            : './assets/img/layout/bell-solid.png'
+        "
+        [attr.alt]="'layout.navbar.notifications' | translate"
+        height="16"
+        width="auto"
+      />
+    </button>
+    <div
+      class="dropdown-menu dropdown-menu-right dropdown-menu-long"
+      aria-labelledby="btnGroupDrop1"
+    >
+      <span class="s-lang">{{
+        'layout.navbar.notifications' | translate
+      }}</span>
+      <button
+        *ngFor="let notification of notifications"
+        type="button"
+        (click)="setNotificationAsSeen(notification.id)"
+        [disabled]="notification.viewed === 1"
+        [ngClass]="notification.viewed === 0 ? 'notseen' : 'seen'"
+        class="dropdown-item c-notification-button pt-1"
+      >
+        {{
+          notification.descriptionPath + '.title'
+            | translate: notification.parameters
+        }}
+        <br />
+        <span>
+          {{
+            notification.descriptionPath + '.text'
+              | translate: notification.parameters
+          }}
+        </span>
+      </button>
+      <div
+        (keydown)="onKeyToSeeAllNotifications($event)"
+        [routerLink]="[menuOptions.routerLink]"
+        tabindex="0"
+        role="button"
+        aria-pressed="false"
+        class="more-notifications"
+      >
+        {{ 'layout.navbar.see-all-notifications' | translate }}
+      </div>
+    </div>
+  </div>
+</div>

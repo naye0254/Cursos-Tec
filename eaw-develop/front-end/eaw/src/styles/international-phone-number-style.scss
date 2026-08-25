@@ -1,0 +1,26 @@
+@import './main-theme.scss';
+
+.input-group {
+  background-color: transparent;
+  border-radius: 10px;
+  border: 1.5px solid $concrete;
+  color: mat-color($black);
+  font-size: 17px;
+  height: 40px;
+  margin-top: 2%;
+}
+
+.form-control {
+  background-color: transparent !important;
+  border: none !important;
+  color: mat-color($black) !important;
+}
+
+.dropbtn {
+  background-color: transparent !important;
+  padding-right: 0px !important;
+}
+
+.arrow-down {
+  margin-top: 8px !important;
+}

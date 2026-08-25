@@ -1,0 +1,129 @@
+<div class="l-graph-evaluation">
+  <div class="row l-head">
+    <div class="col-sm-3 l-evaluator">
+      <p class="c-evaluator-name">
+        <i class="fas fa-user"></i>
+        {{ evaluationInfo?.evaluatorInfo?.firstName }}
+        {{ evaluationInfo?.evaluatorInfo?.lastName }}
+      </p>
+    </div>
+    <div class="col-sm-8">
+      <h1 class="c-title">
+        {{ 'administrator.tracking.graphPageEvaluated.title' | translate }}
+      </h1>
+      <p class="c-sub-title">
+        <b>{{
+          'administrator.tracking.graphPageEvaluated.subTitle' | translate
+        }}</b
+        >{{ evaluationInfo?.evaluationInfo?.siteName }}
+      </p>
+      <p></p>
+    </div>
+  </div>
+
+  <div class="l-table" *ngIf="!isEmpty">
+    <table
+      mat-table
+      [dataSource]="tableDataSource"
+      class="mat-elevation-z8 c-table"
+    >
+      <ng-container matColumnDef="url">
+        <th mat-header-cell *matHeaderCellDef>
+          {{
+            'administrator.tracking.graphPageEvaluated.table.url' | translate
+          }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <a href="{{ element.url }}" target="_blank">{{ element.url }}</a>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="browser">
+        <th mat-header-cell *matHeaderCellDef>
+          {{
+            'administrator.tracking.graphPageEvaluated.table.browser'
+              | translate
+          }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.browser }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="device">
+        <th mat-header-cell *matHeaderCellDef>
+          {{
+            'administrator.tracking.graphPageEvaluated.table.device' | translate
+          }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.device }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="operativeSystem">
+        <th mat-header-cell *matHeaderCellDef>
+          {{
+            'administrator.tracking.graphPageEvaluated.table.operativeSystem'
+              | translate
+          }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.operativeSystem }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="supportTool">
+        <th mat-header-cell *matHeaderCellDef>
+          {{
+            'administrator.tracking.graphPageEvaluated.table.supportTool'
+              | translate
+          }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.supportTool }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="disability">
+        <th mat-header-cell *matHeaderCellDef>
+          {{
+            'administrator.tracking.graphPageEvaluated.table.disability'
+              | translate
+          }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.disability }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="finishedAt">
+        <th mat-header-cell *matHeaderCellDef>
+          {{
+            'administrator.tracking.graphPageEvaluated.table.finishedAt'
+              | translate
+          }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ formatDate(element.finishedAt) }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+
+  <div [ngClass]="isEmpty ? 'show' : 'hide'" class="l-paginator">
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons
+      hidePageSize
+    ></mat-paginator>
+  </div>
+
+  <app-not-result-filter
+    *ngIf="isEmpty"
+    [notResultMessage]="emptyMessages.notResults"
+  ></app-not-result-filter>
+</div>

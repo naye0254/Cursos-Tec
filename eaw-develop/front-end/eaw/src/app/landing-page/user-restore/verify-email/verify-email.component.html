@@ -1,0 +1,85 @@
+<div class="container mb-3 mt-5">
+  <div class="row">
+    <div class="col-lg-6 col-centered">
+      <div *ngIf="isVerified" class="v-message v-message-send">
+        <span translate
+          ><i class="fas fa-check-circle c-icon"></i
+          >{{ translatePath }}.confirmationMessage</span
+        >
+      </div>
+      <div *ngIf="isRejected" class="v-message v-message-reject">
+        <span translate
+          ><i class="fas fa-times-circle c-icon"></i
+          >{{ translatePath }}.rejectedMessage</span
+        >
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container mb-5">
+  <div class="row">
+    <div class="col-lg-6 col-centered">
+      <div class="v-login" aria-live="assertive">
+        <div class="v-input-form">
+          <div class="v-top-form">
+            <h1 translate>{{ translatePath }}.title</h1>
+            <p translate>{{ translatePath }}.text</p>
+          </div>
+          <form
+            [formGroup]="emailForm"
+            (keydown)="onKeyToSignIn($event, emailForm.value, emailForm.valid)"
+          >
+            <label class="c-label" translate>{{ translatePath }}.email</label>
+            <div class="inp-wrapper">
+              <input
+                type="text"
+                class="inp inp-padding-label"
+                formControlName="email"
+              />
+              <label aria-hidden="true" class="input-label"
+                ><i class="fas fa-at"></i
+              ></label>
+            </div>
+            <div aria-live="polite">
+              <div
+                *ngIf="
+                  emailForm.controls.email.hasError('maxlength') &&
+                  !emailForm.controls.email.hasError('required')
+                "
+                class="errormsg"
+              >
+                <span role="heading" aria-level="2" translate
+                  >{{ translatePath }}.emailError</span
+                >
+              </div>
+              <div
+                *ngIf="
+                  emailForm.controls.email.hasError('pattern') &&
+                  !emailForm.controls.email.hasError('required') &&
+                  emailForm.controls.email.touched
+                "
+                class="errormsg"
+              >
+                <span role="heading" aria-level="2" translate
+                  >{{ translatePath }}.emailError2</span
+                >
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="v-bottom-form pb-3">
+          <button
+            class="btn c-button-round mb-3"
+            type="button"
+            [ngClass]="{disabled: !emailForm.valid}"
+            [disabled]="!emailForm.valid"
+            (click)="sendVerificationEmail(emailForm.value, emailForm.valid)"
+            translate
+          >
+            {{ translatePath }}.button
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

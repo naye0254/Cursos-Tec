@@ -1,0 +1,40 @@
+<div class="container l-confirm-dialog">
+  <div class="l-title">
+    <h1 class="c-dialog-title" translate>
+      {{ data.title }}
+    </h1>
+    <p translate>
+      {{ data.text }}
+    </p>
+  </div>
+  <mat-drawer-container class="l-sidenav" autosize aria-live="assertive">
+    <mat-drawer #drawer class="l-left-sidenav" mode="side" opened>
+      <h2 translate>
+        {{ data.title }}
+      </h2>
+      <span class="v-dot">
+        {{ data.counter }}
+      </span>
+    </mat-drawer>
+    <div *ngIf="data.list.length != 0" class="v-list">
+      <div *ngFor="let link of data.list">
+        <a [href]="link">{{ link }} </a><br />
+      </div>
+    </div>
+    <app-not-result
+      *ngIf="data.list.length == 0"
+      [notResultMessage]="
+        'administrator.evaluations.detail.modalCounterList.noResults'
+          | translate
+      "
+    >
+    </app-not-result>
+  </mat-drawer-container>
+  <div class="v-buttons">
+    <button mat-raised-button class="c-button b-primary" (click)="confirm()">
+      {{
+        'administrator.evaluations.detail.modalCounterList.button' | translate
+      }}
+    </button>
+  </div>
+</div>

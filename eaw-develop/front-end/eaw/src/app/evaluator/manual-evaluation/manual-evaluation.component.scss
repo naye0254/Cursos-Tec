@@ -1,0 +1,249 @@
+@import '../../../styles/main-theme.scss';
+@import '../../shared/shared.module.scss';
+
+.l-sidenav {
+  width: 100%;
+  height: auto;
+  min-height: 73%;
+  background-color: mat-color($white);
+}
+
+.l-left-sidenav {
+  padding: 2%;
+  width: 270px;
+
+  .c-top {
+    text-align: left;
+
+    span {
+      font-size: 16px;
+      color: mat-color($primary);
+      font-weight: 400;
+    }
+    h1 {
+      font-size: 30px;
+      color: mat-color($primary);
+      font-weight: bold;
+    }
+    .p-item {
+      word-break: break-all;
+      margin-top: 30px;
+      display: grid;
+      font-weight: bold;
+      font-size: 17px;
+      color: mat-color($dark-gray);
+      span {
+        font-weight: normal;
+        color: mat-color($dark-gray);
+      }
+    }
+    .c-button {
+      button {
+        border-radius: 33px;
+        padding: 5px 10%;
+        font-size: 20px;
+      }
+    }
+  }
+
+  hr {
+    height: 1px;
+    background-color: mat-color($dark-gray);
+  }
+
+  .c-button-like-link {
+    background: none !important;
+    color: mat-color($dark-gray);
+    font-size: 16px !important;
+    border: none;
+    padding: 0 !important;
+    font: inherit;
+    cursor: pointer;
+    .c-icon {
+      margin-right: 5px;
+      font-size: 18px;
+    }
+  }
+}
+
+.l-right-sidenav {
+  padding: 3% 5%;
+  .l-header {
+    h2 {
+      font-weight: bold;
+      color: mat-color($dark-turquoise);
+      font-size: 25px;
+      margin-bottom: 5%;
+    }
+  }
+  .l-specification {
+    .c-spect {
+      color: $sonic-silver;
+      padding-bottom: 5px;
+      border-bottom: 1.5px solid mat-color($dark-gray);
+    }
+  }
+  .l-principle {
+    h3 {
+      font-size: 20px;
+      font-weight: bold;
+      color: mat-color($dark-gray);
+    }
+
+    p {
+      font-size: 17px;
+      color: mat-color($dark-gray);
+    }
+
+    button {
+      color: mat-color($primary);
+      i {
+        font-size: 24px;
+      }
+    }
+
+    .c-btn-saved {
+      color: mat-color($white);
+      background-color: mat-color($primary);
+    }
+
+    .c-saved {
+      margin-left: 18%;
+      font-size: 17px;
+      color: mat-color($primary);
+    }
+  }
+  .c-button {
+    button {
+      border-radius: 33px;
+      padding: 5px 25px;
+      font-size: 20px;
+    }
+  }
+}
+
+.l-criteria-menu {
+  width: 470px;
+}
+
+.c-table {
+  color: mat-color($dark-gray);
+  width: 100% !important;
+  ::ng-deep th.mat-header-cell {
+    width: 100px;
+    min-width: 100px;
+    text-align: left;
+  }
+  th {
+    border-top: none;
+    color: mat-color($dark-gray);
+    font-size: 20px;
+    font-weight: bold;
+  }
+  td {
+    border-top: none;
+    word-wrap: break-word;
+    max-width: 10px;
+    text-align: left !important;
+
+    .icon-btn {
+      padding: 0%;
+      background-color: mat-color($primary);
+      color: mat-color($white);
+      border-radius: 50px;
+      padding: 5px 8px;
+      font-size: 5px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0%;
+      li {
+        margin-bottom: 25px;
+      }
+    }
+  }
+
+  .v-criterion-cell {
+    min-width: 150px;
+  }
+
+  .v-cumply-cell {
+    ul {
+      padding-left: 30px;
+    }
+  }
+
+  .v-findings-cell {
+    width: 270px;
+    padding: 0%;
+    .c-findings-select {
+      width: 235px;
+    }
+    li {
+      margin-bottom: 0px !important;
+    }
+  }
+
+  .l-criterion-row {
+    border-bottom: 2px solid $mercury;
+  }
+
+  .l-criterion-row-last {
+    border-bottom: none;
+  }
+
+  .v-DynamicalTable {
+    display: contents !important;
+  }
+
+  .l-table-body {
+    .l-level {
+      padding-right: 0%;
+      padding-left: 0%;
+      .c-level {
+        background-color: $mercury;
+        padding: 10px 89% 7px 3%;
+      }
+    }
+    .c-evaluation {
+      display: grid;
+      text-align: left;
+    }
+    .c-radio-button {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+.v-pagination {
+  color: mat-color($dark-gray);
+  .btn-icon {
+    font-weight: bold;
+  }
+  .btn {
+    padding: 0%;
+  }
+  .active {
+    font-weight: bold;
+    color: mat-color($primary);
+  }
+
+  .active::after {
+    color: mat-color($primary);
+    font: normal normal normal 10px/1 FontAwesome;
+    content: '\f111';
+  }
+  .pages {
+    max-width: 50px !important;
+  }
+}
+
+::ng-deep.mat-select-panel mat-option.mat-option {
+  height: unset;
+}
+
+::ng-deep.mat-option-text.mat-option-text {
+  white-space: normal;
+}

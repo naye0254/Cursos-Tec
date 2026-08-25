@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.15.0.final using JasperReports Library version 6.15.0-dd49bfb94918336b8321d5507193f0169ead4e95  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="sample_pages" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b011e397-629c-43e5-90f2-5ffd3d0fc1b1">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DA_EAW"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="samplePages" uuid="e117551f-05e8-4d85-8457-0041b745fa21">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DA_EAW"/>
+		<parameter name="evaluationId" class="java.lang.Integer"/>
+		<queryString language="SQL">
+			<![CDATA[call DS_EAW.SP_samplePages( $P{evaluationId} );]]>
+		</queryString>
+		<field name="index" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="index"/>
+			<property name="com.jaspersoft.studio.field.label" value="index"/>
+		</field>
+		<field name="url" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="url"/>
+			<property name="com.jaspersoft.studio.field.label" value="url"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="Pages"/>
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="title" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="title"/>
+			<property name="com.jaspersoft.studio.field.label" value="title"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="Pages"/>
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+	</subDataset>
+	<parameter name="g_evaluationId" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[select  `DS_EAW`.`Evaluations`.id from  `DS_EAW`.`Evaluations`limit 1;]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Evaluations"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<detail>
+		<band height="220" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="31" width="501" height="30" uuid="0db3f543-c4f2-472e-bfe8-f35f3ef95ffe">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato" size="12"/>
+				</textElement>
+				<text><![CDATA[A continuación, se incluye la muestra de páginas incluidas en esta evaluación:]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement x="0" y="63" width="555" height="120" uuid="4caad668-5701-4c75-aa60-f0f8c5ebf1d3">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="samplePages" uuid="922f1e0e-3bf1-4744-8921-f90ed5ab6f13">
+						<datasetParameter name="evaluationId">
+							<datasetParameterExpression><![CDATA[$P{g_evaluationId}]]></datasetParameterExpression>
+						</datasetParameter>
+					</datasetRun>
+					<jr:column width="90" uuid="a210913e-a329-41cd-a4c4-1cbe082ede37">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" forecolor="#377A81" uuid="c98bb4b3-fccc-464f-b46c-0ef8beec0fe8"/>
+								<box padding="5"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font fontName="Lato" size="14"/>
+								</textElement>
+								<text><![CDATA[Página]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="30" forecolor="#002D2E" uuid="3a8e35fb-8b4c-4cb8-b999-d9f9df90e106"/>
+								<box padding="5"/>
+								<textElement>
+									<font fontName="Lato" size="12" isItalic="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{index}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="130" uuid="23a663c7-e04b-4218-84f9-ec8604e0f53d">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="130" height="30" forecolor="#377A81" uuid="04f2f2c8-f0cc-44bd-9247-f79ff5cf8b4f"/>
+								<box padding="5"/>
+								<textElement verticalAlignment="Middle">
+									<font fontName="Lato" size="14"/>
+								</textElement>
+								<text><![CDATA[Título]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField textAdjust="StretchHeight">
+								<reportElement x="0" y="0" width="130" height="30" forecolor="#002D2E" uuid="374f5c38-4398-47aa-b1fb-101853160434"/>
+								<box padding="5"/>
+								<textElement>
+									<font fontName="Lato" size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{title}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="281" uuid="e93f7808-eaec-4989-9e4e-c5d47d21bf52">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="281" height="30" forecolor="#377A81" uuid="0b2b23ae-e9b4-463d-8ce9-4489d4ad6343"/>
+								<box padding="5"/>
+								<textElement verticalAlignment="Middle">
+									<font fontName="Lato" size="14"/>
+								</textElement>
+								<text><![CDATA[URL]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField textAdjust="StretchHeight" hyperlinkType="Reference">
+								<reportElement x="0" y="0" width="281" height="30" forecolor="#002D2E" uuid="53577846-e4ce-4847-aaa5-90c476855c44"/>
+								<box padding="5"/>
+								<textElement markup="none">
+									<font fontName="Lato" size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{url}]]></textFieldExpression>
+								<hyperlinkReferenceExpression><![CDATA[$F{url}]]></hyperlinkReferenceExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<staticText>
+				<reportElement x="0" y="0" width="221" height="30" forecolor="#377A81" uuid="b2a5e4f7-d28c-4013-8821-573f28796d95">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato&#xA;" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[3 MUESTRA DE PÁGINAS]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

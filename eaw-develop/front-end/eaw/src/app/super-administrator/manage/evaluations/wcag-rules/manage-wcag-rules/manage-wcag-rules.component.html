@@ -1,0 +1,277 @@
+<div class="container l-confirm-dialog">
+  <div class="row">
+    <div class="col-12 mx-auto text-center">
+      <div mat-dialog-title>
+        <h1 class="c-dialog-title" color="primary">{{ data.title }}</h1>
+      </div>
+      <div mat-dialog-content class="l-modal-content">
+        <form class="l-form" [formGroup]="criterionForm">
+          <mat-form-field appearance="outline" class="l-form-field">
+            <mat-label translate
+              >superAdministrator.manage.evaluations.wcagRules.modalManage.inputNumberCriterion</mat-label
+            >
+            <input
+              type="text"
+              matInput
+              #messageNumberCriterion
+              maxLength="{{ formOptions.lengthInputNumberCriterion }}"
+              formControlName="numberCriterion"
+              required
+            />
+            <mat-error
+              *ngIf="criterionForm.get('numberCriterion').hasError('required')"
+            >
+              {{
+                'superAdministrator.manage.evaluations.wcagRules.modalManage.errorInputNumberCriterion'
+                  | translate
+              }}
+            </mat-error>
+            <mat-hint class="mb-3 c-hint" align="end">
+              <span class="sr-only"
+                >{{
+                  formOptions.lengthInputNumberCriterion -
+                    messageNumberCriterion.value.length
+                }}
+                caracteres restantes
+              </span>
+              <span aria-hidden="true">
+                {{ messageNumberCriterion.value.length }} /
+                {{ formOptions.lengthInputNumberCriterion }}
+              </span>
+            </mat-hint>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="l-form-field">
+            <mat-label translate
+              >superAdministrator.manage.evaluations.wcagRules.modalManage.inputName</mat-label
+            >
+            <input
+              type="text"
+              matInput
+              #messageName
+              maxLength="{{ formOptions.lengthInputName }}"
+              formControlName="name"
+              required
+            />
+            <mat-error *ngIf="criterionForm.get('name').hasError('required')">
+              {{
+                'superAdministrator.manage.evaluations.wcagRules.modalManage.errorInputName'
+                  | translate
+              }}
+            </mat-error>
+            <mat-hint class="mb-3 c-hint" align="end">
+              <span class="sr-only"
+                >{{ formOptions.lengthInputName - messageName.value.length }}
+                caracteres restantes
+              </span>
+              <span aria-hidden="true">
+                {{ messageName.value.length }} /
+                {{ formOptions.lengthInputName }}
+              </span>
+            </mat-hint>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="l-form-field">
+            <mat-label translate
+              >superAdministrator.manage.evaluations.wcagRules.modalManage.inputCriterionDescription</mat-label
+            >
+            <input
+              type="text"
+              matInput
+              #messageCriterionDescription
+              maxLength="{{ formOptions.lengthInputCriterionDescription }}"
+              formControlName="criterionDescription"
+              required
+            />
+            <mat-error
+              *ngIf="
+                criterionForm.get('criterionDescription').hasError('required')
+              "
+            >
+              {{
+                'superAdministrator.manage.evaluations.wcagRules.modalManage.errorInputCriterionDescription'
+                  | translate
+              }}
+            </mat-error>
+            <mat-hint class="mb-3 c-hint" align="end">
+              <span class="sr-only"
+                >{{
+                  formOptions.lengthInputCriterionDescription -
+                    messageCriterionDescription.value.length
+                }}
+                caracteres restantes
+              </span>
+              <span aria-hidden="true">
+                {{ messageCriterionDescription.value.length }} /
+                {{ formOptions.lengthInputCriterionDescription }}
+              </span>
+            </mat-hint>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="l-form-field">
+            <mat-label translate
+              >superAdministrator.manage.evaluations.wcagRules.modalManage.inputLevel</mat-label
+            >
+            <input
+              type="text"
+              matInput
+              #messageLevel
+              maxLength="{{ formOptions.lengthInputLevel }}"
+              formControlName="level"
+              required
+            />
+            <mat-error *ngIf="criterionForm.get('level').hasError('required')">
+              {{
+                'superAdministrator.manage.evaluations.wcagRules.modalManage.errorInputLevel'
+                  | translate
+              }}
+            </mat-error>
+            <mat-hint class="mb-3 c-hint" align="end">
+              <span class="sr-only"
+                >{{ formOptions.lengthInputLevel - messageLevel.value.length }}
+                caracteres restantes
+              </span>
+              <span aria-hidden="true">
+                {{ messageLevel.value.length }} /
+                {{ formOptions.lengthInputLevel }}
+              </span>
+            </mat-hint>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="l-form-field">
+            <mat-label translate
+              >superAdministrator.manage.evaluations.wcagRules.modalManage.inputReferenceLink</mat-label
+            >
+            <input
+              type="text"
+              matInput
+              #messageReferenceLink
+              maxLength="{{ formOptions.lengthInputReferenceLink }}"
+              formControlName="referenceLink"
+              required
+            />
+            <mat-error
+              *ngIf="criterionForm.get('referenceLink').hasError('required')"
+            >
+              {{
+                'superAdministrator.manage.evaluations.wcagRules.modalManage.errorInputReferenceLink'
+                  | translate
+              }}
+            </mat-error>
+            <mat-hint class="mb-3 c-hint" align="end">
+              <span class="sr-only"
+                >{{
+                  formOptions.lengthInputReferenceLink -
+                    messageReferenceLink.value.length
+                }}
+                caracteres restantes
+              </span>
+              <span aria-hidden="true">
+                {{ messageReferenceLink.value.length }} /
+                {{ formOptions.lengthInputReferenceLink }}
+              </span>
+            </mat-hint>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="l-form-field">
+            <mat-label translate
+              >superAdministrator.manage.evaluations.wcagRules.modalManage.inputPrinciple</mat-label
+            >
+            <mat-select
+              name="principle"
+              (selectionChange)="changePrinciple($event)"
+              formControlName="principleId"
+            >
+              <mat-option
+                *ngFor="let principle of listPrinciples"
+                [value]="principle.id"
+              >
+                {{ principle.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field
+            appearance="outline"
+            class="l-form-field"
+            *ngIf="listGuideLines.length !== 0"
+          >
+            <mat-label translate
+              >superAdministrator.manage.evaluations.wcagRules.modalManage.inputPattern</mat-label
+            >
+            <mat-select name="pattern" formControlName="guidelinesId">
+              <mat-option
+                *ngFor="let guide of listGuideLines"
+                [value]="guide.id"
+              >
+                {{ guide.numberGuidelines }} {{ guide.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="l-form-field">
+            <mat-label translate
+              >superAdministrator.manage.evaluations.wcagRules.modalManage.inputDisability</mat-label
+            >
+            <mat-select formControlName="disabilities" multiple>
+              <mat-option
+                *ngFor="let disability of listDisabilities"
+                [value]="disability.id"
+                >{{ disability.name }}</mat-option
+              >
+            </mat-select>
+            <mat-error
+              *ngIf="criterionForm.get('disabilities').hasError('required')"
+            >
+              {{
+                'superAdministrator.manage.evaluations.wcagRules.modalManage.errorDisabilityInput'
+                  | translate
+              }}
+            </mat-error>
+          </mat-form-field>
+
+          <div appearance="outline" class="l-state">
+            <mat-label translate
+              >superAdministrator.manage.evaluations.wcagRules.modalManage.input-state</mat-label
+            >
+            <mat-radio-group formControlName="isActive">
+              <mat-radio-button class="c-radio" value="1">
+                {{
+                  'superAdministrator.manage.evaluations.wcagRules.modalManage.input-state-active'
+                    | translate
+                }}
+              </mat-radio-button>
+              <mat-radio-button class="c-radio" value="0">
+                {{
+                  'superAdministrator.manage.evaluations.wcagRules.modalManage.input-state-inactive'
+                    | translate
+                }}
+              </mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="row" class="l-buttons">
+    <button
+      class="c-cancel-btn"
+      mat-raised-button
+      type="button"
+      (click)="cancel()"
+    >
+      {{ data.cancel }}
+    </button>
+    <button
+      class="c-submit-btn"
+      mat-raised-button
+      type="button"
+      (click)="confirmFunction()"
+      attr.aria-disabled="{{ !criterionForm.valid }}"
+      tabindex="0"
+      [ngClass]="{disabled: !criterionForm.valid}"
+    >
+      {{ data.next }}
+    </button>
+  </div>
+</div>

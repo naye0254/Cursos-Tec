@@ -1,0 +1,415 @@
+@import '~@angular/material/theming';
+@import url('https://use.fontawesome.com/releases/v5.11.2/css/all.css');
+
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+$lato-font: 'Lato', sans-serif;
+
+$custom-typography: mat-typography-config(
+  $font-family: ' "Lato", sans-serif;',
+);
+@include mat-core($custom-typography);
+
+$mat-primary: (
+  50: #e2f0f1,
+  100: #b7dadc,
+  200: #87c1c5,
+  300: #57a8ad,
+  400: #33959c,
+  500: #0f828a,
+  600: #0d7a82,
+  700: #0b6f77,
+  800: #08656d,
+  900: #04525a,
+  A100: #8bf3ff,
+  A200: #58edff,
+  A400: #25e7ff,
+  A700: #0ce5ff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+$mat-accent: (
+  50: #e3eded,
+  100: #b9d1d3,
+  200: #8ab3b6,
+  300: #5b9498,
+  400: #377d82,
+  500: #14666c,
+  600: #125e64,
+  700: #0e5359,
+  800: #0b494f,
+  900: #06383d,
+  A100: #74efff,
+  A200: #41e9ff,
+  A400: #0ee3ff,
+  A700: #00d7f3,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+$mat-error: (
+  50: #fae8e2,
+  100: #f3c6b7,
+  200: #eca087,
+  300: #e47956,
+  400: #de5d32,
+  500: #d8400e,
+  600: #d43a0c,
+  700: #ce320a,
+  800: #c82a08,
+  900: #bf1c04,
+  A100: #ffe9e7,
+  A200: #ffbbb4,
+  A400: #ff8c81,
+  A700: #ff7568,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+$mat-dark-turquoise: (
+  50: #e5e8ea,
+  100: #bdc5ca,
+  200: #919ea6,
+  300: #657782,
+  400: #445a68,
+  500: #233d4d,
+  600: #1f3746,
+  700: #1a2f3d,
+  800: #152734,
+  900: #0c1a25,
+  A100: #63b5ff,
+  A200: #309dff,
+  A400: #0085fc,
+  A700: #0077e3,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #ffffff,
+    A700: #ffffff,
+  ),
+);
+$mat-light-red: (
+  50: #ffeeee,
+  100: #ffd5d4,
+  200: #ffbab7,
+  300: #ff9e9a,
+  400: #ff8985,
+  500: #ff746f,
+  600: #ff6c67,
+  700: #ff615c,
+  800: #ff5752,
+  900: #ff4440,
+  A100: #ffffff,
+  A200: #ffffff,
+  A400: #ffe8e8,
+  A700: #ffcfcf,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #000000,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+$mat-dark-gray: (
+  50: #e9e9e9,
+  100: #c9c9c9,
+  200: #a5a5a5,
+  300: #818181,
+  400: #666666,
+  500: #4b4b4b,
+  600: #444444,
+  700: #3b3b3b,
+  800: #333333,
+  900: #232323,
+  A100: #f18080,
+  A200: #ec5252,
+  A400: #ff0c0c,
+  A700: #f10000,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #ffffff,
+    A700: #ffffff,
+  ),
+);
+$mat-light-gray: (
+  50: #fcfcfc,
+  100: #f8f8f8,
+  200: #f3f3f3,
+  300: #eeeeee,
+  400: #eaeaea,
+  500: #e6e6e6,
+  600: #e3e3e3,
+  700: #dfdfdf,
+  800: #dbdbdb,
+  900: #d5d5d5,
+  A100: #ffffff,
+  A200: #ffffff,
+  A400: #ffffff,
+  A700: #ffffff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #000000,
+    900: #000000,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+$mat-white: (
+  50: #ffffff,
+  100: #ffffff,
+  200: #ffffff,
+  300: #ffffff,
+  400: #ffffff,
+  500: #ffffff,
+  600: #ffffff,
+  700: #ffffff,
+  800: #ffffff,
+  900: #ffffff,
+  A100: #ffffff,
+  A200: #ffffff,
+  A400: #ffffff,
+  A700: #ffffff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #000000,
+    900: #000000,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+$mat-black: (
+  50: #e0e0e0,
+  100: #b3b3b3,
+  200: #808080,
+  300: #4d4d4d,
+  400: #262626,
+  500: #000000,
+  600: #000000,
+  700: #000000,
+  800: #000000,
+  900: #000000,
+  A100: #a6a6a6,
+  A200: #8c8c8c,
+  A400: #737373,
+  A700: #666666,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #ffffff,
+    A700: #ffffff,
+  ),
+);
+$mat-purple: (
+  50: #ede0f3,
+  100: #d1b3e1,
+  200: #b380cd,
+  300: #944db8,
+  400: #7d26a9,
+  500: #66009a,
+  600: #5e0092,
+  700: #530088,
+  800: #49007e,
+  900: #38006c,
+  A100: #c69cff,
+  A200: #a969ff,
+  A400: #8c36ff,
+  A700: #7e1cff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #ffffff,
+    A700: #ffffff,
+  ),
+);
+
+/**
+* Color variables
+*/
+$primary: mat-palette($mat-primary); //               #0F828A
+$secondary: mat-palette($mat-accent); //              #14666C
+$error: mat-palette($mat-error); //                   #D8400E
+$dark-turquoise: mat-palette($mat-dark-turquoise); // #233D4D
+$light-red: mat-palette($mat-light-red); //           #FF746F
+$dark-gray: mat-palette($mat-dark-gray); //           #4B4B4B
+$light-gray: mat-palette($mat-light-gray); //         #E6E6E6
+$white: mat-palette($mat-white); //                   #FFFFFF
+$black: mat-palette($mat-black); //                   #000000
+$purple: mat-palette($mat-purple); //                 #66009A
+
+$theme: mat-light-theme($primary, $secondary, $error);
+
+/**
+* Custom Colors
+* Color names get from: https://abouts.co/colors
+*/
+
+$alabaster: #fafafa;
+$gulf-stream: #7caaad;
+$gray: #919191;
+$persian-green: #00939e;
+$shadow-box: #00000029;
+$gallery: #ededed;
+$silver: #cccccc;
+$mercury: #e5e5e5;
+$cultured-pearl: #f5f5f5;
+$silver-chalice: #adadad;
+$forest-green: #247931;
+$alto: #d6d6d6;
+$firefly: #0e2431;
+$robins-egg-blue: #1acdd9;
+$cultured-pearl: #f7f7f7;
+$deep-sea-green: #0d6064;
+$tundora: #494949;
+$blue-chill: #12959e;
+$concrete: #d9d9d9;
+$apricot: #ef9470;
+$totem-pole: #900606;
+$algae-green: #89e2b7;
+$background-box: #f8f8f8;
+$border-color: #c9c9c9;
+$sonic-silver: #727272;
+$color-light-gray: #f0f0f0;
+$radioBorder: #707070;
+$bright-red: #ab0800;
+
+/**
+* Chart Colors
+*/
+
+$gray-chart: #505050;
+$background-chart: #f1f4f5;
+$background-chart-hover: #d0d8ec;
+$green-chart: #148261;
+$green-chart-hover: #11644b;
+$button-background: #264a97;
+$button-background-hover: #002a85;
+$title-border: #5c85a7;
+$stroke-chart: #ccd6eb;
+
+/**
+* Global font-size
+*/
+$font-size: 18px;
+
+/**
+* Multiselect dropdown color variables
+*/
+$base-color: #b73333;
+$disable-background-color: #eceeef;
+$selected-item-background-color: #fff;
+$dropdownlist-background-color: #fff;
+$dropdown-border-color: #adadad;
+$hover-box-shadow-color: #959595;
+$dropdownlist-background-color: #ccc;
+$item-checkbox-color: #cccccc;
+$item-input-color: #000;
+$item-input-background-color: #fff;
+$item-input-border-color: #fff;

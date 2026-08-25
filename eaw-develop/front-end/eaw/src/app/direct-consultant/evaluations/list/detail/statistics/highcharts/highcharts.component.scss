@@ -1,0 +1,385 @@
+@import '../../../../../../../styles/main-theme.scss';
+
+$btn-background-color: $blue-chill;
+$color-wh: mat-color($white);
+$color-background: mat-color($dark-turquoise);
+$color-light-gray: $color-light-gray;
+$color-gray: $gray;
+$color-darkgray: mat-color($dark-gray);
+$color-ultralight-gray: $cultured-pearl;
+
+.c-notice-selection-msg {
+  color: $color-darkgray;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.v-box {
+  width: auto;
+  height: auto;
+  background-color: $color-wh;
+  border-radius: 12px;
+  display: inline-block;
+
+  thead > tr > th {
+    cursor: pointer;
+  }
+
+  .input-icon {
+    position: absolute;
+    right: 3px;
+    top: calc(50% - 0.5em);
+    color: $color-gray;
+    pointer-events: none;
+  }
+
+  .input {
+    padding-right: 18px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1.5px solid $color-darkgray;
+    color: $color-darkgray;
+    font-size: 17px;
+    height: 50px;
+    margin-top: 2%;
+    position: relative;
+    top: 50%;
+    width: 100%;
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .input-wrapper {
+    position: relative;
+    float: right;
+    margin: 2%;
+  }
+
+  .v-table {
+    th {
+      color: $color-darkgray;
+      border: none;
+      font-weight: 400;
+    }
+
+    td {
+      color: $color-darkgray;
+      border: none;
+      border-bottom: 1px solid $color-gray;
+      word-wrap: break-word;
+    }
+
+    .c-invisible-line {
+      visibility: hidden;
+      height: 1px;
+      margin-bottom: -1px;
+    }
+  }
+}
+
+.v-buttons-bottom {
+  width: fit-content;
+  text-align: right;
+  .c-button-round-little {
+    background-color: transparent;
+    display: -webkit-inline-box;
+    color: $color-darkgray;
+    font-size: 1em;
+    font-weight: bold;
+    width: auto;
+    border-width: 2px;
+    border-color: $color-darkgray;
+    height: auto;
+    margin-bottom: 0.5em;
+  }
+  .c-button-round-little:hover {
+    box-shadow: 0px 4px 4px $title-border;
+  }
+
+  .c-button-round-minSize {
+    min-width: 7em;
+  }
+
+  .c-button-round-little:disabled {
+    color: $color-light-gray !important;
+    border-collapse: $color-light-gray !important;
+  }
+
+  .c-button-round {
+    border-radius: 10px;
+    margin-left: 2%;
+  }
+
+  .c-button-round-RightSide {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+  .c-button-round-LeftSide {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+
+  .c-toggle-style {
+    font-size: 1em !important;
+  }
+}
+
+.v-graphics {
+  h1 {
+    &#censoName {
+      margin: 0.67em 0;
+      font-size: 24px;
+      font-family: Helvetica;
+      font-weight: bold;
+      color: $gray-chart;
+    }
+  }
+  .select-button {
+    border: none;
+    -webkit-border-radius: 4;
+    -moz-border-radius: 4;
+    border-radius: 4px;
+    -webkit-box-shadow: 0px 2px 5px $background-chart;
+    -moz-box-shadow: 0px 2px 5px $background-chart;
+    box-shadow: 0px 1px 1px mat-color($black);
+    padding: 10px 20px 10px 20px;
+    font-family: Helvetica;
+    font-weight: regular;
+    color: $gray-chart;
+    font-size: 18px;
+    background: $background-chart;
+    margin: 2% 1% 0% 1%;
+    text-align: center;
+    cursor: pointer;
+    &:hover {
+      background: $background-chart-hover;
+      color: $button-background;
+      border: none;
+      text-decoration: none;
+      option {
+        color: $gray-chart;
+        background: mat-color($white);
+        cursor: pointer;
+      }
+    }
+    &:active {
+      background: $background-chart-hover;
+      color: $button-background;
+      border: none;
+      text-decoration: none;
+      option {
+        color: $gray-chart;
+        background: mat-color($white);
+        cursor: pointer;
+      }
+    }
+    &:focus {
+      background: $background-chart-hover;
+      color: $button-background;
+      border: none;
+      text-decoration: none;
+      option {
+        color: $gray-chart;
+        background: mat-color($white);
+        cursor: pointer;
+      }
+    }
+  }
+  .btn-charge {
+    border: none;
+    -webkit-border-radius: 4;
+    -moz-border-radius: 4;
+    border-radius: 4px;
+    -webkit-box-shadow: 0px 2px 5px $background-chart;
+    -moz-box-shadow: 0px 2px 5px $background-chart;
+    box-shadow: 0px 1px 1px mat-color($black);
+    padding: 5px 20px 5px 20px;
+    font-family: Helvetica;
+    font-weight: regular;
+    color: mat-color($white);
+    font-size: 18px;
+    background: $green-chart;
+    margin: 2% 1% 0% 1%;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    &:hover {
+      padding: 5px 20px 5px 20px;
+      background: $green-chart-hover;
+      color: mat-color($white);
+    }
+    &:focus {
+      background: $green-chart-hover;
+      padding: 5px 20px 5px 20px;
+      color: mat-color($white);
+    }
+    &:disabled {
+      cursor: not-allowed;
+      pointer-events: none;
+      border: 1px solid $green-chart;
+      -webkit-border-radius: 4;
+      -moz-border-radius: 4;
+      border-radius: 4px;
+      -webkit-box-shadow: 0px 2px 5px $background-chart;
+      -moz-box-shadow: 0px 2px 5px $background-chart;
+      box-shadow: 0px 1px 1px mat-color($black);
+      padding: 5px 20px 5px 20px;
+      font-family: Helvetica;
+      font-weight: regular;
+      color: $green-chart;
+      font-size: 18px;
+      background: mat-color($white);
+      margin: 2% 1% 0% 1%;
+      text-align: center;
+    }
+    &#btn-new-cross {
+      background: $button-background;
+      color: mat-color($white);
+      border: 1px solid $button-background;
+      margin: 0%;
+      &:hover {
+        background: $button-background-hover;
+        padding: 6px 20px 6px 20px;
+        color: mat-color($white);
+      }
+      &:active {
+        background: $button-background-hover;
+        color: mat-color($white);
+      }
+      &:focus {
+        background: $button-background-hover;
+        color: mat-color($white);
+      }
+    }
+  }
+  .c-index-container {
+    margin-top: 3%;
+  }
+  .nav-tabs {
+    li {
+      a.active {
+        color: $button-background;
+        font-size: 20px;
+        font-family: Helvetica;
+        font-weight: bold;
+      }
+    }
+    a.nav-link {
+      border-radius: 6px;
+      font-size: 20px;
+    }
+    a {
+      color: $gray-chart;
+    }
+  }
+  .index-graphic-background {
+    margin-top: 5%;
+    h2 {
+      &#selectVariable {
+        font-size: 23px;
+        color: $gray-chart;
+        margin-top: 200px;
+        margin-bottom: auto;
+        font-weight: normal;
+      }
+    }
+  }
+  h2 {
+    &#variableName {
+      font-size: 18px;
+      font-weight: regular;
+      margin: 2% 1% 0% 1%;
+      color: $button-background;
+      font-weight: bold;
+      display: inline-block;
+    }
+  }
+  .c-bread-crumb {
+    background-color: transparent;
+  }
+  .text-cross {
+    font-size: 25px;
+    color: $gray-chart;
+  }
+  .imgButton {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+.highcharts-legend-item {
+  .highcharts-point {
+    stroke: $stroke-chart;
+    stroke-width: 1;
+  }
+}
+
+.v-stats {
+  height: 100%;
+  background-color: $color-background;
+  padding: 20% 5% 5% 15%;
+  .l-inf {
+    width: 90%;
+    height: 90%;
+    word-break: break-all;
+  }
+
+  .c-h3 {
+    color: $color-wh;
+
+    font-size: 40px;
+    font-weight: bold;
+    text-align: left;
+  }
+
+  .c-h5 {
+    margin-top: 10%;
+    color: $color-wh;
+
+    font-size: 17px;
+    text-align: left;
+  }
+
+  .c-h4 {
+    color: $color-wh;
+
+    font-size: 25px;
+  }
+
+  .c-button-round {
+    background-color: $btn-background-color;
+    color: $color-wh;
+    font-size: 1.5em;
+    font-weight: bold;
+    border-radius: 25px;
+    margin-top: 15%;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    margin-bottom: 0%;
+    transition: background-color 0.5s ease;
+  }
+
+  .c-button-round:disabled {
+    background-color: $color-gray !important;
+  }
+
+  // iPads
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    .c-h3 {
+      font-size: 25px;
+    }
+    .c-h5 {
+      font-size: 10px;
+    }
+    .c-h4 {
+      font-size: 15px;
+    }
+    .c-button-round {
+      height: 25px;
+      font-size: 0.6em;
+    }
+  }
+}

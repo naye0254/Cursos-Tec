@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.15.0.final using JasperReports Library version 6.15.0-dd49bfb94918336b8321d5507193f0169ead4e95  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="manual_page" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="ae86924e-7259-4a6c-922a-c9478a282dba">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DA_EAW"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="idSpecification" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT s.*,
+       CONCAT_WS(' ', 'Página',
+        ROW_NUMBER() OVER (
+		ORDER BY s.id
+	    ),'-', p.title) pageTitle,
+       p.url
+FROM `DS_EAW`.`SpecificationsByManualPages` s
+	inner join `DS_EAW`.`ManualPages` m ON
+	 s.manualPagesId = m.id
+    inner join DS_EAW.Pages p ON
+     m.pagesId = p.id
+WHERE
+	 s.specificationsId =  $P{idSpecification}]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SpecificationsByManualPages"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="specificationsId" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="specificationsId"/>
+		<property name="com.jaspersoft.studio.field.label" value="specificationsId"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SpecificationsByManualPages"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="manualPagesId" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="manualPagesId"/>
+		<property name="com.jaspersoft.studio.field.label" value="manualPagesId"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SpecificationsByManualPages"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pageTitle" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pageTitle"/>
+		<property name="com.jaspersoft.studio.field.label" value="pageTitle"/>
+	</field>
+	<field name="url" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="url"/>
+		<property name="com.jaspersoft.studio.field.label" value="url"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Pages"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="246" splitType="Stretch">
+			<textField textAdjust="StretchHeight">
+				<reportElement x="0" y="0" width="595" height="20" forecolor="#377A81" uuid="d99b624a-c46b-48c8-824b-c932d76a7c56">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pageTitle}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="32" y="23" width="563" height="18" forecolor="#000000" uuid="d9342ff7-f895-41f2-b272-07f7ea561166">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{url}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="23" width="32" height="18" uuid="5cc60436-fc1b-4de9-a5f9-f8f03247742f">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato&#xA;" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[URL:]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="0" y="46" width="595" height="200" uuid="9bfb5cca-0d51-4f84-904e-ff82f7945d94">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<subreportParameter name="specificationsByManualPagesId">
+					<subreportParameterExpression><![CDATA[$F{id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="manualPageId">
+					<subreportParameterExpression><![CDATA[$F{manualPagesId}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["/Results_Summary/Manual/principles_by_manual_page.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

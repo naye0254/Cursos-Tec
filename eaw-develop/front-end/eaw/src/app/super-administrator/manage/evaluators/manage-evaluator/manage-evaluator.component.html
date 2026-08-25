@@ -1,0 +1,281 @@
+<div class="container l-confirm-dialog">
+  <div class="row">
+    <div class="col-12 mx-auto text-center">
+      <div mat-dialog-content class="l-modal-content">
+        <h1 class="c-dialog-title" color="primary">{{ data.title }}</h1>
+        <p class="c-dialog-text" translate>
+          superAdministrator.manage.evaluators.modalManage.subTitle
+        </p>
+        <form class="l-form" [formGroup]="evaluatorForm">
+          <mat-form-field appearance="outline" class="l-form-field">
+            <mat-label translate
+              >superAdministrator.manage.evaluators.modalManage.nameInput</mat-label
+            >
+            <input
+              type="text"
+              matInput
+              #messageFirstName
+              maxLength="{{ formOptions.lengthInputFirstName }}"
+              formControlName="firstName"
+              required
+            />
+            <mat-error
+              *ngIf="evaluatorForm.get('firstName').hasError('required')"
+            >
+              {{
+                'superAdministrator.manage.evaluators.modalManage.errorNameInput'
+                  | translate
+              }}
+            </mat-error>
+            <mat-hint class="mb-3 c-hint" align="end">
+              <span class="sr-only"
+                >{{
+                  formOptions.lengthInputFirstName -
+                    messageFirstName.value.length
+                }}
+                caracteres restantes
+              </span>
+              <span aria-hidden="true">
+                {{ messageFirstName.value.length }} /
+                {{ formOptions.lengthInputFirstName }}
+              </span>
+            </mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="l-form-field">
+            <mat-label translate
+              >superAdministrator.manage.evaluators.modalManage.lastNameInput</mat-label
+            >
+            <input
+              type="text"
+              matInput
+              #messageLastName
+              maxLength="{{ formOptions.lengthInputLastName }}"
+              formControlName="lastName"
+              required
+            />
+            <mat-error
+              *ngIf="evaluatorForm.get('lastName').hasError('required')"
+            >
+              {{
+                'superAdministrator.manage.evaluators.modalManage.errorLastNameInput'
+                  | translate
+              }}
+            </mat-error>
+            <mat-hint class="mb-3 c-hint" align="end">
+              <span class="sr-only"
+                >{{
+                  formOptions.lengthInputLastName - messageLastName.value.length
+                }}
+                caracteres restantes
+              </span>
+              <span aria-hidden="true">
+                {{ messageLastName.value.length }} /
+                {{ formOptions.lengthInputLastName }}
+              </span>
+            </mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="l-form-field">
+            <mat-label translate
+              >superAdministrator.manage.evaluators.modalManage.emailInput</mat-label
+            >
+            <input
+              type="email"
+              matInput
+              #messageEmail
+              maxLength="{{ formOptions.lengthInputEmail }}"
+              formControlName="email"
+              required
+            />
+            <mat-error *ngIf="evaluatorForm.get('email').hasError('required')">
+              {{
+                'superAdministrator.manage.evaluators.modalManage.errorEmailInput'
+                  | translate
+              }}
+            </mat-error>
+            <mat-hint class="mb-3 c-hint" align="end">
+              <span class="sr-only"
+                >{{ formOptions.lengthInputEmail - messageEmail.value.length }}
+                caracteres restantes
+              </span>
+              <span aria-hidden="true">
+                {{ messageEmail.value.length }} /
+                {{ formOptions.lengthInputEmail }}
+              </span>
+            </mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="l-form-field">
+            <mat-label translate
+              >superAdministrator.manage.evaluators.modalManage.userNameInput</mat-label
+            >
+            <input
+              type="text"
+              matInput
+              #messageUserName
+              maxLength="{{ formOptions.lengthInputUserName }}"
+              formControlName="username"
+              required
+            />
+            <mat-error
+              *ngIf="evaluatorForm.get('username').hasError('required')"
+            >
+              {{
+                'superAdministrator.manage.evaluators.modalManage.errorUserNameInput'
+                  | translate
+              }}
+            </mat-error>
+            <mat-hint class="mb-3 c-hint" align="end">
+              <span class="sr-only"
+                >{{
+                  formOptions.lengthInputUserName - messageUserName.value.length
+                }}
+                caracteres restantes
+              </span>
+              <span aria-hidden="true">
+                {{ messageUserName.value.length }} /
+                {{ formOptions.lengthInputUserName }}
+              </span>
+            </mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="l-form-field">
+            <mat-label translate
+              >superAdministrator.manage.evaluators.modalManage.phoneInput</mat-label
+            >
+            <input
+              type="text"
+              matInput
+              #messageTelephone
+              maxLength="{{ formOptions.lengthInputTelephone }}"
+              formControlName="telephone"
+              required
+            />
+            <mat-error
+              *ngIf="evaluatorForm.get('telephone').hasError('required')"
+            >
+              {{
+                'superAdministrator.manage.evaluators.modalManage.errorPhoneInput'
+                  | translate
+              }}
+            </mat-error>
+            <mat-hint class="mb-3 c-hint" align="end">
+              <span class="sr-only"
+                >{{
+                  formOptions.lengthInputTelephone -
+                    messageTelephone.value.length
+                }}
+                caracteres restantes
+              </span>
+              <span aria-hidden="true">
+                {{ messageTelephone.value.length }} /
+                {{ formOptions.lengthInputTelephone }}
+              </span>
+            </mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="l-form-field">
+            <mat-label translate>
+              superAdministrator.manage.evaluators.modalManage.typesOfDiscapacity</mat-label
+            >
+            <mat-select formControlName="disabilities" multiple>
+              <mat-option
+                *ngFor="let disability of listDisabilities"
+                [value]="disability.id"
+                >{{ disability.name }}</mat-option
+              >
+            </mat-select>
+            <mat-error
+              *ngIf="evaluatorForm.get('disabilities').hasError('required')"
+            >
+              {{
+                'superAdministrator.manage.evaluators.modalManage.errorTypesOfDiscapacity'
+                  | translate
+              }}
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="l-form-field" appearance="outline">
+            <mat-label translate
+              >superAdministrator.manage.evaluators.modalManage.sexInput</mat-label
+            >
+            <mat-select formControlName="sex" name="sex">
+              <mat-option
+                *ngFor="let sexOrientation of listSexOrientations"
+                [value]="sexOrientation.id"
+              >
+                {{ sexOrientation.text }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="l-form-field">
+            <mat-label translate
+              >superAdministrator.manage.evaluators.modalManage.passwordInput</mat-label
+            >
+            <input
+              type="password"
+              matInput
+              #messagePassword
+              maxLength="{{ formOptions.lengthInputPassword }}"
+              formControlName="password"
+              required
+            />
+            <mat-error
+              *ngIf="evaluatorForm.get('password').hasError('required')"
+            >
+              {{
+                'superAdministrator.manage.evaluators.modalManage.errorPasswordInput'
+                  | translate
+              }}
+            </mat-error>
+            <mat-hint class="mb-3 c-hint" align="end">
+              <span class="sr-only"
+                >{{
+                  formOptions.lengthInputPassword - messagePassword.value.length
+                }}
+                caracteres restantes
+              </span>
+              <span aria-hidden="true">
+                {{ messagePassword.value.length }} /
+                {{ formOptions.lengthInputPassword }}
+              </span>
+            </mat-hint>
+          </mat-form-field>
+          <div appearance="outline" class="l-state">
+            <mat-label translate
+              >superAdministrator.manage.evaluators.modalManage.stateInput</mat-label
+            >
+            <mat-radio-group formControlName="isActive">
+              <mat-radio-button class="c-radio" value="1">{{
+                'superAdministrator.manage.evaluators.modalManage.activeInputLabel'
+                  | translate
+              }}</mat-radio-button>
+              <mat-radio-button class="c-radio" value="0">{{
+                'superAdministrator.manage.evaluators.modalManage.inactiveInputLabel'
+                  | translate
+              }}</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="row" class="l-buttons">
+    <button
+      class="c-cancel-btn"
+      mat-raised-button
+      type="button"
+      (click)="cancel()"
+    >
+      {{
+        'superAdministrator.manage.evaluators.modalManage.btnCancel' | translate
+      }}
+    </button>
+    <button
+      class="c-submit-btn"
+      mat-raised-button
+      type="button"
+      (click)="confirmFunction()"
+      attr.aria-disabled="{{ !evaluatorForm.valid }}"
+      tabindex="0"
+      [ngClass]="{disabled: !evaluatorForm.valid}"
+    >
+      {{ data.next }}
+    </button>
+  </div>
+</div>

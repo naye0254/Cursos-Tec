@@ -1,0 +1,222 @@
+<div tabindex="-1" class="sr-only" role="alert" translate>
+  {{ translatePath }}.pageName
+</div>
+<app-navbar></app-navbar>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-6 col-centered">
+      <div class="container v-switch">
+        <div class="row">
+          <div
+            (click)="changeLogin(false)"
+            (keydown)="onKeyToChangeLogin($event, false)"
+            tabindex="0"
+            role="button"
+            class="btn-switch"
+            [ngClass]="
+              !loginURL
+                ? 'col-lg-6 c-button-div-active'
+                : 'col-lg-6 c-button-div-desactive'
+            "
+          >
+            <label translate>{{ translatePath }}.byUser</label>
+          </div>
+          <div
+            (click)="changeLogin(true)"
+            (keydown)="onKeyToChangeLogin($event, true)"
+            tabindex="0"
+            role="button"
+            class="btn-switch"
+            [ngClass]="
+              loginURL
+                ? 'col-lg-6 c-button-div-active'
+                : 'col-lg-6 c-button-div-desactive'
+            "
+          >
+            <label translate>{{ translatePath }}.byURL</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container mb-5">
+  <div class="row">
+    <div class="col-lg-6 col-centered">
+      <div class="v-login" aria-live="assertive">
+        <div *ngIf="!loginURL" class="v-input-form">
+          <form
+            [formGroup]="loginForm"
+            (keydown)="onKeyToSignIn($event, loginForm.value, loginForm.valid)"
+          >
+            <label class="c-label" translate>{{ translatePath }}.email</label>
+            <div class="inp-wrapper">
+              <input
+                type="text"
+                class="inp inp-padding-label"
+                formControlName="email"
+              />
+              <label aria-hidden="true" class="input-label"
+                ><i class="fas fa-at"></i
+              ></label>
+            </div>
+            <div aria-live="polite">
+              <div
+                *ngIf="
+                  loginForm.controls.email.hasError('maxlength') &&
+                  !loginForm.controls.email.hasError('required')
+                "
+                class="errormsg"
+              >
+                <span role="heading" aria-level="2" translate
+                  >{{ translatePath }}.emailError</span
+                >
+              </div>
+              <div
+                *ngIf="
+                  loginForm.controls.email.hasError('pattern') &&
+                  !loginForm.controls.email.hasError('required') &&
+                  loginForm.controls.email.touched
+                "
+                class="errormsg"
+              >
+                <span role="heading" aria-level="2" translate
+                  >{{ translatePath }}.emailError2</span
+                >
+              </div>
+            </div>
+            <label class="c-label mt-3" translate
+              >{{ translatePath }}.password</label
+            ><br />
+            <div class="inp-wrapper">
+              <input
+                type="password"
+                class="inp inp-padding-label"
+                formControlName="password"
+              />
+              <label aria-hidden="true" class="input-label"
+                ><i class="fas fa-key"></i
+              ></label>
+            </div>
+            <div aria-live="polite">
+              <div
+                *ngIf="
+                  loginForm.controls.password.hasError('maxlength') &&
+                  !loginForm.controls.password.hasError('required')
+                "
+                class="errormsg"
+              >
+                <span role="heading" aria-level="2" translate
+                  >{{ translatePath }}.passwordError</span
+                >
+              </div>
+            </div>
+          </form>
+          <div *ngIf="isRejected">
+            <div class="c-span">
+              <span aria-hidden="true" class="fas fa-times-circle"> </span>
+            </div>
+            <p class="errormsg pl-4 pt-1" translate>
+              {{ translatePath }}.rejectedUser
+            </p>
+          </div>
+        </div>
+        <div *ngIf="loginURL" class="v-input-form">
+          <form
+            [formGroup]="loginURLForm"
+            (keydown)="
+              onKeyToSignInURL($event, loginURLForm.value, loginURLForm.valid)
+            "
+          >
+            <label class="c-label" translate>{{ translatePath }}.url</label>
+            <div class="inp-wrapper">
+              <input
+                type="url"
+                class="inp inp-padding-label"
+                formControlName="url"
+              />
+              <label aria-hidden="true" class="input-label"
+                ><i class="fas fa-link"></i
+              ></label>
+            </div>
+            <div aria-live="polite">
+              <div
+                *ngIf="
+                  loginURLForm.controls.url.hasError('pattern') &&
+                  !loginURLForm.controls.url.hasError('required') &&
+                  loginURLForm.controls.url.touched
+                "
+                class="errormsg"
+              >
+                <span role="heading" aria-level="2" translate
+                  >{{ translatePath }}.urlError</span
+                >
+              </div>
+            </div>
+            <label class="c-label mt-3" translate
+              >{{ translatePath }}.code</label
+            ><br />
+            <div class="inp-wrapper">
+              <input
+                type="text"
+                class="inp inp-padding-label"
+                formControlName="code"
+              />
+              <label aria-hidden="true" class="input-label"
+                ><i class="fas fa-code"></i
+              ></label>
+            </div>
+            <div aria-live="polite">
+              <div
+                *ngIf="
+                  loginURLForm.controls.code.hasError('maxlength') &&
+                  !loginURLForm.controls.code.hasError('required')
+                "
+                class="errormsg"
+              >
+                <span role="heading" aria-level="2" translate
+                  >{{ translatePath }}.codeError</span
+                >
+              </div>
+            </div>
+          </form>
+          <div *ngIf="isRejectedURL">
+            <div class="c-span">
+              <span aria-hidden="true" class="fas fa-times-circle"> </span>
+            </div>
+            <p class="errormsg pl-4 pt-1" translate>
+              {{ translatePath }}.rejectedURL
+            </p>
+          </div>
+        </div>
+        <div *ngIf="!loginURL" class="v-bottom-form pb-4">
+          <button
+            class="btn c-button-round mb-2"
+            type="button"
+            [ngClass]="{disabled: !loginForm.valid}"
+            [disabled]="!loginForm.valid"
+            (click)="logIn(loginForm.value, loginForm.valid)"
+            translate
+          >
+            {{ translatePath }}.loginButton
+          </button>
+          <br /><a class="c-link" [routerLink]="['/user-restore']" translate
+            >{{ translatePath }}.forgetPassword</a
+          >
+        </div>
+        <div *ngIf="loginURL" class="v-bottom-form pb-4">
+          <button
+            class="btn c-button-round mb-3"
+            type="button"
+            [ngClass]="{disabled: !loginURLForm.valid}"
+            [disabled]="!loginURLForm.valid"
+            (click)="enterUrl(loginURLForm.value, loginURLForm.valid)"
+            translate
+          >
+            {{ translatePath }}.loginButton
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

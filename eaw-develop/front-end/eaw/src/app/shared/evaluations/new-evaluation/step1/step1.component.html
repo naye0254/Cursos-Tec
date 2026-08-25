@@ -1,0 +1,292 @@
+<div class="l-step">
+  <div class="row">
+    <div class="col-sm-6">
+      <form class="l-form" [formGroup]="generalInfoForm">
+        <fieldset class="c-title-section" translate>
+          administrator.evaluations.manage.generalInformation.title
+        </fieldset>
+        <mat-form-field class="l-form-field" appearance="outline">
+          <mat-label translate
+            >administrator.evaluations.manage.generalInformation.client</mat-label
+          >
+          <mat-select
+            formControlName="clientId"
+            name="client"
+            (selectionChange)="changeClient($event)"
+            (focusout)="checkIfValidForms()"
+          >
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let client of listClients" [value]="client.id">
+              {{ client.firstName }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="l-form-field" appearance="outline">
+          <mat-label translate
+            >administrator.evaluations.manage.generalInformation.package</mat-label
+          >
+          <mat-select
+            formControlName="packageId"
+            name="package"
+            (selectionChange)="changePackage($event)"
+            (focusout)="checkIfValidForms()"
+          >
+            <mat-option>--</mat-option>
+            <mat-option
+              *ngFor="let package of listPackages"
+              [value]="package.id"
+            >
+              {{ package.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="l-form-field">
+          <mat-label translate
+            >administrator.evaluations.manage.generalInformation.expirationDate</mat-label
+          >
+          <input
+            matInput
+            type="date"
+            formControlName="expirationDate"
+            (focusout)="checkIfValidForms()"
+          />
+        </mat-form-field>
+        <!-- TODO: Make a better implementation later of this. And traslated. -->
+        <!-- <div class="mt-3 mb-2">
+          <mat-checkbox
+            class="c-radio"
+            *ngIf="generalInfoForm.value.packageId === 3"
+            formControlName="dontStartScraping"
+          >
+            <b>No</b> iniciar scraping
+          </mat-checkbox>
+          <p
+            *ngIf="generalInfoForm.value.dontStartScraping"
+            class="c-warning-p"
+          >
+            <b class="c-warning-p">Advertencia: </b> la opción anterior hará que
+            no se pueda iniciar el scraping de forma automática. Solo el equipo
+            de desarrollo podrá iniciarlo más adelante.
+          </p>
+        </div> -->
+      </form>
+      <h2 class="c-title" translate>
+        administrator.evaluations.manage.site.title
+      </h2>
+      <div class="l-form mt-3">
+        <mat-radio-group
+          [(ngModel)]="selectedInput"
+          class="l-form-field"
+          aria-label="Select an option"
+          *ngIf="generalInfoForm.value.packageId === 1"
+        >
+          <mat-radio-button (change)="changeValueInput(1)" [value]="1">
+            {{
+              'administrator.evaluations.manage.site.addManualLabel' | translate
+            }}
+          </mat-radio-button>
+          <mat-radio-button
+            class="c-archive"
+            (change)="changeValueInput(2)"
+            [value]="2"
+          >
+            {{
+              'administrator.evaluations.manage.site.addFileLabel' | translate
+            }}</mat-radio-button
+          >
+        </mat-radio-group>
+      </div>
+      <div *ngIf="selectedInput === 2" class="l-form mt-2 mb-3">
+        <label class="mr-3" for="file" translate>
+          administrator.evaluations.manage.site.addExcelLabel
+          <span aria-hidden="true" class="pl-4 pr-4">-</span>
+          <span
+            role="button"
+            tabindex="0"
+            class="c-download-template"
+            (click)="downloadExcelTemplate()"
+            translate
+            >administrator.evaluations.manage.site.downloadTemplate
+          </span>
+        </label>
+        <br />
+        <input
+          accept=".xlsx"
+          type="file"
+          (change)="handleFiles($event.target.files)"
+        />
+      </div>
+      <div *ngIf="isLoading" class="row text-center">
+        <img
+          src="./assets/img/common/loading.gif"
+          height="200px"
+          alt="Cargando..."
+          title="Cargando..."
+          class="loading-icon"
+        />
+      </div>
+      <div *ngIf="selectedInput === 1 || isFileLoaded">
+        <form
+          class="l-form"
+          *ngFor="let siteToCreate of listOfSites"
+          [formGroup]="siteToCreate.siteForm"
+        >
+          <mat-form-field class="l-form-field" appearance="outline">
+            <mat-label translate
+              >administrator.evaluations.manage.site.name</mat-label
+            >
+            <input
+              type="text"
+              matInput
+              formControlName="name"
+              [matAutocomplete]="auto"
+              (focusout)="checkIfValidForms()"
+            />
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option
+                *ngFor="let option of siteToCreate.filteredOptions | async"
+                [value]="option"
+              >
+                {{ option }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+          <mat-form-field class="l-form-field" appearance="outline">
+            <mat-label translate
+              >administrator.evaluations.manage.site.link</mat-label
+            >
+            <input
+              type="url"
+              matInput
+              formControlName="link"
+              (focusout)="checkIfValidForms()"
+            />
+          </mat-form-field>
+          <mat-form-field class="l-form-field" appearance="outline">
+            <mat-label translate
+              >administrator.evaluations.manage.site.segment</mat-label
+            >
+            <mat-select
+              formControlName="segmentId"
+              name="segment"
+              (focusout)="checkIfValidForms()"
+            >
+              <mat-option>--</mat-option>
+              <mat-option
+                *ngFor="let segment of listSegments"
+                [value]="segment.id"
+              >
+                {{ segment.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="l-form-field" appearance="outline">
+            <mat-label translate
+              >administrator.evaluations.manage.site.tag</mat-label
+            >
+            <mat-select formControlName="tagId" name="tag">
+              <mat-option>--</mat-option>
+              <mat-option *ngFor="let tag of listTags" [value]="tag.id">
+                {{ tag.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="l-delete-site" *ngIf="listOfSites.length > 1">
+            <button
+              role="button"
+              tabindex="0"
+              class="c-delete-button-evaluation"
+              (click)="deleteSiteToEvaluate(siteToCreate.siteCount)"
+              mat-button
+            >
+              <i class="fas fa-minus-circle"></i>
+              {{
+                'administrator.evaluations.manage.site.deleteSite' | translate
+              }}
+            </button>
+          </div>
+          <hr />
+        </form>
+        <div class="l-a-add">
+          <a
+            role="button"
+            tabindex="0"
+            class="c-a-add"
+            (click)="buildSiteForm()"
+            translate
+          >
+            <i class="fas fa-plus-circle"></i>
+            administrator.evaluations.manage.site.addNewLabel
+          </a>
+        </div>
+      </div>
+
+      <form class="l-form" *ngIf="!isAutomaticEvaluation">
+        <fieldset class="c-title-section" translate>
+          administrator.evaluations.manage.discapacityRoles.title
+        </fieldset>
+        <mat-checkbox
+          class="c-radio"
+          *ngFor="let disability of listDisabilities"
+          (click)="selectDisability(disability.disabilityModel.id)"
+          >{{ disability.disabilityModel.name }}
+        </mat-checkbox>
+      </form>
+    </div>
+    <div class="col-sm-6" *ngIf="!isAutomaticEvaluation">
+      <form class="l-form">
+        <fieldset class="c-title-section" translate>
+          administrator.evaluations.manage.evaluators.title
+        </fieldset>
+        <div *ngFor="let evaluatorByDisability of listDisabilities">
+          <span>{{ evaluatorByDisability.disabilityModel.name }}</span>
+          <mat-form-field
+            class="l-form-field"
+            appearance="outline"
+            *ngIf="!evaluatorByDisability.hasNotEvaluators"
+          >
+            <mat-label translate
+              >administrator.evaluations.manage.evaluators.evaluatorInput</mat-label
+            >
+            <mat-select
+              name="tag"
+              [(value)]="evaluatorByDisability.evaluatorSelected"
+              [disabled]="!evaluatorByDisability.isSelected"
+              (focusout)="checkIfValidForms()"
+            >
+              <mat-option
+                *ngFor="
+                  let evaluator of evaluatorByDisability.evaluatorsOptions
+                "
+                [value]="evaluator.id"
+              >
+                {{ evaluator.firstName }} {{ evaluator.lastName }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <p
+            class="c-has-not-evaluators"
+            *ngIf="evaluatorByDisability.hasNotEvaluators"
+            translate
+          >
+            administrator.evaluations.manage.evaluators.hasNotEvaluator
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row l-buttons">
+    <button
+      class="c-submit-btn"
+      mat-raised-button
+      type="button"
+      (click)="continueRegistering()"
+      tabindex="0"
+      [disabled]="!isAllFormsValid"
+      attr.aria-disabled="{{ !isAllFormsValid }}"
+      [ngClass]="{disabled: !isAllFormsValid}"
+    >
+      {{ titleBtnContinue }}
+    </button>
+  </div>
+</div>

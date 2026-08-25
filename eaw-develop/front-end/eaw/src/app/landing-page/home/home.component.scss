@@ -1,0 +1,225 @@
+@import '../../../styles/main-theme.scss';
+@import url('https://fonts.googleapis.com/css?family=Varela+Round&display=swap');
+$VarelaRound-font: 'Varela Round', sans-serif;
+
+.c-button-m {
+  min-width: 175px;
+  border-radius: 33px !important;
+  border: 1px solid transparent;
+  &:hover {
+    filter: brightness(0.8);
+  }
+
+  span {
+    padding: 20px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+}
+
+.no-padding {
+  padding: 0%;
+}
+
+.v-container-introduction {
+  h1 {
+    color: mat-color($dark-turquoise, 500);
+    font-family: $VarelaRound-font;
+    font-size: 40px;
+  }
+
+  .c-span {
+    font-family: $VarelaRound-font;
+    font-size: 32px;
+    color: mat-color($error);
+  }
+
+  p {
+    color: mat-color($dark-gray);
+    font-size: 16px;
+    font-weight: 500;
+  }
+}
+
+.v-container-introduction-img {
+  border-left: 10px solid;
+  border-image-source: linear-gradient(
+    180deg,
+    $firefly 0%,
+    $robins-egg-blue 100%
+  );
+  border-image-slice: 1;
+}
+
+@media screen and (max-width: 992px) {
+  .v-container-introduction {
+    margin-top: 5%;
+    padding: 5%;
+  }
+
+  .v-container-introduction-img {
+    margin-top: 5%;
+    border-left: none;
+    border-top: 10px solid;
+    border-image-source: linear-gradient(
+      45deg,
+      $firefly 0%,
+      $robins-egg-blue 100%
+    );
+    border-image-slice: 1;
+  }
+}
+
+.v-container-logos {
+  background-color: $cultured-pearl;
+  box-shadow: 0px 3px 6px $shadow-box;
+  text-align: center;
+  p {
+    color: $tundora;
+    font-size: 16px;
+
+    img {
+      margin-left: 5%;
+    }
+  }
+}
+
+.v-container-packages {
+  text-align: center;
+  h2 {
+    font-family: $VarelaRound-font;
+    color: $firefly;
+    font-size: 40px;
+  }
+
+  .package-color-light {
+    background-color: $persian-green;
+  }
+
+  .package-color-dark {
+    background-color: $deep-sea-green;
+  }
+
+  .v-package {
+    color: mat-color($white);
+    border-radius: 10px;
+    padding: 8%;
+
+    h3 {
+      font-size: 35px;
+      font-weight: bold;
+      margin-bottom: 15%;
+    }
+
+    .v-description {
+      min-height: 177px;
+      p {
+        text-align: left;
+        font-size: 15px;
+      }
+    }
+
+    .v-container-package-img {
+      height: 200px;
+      .c-package-img-1 {
+        margin-top: 62px;
+      }
+
+      .c-package-img-2 {
+        margin-top: 32px;
+      }
+
+      .c-package-img-3 {
+        margin-top: 12px;
+      }
+    }
+
+    .c-button {
+      color: mat-color($primary);
+      min-width: 220px;
+      height: 50px;
+      border-radius: 33px;
+      border: 1px solid transparent;
+      transform: translateY(40px);
+      &:hover {
+        filter: brightness(0.8);
+      }
+    }
+  }
+}
+
+.v-container-about-us {
+  background-image: url(../../../assets/img/landing-page/equipo.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  padding: 0%;
+
+  .c-transparent-container {
+    padding: 5%;
+    h2 {
+      color: mat-color($white);
+      font-family: $VarelaRound-font;
+      font-size: 42px;
+      position: relative;
+    }
+
+    p {
+      color: mat-color($white);
+      font-size: 20px;
+      font-weight: 600;
+      position: relative;
+    }
+  }
+
+  .c-transparent-container:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: $firefly;
+    mix-blend-mode: multiply;
+    z-index: 0;
+  }
+
+  @media screen and (max-width: 992px) {
+    h2,
+    p {
+      text-align: center;
+    }
+  }
+}
+
+.v-container-stuff {
+  text-align: center;
+  h2 {
+    font-family: $VarelaRound-font;
+    color: $firefly;
+    font-size: 40px;
+  }
+
+  .v-stuff {
+    h3 {
+      font-size: 25px;
+      font-weight: bold;
+      color: #12959e;
+      text-align: left;
+      margin-bottom: 5%;
+    }
+
+    p,
+    b {
+      text-align: left;
+      color: mat-color($dark-turquoise, 500);
+      font-size: 16px;
+    }
+
+    .c-icon {
+      color: $firefly;
+      font-size: 3.5em;
+      margin: 15% 0 15% 0;
+    }
+  }
+}

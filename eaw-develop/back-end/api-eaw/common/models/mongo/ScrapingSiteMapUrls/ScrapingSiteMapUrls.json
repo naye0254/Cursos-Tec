@@ -1,0 +1,21 @@
+{
+  "name": "ScrapingSiteMapUrls",
+  "idInjection": false,
+  "properties": {
+    "idEvaluation": {
+      "type": "Number",
+      "required": true,
+      "length": null,
+      "precision": 10,
+      "scale": 0
+    },
+    "urlList": {
+      "type": "array",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

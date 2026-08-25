@@ -1,0 +1,41 @@
+@import '../../../../administrator/administrator.scss';
+@import '../edit-evaluation.scss';
+
+.c-has-not-evaluators {
+  margin-left: 2vw;
+  font-size: 15px;
+}
+
+.l-a-add {
+  margin-left: 5vw;
+  margin-bottom: 2vh;
+}
+
+.l-delete-site {
+  text-align: right;
+  font-size: 14px !important;
+  cursor: pointer;
+  .c-delete-button-evaluation {
+    font-size: 14px !important;
+    font-weight: bold;
+    color: grey !important;
+    i {
+      color: grey !important;
+    }
+  }
+}
+
+.c-archive {
+  margin-left: 2%;
+}
+
+.loading-icon {
+  margin: auto auto auto auto;
+  position: relative;
+  right: 0;
+  left: 0;
+}
+
+.c-warning-p {
+  font-size: 15px;
+}

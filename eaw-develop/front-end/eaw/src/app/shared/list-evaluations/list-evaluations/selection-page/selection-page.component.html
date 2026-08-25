@@ -1,0 +1,258 @@
+<div class="c-selection-page l-list">
+  <div mat-dialog-title class="row l-head">
+    <div class="col-12" *ngIf="userRole === evaluatorRole">
+      <h1 class="c-title" translate>
+        evaluator.evaluations.revisionModal.title
+      </h1>
+      <h2 id="title" *ngIf="step === 0" class="c-subtitle" translate>
+        evaluator.evaluations.revisionModal.subtitle1
+      </h2>
+      <h2 id="title" *ngIf="step === 1" class="c-subtitle" translate>
+        evaluator.evaluations.revisionModal.subtitle2
+      </h2>
+    </div>
+    <div class="col-12" *ngIf="userRole !== evaluatorRole">
+      <h1 class="c-title">
+        {{ data.evaluation.siteName }}
+      </h1>
+      <h2 id="title" class="c-subtitle-promoter" translate>
+        administrator.evaluations.list.specifications.title
+      </h2>
+    </div>
+  </div>
+
+  <div
+    class="row c-content  justify-content-left"
+    *ngIf="step === 0"
+    aria-live="assertive"
+    role="radiogroup"
+    aria-labelledby="title"
+  >
+    <div
+      role="radio"
+      class="col-3 c-card"
+      *ngFor="let specification of specifications; let i = index"
+      [ngClass]="specification.isSelected ? 'selected' : ''"
+      (click)="selectSpecificacion(specification)"
+      (keyup.space)="selectSpecificacion(specification)"
+      tabindex="0"
+      [attr.aria-checked]="specification.isSelected"
+      [attr.aria-labelledby]="'card-title' + i"
+    >
+      <div role="presentation">
+        <div class="c-card-title">
+          <span [id]="'card-title' + i" class="title">
+            {{ 'evaluator.evaluations.tooltip.labelCounter' | translate }}
+            {{ i + 1 }}</span
+          >
+          <span>
+            {{ specification.finishedPages }} /
+            {{ specification.totalPages }} pag -
+            {{ specification.percentageComplete }}%</span
+          >
+        </div>
+        <div class="c-card-content">
+          <div class="c-item">
+            <span class="c-section-title" translate>
+              evaluator.evaluations.tooltip.device
+            </span>
+            <span class="c-description">
+              {{ specification.specificationsDevices.name }}
+            </span>
+          </div>
+          <div class="c-item">
+            <span class="c-section-title" translate>
+              evaluator.evaluations.tooltip.operativeSystem
+            </span>
+            <span class="c-description">
+              {{ specification.specificationsOperativeSystems.name }}
+            </span>
+          </div>
+          <div class="c-item">
+            <span class="c-section-title" translate>
+              evaluator.evaluations.tooltip.browser
+            </span>
+            <span class="c-description">
+              {{ specification.specificationsBrowsers.name }}
+            </span>
+          </div>
+          <div class="c-item">
+            <span class="c-section-title" translate>
+              evaluator.evaluations.tooltip.supportTool
+            </span>
+            <span class="c-description">
+              {{ specification.specificationsSupportTools.name }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="step === 1" mat-dialog-content class="row c-content">
+    <div class="l-table">
+      <table
+        mat-table
+        [dataSource]="tableDataSource"
+        class="mat-elevation-z8 c-table "
+      >
+        <ng-container matColumnDef="selection">
+          <th mat-header-cell *matHeaderCellDef>
+            {{
+              'evaluator.evaluations.revisionModal.table.selection' | translate
+            }}
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <mat-radio-group
+              [id]="element.id"
+              [(ngModel)]="selectedPage"
+              (change)="selectionPageChange(element.manualPageId)"
+              [attr.aria-label]="element.title"
+            >
+              <mat-radio-button [value]="element">
+                <span class="sr-only"> {{ element.title }}</span>
+              </mat-radio-button>
+            </mat-radio-group>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef>
+            {{ 'evaluator.evaluations.revisionModal.table.title' | translate }}
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="url">
+          <th mat-header-cell *matHeaderCellDef>
+            {{ 'evaluator.evaluations.revisionModal.table.URL' | translate }}
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.url }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="percentage">
+          <th mat-header-cell *matHeaderCellDef>
+            {{
+              'evaluator.evaluations.revisionModal.table.percentage' | translate
+            }}
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ getPercentagePage(element.evaluationPageState) }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="state">
+          <th mat-header-cell *matHeaderCellDef>
+            {{ 'evaluator.evaluations.revisionModal.table.state' | translate }}
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ getStateTranslate(element.evaluationPageState) }}
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+    <div [ngClass]="isEmpty ? 'hide' : 'show'" class="l-paginator">
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 20]"
+        showFirstLastButtons
+        hidePageSize
+      ></mat-paginator>
+    </div>
+    <app-not-result
+      class="no-results"
+      *ngIf="isEmpty"
+      [notResultMessage]="emptyMessages.notResults"
+    >
+    </app-not-result>
+  </div>
+
+  <div class="board" *ngIf="userRole === evaluatorRole">
+    <div class="board-inner" id="status-buttons">
+      <ul class="nav nav-tabs wizard" id="myTab" role="tablist">
+        <li>
+          <a
+            (click)="goStepOne()"
+            [ngClass]="step === 0 ? 'active-bullet' : 'active'"
+            data-toggle="tab"
+            title=""
+            [attr.aria-label]="'administrator.shared.stepOne' | translate"
+            tabindex="0"
+            role="tab"
+            [attr.aria-selected]="step === 0"
+          >
+            <div class="round-tabs all">
+              <span>1</span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a
+            role="tab"
+            [ngClass]="step === 1 ? 'active-bullet' : ''"
+            [class.disabled]="step !== 1"
+            data-toggle="tab"
+            title=""
+            [attr.aria-disabled]="step != 1"
+            [attr.aria-label]="'administrator.shared.stepTwo' | translate"
+            tabindex="0"
+            [attr.aria-selected]="step === 1"
+          >
+            <div class="round-tabs all">
+              <span>2</span>
+            </div>
+          </a>
+        </li>
+      </ul>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+  <div
+    *ngIf="userRole === evaluatorRole"
+    mat-dialog-actions
+    class="row"
+    class="c-buttons"
+  >
+    <button
+      class="c-cancel-button"
+      mat-raised-button
+      type="button"
+      (click)="cancel()"
+      translate
+    >
+      {{ 'administrator.shared.cancelButton' | translate }}
+    </button>
+    <button
+      class="c-submit-btn"
+      mat-raised-button
+      type="button"
+      (click)="continueButton()"
+      tabindex="0"
+      [attr.aria-disabled]="selectedSpecification === null || !isPageSelected"
+      [disabled]="selectedSpecification === null || !isPageSelected"
+      translate
+    >
+      {{ 'administrator.shared.continueButton' | translate }}
+    </button>
+  </div>
+
+  <div
+    *ngIf="userRole !== evaluatorRole"
+    mat-dialog-actions
+    class="row"
+    class="c-buttons  c-promoter"
+  >
+    <button
+      class="c-submit-btn"
+      mat-raised-button
+      type="button"
+      (click)="cancel()"
+      translate
+    >
+      {{ 'administrator.shared.continueButton' | translate }}
+    </button>
+  </div>
+</div>

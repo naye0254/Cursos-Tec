@@ -1,0 +1,38 @@
+@import '../../../../administrator/administrator.scss';
+@import '../new-evaluation.scss';
+
+.c-incomplete-data {
+  text-align: center;
+  margin-top: 15vh;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.l-list-specifications {
+  width: 100%;
+  padding-left: 8vw;
+  .l-specification {
+    width: 40%;
+    margin-left: 10vw;
+    margin-left: 2vw;
+    margin-top: 2vh;
+    .c-fieldset-title {
+      height: 4vh;
+      background: #f2f2f2 0% 0% no-repeat padding-box;
+      border-radius: 20px;
+      opacity: 1;
+      text-align: left;
+      font-size: 14px;
+      color: $firefly;
+      font-weight: 600;
+      padding-left: 1vw;
+      margin-bottom: 1vh;
+    }
+    .c-evaluator-name {
+      height: 1vh;
+      font-size: 14px;
+      color: $firefly;
+      font-weight: 500;
+    }
+  }
+}

@@ -1,0 +1,54 @@
+<div class="container c-principal-page">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h1 aria-hidden="true" class="c-header">
+        {{ principalMenuOptions.title }}
+        <span class="o-name">{{ user.firstName }}</span>
+      </h1>
+      <h1 class="sr-only">
+        {{ principalMenuOptions.title }} {{ user.firstName }}
+      </h1>
+    </div>
+  </div>
+  <div role="list" class="c-content text-center row">
+    <div
+      role="listitem"
+      *ngFor="let menuItem of principalMenuOptions.menu"
+      class="c-card col-md-3 mx-auto col-sm-12"
+    >
+      <div class="c-card-content col-12">
+        <img [src]="menuItem.imageUrl" [alt]="menuItem.imageAlt" />
+        <h2 class="c-card-title">{{ menuItem.title }}</h2>
+        <button
+          id="firstButton"
+          (click)="redirectTo(menuItem.firstButtonRedirectTo)"
+          mat-raised-button
+          color="primary"
+          class="mx-auto c-button"
+        >
+          {{ menuItem.firstButtonLabel }}
+        </button>
+        <button
+          *ngIf="menuItem.secondButtonLabel"
+          id="secondButton"
+          (click)="redirectTo(menuItem.secondButtonRedirectTo)"
+          mat-raised-button
+          color="primary"
+          class="mx-auto c-button"
+        >
+          {{ menuItem.secondButtonLabel }}
+        </button>
+        <button
+          *ngIf="menuItem.thirdButtonLabel"
+          id="secondButton"
+          (click)="redirectTo(menuItem.thirdButtonRedirectTo)"
+          mat-raised-button
+          color="primary"
+          class="mx-auto c-button"
+        >
+          {{ menuItem.thirdButtonLabel }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

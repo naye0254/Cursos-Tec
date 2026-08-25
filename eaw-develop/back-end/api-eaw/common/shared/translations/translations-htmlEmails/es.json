@@ -1,0 +1,104 @@
+{
+  "administrator": {
+    "DirectConsultantResult": {
+      "cardInfo": "le ha brindado acceso a los resultados de la evaluación del sitio web:",
+      "emailTag": "[EAW] Resultados de evaluacíon de accesibilidad",
+      "imageAlt": "Dibujo de una carta abierta.",
+      "lables": {
+        "URL": "URL",
+        "password": "Contraseña"
+      },
+      "linkText": "Evaluador de accesibilidad web",
+      "registrationText1": "¡Puede ingresar a nuestro sitio web con el siguiente enlace: ",
+      "registrationText2": "Una vez dentro, puede presionar el botón con la etiqueta 'Ingresar' en la parte superior derecha del sitio, y seguidamente buscar abajo la pestaña etiquetada URL, en donde pueden ingresar (sin espacios en blanco) el url y la contraseña. Dados en la parte inferior de esta pantalla"
+    },
+    "contactEmail": {
+      "bodyInfo1": "te ha enviado con correo para solicitud de información el día",
+      "bodyInfo2": "a las",
+      "bodyInfo3": "horas. La información es la siguiente",
+      "contact": "quiere contactar con el equipo del Evaluador de Accesibilidad.",
+      "emailTag": "[EAW] Formulario de contacto. ",
+      "imageAlt": "Dibujo de una carta abierta.",
+      "lables": {
+        "company": "Empresa",
+        "mail": "Correo electrónico",
+        "message": "Mensaje",
+        "name": "Nombre",
+        "phone": "Teléfono"
+      }
+    },
+    "evaluationRequest": {
+      "bodyInfo1": "ha solicitado una evaluación",
+      "bodyInfo2": "a las",
+      "bodyInfo3": "horas. La información es la siguiente",
+      "contact": "ha solicitado una evaluación.",
+      "emailTag": "[EAW] Solicitud de nueva evaluación.",
+      "imageAlt": "Dibujo de una carta abierta.",
+      "lables": {
+        "name": "Nombre",
+        "mail": "Correo electrónico",
+        "phone": "Teléfono",
+        "message": "Mensaje del cliente"
+      }
+    },
+    "forgotPasswordRequest": {
+      "altDraw": "Ilustración de una persona cambiando contraseña",
+      "altEvaluator": "Evaluador Accesibilidad Web",
+      "contact": "Contacto",
+      "emailTag": "[EAW] Solicitud cambio de contraseña",
+      "evaluatorTeam": "Equipo Evaluador Web",
+      "headerText": "¿Olvidaste tu contraseña? No hay problema, solamente da click o copia el enlace de este mensaje para redirigirte al sitio web y poder cambiar tu contraseña. Éste enlace después de 15 minutos, dejará de servir.",
+      "link": "Enlace",
+      "enter": "Entre aquí"
+    },
+    "reportSuccessfullFinished": {
+      "greeting": "Saludos,",
+      "cardInfo": "Ha terminado correctamente el reporte para el sitio web:",
+      "emailTag": "[EAW] Reportes de evaluacíon de accesibilidad. Éxito.",
+      "imageAlt": "Dibujo de una carta abierta.",
+      "lables": {
+        "URL": "URL",
+        "password": "Contraseña"
+      },
+      "linkText": "Evaluador de accesibilidad web",
+      "registrationText1": "¡Puede ingresar a nuestro sitio web con el siguiente enlace: ",
+      "registrationText2": "Una vez dentro, puede presionar el botón con la etiqueta 'Ingresar' en la parte superior derecha del sitio, y seguidamente buscar abajo la pestaña etiquetada URL, en donde pueden ingresar (sin espacios en blanco) el url y la contraseña. Dados en la parte inferior de esta pantalla"
+    },
+    "reportCreationFailed": {
+      "cardInfo": "La generación del informe ha fallado. Sitio web:",
+      "emailTag": "[EAW] Reportes de evaluacíon de accesibilidad. Fallo.",
+      "imageAlt": "Dibujo de una carta abierta.",
+      "lables": {
+        "Error": "Error",
+        "URL": "URL",
+        "identification": "ID"
+      },
+      "bodyText": "El informe de la evaluación tal ha fallado, por favor vuelva a intentarlo o contacte con el equipo de desarrollo. En la arte inferior le proporcionamos los datos que pueden ayudar a soporte"
+    },
+    "otaiToClientReportResults": {
+      "cardInfo": "Se le ha brindado acceso a los resultados de la evaluación del sitio web",
+      "emailTag": "[EAW] Resultados de evaluacíon de accesibilidad",
+      "imageAlt": "Dibujo de una carta abierta.",
+      "lables": {
+        "URL": "URL",
+        "password": "Contraseña"
+      },
+      "linkText": "Evaluador de accesibilidad web",
+      "registrationText1": "¡Gracias por contribuir con el desarrollo web accesible! ¡Puede ingresar a nuestro sitio web con el siguiente enlace: ",
+      "registrationText2": "Una vez dentro, puede presionar el botón con la etiqueta 'Ingresar' en la parte superior derecha del sitio, y seguidamente buscar abajo la pestaña etiquetada URL, en donde pueden ingresar (sin espacios en blanco) el url y la contraseña. Dados en la parte inferior de esta pantalla"
+    },
+    "userRegisteredEmail": {
+      "cardInfo1": "¡El administrador le ha ingresado como un nuevo usuario",
+      "cardInfo2": "!",
+      "emailTag": "[EAW] Registro de usuario",
+      "imageAlt": "Dibujo de una carta abierta.",
+      "lables": {
+        "mail": "Correo electrónico",
+        "password": "Contraseña"
+      },
+      "registrationText1": "¡Gracias por inscribirse con nosotros,",
+      "registrationText2": "En la parte inferior le proporcionamos los datos necesarios para ingresar al sistema"
+    }
+  },
+  "lang": "es"
+}

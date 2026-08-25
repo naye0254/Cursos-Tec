@@ -1,0 +1,71 @@
+# This job deploys the cointainers all container to make the evaluation in the node 1.
+# It uses the code/docker-compose.yml file to deploy the modules as connected container services.
+prod-deployment-node-1:
+  stage: deploy-production-cluster
+  tags:
+    - eaw-node-1
+  only:
+    - master-node-1
+  dependencies:
+    - prod-api-base-image-node-1
+  variables:
+    RELEASE_TAG: "latest"
+    NODE_ID: ${EAW_NODE_1}
+  script:
+    - cd ./ci/cluster-environment/
+    - docker-compose down
+    - docker rmi evaluator-accesibility-web-mongo:${RELEASE_TAG} || true
+    - docker rmi evaluator-accesibility-web-api:${RELEASE_TAG} || true
+    - docker rmi evaluator-accesibility-queue-api:${RELEASE_TAG} || true
+    - docker-compose up -d
+    - docker rmi $(docker images -f "dangling=true" -q) || true
+  environment:
+    name: "EAW Node Evaluator 1"
+
+# This job deploys the cointainers all container to make the evaluation in the node 2.
+# It uses the code/docker-compose.yml file to deploy the modules as connected container services.
+prod-deployment-node-2:
+  stage: deploy-production-cluster
+  tags:
+    - eaw-node-2
+  only:
+    - master-node-2
+  dependencies:
+    - prod-api-base-image-node-2
+  variables:
+    RELEASE_TAG: "latest"
+    NODE_ID: ${EAW_NODE_2}
+  script:
+    - cd ./ci/cluster-environment/
+    - docker-compose down
+    - docker rmi evaluator-accesibility-web-mongo:${RELEASE_TAG} || true
+    - docker rmi evaluator-accesibility-web-api:${RELEASE_TAG} || true
+    - docker rmi evaluator-accesibility-queue-api:${RELEASE_TAG} || true
+    - docker-compose up -d
+    - docker rmi $(docker images -f "dangling=true" -q) || true
+  environment:
+    name: "EAW Node Evaluator 2"
+
+# This job deploys the cointainers all container to make the evaluation in the node 3.
+# It uses the code/docker-compose.yml file to deploy the modules as connected container services.
+prod-deployment-node-3:
+  stage: deploy-production-cluster
+  tags:
+    - eaw-node-3
+  only:
+    - master-node-3
+  dependencies:
+    - prod-api-base-image-node-3
+  variables:
+    RELEASE_TAG: "latest"
+    NODE_ID: ${EAW_NODE_3}
+  script:
+    - cd ./ci/cluster-environment/
+    - docker-compose down
+    - docker rmi evaluator-accesibility-web-mongo:${RELEASE_TAG} || true
+    - docker rmi evaluator-accesibility-web-api:${RELEASE_TAG} || true
+    - docker rmi evaluator-accesibility-queue-api:${RELEASE_TAG} || true
+    - docker-compose up -d
+    - docker rmi $(docker images -f "dangling=true" -q) || true
+  environment:
+    name: "EAW Node Evaluator 3"

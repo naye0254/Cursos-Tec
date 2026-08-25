@@ -1,0 +1,93 @@
+<nav class="navbar navbar-expand-lg navbar-div navbar-light">
+  <div class="container-fluid">
+    <a (click)="setIdDiv('top')" [routerLink]="['']" class="navbar-brand ml-4">
+      <img
+        src="./assets/img/landing-page/Evaluador_logo.png"
+        width="auto"
+        height="50"
+        [attr.alt]="translatePath + '.altLogo' | translate"
+      />
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Menú de navegación"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto mr-3">
+        <li class="nav-item item">
+          <a
+            class="nav-link Itemlink"
+            (click)="setIdDiv('top')"
+            [routerLink]="['']"
+            translate
+            >{{ translatePath }}.home</a
+          >
+        </li>
+        <li class="nav-item item">
+          <a
+            class="nav-link Itemlink"
+            (click)="setIdDiv('packages')"
+            [routerLink]="['']"
+            translate
+            >{{ translatePath }}.packages</a
+          >
+        </li>
+        <li class="nav-item item">
+          <a
+            class="nav-link Itemlink"
+            (click)="setIdDiv('aboutUs')"
+            [routerLink]="['']"
+            translate
+            >{{ translatePath }}.aboutUs</a
+          >
+        </li>
+        <li class="nav-item item">
+          <a class="nav-link Itemlink" [routerLink]="['/contact']" translate
+            >{{ translatePath }}.contact</a
+          >
+        </li>
+        <li class="nav-item item dropdown" auto-close="disabled">
+          <a
+            class="nav-link Itemlink dropdown-toggle-ellipsis"
+            id="navbarDropdownMenuLink"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            translate
+            >layout.navbar.language</a
+          >
+          <div class="dropdown-menu dropdown-menu-right dropdown-default">
+            <span class="s-lang" translate>layout.navbar.language</span>
+            <button
+              class="dropdown-item"
+              (click)="useLanguage('es')"
+              [ngClass]="actualLang === 'es' ? 'lang-active' : 'lang-inactive'"
+            >
+              Español
+            </button>
+            <button
+              class="dropdown-item"
+              (click)="useLanguage('en')"
+              [ngClass]="actualLang === 'en' ? 'lang-active' : 'lang-inactive'"
+            >
+              English
+            </button>
+          </div>
+        </li>
+        <li class="nav-item c-navbar-button">
+          <button class="btn c-button-round" (click)="getInto()">
+            {{ logInLabel }}
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

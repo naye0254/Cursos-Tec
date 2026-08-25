@@ -1,0 +1,37 @@
+<div class="container l-confirm-dialog">
+  <div class="l-title">
+    <i class="fas fa-sitemap fa-2x icon"></i>
+    <h1 class="c-dialog-title mt-3">Checkpoint</h1>
+    <p>
+      {{ 'administrator.evaluations.checkpoint.text1' | translate }}
+      <b>{{ checkpointInfo?.checkpointDate | date: 'dd/MM/yyyy' }} </b>
+      {{ 'administrator.evaluations.checkpoint.text2' | translate
+      }}<b
+        >{{ checkpointInfo?.checkpoint }}
+        {{ 'administrator.evaluations.checkpoint.text3' | translate }}
+      </b>
+      <br />
+      <br />
+      {{ 'administrator.evaluations.checkpoint.basedOn' | translate }}
+      <b>{{ checkpointInfo?.actualDate | date: 'dd/MM/yyyy' }}</b> ,
+      {{ 'administrator.evaluations.checkpoint.basedOn2' | translate }}
+      <b> {{ checkpointInfo?.elapsedTime.hours }} </b>
+      {{ 'administrator.evaluations.checkpoint.hours' | translate }}
+      <b> {{ checkpointInfo?.elapsedTime.minutes }} </b>
+      {{ 'administrator.evaluations.checkpoint.minutes' | translate }}
+      <b> {{ checkpointInfo?.elapsedTime.seconds }} </b>
+      {{ 'administrator.evaluations.checkpoint.seconds' | translate }}
+    </p>
+  </div>
+  <div class="v-buttons">
+    <button mat-raised-button class="c-button b-gray mr-5" (click)="finish()">
+      {{ 'administrator.evaluations.checkpoint.btnFinish' | translate }}
+    </button>
+    <button mat-raised-button class="c-button b-gray mr-5" (click)="restart()">
+      {{ 'administrator.evaluations.checkpoint.btnRestart' | translate }}
+    </button>
+    <button mat-raised-button class="c-button b-primary" (click)="confirm()">
+      {{ 'administrator.evaluations.checkpoint.btnAccept' | translate }}
+    </button>
+  </div>
+</div>

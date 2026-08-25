@@ -1,0 +1,35 @@
+# This job makes base image to the loopback of the node 1:
+prod-api-base-image-node-1:
+  stage: build-cluster
+  tags:
+    - eaw-node-1
+  only:
+    - master-node-1
+  script:
+    - cd ./back-end/!api-loopback
+    - chmod +x ./check-image.sh
+    - ./check-image.sh
+
+# This job makes base image to the loopback of the node 2:
+prod-api-base-image-node-2:
+  stage: build-cluster
+  tags:
+    - eaw-node-2
+  only:
+    - master-node-2
+  script:
+    - cd ./back-end/!api-loopback
+    - chmod +x ./check-image.sh
+    - ./check-image.sh
+
+# This job makes base image to the loopback of the node 3:
+prod-api-base-image-node-3:
+  stage: build-cluster
+  tags:
+    - eaw-node-3
+  only:
+    - master-node-3
+  script:
+    - cd ./back-end/!api-loopback
+    - chmod +x ./check-image.sh
+    - ./check-image.sh

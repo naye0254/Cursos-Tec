@@ -1,0 +1,9 @@
+<div tabindex="-1" class="sr-only" role="alert" translate>
+  {{ translatePath }}.pageName
+</div>
+<app-navbar></app-navbar>
+<app-change-password
+  *ngIf="!isEmail"
+  [accessToken]="accessToken"
+></app-change-password>
+<app-verify-email *ngIf="isEmail"></app-verify-email>

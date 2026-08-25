@@ -1,0 +1,37 @@
+@import '../../../../styles/main-theme.scss';
+
+.l-list-evaluator {
+  padding-top: 3%;
+  padding-bottom: 5%;
+  .c-select {
+    font-size: 16px;
+    color: mat-color($dark-gray);
+    margin-bottom: 0rem;
+    margin-left: 1vw;
+  }
+  .l-list-evaluator {
+    margin-left: 0vw;
+    .l-evaluator {
+      margin-bottom: 3vh;
+      height: 26vh;
+      width: 10vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      text-align: center;
+      background: #f8f8f8 0% 0% no-repeat padding-box;
+      box-shadow: 0px 3px 6px $shadow-box;
+      border-radius: 28px;
+      opacity: 1;
+      margin-left: 5vw;
+      cursor: pointer;
+      i {
+        color: mat-color($dark-gray);
+        font-size: 45px;
+        margin-bottom: 0vh;
+        margin-top: 20px;
+      }
+    }
+  }
+}

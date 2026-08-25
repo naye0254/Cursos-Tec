@@ -1,0 +1,26 @@
+<div class="container l-confirm-dialog">
+  <div class="row">
+    <div class="col-12 mx-auto text-center">
+      <div mat-dialog-title class="mt-4 mb-4">
+        <h1 class="c-dialog-title" color="primary" translate>
+          utils.languageConfig.title
+        </h1>
+      </div>
+      <div mat-dialog-content class="mb-4">
+        <img
+          aria-hidden="true"
+          height="300px"
+          width="300px"
+          src="./assets/img/utils/wait.png"
+          [attr.alt]="'utils.languageConfig.greeting' | translate"
+        />
+        <p id="description" class="c-dialog-text" translate>
+          utils.languageConfig.description
+          <span class="c-greeting" translate>
+            utils.languageConfig.greeting</span
+          >
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

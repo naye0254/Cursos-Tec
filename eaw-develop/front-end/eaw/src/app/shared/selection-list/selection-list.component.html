@@ -1,0 +1,26 @@
+<div class="row c-list" role="list">
+  <div
+    role="listitem"
+    *ngFor="let item of list"
+    class="col-3
+   c-list-item"
+    (click)="nextStep(item.id)"
+    tabindex="0"
+  >
+    <div class="container-fluid mt-4 mb-2">
+      <div class="row">
+        <div class="col-10">
+          <span aria-hidden="true" class="c-text" [title]="item.name">
+            {{ item.name }}
+          </span>
+          <span class="sr-only">
+            {{ item.name }}
+          </span>
+        </div>
+        <div class="col-2">
+          <i class="c-icon fas fa-chevron-circle-right"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,1301 @@
+{
+  "administrator": {
+    "clients": {
+      "listClients": {
+        "advancedSearch": "Advanced Search",
+        "modalAdvancedSearch": {
+          "inputCreatedAt": "Creation date",
+          "inputCreatedBy": "Promoter in Charge",
+          "inputEmail": "Email client",
+          "inputName": "Client Name",
+          "subTitle": "Fill in the fields in which you want to filter your search"
+        },
+        "searchLabel": "Search",
+        "subTitle": "Choose the country of the client what you want to see",
+        "table": {
+          "country": "Country",
+          "createdAt": "Date (YYYY/MM/DD)",
+          "createdBy": "Creator",
+          "edit": "Edit",
+          "email": "Email",
+          "evaluationsNumber": "Evaluations",
+          "name": "Name",
+          "segment": "Segment"
+        },
+        "title": "See Clients"
+      },
+      "manage": {
+        "address": {
+          "address": "Exact address",
+          "addressError": "The address is required",
+          "city": "City",
+          "cityError": "The city is required",
+          "code": "Postal Code",
+          "codeError": "The postal code is required",
+          "country": "Country",
+          "countryError": "The country is required",
+          "region": "State / Province / Region",
+          "regionError": "The region is required",
+          "segment": "Segment",
+          "segmentError": "The segment is required",
+          "title": "Address"
+        },
+        "generalInfo": {
+          "email": "Email",
+          "errorEmail": "The email is required",
+          "errorName": "The client name is required",
+          "errorPassword": "The password is required",
+          "errorPhone": "The phone is required",
+          "name": "Name",
+          "password": "Password",
+          "phone": "Phone",
+          "title": "General information"
+        },
+        "titleEdit": "Edit Client",
+        "titleNew": "New Client"
+      },
+      "tracing": {
+        "statistics": {
+          "finishedEvaluations": "Finished Evaluations",
+          "graphic": "Graphic",
+          "inProgressEvaluations": "In Progress Evaluations",
+          "pendingEvaluations": "Pending Evaluations",
+          "table": "Table"
+        }
+      }
+    },
+    "evaluations": {
+      "checkpoint": {
+        "basedOn": "Based on the current date",
+        "basedOn2": "have passed:",
+        "btnAccept": "Accept",
+        "btnFinish": "Finish scraping",
+        "btnRestart": "Restart scraping",
+        "hours": "hours,",
+        "minutes": "minutes and",
+        "seconds": "seconds.",
+        "text1": "The last registered checkpoint of the web scraping was the",
+        "text2": "with a quantity of",
+        "text3": "pages"
+      },
+      "detail": {
+        "absoluteLinks": "Absolute Links",
+        "alertSaveError": {
+          "text": "An error was generated while trying to save the page selection.",
+          "title": "Page selection error"
+        },
+        "alertSaveSuccess": {
+          "text": "The page selection has been saved.",
+          "title": "Successful page selection"
+        },
+        "ariaCounter": "{{count}} selected pages of 32",
+        "back": "Back",
+        "brokenLinks": "Broken Links",
+        "deep": "Depth level",
+        "desertedLinks": "Deserted Links",
+        "domain": "Domain",
+        "downloadButton": "Download Sitemap",
+        "exceptions": "Exceptions",
+        "files": "Files",
+        "mainURL": "Main URL",
+        "modalCounterList": {
+          "absolute": {
+            "text": "Absolute links include all parts of the URL (protocol, server, and path) so no further information is needed to get the bound resource. You could say is the full path.",
+            "title": "Absolute Links"
+          },
+          "broken": {
+            "text": "A broken link is when a website can no longer be consulted on the Internet; whose content is no longer permanently stored on servers or other resources.",
+            "title": "Broken Links"
+          },
+          "button": "Continue",
+          "deserted": {
+            "text": "A deserted link on the website means that does not belong to the same domain or site, it is a link outside the site, these can be links to other websites such as social networks, among others.",
+            "title": "Deserted Links"
+          },
+          "exceptions": {
+            "text": "The exceptions are other types of links that are not \"site web\" links, but that are used in the HTML code in a very similar way to links since they use the same element \"<a>\" but for another purpose, these can be emails, telephones, anchors , among others.",
+            "title": "Exceptions"
+          },
+          "files": {
+            "text": "Files are links that lead to a file, it is not a web page as such, they have other types of content, generally zip files, pdfs, documents.",
+            "title": "Files"
+          },
+          "noResults": "No results",
+          "relative": {
+            "text": "Relative links dispense with parts of URLs to make them shorter. Since these are incomplete URLs, additional information is required to obtain the linked resource. Specifically, for a relative link to be useful it is necessary to know the URL of the link source.",
+            "title": "Relative Links"
+          }
+        },
+        "openLink": "Open link",
+        "optionSelectedPages": "Selected Pages",
+        "optionSiteMap": "Site Map",
+        "relativeLinks": "Relative Links",
+        "saveButton": "Save Selection",
+        "see": "See",
+        "selectPages": "Select the pages you want to evaluate.",
+        "selectedPages": "Selected <br/> Pages",
+        "stats": "Statistics",
+        "subtitle": "Pending Evaluations - {{value}}",
+        "subtitleWithPackage": "Pending Evaluations - {{package}} - {{value}}",
+        "title": "Selection of pages",
+        "totalPages": "Pages found"
+      },
+      "list": {
+        "evaluating": "Evaluating",
+        "finishState": "Finished",
+        "generateReport": "Generate Report",
+        "generateSelection": "Generate Selection",
+        "generatingReport": "Generating Report",
+        "initEvaluation": "Start Evaluation",
+        "pendingState": "Pendings",
+        "failedState": "Failed",
+        "progresState": "In Progress",
+        "reportError": "Report a Error",
+        "see": "See",
+        "seeCheckpoint": "See checkpoint",
+        "seeResults": "See results",
+        "selectPages": "Choose Pages",
+        "sendReport": "Send Report",
+        "specifications": {
+          "title": "Specifications"
+        },
+        "table": {
+          "endDate": "End Date",
+          "initDate": "Init Date",
+          "map": "Map Site",
+          "name": "Name",
+          "package": "Package",
+          "remainingDays": "Remaining days",
+          "seeSpecificationsLabel": "See specifications",
+          "segment": "Segment",
+          "specifications": "Specifications",
+          "state": "State"
+        },
+        "title": "Evaluations",
+        "edit": "Edit"
+      },
+      "manage": {
+        "discapacityRoles": {
+          "title": "3. Assign Discapacity Roles"
+        },
+        "evaluators": {
+          "evaluatorInput": "Select evaluator user",
+          "hasNotEvaluator": "This disability has no active evaluators",
+          "title": "4. Assign Evaluators"
+        },
+        "generalInformation": {
+          "client": "Select associated customer *",
+          "expirationDate": "Evaluation term *",
+          "package": "Select package *",
+          "title": "1. General information"
+        },
+        "site": {
+          "addExcelLabel": "Add Excel File",
+          "addFileLabel": "Add File",
+          "addManualLabel": "Add Manual",
+          "addNewLabel": "Add new site to evaluate",
+          "country": "Country",
+          "deleteSite": "Delete Site to evaluate",
+          "deleteSiteLabel": "Delete site",
+          "link": "Site link *",
+          "name": "Site name *",
+          "segment": "Site segment *",
+          "tag": "Site tag *",
+          "title": "2. Site to evaluate",
+          "downloadTemplate": "Download template"
+        },
+        "specifications": {
+          "addSpecificationLabel": "Add New Specification",
+          "browser": "Select a browser",
+          "device": "Select a device",
+          "evaluatorNameLabel": "Name",
+          "hasStepOneProblems": "Incomplete data or without format in the previous step !",
+          "operativeSystem": "Select a operative system",
+          "specificationCounterLabel": "Specification",
+          "supportTools": "Select a support tools",
+          "title": "5. Assign Specifications",
+          "version": "Version"
+        },
+        "subTitle": "The fields with * are required",
+        "title": "New Evaluation"
+      },
+      "searchLabel": "Search",
+      "selectionPage": {
+        "mapSite": {
+          "noselected": "No selected",
+          "pagesChoosed": "Pages Choosed",
+          "selected": "Selected",
+          "title": "Choose the pages to evaluate"
+        }
+      }
+    },
+    "shared": {
+      "cancelButton": "Cancel",
+      "continueButton": "Continue",
+      "createButton": "Create",
+      "editButton": "Save",
+      "deleteButton": "Delete",
+      "stepOne": "Step 1",
+      "stepTwo": "Step 2"
+    },
+    "tracking": {
+      "dashboard": {
+        "finishedEvaluation": "Evaluations completed",
+        "pendigEvaluation": "Pending evaluations",
+        "progressEvaluation": "Evaluations in progress"
+      },
+      "graphPageEvaluated": {
+        "subTitle": "Site name :",
+        "table": {
+          "browser": "Browser",
+          "device": "Device",
+          "disability": "Disability",
+          "finishedAt": "Finished At",
+          "operativeSystem": "Operative System",
+          "supportTool": "Support Tool",
+          "url": "Url"
+        },
+        "title": "Completed pages per evaluation"
+      },
+      "listEvaluations": {
+        "menuState": {
+          "finishedLabel": "Finished",
+          "pendingLabel": "Pending",
+          "progressLabel": "Progress"
+        },
+        "table": {
+          "endDate": "End Date",
+          "name": "Name",
+          "segment": "Segment",
+          "specificiation": "Specificiation",
+          "startDate": "Start Date",
+          "stats": "Stats"
+        }
+      },
+      "listEvaluators": {
+        "title": "Select an Accessibility Evaluator"
+      }
+    }
+  },
+  "directClient": {
+    "evaluations": {
+      "requesEvaluation": {
+        "cancelButton": "Cancel",
+        "description": "In order to simplify the process of requesting an evaluation, you can complete the space at the bottom of the screen, detailing the required evaluation. Once sent, you will be contacted by one of our collaborators in less than 5 days.",
+        "descriptionLabel": "Message",
+        "descriptionMaxLengthError": "The message is too large",
+        "descriptionRequiredError": "The message is required",
+        "sendButton": "Send",
+        "title": "Request Evaluation"
+      },
+      "seeEvaluations": {
+        "backButton": "Back",
+        "list": {
+          "searchLabel": "Search",
+          "table": {
+            "URL": "URL",
+            "name": "Site name",
+            "package": "Package",
+            "responsible": "Responsible",
+            "see": "See",
+            "seeResults": "Results",
+            "specifications": "Specifications"
+          }
+        },
+        "results": {
+          "header": {
+            "dialog": {
+              "addEmail": "Add a email field",
+              "cancelBtn": "Cancel",
+              "confirmBtn": "Send",
+              "deleteEmail": "Delete email",
+              "description": "In order to assist in the feedback of the Evaluation to the client, enter the email address to which you want to send the results of the evaluation process.",
+              "email": "Email",
+              "emailInvalid": "The email is invalid",
+              "emailRequired": "The email is required",
+              "title": "Send Results"
+            },
+            "issues": "Issues",
+            "reports": "Reports",
+            "sendResultsButton": "Send Results",
+            "sendedResultsLabel": "Sended Results",
+            "statistics": "Statistics",
+            "viewDetails": {
+              "URL": "URL",
+              "domain": "Domain",
+              "title": "View details",
+              "titlePage": "Title"
+            }
+          },
+          "visualzation": {
+            "all": "All",
+            "automatic": "Automatic",
+            "issues": {
+              "automaticEvaluation": {
+                "chooseGuideline": "Choose the guideline",
+                "choosePage": "Choose one page",
+                "criteria": "Criteria",
+                "description": "Below is the accessibility description according to the criteria of the selected page, as well as the HTML code where the error was identified and the specific path.",
+                "guideline": "Guideline",
+                "table": {
+                  "criteria": "Criteria",
+                  "description": "Description",
+                  "htmlCode": "HTML Code",
+                  "htmlPath": "HTML Path"
+                },
+                "title": "Issues Automatic Evaluation"
+              },
+              "automaticEvaluationButton": "Automatic Evaluation",
+              "chooseEvaluationLabel": "Choose the evaluation to visualize",
+              "choosePageLabel": "Choose one page to see the findings.",
+              "loading": "Cargando",
+              "manualEvaluation": {
+                "choosePage": "Choose one page",
+                "chooseRolLabel": "Choose one role",
+                "description": "This section shows the findings given by the accessibility evaluator, performed manually.",
+                "noResults": "No findings found",
+                "recomendationsEvaluatorLabel": "Evaluator's recommendations",
+                "table": {
+                  "criteria": "Criteria",
+                  "issues": "Issues",
+                  "specifications": "Specifications",
+                  "specificiationDef": {
+                    "browser": "Browser",
+                    "device": "Device",
+                    "operativeSystem": "Operative System"
+                  }
+                },
+                "title": "Issues Manual Evaluation"
+              },
+              "manualEvaluationButton": "Manual Evaluation",
+              "noFindings": "No findings found on this page."
+            },
+            "manual": "Manual",
+            "pageLabel": "Page",
+            "reports": {
+              "downloadButton": "Download",
+              "managerialReport": {
+                "description": "The management report provides a statistical report of the evaluation results.",
+                "title": "Managerial Report"
+              },
+              "noReports": "Reports are not yet available, please check back later",
+              "technicalReport": {
+                "description": "The technical report adds to the management report all the findings with their detail and recommendation to solve.",
+                "title": "Technical Report"
+              }
+            },
+            "selected": "Selected",
+            "statistics": {
+              "allSpecifications": "All",
+              "applyContrast": "Apply high contrast",
+              "applyPatterns": "Apply pattern",
+              "bar": "Bars",
+              "chooseGraphicLabel": "Choose one graphic type",
+              "column": "Columns",
+              "connectionError": "Connection Error",
+              "contrast": "Contrast",
+              "graphicButton": "Graphic",
+              "levelAAAButton": "Level AAA",
+              "levelAAButton": "Level AA",
+              "levelAButton": "Level A",
+              "line": "Lines",
+              "noResults": "Congratulations! No findings were found for the selected filters.",
+              "package": "Package",
+              "pattern": "Pattern",
+              "seeGraphicLabel": "Choose one option to see the graphic",
+              "seeTable": "See Table",
+              "specificationLabel": "Specification",
+              "specifications": "Specifications",
+              "stackedBar": "Stacked Bars",
+              "stackedColumn": "Stacked Columns",
+              "tableButton": "Table",
+              "title": "Statistics Evalution Automatic"
+            }
+          }
+        },
+        "evaluationErrors":{
+          "id": "Id",
+          "errorDescription": "Error description",
+          "errorDateAt": "Date",
+          "evaluationsId": "Evaluation",
+          "fixed": "Fixed",
+          "locationName": "Call",
+          "evaluation": "Evaluation"
+        },
+        "selecction": {
+          "stepOne": "Step 1",
+          "stepThree": "Step 3",
+          "stepTwo": "Step 2",
+          "subTitleStepOne": "Choose the year to visualize",
+          "subTitleStepThree": "Choose the client to visualize",
+          "subTitleStepTwo": "Choose the segment to visualize"
+        },
+        "title": "Evaluations"
+      }
+    }
+  },
+  "evaluator": {
+    "evaluations": {
+      "evaluatePage": {
+        "content": {
+          "buttons": {
+            "addCommentButton": "Add Comment",
+            "evalutionFinishedButton": "Finish Evaluation"
+          },
+          "filter": {
+            "all": "See all",
+            "byCriteria": "Filter by criteria not evaluated"
+          },
+          "saveButton": {
+            "altSaveButton": "Save",
+            "stateNonSaved": "Non saved",
+            "stateSaved": "Saved"
+          },
+          "table": {
+            "complies": "Complies",
+            "criteria": "Criteria",
+            "evaluatorProfile": "Evaluator Profile",
+            "fail": "Fails",
+            "issues": "issues",
+            "levelA": "Level A",
+            "levelAA": "Level AA",
+            "levelAAA": "Level AAA",
+            "notApply": "Not Apply",
+            "selectIssueLabel": "Choose the issue"
+          },
+          "title": "Specifications of the evaluation"
+        },
+        "sidebar": {
+          "choosePageButton": "Choose Page",
+          "domain": "Domain",
+          "goToEvaluationsButton": "Go to Evaluations",
+          "subtitle": "Manual Evaluation",
+          "title": "Evaluations in progress",
+          "titlePage": "Title",
+          "url": "URL"
+        }
+      },
+      "revisionModal": {
+        "subtitle1": "Choose the specifications to evaluate",
+        "subtitle2": "Choose the page to evaluate",
+        "table": {
+          "URL": "URL",
+          "percentage": "Percentage",
+          "selection": "Selection",
+          "state": "State",
+          "title": "Title"
+        },
+        "title": "Revision: Choose the specification"
+      },
+      "searchLabel": "Search",
+      "state": {
+        "finishedEvaluations": "Finished Evaluations",
+        "inProgress": "In Progress Evaluations",
+        "pending": "Pending Evaluations"
+      },
+      "table": {
+        "URL": "URL",
+        "action": "Action",
+        "continueRevision": "Continue with the revision",
+        "deliveryDate": "Delivery Date",
+        "inCharge": "In charge",
+        "name": "Name",
+        "pendingReport": "Pending Report",
+        "specifications": "Specifications",
+        "startRevision": "Start Revision"
+      },
+      "tooltip": {
+        "browser": "Browser",
+        "device": "Device",
+        "labelCounter": "Specification",
+        "operativeSystem": "Operative System",
+        "supportTool": "Support Tool",
+        "title": "Specifications"
+      }
+    },
+    "manualEvaluation": {
+      "addRecommendation": "Add Recommendation",
+      "allEvaluations": "All Evaluations",
+      "domain": "Domain",
+      "evaluationProgress": "Evaluations in progress",
+      "manualEvaluation": "Manual Evaluation",
+      "modals": {
+        "addRecommendation": {
+          "cancelBtn": "Cancel",
+          "confirmBtn": "Comment",
+          "label": "Commentary",
+          "text": "In order to help in the feedback of the Customer Evaluation, enter a comment about the experience on the page contemplating the",
+          "title": "Comment or Recommendation"
+        },
+        "criteriaInfo": {
+          "seeWCAG": "See definition on the official WCAG 2.1 site"
+        },
+        "evaluationUnfinish": {
+          "cancelBtn": "Continue",
+          "confirmBtn": "Check",
+          "subtext": "Please <b>correct this error to finish the Assessment.<b> ",
+          "text": "The Evaluation is not 100% complete. In the following criteria, the Evaluation Profiles and / or the selection of the Findings must be reviewed correctly.",
+          "title": "Incomplete Evaluation"
+        }
+      },
+      "paginationAhead": "Ahead",
+      "paginationBehind": "Behind",
+      "saveBtn": "Save",
+      "saved": "Saved",
+      "seeAll": "See all",
+      "seeNotAll": "Filter by criteria not evaluated",
+      "selectPages": "Select Pages",
+      "spectsEvaluation": "Evaluation Specifications",
+      "table": {
+        "comply": "Comply",
+        "criteria": "Criteria",
+        "finding": "Finding",
+        "levelA": "Level A",
+        "levelAA": "Level AA",
+        "levelAAA": "Level AAA",
+        "noApply": "No apply",
+        "noComply": "No comply",
+        "profile": "Evaluator Profile",
+        "required": "Required",
+        "seeInfo": "View criteria information",
+        "selectFindings": "-Select the findings-",
+        "selectOption": "Select an option"
+      },
+      "title": "Title",
+      "url": "URL"
+    }
+  },
+  "landingPage": {
+    "contact": {
+      "errorAlert": {
+        "text": "There was an error sending the message.",
+        "title": "Error sending"
+      },
+      "form": {
+        "buttonText": "Send message",
+        "company": "Company",
+        "companyError": "The company name must contain a maximum of 60 characters.",
+        "email": "Email",
+        "emailError": "The email must contain a maximum of 60 characters.",
+        "emailError2": "The email format is incorrect.",
+        "message": "Leave a message (optional)",
+        "messageError": "The message must contain a maximum of 2000 characters.",
+        "name": "Name",
+        "nameError": "The name must contain a maximum of 60 characters.",
+        "phone": "Phone",
+        "phoneError": "The phone number entered is not valid."
+      },
+      "happyToHelp": "We are happy to help improve!",
+      "pageName": "Contact Page",
+      "successAlert": {
+        "text": "The message has been sent successfully. You will be contacted soon.",
+        "title": "Sent"
+      },
+      "text": "Are you interested in evaluating your website? We help you. Use the following form and we will contact your team.",
+      "title": "Contact us"
+    },
+    "footer": {
+      "aboutUs": "About us",
+      "contact": "Contact",
+      "eaw": "Web Accessibility Evaluator",
+      "facebook": "Inclutec Facebook",
+      "home": "Home",
+      "inclutec": "Inclutec Inclusive Technologies",
+      "linkedin": "Inclutec Linkedin",
+      "otai": "Accessible and Inclusive Technologies Observatory",
+      "packages": "Packages",
+      "phone": "Phone",
+      "tec": "Costa Rica Institute of Technology",
+      "youtube": "Inclutec Youtube"
+    },
+    "home": {
+      "aboutUs": {
+        "aboutSectionName": "About us",
+        "altImage": "Illustration of people in team.",
+        "text": "We are a multidisciplinary team made up of developers, designers and professionals with disability responsible for carrying out web accessibility evaluations. We are part of the Computer Research Center of the School of Computing within the Technological Institute of Costa Rica.",
+        "title": "About us"
+      },
+      "altHomeImage": "Illustration of a person doing an evaluation.",
+      "brandsSectionName": "Brands",
+      "compoundTitleOne": "Web",
+      "compoundTitleTwo": "Accessibility Evaluator",
+      "description": "Automatic and manual evaluation services for websites, in compliance with accessibility and usability standards.",
+      "developedBy": "Developed by:",
+      "inclutec": "Inclutec Inclusive Technologies",
+      "miscellanySection": {
+        "consulting": {
+          "description": "We accompany work teams to develop accessible digital environments, allowing access to as many people as possible. <b>We guide you through the process.</b>",
+          "title": "Accessibility consulting"
+        },
+        "miscellanySectionName": "Experience",
+        "standards": {
+          "contact": "Contact us",
+          "description": "We carry out evaluations under international standards in web accessibility such as the W3C, making sure to give you the best results. <b>Accessibility for everyone.</b>",
+          "title": "International standards"
+        },
+        "title": "We help remove barriers",
+        "userXp": {
+          "description": "We provide a real experience when evaluating your platform. We have professionals with disabilities who have vast experience. <b>We give you the best feedback.</b>",
+          "title": "User Experience"
+        }
+      },
+      "otai": "Accessible and Inclusive Technologies Observatory",
+      "packages": {
+        "askInformation": "Ask for Information",
+        "packagesSectionName": "Packages",
+        "randomAutomatic": {
+          "alt": "Random Automatic evaluation package icon.",
+          "description": "Using our reliable automatic evaluation system, you will obtain an accessibility report about randomly selected sections of your website.",
+          "title": "Random Automatic"
+        },
+        "randomComplete": {
+          "alt": "Random Complete evaluation package icon.",
+          "description": "We offer you a complete evaluation using our reliable system to carry out an automatic evaluation and at the same time our experienced evaluators will do it manually on a random sample of sections on your website.",
+          "title": "Complete Random"
+        },
+        "specificAutomatic": {
+          "alt": "Specific Automatic evaluation package icon.",
+          "description": "You will be able to select the sections of your website in which you want to evaluate the level of accessibility, obtaining a report of the evaluation.",
+          "title": "Specific Automatic"
+        },
+        "specificManual": {
+          "alt": "Specific Manual evaluation package icon.",
+          "description": "Our experienced accessibility evaluators will carry out an in-depth analysis of your website, in those sections you have selected, obtaining feedback and points for improvement.",
+          "title": "Specific Manual"
+        },
+        "title": "Evaluation packages"
+      },
+      "pageName": "Home page",
+      "productOf": "A product of:",
+      "requestEvaluation": "Request Evaluation",
+      "tec": "Costa Rica Institute of Technology",
+      "through": "Through:",
+      "title": "Web Accessibility Evaluator"
+    },
+    "login": {
+      "byURL": "By URL",
+      "byUser": "By User",
+      "code": "Inscription code",
+      "codeError": "The code must contain a maximum of 50 characters.",
+      "email": "Email",
+      "emailError": "The email must contain a maximum of 60 characters.",
+      "emailError2": "The email format is incorrect.",
+      "forgetPassword": "Forgot your password?",
+      "loginButton": "Login",
+      "pageName": "Login Page",
+      "password": "Password",
+      "passwordError": "The password must contain a maximum of 50 characters.",
+      "rejectedURL": "Wrong URL or code",
+      "rejectedUser": "Wrong password or email",
+      "url": "URL",
+      "urlError": "The URL format is wrong"
+    },
+    "navbar": {
+      "aboutUs": "About us",
+      "altLogo": "Web Accessibility Evaluator",
+      "contact": "Contact",
+      "home": "Home",
+      "login": "Login",
+      "packages": "Packages"
+    },
+    "userRestore": {
+      "changePassword": {
+        "button": "Restore",
+        "confirmPassword": "Repeat New Password",
+        "errorAlert": {
+          "text": "Could not change password, click continue.",
+          "title": "Error changing password"
+        },
+        "newPassword": "New Password",
+        "passwordError": "The password must contain a maximum of 50 characters.",
+        "passwordError2": "Passwords do not match.",
+        "successAlert": {
+          "text": "You have successfully changed the password, click accept to Login.",
+          "title": "Password successfully changed"
+        },
+        "title": "Restore password"
+      },
+      "expiredAlert": {
+        "text": "We're sorry, but the link you tried to use has expired, please re-send the password change email.",
+        "title": "Link expired"
+      },
+      "pageName": "Reset password page",
+      "verifyEmail": {
+        "button": "Send email",
+        "confirmationMessage": "An email has been sent with the steps to follow",
+        "email": "Email",
+        "emailError": "The email must contain a maximum of 60 characters.",
+        "emailError2": "The email format is incorrect",
+        "rejectedMessage": "There is no user associated with this email",
+        "text": "Don't worry, resetting your password is easy. Enter the email associated with your account.",
+        "title": "Did you forget your password?"
+      }
+    }
+  },
+  "layout": {
+    "footer": {
+      "otai": "Accessible and Inclusive Technologies Observatory",
+      "tec": "Costa Rica Institute of Technology",
+      "title": "Footer"
+    },
+    "navbar": {
+      "exit": "Exit",
+      "language": "Language",
+      "logo": "Web Accessibility Evaluator",
+      "navigation-menu": "Navigation menu",
+      "notifications": "Notifications",
+      "notificationsAlert": "Pending notifications",
+      "profile": "My Profile",
+      "see-all-notifications": "See all Notifications",
+      "signoff": "Sign off"
+    },
+    "not-result": {
+      "img-alt": "Box image with flies"
+    },
+    "not-result-filter": {
+      "img-alt": "Picture of sleeping magnifier box"
+    },
+    "sidebar": {}
+  },
+  "shared": {
+    "profile": {
+      "cardInformation": {
+        "email": "Email",
+        "profileAlt": "Icon profile",
+        "role": "Role",
+        "telephone": "Telephone"
+      },
+      "changePasswordModal": {
+        "cancelButton": "Cancel",
+        "charactersRemaining": "characters remaining",
+        "currentPassword": "Type the curent password",
+        "currentPasswordError": "The current password is required.",
+        "hidePassword": "Hide password",
+        "newPassword": "Type a new password",
+        "newPasswordError": "The new password is required.",
+        "repeatPassword": "Repeat the new password",
+        "repeatPasswordError": "Passwords do not match.",
+        "saveButton": "Save",
+        "showPassword": "Show password",
+        "title": "Change Password"
+      },
+      "editInformation": {
+        "cancelButton": "Cancel",
+        "changePasswordButton": "Change password",
+        "charactersRemaining": "characters remaining",
+        "editButton": "Edit",
+        "email": "Email",
+        "emailError": "The email is required.",
+        "emailError2": "Enter a valid email.",
+        "emailExample": "Example. user@itcr.ac.cr",
+        "language": "Preferred language",
+        "languageHint": "The preferred language selected will be for emails will arrive.",
+        "lastName": "Last name",
+        "lastNameError": "The last name is required.",
+        "name": "Name",
+        "nameError": "The name is required.",
+        "phone": "Telephone",
+        "phoneError": "The telephone is required.",
+        "role": "Role",
+        "saveButton": "Save changes",
+        "title": "Information",
+        "username": "Username",
+        "usernameError": "The username is required."
+      },
+      "notifications": {
+        "checkAsSeen": "Mark as seen",
+        "checkedAsSeen": "Marked as seen",
+        "notseen": "Not seen",
+        "pallyEvaluationFailed": {
+          "text": "{{name}}'s automatic evaluation has been failed.",
+          "title": "Automatic evaluation failed"
+        },
+        "pallyEvaluationFinished": {
+          "text": "{{name}}'s automatic evaluation has been completed successfully.",
+          "title": "Automatic evaluation finished"
+        },
+        "reportFailed": {
+          "text": "{{name}}'s report of the site {{siteName}} has been failed.",
+          "title": "Report failed"
+        },
+        "reportFinished": {
+          "text": "{{name}}'s report of the site {{siteName}} has been completed successfully.",
+          "title": "Report finished"
+        },
+        "scrapingFailed": {
+          "text": "The {{name}} scraping has been failed.",
+          "title": "Scraping failed"
+        },
+        "scrapingFinished": {
+          "text": "The {{name}} scraping has been completed successfully.",
+          "title": "Scraping finished"
+        },
+        "seen": "Seen",
+        "title": "Notifications"
+      }
+    }
+  },
+  "superAdministrator": {
+    "clients": {
+      "advancedSearch": "Advanced Search",
+      "modalAdvancedSearch": {
+        "inputCreatedAt": "Creation date",
+        "inputCreatedBy": "Promoter in Charge",
+        "inputEmail": "Email client",
+        "inputName": "Client Name",
+        "subTitle": "Fill in the fields in which you want to filter your search"
+      },
+      "table": {
+        "country": "Country",
+        "createdAt": "Date (YYYY/MM/DD)",
+        "createdBy": "Creator",
+        "email": "Email",
+        "evaluationsNumber": "Evaluations",
+        "name": "Name",
+        "state": "State"
+      },
+      "title": "Clients"
+    },
+    "statistics": {
+      "evaluationsQuantity": {
+        "title": "Evaluations Quantity"
+      }
+    },
+    "evaluations": {
+      "evaluationsYear": "Select the year of the evaluation",
+      "table": {
+        "action": "Action",
+        "evaluator": "Evaluator",
+        "inCharge": "In charge",
+        "name": "Name",
+        "remainingDays": "Remaining days",
+        "specifications": "Specifications",
+        "state": "State",
+        "url": "Url",
+        "edit": "Edit"
+      },
+      "title": "Evaluations"
+    },
+    "evaluations-reports": {
+      "title": "Reports"
+    },
+    "manage": {
+      "alerts": {
+        "browser": {
+          "error": {
+            "createTitle": "Browser not created",
+            "text": "Error managing the browser",
+            "updateTitle": "Browser not updated"
+          },
+          "success": {
+            "createTitle": "Browser created",
+            "text1": "The browser",
+            "text2": "was managed <b>successfully</b>",
+            "updateTitle": "Browser updated"
+          }
+        },
+        "device": {
+          "error": {
+            "createTitle": "Device not created",
+            "text": "Error managing the device",
+            "updateTitle": "Device not updated"
+          },
+          "success": {
+            "createTitle": "Device created",
+            "text1": "The device",
+            "text2": "was managed <b>successfully</b>",
+            "updateTitle": "Device updated"
+          }
+        },
+        "disabilityType": {
+          "error": {
+            "createTitle": "Disability type not created",
+            "text": "Error managing the disability type",
+            "updateTitle": "Disability type not updated"
+          },
+          "success": {
+            "createTitle": "Disability type created",
+            "text1": "The disability type",
+            "text2": "was managed <b>successfully</b>",
+            "updateTitle": "Disability type updated"
+          }
+        },
+        "evaluator": {
+          "error": {
+            "createTitle": "Evaluator not created",
+            "text": "Error managing the evaluator",
+            "updateTitle": "Evaluator not updated"
+          },
+          "success": {
+            "createTitle": "Evaluator created",
+            "text1": "The evaluator",
+            "text2": "was managed <b>successfully</b>",
+            "updateTitle": "Evaluator updated"
+          }
+        },
+        "package": {
+          "error": {
+            "createTitle": "Package not created",
+            "text": "Error managing the package",
+            "updateTitle": "Package not updated"
+          },
+          "success": {
+            "createTitle": "Package created",
+            "text1": "The package",
+            "text2": "was managed <b>successfully</b>",
+            "updateTitle": "Package updated"
+          }
+        },
+        "promoter": {
+          "error": {
+            "createTitle": "Promoter not created",
+            "text": "Error managing promoter",
+            "updateTitle": "Promoter type not updated"
+          },
+          "success": {
+            "createTitle": "Promoter created",
+            "text1": "The promoter type",
+            "text2": "was managed <b>successfully</b>",
+            "updateTitle": "Promoter updated"
+          }
+        },
+        "segment": {
+          "error": {
+            "createTitle": "Organization segment not created",
+            "text": "Error managing the organization segment",
+            "updateTitle": "Organization segment not updated"
+          },
+          "success": {
+            "createTitle": "Organization segment created",
+            "text1": "The organization segment",
+            "text2": "was managed <b>successfully</b>",
+            "updateTitle": "Organization segment updated"
+          }
+        },
+        "supportTools": {
+          "error": {
+            "createTitle": "Support tool not created",
+            "text": "Error managing the support tool",
+            "updateTitle": "Support tool not updated"
+          },
+          "success": {
+            "createTitle": "Support tool created",
+            "text1": "The support tool",
+            "text2": "was managed <b>successfully</b>",
+            "updateTitle": "Support tool updated"
+          }
+        },
+        "wcagRule": {
+          "error": {
+            "createTitle": "Criterion not created",
+            "text": "Error managing the criterion",
+            "updateTitle": "Criterion not updated"
+          },
+          "success": {
+            "createTitle": "Criterion created",
+            "text1": "The criterion",
+            "text2": "was managed <b>successfully</b>",
+            "updateTitle": "Criterion updated"
+          }
+        }
+      },
+      "disability": {
+        "support-tools": {
+          "list": {
+            "new": "New support tool",
+            "sub-title": "Support tools",
+            "table": {
+              "edit": "Edit",
+              "state": "State",
+              "support-tool": "Support tools",
+              "type-disability": "Type disability",
+              "version": "Version"
+            },
+            "title": "Disability"
+          },
+          "modal-manage": {
+            "btn-cancel": "Cancel",
+            "disability-label": "Disability (s) linked",
+            "error-disability-input": "Disability (s) linked is required",
+            "error-name-input": "The name is required",
+            "error-version-input": "The version is required",
+            "name-input": "Name",
+            "state-active-value": "Active",
+            "state-inactive-value": "Inactive",
+            "state-label": "State : ",
+            "version-input": "Version"
+          }
+        },
+        "type-disability": {
+          "list": {
+            "new": "New type of disability",
+            "sub-title": "Types of Disability",
+            "table": {
+              "edit": "Edit",
+              "name": "Name",
+              "state": "State"
+            },
+            "title": "Disability"
+          },
+          "modal-manage": {
+            "active-input": "Active",
+            "btn-cancel": "Cancel",
+            "btn-ok": "{{confirmText}}!",
+            "error-name-input": "The name is required.",
+            "inactive-input": "Inactive",
+            "name-input": "Name of the type of disability",
+            "state-label": "State :",
+            "sub-title": "Enter the requested information",
+            "title": "Create Disability Type"
+          }
+        }
+      },
+      "evaluations": {
+        "browsers": {
+          "list": {
+            "new": "New Browser",
+            "sub-title": "Browsers",
+            "table": {
+              "browser-version": "Browser version",
+              "edit": "Edit",
+              "name": "Name",
+              "state": "State"
+            },
+            "title": "Evaluations"
+          },
+          "modal-manage": {
+            "error-input-browser-version": "The browser version is required",
+            "error-input-name": "The name is required",
+            "input-browser-version": "Browser version",
+            "input-name": "Name",
+            "input-state": "State",
+            "input-state-active": "Active",
+            "input-state-inactive": "Inactive"
+          }
+        },
+        "devices": {
+          "list": {
+            "new": "New Device",
+            "sub-title": "Devices",
+            "table": {
+              "brand": "Brand",
+              "edit": "Edit",
+              "name": "Device",
+              "operativeSystem": "Operative System",
+              "state": "State",
+              "version": "Version"
+            },
+            "title": "Evaluations"
+          },
+          "modal-manage": {
+            "error-input-brand": "The brand is required",
+            "error-input-name": "The name is required",
+            "error-input-operative-system": "The operative system is required",
+            "error-input-version": "The version is required",
+            "input-brand": "Brand",
+            "input-name": "Name",
+            "input-operative-system": "Operative System",
+            "input-state": "State",
+            "input-state-active": "Active",
+            "input-state-inactive": "Inactive",
+            "input-version": "Version"
+          }
+        },
+        "packages": {
+          "list": {
+            "new": "New Package",
+            "sub-title": "Packages",
+            "table": {
+              "edit": "Edit",
+              "name": "Name",
+              "state": "State"
+            },
+            "title": "Evaluations"
+          },
+          "modal-manage": {
+            "error-input-name": "The name is required",
+            "input-name": "Name",
+            "state-input": "State :",
+            "state-input-active": "Active",
+            "state-input-inactive": "Inactive",
+            "sub-title": "Enter the requested information"
+          }
+        },
+        "wcagRules": {
+          "list": {
+            "new": "New WCAG",
+            "subTitle": "WCAG Rules",
+            "table": {
+              "description": "Description",
+              "edit": "Edit",
+              "name": "WCAG Criterion",
+              "pattern": "Pattern",
+              "principle": "Principle",
+              "state": "State"
+            },
+            "title": "Evaluations"
+          },
+          "modalManage": {
+            "errorDisabilityInput": "The disabilities are required",
+            "errorInputCriterionDescription": "The description is required",
+            "errorInputLevel": "The level is required",
+            "errorInputName": "The name is required",
+            "errorInputNumberCriterion": "The number of the criterion is required",
+            "errorInputReferenceLink": "The wcag link reference is required",
+            "input-state": "State",
+            "input-state-active": "Active",
+            "input-state-inactive": "Inactive",
+            "inputCriterionDescription": "Description",
+            "inputDisabilitiesAssocied": "Disabilities Associed",
+            "inputDisability": "Disabilities associed",
+            "inputLevel": "Level of compliance",
+            "inputName": "Criterion Name",
+            "inputNumberCriterion": "Creterion Number",
+            "inputPattern": "Pattern",
+            "inputPrinciple": "Principle",
+            "inputReferenceLink": "WCAG Link"
+          }
+        }
+      },
+      "evaluators": {
+        "list": {
+          "new": "New evaluator",
+          "table": {
+            "edit": "Edit",
+            "evaluationsCounter": "Evaluations Completed",
+            "name": "Name",
+            "state": "State",
+            "typesOfDiscapacity": "Types of discapacity"
+          },
+          "title": "Evaluators"
+        },
+        "modalManage": {
+          "activeInputLabel": "Active",
+          "btnCancel": "Cancel",
+          "emailInput": "Email",
+          "errorEmailInput": "The email is required",
+          "errorLastNameInput": "The last name is required",
+          "errorNameInput": "The name is required",
+          "errorPasswordInput": "The password is required",
+          "errorPhoneInput": "The phone is required",
+          "errorTypesOfDiscapacity": "The dispacacities are required",
+          "errorUserNameInput": "The user name is required",
+          "inactiveInputLabel": "Inactive",
+          "lastNameInput": "Last name",
+          "nameInput": "Name",
+          "passwordInput": "Password",
+          "phoneInput": "Phone",
+          "sexInput": "Sex",
+          "stateInput": "State :",
+          "subTitle": "Enter the requested information",
+          "typesOfDiscapacity": "Types of discapacity",
+          "userNameInput": "Username"
+        }
+      },
+      "promoters": {
+        "list": {
+          "new": "New promoter",
+          "table": {
+            "customers-created": "Customers Created",
+            "edit": "Edit",
+            "email": "Email",
+            "name": "Name",
+            "phone": "Phone",
+            "state": "State"
+          },
+          "title": "Promoters"
+        },
+        "modal-manage": {
+          "active-input-label": "Active",
+          "btn-cancel": "Cancel",
+          "email-input": "Email",
+          "error-email-input": "The email is required",
+          "error-last-name-input": "The last name is required",
+          "error-name-input": "The name is required",
+          "error-password-input": "The password is required",
+          "error-phone-input": "The phone is required",
+          "error-user-name-input": "The user name is required",
+          "inactive-input-label": "Inactive",
+          "last-name-input": "Last name",
+          "name-input": "Name",
+          "password-input": "Password",
+          "phone-input": "Phone",
+          "sex-input": "Sex",
+          "state-input": "State :",
+          "sub-title": "Enter the requested information",
+          "user-name-input": "Username"
+        }
+      },
+      "searchInput": "Search",
+      "segments": {
+        "list": {
+          "new": "New segment",
+          "table": {
+            "country": "Country",
+            "edit": "Edit",
+            "segment": "Segment",
+            "state": "State"
+          },
+          "title": "Organizations Segments"
+        },
+        "modal-manage": {
+          "error-input-country": "The country is required",
+          "error-input-name": "The name is required",
+          "input-country": "Associated Country",
+          "input-name": "Segment Name",
+          "input-state": "State :",
+          "state-input-active": "Active",
+          "state-input-inactive": "Inactive"
+        }
+      },
+      "stateMenu": {
+        "active": "Actives",
+        "all": "All",
+        "inactive": "Inactives"
+      }
+    }
+  },
+  "utils": {
+    "alerts": {
+      "btnOk": "Ok"
+    },
+    "languageConfig": {
+      "altImage": "clock image",
+      "description": "Please wait a moment for all the information on the site to be set to the language you selected.",
+      "greeting": "Thank you for your patience!",
+      "title": "Wait few seconds!"
+    },
+    "principles": {
+      "operable": {
+        "text": "The user interface and navigation components must be operable.",
+        "title": "Principle Operable"
+      },
+      "perceivable": {
+        "text": "Information and interface components User must be presented to users so that they can perceive them.",
+        "title": "Principle Perceivable"
+      },
+      "robust": {
+        "text": "Content must be robust enough as to be interpreted in a way reliable by a wide variety of agents user, including technical aids.",
+        "title": "Principle Robust"
+      },
+      "understandable": {
+        "text": "The information and the operation of the user interface must be understandable.",
+        "title": "Principle Understandable"
+      }
+    },
+    "sessionExpired": {
+      "buttonText": "Login",
+      "eaw": "Web Accessibility Evaluator",
+      "imageAlt": "Expired Session",
+      "text": "If you want to re-enter the Web Evaluator press the <b>Login</b> button and enter your credentials.",
+      "title": "Your session has expired!"
+    }
+  },
+  "paginatorLabels": {
+    "previousLabel": "Previous",
+    "nextLabel": "Next",
+    "screenReaderPaginationLabel": "Paginator",
+    "screenReaderPageLabel": "Page",
+    "screenReaderCurrentLabel": "Current page"
+  }
+}

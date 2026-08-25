@@ -1,0 +1,48 @@
+@import '../../../../styles/main-theme.scss';
+
+.l-confirm-dialog {
+  border: 2px solid transparent;
+  .c-dialog-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: mat-color($primary);
+  }
+
+  .c-dialog-subtitle {
+    font-size: 16px;
+    font-weight: bold;
+    color: mat-color($primary);
+  }
+
+  .c-dialog-text {
+    font-size: 16px;
+    text-align: center;
+    color: mat-color($dark-gray);
+  }
+
+  .l-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    button {
+      width: 155px;
+      height: 48px;
+      font-weight: bold;
+      font-size: 16px;
+      border-radius: 33px;
+    }
+    .c-submit-btn {
+      color: #ffffff;
+      background-color: mat-color($primary);
+      border-width: 0px;
+      margin-left: 10px;
+    }
+    .c-cancel-btn {
+      border: 1px solid mat-color($secondary);
+      background-color: #ffffff;
+      color: mat-color($secondary);
+      margin-right: 10px;
+    }
+  }
+}

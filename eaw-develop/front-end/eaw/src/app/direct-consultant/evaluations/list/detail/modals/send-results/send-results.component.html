@@ -1,0 +1,100 @@
+<div class="container l-confirm-dialog">
+  <div class="l-title">
+    <span class="icon">
+      <i class="fas fa-share-square c-fa"></i>
+    </span>
+    <h1 class="c-dialog-title mt-3">
+      {{ translatePath + '.title' | translate }}
+    </h1>
+    <p>
+      {{ translatePath + '.description' | translate }}
+    </p>
+    <form [formGroup]="formEmail">
+      <div formArrayName="emailsArray" id="emailArray">
+        <div
+          class="row"
+          *ngFor="let emailElement of getControls('emailsArray'); let i = index"
+        >
+          <mat-form-field
+            [formGroupName]="i"
+            appearance="outline"
+            class="col-12"
+          >
+            <mat-label> {{ translatePath + '.email' | translate }}</mat-label>
+            <input
+              matInput
+              #messageName
+              name="email"
+              formControlName="email"
+              required
+              type="text"
+            />
+            <mat-error *ngIf="emailElement.get('email').hasError('required')">
+              {{ translatePath + '.emailRequired' | translate }}
+            </mat-error>
+            <mat-error *ngIf="emailElement.get('email').hasError('email')">
+              {{ translatePath + '.emailInvalid' | translate }}
+            </mat-error>
+            <mat-hint class="mb-3 c-hint" align="end">
+              <span class="sr-only"
+                >{{
+                  formOptions.lengthInputEmail -
+                    emailElement.get('email').value.length
+                }}
+                caracteres restantes
+              </span>
+              <span aria-hidden="true">
+                {{ emailElement.get('email').value.length }} /
+                {{ formOptions.lengthInputEmail }}
+              </span>
+            </mat-hint>
+          </mat-form-field>
+          <div
+            class="ml-auto"
+            *ngIf="formEmail.get('emailsArray').value.length > 1"
+          >
+            <a
+              role="button"
+              tabindex="0"
+              aria-label="Crear nuevo sitio a evaluar"
+              class="c-a-add c-a-delete"
+              (click)="deleteEmail(i)"
+            >
+              {{ translatePath + '.deleteEmail' | translate }}
+              <i class="fas fa-plus-circle"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="l-add  ml-auto">
+            <a
+              role="button"
+              tabindex="0"
+              aria-label="Crear nuevo sitio a evaluar"
+              class="c-a-add"
+              (click)="addEmail()"
+            >
+              {{ translatePath + '.addEmail' | translate }}
+              <i class="fas fa-plus-circle"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="v-buttons">
+    <button mat-raised-button class="c-button b-cancel mr-5" (click)="cancel()">
+      {{ translatePath + '.cancelBtn' | translate }}
+    </button>
+
+    <button
+      mat-raised-button
+      class="c-button b-primary ml-5"
+      (click)="confirm()"
+      [attr.aria-disabled]="!formEmail.valid"
+    >
+      {{ translatePath + '.confirmBtn' | translate }}
+    </button>
+  </div>
+</div>

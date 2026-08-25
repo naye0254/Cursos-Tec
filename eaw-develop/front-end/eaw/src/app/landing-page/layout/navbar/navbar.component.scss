@@ -1,0 +1,68 @@
+@import '../../../../styles/main-theme.scss';
+
+.navbar-div {
+  border-bottom: 3px solid $alabaster;
+}
+
+.item {
+  font-size: 10px;
+  padding-left: 1.5em !important;
+
+  .Itemlink {
+    color: mat-color($black) !important;
+  }
+}
+
+.c-navbar-button {
+  padding-left: 1.5em;
+  margin-right: 1em;
+}
+
+.c-button-round {
+  background-color: $blue-chill;
+  color: mat-color($white);
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 50px;
+  padding: 5px 20px 5px 20px;
+}
+
+.s-lang {
+  padding: 0.25rem 1.5rem;
+  font-size: 17px;
+  color: mat-color($secondary);
+  font-weight: bold;
+}
+
+.lang-inactive::before {
+  display: inline-block;
+  padding-right: 0.5rem;
+  color: mat-color($light-gray);
+  font: normal normal normal 10px/1 FontAwesome;
+  content: '\f111';
+}
+
+.lang-active::before {
+  display: inline-block;
+  padding-right: 0.5rem;
+  color: mat-color($primary);
+  font: normal normal normal 10px/1 FontAwesome;
+  content: '\f111';
+}
+
+.dropdown-menu {
+  border-radius: 13px;
+}
+
+.dropdown-toggle-ellipsis::after {
+  display: inline-block;
+  padding-left: 0.5rem;
+  font: normal normal normal 13px/1 FontAwesome;
+  content: '\f078';
+}
+
+@media screen and (max-width: 992px) {
+  .c-navbar-button {
+    padding-left: 2% !important;
+  }
+}

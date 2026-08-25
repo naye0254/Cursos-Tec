@@ -1,0 +1,62 @@
+@import '../../../../styles/main-theme.scss';
+
+.l-list-evaluations {
+  width: 100%;
+  margin-top: 3vh;
+  .l-head {
+    .c-evaluator-name {
+      font-size: 14px;
+      color: mat-color($dark-gray);
+    }
+    width: 85%;
+    margin: 0 auto;
+    .l-evaluator {
+      display: flex;
+      align-items: center;
+      p {
+        width: 100%;
+      }
+      i {
+        font-size: 40px;
+        margin-right: 1%;
+        position: relative;
+        top: 4px;
+        color: mat-color($primary) !important;
+      }
+    }
+  }
+  .l-state-menu {
+    width: 36vw;
+  }
+
+  .l-table {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    .c-table {
+      ::ng-deep th.mat-header-cell {
+        width: 100px;
+        min-width: 100px;
+        text-align: center;
+      }
+      td {
+        word-wrap: break-word;
+        max-width: 10px;
+        text-align: center;
+      }
+      box-shadow: none;
+      width: 95%;
+    }
+    .c-edit {
+      cursor: pointer;
+      color: mat-color($primary);
+    }
+  }
+
+  .l-paginator {
+    width: 100%;
+    margin-top: 3vh;
+    display: flex;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,79 @@
+@import '../../../styles/main-theme.scss';
+
+.navbar-div {
+  border-bottom: 3px solid $alabaster;
+}
+
+.s-lang {
+  padding: 0.25rem 1.5rem;
+  font-size: 17px;
+  color: mat-color($secondary);
+  font-weight: bold;
+}
+
+.item {
+  font-size: 17px;
+  padding-left: 1.5em !important;
+
+  .Itemlink {
+    color: mat-color($black) !important;
+  }
+
+  .active {
+    font-weight: bold;
+    border-bottom: 3px solid mat-color($primary);
+  }
+}
+
+.c-item {
+  color: mat-color($dark-gray);
+  font-size: 17px;
+  border-bottom: 1px solid $mercury;
+}
+
+.c-item:last-child {
+  border-bottom: none;
+}
+
+.lang-inactive::before {
+  display: inline-block;
+  padding-right: 0.5rem;
+  color: mat-color($light-gray);
+  font: normal normal normal 10px/1 FontAwesome;
+  content: '\f111';
+}
+
+.lang-active {
+  font-weight: 600;
+}
+
+.lang-active::before {
+  display: inline-block;
+  padding-right: 0.5rem;
+  color: mat-color($primary);
+  font: normal normal normal 10px/1 FontAwesome;
+  content: '\f111';
+}
+
+.dropdown-menu {
+  border-radius: 13px;
+}
+
+.dropdown-item {
+  background-color: transparent !important;
+}
+
+.dropdown-notifications {
+  padding-right: 0.5em !important;
+}
+
+.dropdown-toggle-ellipsis::after {
+  display: inline-block;
+  padding: 0.5rem;
+  font: normal normal normal 13px/1 FontAwesome;
+  content: '\f078';
+}
+
+.c-close-button {
+  padding-top: 6px;
+}

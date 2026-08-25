@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.15.0.final using JasperReports Library version 6.15.0-dd49bfb94918336b8321d5507193f0169ead4e95  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="manual_evaluation" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="22146e36-df10-4d56-98c7-540b79d7c059">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DA_EAW"/>
+	<parameter name="evaluationsId" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT d.name,
+	s.usersId,
+    s.id idSpecification
+FROM `DS_EAW`.`Specifications` s
+	inner join `DS_EAW`.`Disabilities` d ON 
+	 s.`disabilitiesId` = d.id 
+WHERE 
+	 s.`evaluationsId` =  $P{evaluationsId}]]>
+	</queryString>
+	<field name="name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="name"/>
+		<property name="com.jaspersoft.studio.field.label" value="name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Disabilities"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="usersId" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="usersId"/>
+		<property name="com.jaspersoft.studio.field.label" value="usersId"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Specifications"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idSpecification" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="idSpecification"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Specifications"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="183" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="27" width="516" height="143" uuid="16297693-f422-441d-ac86-c4608b2c5e8c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato" size="12"/>
+				</textElement>
+				<text><![CDATA[Una muestra de secciones específicas del sitio web son revisadas de forma manual por Evaluadores de Accesibilidad, quienes son profesionales con discapacidad que realizarán un análisis a fondo de la muestra seleccionada. Los resultados mostrados en esta sección (Evaluación Automática) se agrupan por páginas, en cada página se agrupan en usuarios evaluadores, y luego los hallazgos de cada usuario bajo la especificaión o especificaciones correspondientes. Los criterios evaluados van según cumplimientos de las pautas internacionales de accesibilidad establecidas en la WCAG 2.0 (Web Content Accessibility Guidelines).]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="516" height="20" forecolor="#377A81" uuid="9915f89d-2de3-4dc6-aa10-cf0dc32902d5">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[8 EVALUACIÓN MANUAL]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="220" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="220" uuid="5e8cf705-5e41-4546-b3da-a0aa37896a0d"/>
+				<subreportParameter name="evaluationsId">
+					<subreportParameterExpression><![CDATA[$P{evaluationsId}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="idSpecification">
+					<subreportParameterExpression><![CDATA[$F{idSpecification}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["/Results_Summary/Manual/disability_by_user.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

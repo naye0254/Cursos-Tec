@@ -1,0 +1,71 @@
+<div class="container-fluid l-request-evaluation mb-5">
+  <div class="row l-header">
+    <div class="col-sm-12 l-title">
+      <h1 translate>directClient.evaluations.requesEvaluation.title</h1>
+    </div>
+    <div class="col-sm-12">
+      <p translate>
+        directClient.evaluations.requesEvaluation.description
+      </p>
+    </div>
+  </div>
+  <div class="row l-form">
+    <div class="col-sm-12">
+      <form [formGroup]="formRequest">
+        <mat-form-field appearance="outline" class="form-control">
+          <mat-label translate>
+            directClient.evaluations.requesEvaluation.descriptionLabel</mat-label
+          >
+          <textarea
+            formControlName="description"
+            matInput
+            #messageName
+            required
+            type="text"
+          ></textarea>
+          <mat-error
+            *ngIf="formRequest.get('description').hasError('required')"
+          >
+            {{
+              'directClient.evaluations.requesEvaluation.descriptionRequiredError'
+                | translate
+            }}
+          </mat-error>
+          <mat-error
+            *ngIf="formRequest.get('description').hasError('maxlength')"
+          >
+            {{
+              'directClient.evaluations.requesEvaluation.descriptionMaxLengthError'
+                | translate
+            }}
+          </mat-error>
+          <mat-hint class="mb-3 c-hint" align="end">
+            <span class="sr-only"
+              >{{
+                formOptions.lengthInputDescription - messageName.value.length
+              }}
+              caracteres restantes
+            </span>
+            <span aria-hidden="true">
+              {{ messageName.value.length }} /
+              {{ formOptions.lengthInputDescription }}
+            </span>
+          </mat-hint>
+        </mat-form-field>
+      </form>
+    </div>
+  </div>
+  <div class="l-buttons text-center">
+    <button class="c-cancel-button mr-5" (click)="cancel()" translate>
+      directClient.evaluations.requesEvaluation.cancelButton
+    </button>
+    <button
+      class="c-submit-button ml-5"
+      [attr.aria-disabled]="!formRequest.valid"
+      (click)="sendRequest()"
+      translate
+    >
+      directClient.evaluations.requesEvaluation.sendButton
+    </button>
+  </div>
+</div>

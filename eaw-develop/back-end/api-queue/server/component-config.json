@@ -1,0 +1,6 @@
+{
+  "loopback-component-explorer": {
+    "mountPath": "/eaw-api-queue/explorer",
+    "generateOperationScopedModels": true
+  }
+}

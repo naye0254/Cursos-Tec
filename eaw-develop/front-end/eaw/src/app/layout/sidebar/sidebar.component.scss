@@ -1,0 +1,123 @@
+@import '../../../styles/main-theme.scss';
+
+.l-sidenav {
+  width: 100%;
+  height: auto;
+  min-height: 85vh;
+  background-color: mat-color($white);
+}
+
+.l-left-sidenav {
+  padding-top: 2%;
+  padding-left: 60px;
+  width: 250px;
+
+  a {
+    border-left: 15px solid mat-color($black, 50);
+    font-size: 15px;
+    font-weight: 100;
+    color: mat-color($dark-gray);
+  }
+
+  li {
+    margin-bottom: 15px;
+  }
+
+  li.sidebar-active {
+    a {
+      font-weight: bold;
+      border-left: 15px solid mat-color($primary);
+      color: mat-color($primary);
+    }
+  }
+
+  .sidebar-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    ul {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .sub-ul {
+      a {
+        border: none;
+        font-size: 14px;
+        color: mat-color($dark-gray);
+        font-weight: 400;
+      }
+
+      li {
+        padding: 10px;
+        list-style: none;
+        margin-left: 15%;
+        margin-right: 15%;
+        margin-bottom: 10px;
+        border-bottom: solid 0.8px rgba(0, 0, 0, 0.12);
+      }
+
+      li.sub-sidebar-active {
+        a {
+          font-weight: bold;
+          color: mat-color($primary);
+        }
+      }
+    }
+
+    li a {
+      text-decoration: none;
+      display: block;
+    }
+
+    li a:hover,
+    li.open > a,
+    li.open a:hover {
+      font-weight: bold;
+    }
+
+    & > li {
+      & > a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 18px;
+        padding-right: 15px;
+      }
+      & > a {
+        i {
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}
+
+.c-button {
+  position: absolute;
+  background-color: mat-color($light-gray);
+  left: -7px;
+  top: 17px;
+  color: mat-color($dark-gray);
+  border: 0;
+  border-radius: 0px 10px 10px 0px;
+  i {
+    font-size: 25px;
+  }
+  span {
+    margin-left: 4px;
+    margin-right: -4px;
+    font-weight: bold;
+    font-family: Helvetica, Arial, sans-serif;
+  }
+
+  &:hover {
+    color: white;
+    background-color: mat-color($primary);
+    border-color: mat-color($primary);
+  }
+  &:focus {
+    color: white;
+    background-color: mat-color($primary);
+    border-color: mat-color($primary);
+  }
+}

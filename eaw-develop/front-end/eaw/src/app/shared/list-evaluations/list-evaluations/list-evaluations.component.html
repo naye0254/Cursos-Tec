@@ -1,0 +1,510 @@
+<div class="l-list">
+  <div class="l-list-head row">
+    <div class="col-sm-8">
+      <h1 class="c-title" *ngIf="evaluatorRole === userRole">
+        {{ 'superAdministrator.evaluations.title' | translate }} {{ title }}
+      </h1>
+      <h1 class="c-title" *ngIf="evaluatorRole !== userRole">
+        {{ 'superAdministrator.evaluations.title' | translate }}
+      </h1>
+    </div>
+    <div class="col-sm-4" *ngIf="promoterRole !== userRole">
+      <mat-form-field class="c-border-search">
+        <mat-label translate="">superAdministrator.manage.searchInput</mat-label>
+        <input [(ngModel)]="searchFilter" matInput (keyup)="applyFilter($event)" />
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="c-numbers" *ngIf="promoterRole === userRole">
+    <div class="c-counter">
+      <span *ngIf="listEvaluations" class="counter"> {{ listEvaluations.length }}</span>
+      <div class="c-description" *ngIf="evaluationState === evaluationsStates.PENDING">
+        <span class="c-title">
+          {{ 'administrator.evaluations.list.pendingState' | translate }}</span
+        >
+        <span class="c-description">
+          {{ 'administrator.evaluations.list.title' | translate }}
+          {{ 'administrator.evaluations.list.pendingState' | translate }}</span
+        >
+      </div>
+      <div class="c-description" *ngIf="evaluationState === evaluationsStates.PROGRESS">
+        <span class="c-title">
+          {{ 'administrator.evaluations.list.progresState' | translate }}</span
+        >
+        <span class="c-description">
+          {{ 'administrator.evaluations.list.title' | translate }}
+          {{ 'administrator.evaluations.list.progresState' | translate }}</span
+        >
+      </div>
+      <div class="c-description" *ngIf="evaluationState === evaluationsStates.FINISHED">
+        <span class="c-title"> {{ 'administrator.evaluations.list.finishState' | translate }}</span>
+        <span class="c-description">
+          {{ 'administrator.evaluations.list.title' | translate }}
+          {{ 'administrator.evaluations.list.finishState' | translate }}</span
+        >
+      </div>
+      <div class="c-description" *ngIf="evaluationState === 3">
+        <span class="c-title"> {{ 'administrator.evaluations.list.failedState' | translate }}</span>
+        <span class="c-description">
+          {{ 'administrator.evaluations.list.title' | translate }}
+          {{ 'administrator.evaluations.list.failedState' | translate }}
+        </span>
+      </div>
+    </div>
+    <div class="ml-auto">
+      <mat-form-field class="c-border-search">
+        <mat-label translate="">superAdministrator.manage.searchInput</mat-label>
+        <input [(ngModel)]="searchFilter" matInput (keyup)="applyFilter($event)" />
+      </mat-form-field>
+    </div>
+  </div>
+
+  <!-- TODO: Check or validate with design department -->
+  <p
+    *ngIf="
+      this.tableDataSource?.filteredData.length && this.tableDataSource?.filteredData.length > 0
+    "
+    class="c-counter-page text-right"
+    aria-hidden="true"
+  >
+    {{
+      +(+this.paginationState.beginRange) +
+        ' - ' +
+        this.paginationState.endRange +
+        ' de ' +
+        this.tableDataSource.filteredData.length +
+        ' resultados'
+    }}
+  </p>
+  <p
+    *ngIf="
+      this.tableDataSource?.filteredData.length && this.tableDataSource?.filteredData.length > 0
+    "
+    class="sr-only"
+    aria-live="polite"
+  >
+    {{
+      ' Mostrando resultados desde ' +
+        +(+this.paginationState.beginRange) +
+        ' hasta ' +
+        this.paginationState.endRange +
+        ' de un total de ' +
+        this.tableDataSource?.filteredData.length +
+        ' resultados'
+    }}
+  </p>
+
+  <div class="l-state-menu mb-4" *ngIf="evaluatorRole !== userRole">
+    <mat-tab-group
+      class="c-state-menu"
+      animationDuration="0ms"
+      (selectedTabChange)="applyStateFilter($event)"
+      [selectedIndex]="evaluationState"
+    ><!-- Agregamos las pestañas -->
+      <mat-tab label="{{ 'administrator.evaluations.list.pendingState' | translate }}"></mat-tab>
+      <mat-tab label="{{ 'administrator.evaluations.list.progresState' | translate }}"></mat-tab>
+      <mat-tab label="{{ 'administrator.evaluations.list.finishState' | translate }}"></mat-tab>
+      <mat-tab label="{{ 'administrator.evaluations.list.failedState' | translate }}"></mat-tab> 
+    </mat-tab-group>
+  </div>
+
+  <div class="l-table">
+    <table mat-table [dataSource]="tableDataSource" class="mat-elevation-z8 c-table">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ 'superAdministrator.evaluations.table.name' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.siteName }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="package">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ 'administrator.evaluations.list.table.package' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.evaluationsPackages.name }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="segment">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ 'administrator.evaluations.list.table.segment' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.evaluationsSegments.name }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="url">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ 'superAdministrator.evaluations.table.url' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.mainUrl }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="specifications">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ 'superAdministrator.evaluations.table.specifications' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.especificationsQuantity }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="specificationsPromoter">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ 'superAdministrator.evaluations.table.specifications' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <span> {{ element.especificationsQuantity }}</span>
+          <button
+            *ngIf="element.especificationsQuantity !== 0"
+            mat-button
+            tabindex="0"
+            matTooltip="{{
+              'administrator.evaluations.list.table.seeSpecificationsLabel' | translate
+            }}"
+            [attr.aria-label]="
+              'administrator.evaluations.list.table.seeSpecificationsLabel' | translate
+            "
+            (click)="openSpecificationsModal(element)"
+          >
+            <img
+              class="c-see-specificatons"
+              src="./assets/img/promoter/see-specifications.png"
+              [attr.alt]="'administrator.evaluations.list.table.seeSpecificationsLabel' | translate"
+            />
+          </button>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="initialDate">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ 'administrator.evaluations.list.table.initDate' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.createdAt.slice(0, 10) }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="endDate">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ 'administrator.evaluations.list.table.endDate' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element?.evaluationsDates[0]?.expirationDate.slice(0, 10) }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="inCharge">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ 'superAdministrator.evaluations.table.inCharge' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.inCharge.firstName }} {{ element.inCharge.lastName }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="evaluator">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ 'superAdministrator.evaluations.table.evaluator' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.evaluators }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="remainingDays">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ 'superAdministrator.evaluations.table.remainingDays' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.remainingDays }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef>
+          <div
+            *ngIf="
+              evaluationState === evaluationsStates.PENDING ||
+              evaluationState === evaluationsStates.PROGRESS
+            "
+          >
+            {{ 'superAdministrator.evaluations.table.action' | translate }}
+          </div>
+          <div *ngIf="evaluationState === evaluationsStates.FINISHED">
+            {{ 'superAdministrator.evaluations.table.state' | translate }}
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="c-action" *ngIf="evaluationState === evaluationsStates.PENDING">
+            <i class="fas fa-mouse-pointer"></i>
+            <a class="c-link" (click)="sendEvaluationSelected(element)" translate>
+              evaluator.evaluations.table.startRevision
+            </a>
+          </div>
+          <div class="c-action" *ngIf="evaluationState === evaluationsStates.PROGRESS">
+            <i class="fas fa-mouse-pointer"></i>
+            <a class="c-link" (click)="sendEvaluationSelected(element)" translate>
+              evaluator.evaluations.table.continueRevision
+            </a>
+          </div>
+          <div *ngIf="evaluationState === evaluationsStates.FINISHED" translate>
+            evaluator.evaluations.table.pendingReport
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="state">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ 'administrator.evaluations.list.table.state' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div
+            class="c-action"
+            *ngIf="(evaluationState === evaluationsStates.PENDING || evaluationState === 3) && element.pagesChoosed === 0"
+          >
+            <!----- Evaluaciones fallidas (Pulgas) -------->
+            <i *ngIf="element.scrapingState === scrapingStates.FAILED" class="fas fa-bug"></i>
+            <button
+              *ngIf="element.scrapingState === scrapingStates.FAILED"
+              (click)="goErrorDescription(element.id)"
+              [attr.aria-label]="'Error ' + element"
+              aria-hidden="true"
+              mat-button
+              class="c-link"
+              >
+              Error
+            </button>
+            <!---------------------------------------------------------------------------->
+            <button
+              class="c-button-like-link"
+              *ngIf="element.scrapingState === scrapingStates.PROGRESS"
+              type="button"
+              (click)="openCheckpointModal(element.id)"
+            >
+              <i class="fas fa-sitemap"></i>
+              {{ 'administrator.evaluations.list.seeCheckpoint' | translate }}
+            </button>
+            <i
+              *ngIf="
+                element.scrapingState === scrapingStates.FINISHED &&
+                (element.packagesId === packages.SPECIFIC_MANUAL ||
+                  element.packagesId === packages.SPECIFIC_AUTOMATIC)
+              "
+              class="fas fa-mouse-pointer"
+            ></i>
+            <a
+              *ngIf="
+                element.scrapingState === scrapingStates.FINISHED &&
+                (element.packagesId === packages.SPECIFIC_MANUAL ||
+                  element.packagesId === packages.SPECIFIC_AUTOMATIC)
+              "
+              [routerLink]="['detail-evaluation', element.id]"
+              class="c-link"
+              translate
+            >
+              administrator.evaluations.list.selectPages
+            </a>
+            <button
+              class="c-button-like-link"
+              *ngIf="
+                element.scrapingState === scrapingStates.FINISHED &&
+                (element.packagesId === packages.RAMDOM_AUTOMATIC ||
+                  element.packagesId === packages.RAMDOM_COMPLETE ||
+                  element.packagesId === packages.RANDOM_MANUAL)
+              "
+              type="button"
+              (click)="generateRandomSelectedPages(element.id)"
+            >
+              <i class="fas fa-random"></i>
+              {{ 'administrator.evaluations.list.generateSelection' | translate }}
+            </button>
+          </div>
+          <div
+            class="c-action"
+            *ngIf="evaluationState === evaluationsStates.PENDING && element.pagesChoosed === 1"
+          >
+            <button
+              class="c-button-like-link"
+              *ngIf="
+                element.manualEvaluationState === evaluationsStates.PENDING ||
+                element.automaticEvaluationState === evaluationsStates.PENDING
+              "
+              type="button"
+              (click)="starEvaluation(element.id, element.packagesId)"
+            >
+              <i class="fas fa-play-circle"></i>
+              {{ 'administrator.evaluations.list.initEvaluation' | translate }}
+            </button>
+          </div>
+          <div class="c-action" *ngIf="evaluationState === evaluationsStates.PROGRESS">
+            <i
+              *ngIf="
+                element.manualEvaluationState === evaluationsStates.PROGRESS ||
+                element.automaticEvaluationState === evaluationsStates.PROGRESS
+              "
+              class="fas fa-tasks"
+            ></i>
+            <a
+              *ngIf="
+                element.manualEvaluationState === evaluationsStates.PROGRESS ||
+                element.automaticEvaluationState === evaluationsStates.PROGRESS
+              "
+              class="c-link"
+              translate
+            >
+              administrator.evaluations.list.evaluating
+            </a>
+            <i
+              *ngIf="
+                element.manualEvaluationState === evaluationsStates.FAILED ||
+                element.automaticEvaluationState === evaluationsStates.FAILED
+              "
+              class="fas fa-bug"
+            ></i>
+            <a
+              *ngIf="
+                element.manualEvaluationState === evaluationsStates.FAILED ||
+                element.automaticEvaluationState === evaluationsStates.FAILED
+              "
+              class="c-link"
+              translate
+            >
+              administrator.evaluations.list.reportError
+            </a>
+          </div>
+          <div class="c-action" *ngIf="evaluationState === evaluationsStates.FINISHED">
+            <button
+              class="c-button-like-link"
+              *ngIf="
+                (element.manualEvaluationState === evaluationsStates.FINISHED ||
+                  element.automaticEvaluationState === evaluationsStates.FINISHED) &&
+                element.managerialReportState === reportStates.PENDING &&
+                element.technicalReportState === reportStates.PENDING
+              "
+              type="button"
+              (click)="generateReport(element.id, element.evaluationCode)"
+            >
+              <i class="fas fa-file-pdf"></i>
+              {{ 'administrator.evaluations.list.generateReport' | translate }}
+            </button>
+            <button
+              class="c-button-like-link"
+              *ngIf="
+                (element.manualEvaluationState === evaluationsStates.FINISHED ||
+                  element.automaticEvaluationState === evaluationsStates.FINISHED) &&
+                element.managerialReportState === reportStates.FINISHED &&
+                element.technicalReportState === reportStates.FINISHED
+              "
+              type="button"
+              (click)="goResults(element.id)"
+            >
+              <i class="fas fa-poll"></i>
+              {{ 'administrator.evaluations.list.seeResults' | translate }}
+            </button>
+            <i
+              *ngIf="
+                ((element.manualEvaluationState === evaluationsStates.FINISHED ||
+                  element.automaticEvaluationState === evaluationsStates.FINISHED) &&
+                  element.managerialReportState === reportStates.PROGRESS) ||
+                element.technicalReportState === reportStates.PROGRESS
+              "
+              class="fas fa-spinner"
+            ></i>
+            <a
+              *ngIf="
+                ((element.manualEvaluationState === evaluationsStates.FINISHED ||
+                  element.automaticEvaluationState === evaluationsStates.FINISHED) &&
+                  element.managerialReportState === reportStates.PROGRESS) ||
+                element.technicalReportState === reportStates.PROGRESS
+              "
+              class="c-link"
+              translate
+            >
+              administrator.evaluations.list.generatingReport
+            </a>
+            <a
+              *ngIf="
+                element.managerialReportState === evaluationsStates.FAILED ||
+                element.tecnicalReportState === evaluationsStates.FAILED
+              "
+              class="c-link"
+              translate
+            >
+              administrator.evaluations.list.reportError
+            </a>
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="mapSite">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ 'administrator.evaluations.list.table.map' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="c-action">
+            <a
+              class="c-link"
+              [routerLink]="['detail-evaluation', element.id]"
+              translate
+              *ngIf="element.pagesChoosed === 1"
+            >
+              administrator.evaluations.list.see
+            </a>
+          </div>
+        </td>
+      </ng-container>
+
+      <!-- ToDo: check edit conditions or check what to edit -->
+      <ng-container
+        matColumnDef="edit"
+        *ngIf="promoterRole === userRole || superAdministratorRole === userRole"
+      >
+        <th mat-header-cell *matHeaderCellDef>
+          {{ 'superAdministrator.evaluations.table.edit' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <button
+            (click)="editEvaluation(element.id)"
+            [attr.aria-label]="'editar ' + element"
+            aria-hidden="true"
+            mat-button
+          >
+            <mat-icon class="c-edit">editar</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+      <!-- check edit conditions  -->
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+
+  <!-- TODO: Check or validate with design department -->
+  <p class="c-available-page text-center" [ngClass]="!isEmpty && !noResults ? 'show' : 'hide'">
+    Página
+    {{
+      +(+paginationState.pageIndex) +
+        ' de ' +
+        ((this.tableDataSource?.filteredData.length -
+          (this.tableDataSource?.filteredData.length % 5)) /
+          5 +
+          1)
+    }}
+  </p>
+  <div [ngClass]="!isEmpty && !noResults ? 'show' : 'hide'" class="l-paginator">
+    <mat-paginator
+      [pageSize]="5"
+      (page)="setPaginationState($event)"
+      showFirstLastButtons
+      hidePageSize
+    ></mat-paginator>
+  </div>
+  <app-not-result *ngIf="isEmpty" [notResultMessage]="emptyMessages.notResults"> </app-not-result>
+  <app-not-result-filter
+    *ngIf="noResults && !isEmpty"
+    [notResultMessage]="emptyMessages.notFilterResults"
+  ></app-not-result-filter>
+</div>

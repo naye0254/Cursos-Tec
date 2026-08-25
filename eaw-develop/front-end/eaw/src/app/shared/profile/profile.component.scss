@@ -1,0 +1,211 @@
+@import '../../../styles/main-theme.scss';
+
+.l-sidenav {
+  width: 95%;
+  height: auto;
+  min-height: 73%;
+  background-color: mat-color($white);
+}
+
+.l-left-sidenav {
+  padding-top: 3%;
+  width: 270px;
+
+  .c-top {
+    text-align: center;
+
+    h1 {
+      font-size: 22px;
+      color: mat-color($primary);
+      font-weight: 400;
+
+      span {
+        font-size: 36px;
+        color: mat-color($secondary);
+        font-weight: bold;
+      }
+    }
+  }
+
+  hr {
+    height: 1.5px;
+    width: 70%;
+    background-color: $silver;
+  }
+
+  .c-bottom {
+    text-align: left;
+    padding-left: 50px;
+
+    p {
+      font-size: 14px;
+      color: mat-color($dark-gray);
+    }
+
+    .icon {
+      margin-right: 5px;
+      font-size: 14px;
+      background-color: mat-color($primary);
+      padding: 6px;
+      border-radius: 50%;
+      color: mat-color($white);
+    }
+  }
+}
+
+.l-right-sidenav {
+  padding-top: 3%;
+  padding-bottom: 5%;
+
+  h2 {
+    font-weight: bold;
+    color: mat-color($secondary);
+    font-size: 20px;
+  }
+
+  .box-style {
+    border: 1px solid $alto;
+    border-radius: 13px;
+  }
+
+  .l-left-container {
+    padding: 4%;
+    .c-input {
+      margin-top: 3%;
+      width: 100%;
+      color: mat-color($dark-gray);
+    }
+
+    .c-hint {
+      font-size: 14px;
+    }
+
+    .v-buttons {
+      text-align: center;
+      margin-top: 10%;
+      margin-bottom: 2%;
+
+      .c-button {
+        min-width: 175px;
+        border-radius: 33px;
+        border: 1px solid transparent;
+        &:hover {
+          filter: brightness(0.8);
+        }
+      }
+
+      .b-gray {
+        background-color: $mercury;
+        color: mat-color($dark-gray, 500);
+      }
+    }
+  }
+
+  .l-right-container {
+    padding: 4% 2%;
+
+    h2 {
+      padding-left: 6%;
+    }
+
+    .l-notifications {
+      padding-left: 9%;
+      padding-right: 9%;
+      height: 605px;
+      overflow: auto;
+      overflow-x: hidden;
+
+      .c-notification {
+        margin-bottom: 5%;
+        padding-bottom: 5px;
+        border-bottom: 1px solid $mercury;
+
+        .c-center {
+          padding-left: 2%;
+          padding-top: 5px;
+        }
+
+        h3 {
+          margin: 0%;
+          color: mat-color($dark-gray, 500);
+          font-size: 16px;
+          font-weight: 600;
+          word-wrap: break-word;
+        }
+
+        p {
+          margin: 0%;
+          color: mat-color($dark-gray, 500);
+          font-size: 14px;
+          font-weight: 400;
+        }
+
+        .button-without-style {
+          background: none;
+          color: inherit;
+          border: none;
+          padding: 0;
+          font: inherit;
+          cursor: pointer;
+          outline: inherit;
+          margin-top: 10px;
+        }
+
+        .seen {
+          color: $forest-green;
+          font-size: 18px;
+        }
+
+        .notseen {
+          color: $silver-chalice;
+          font-size: 18px;
+        }
+
+        .notseen-circle {
+          color: mat-color($error);
+          font-size: 12px;
+        }
+      }
+    }
+
+    .l-notifications::-webkit-scrollbar-track {
+      border-radius: 10px;
+      background-color: $cultured-pearl;
+    }
+
+    .l-notifications::-webkit-scrollbar {
+      width: 5px;
+      background-color: $cultured-pearl;
+    }
+
+    .l-notifications::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background-color: $mercury;
+    }
+  }
+}
+
+/* Change style mat inputs */
+:host ::ng-deep .mat-select-value-text {
+  color: mat-color($dark-gray) !important;
+}
+
+::ng-deep.mat-input-element:disabled {
+  color: mat-color($dark-gray) !important;
+}
+
+::ng-deep.mat-form-field-appearance-legacy .mat-form-field-underline {
+  background-color: mat-color($primary) !important;
+  height: 2px !important;
+}
+
+::ng-deep.mat-form-field-disabled .mat-form-field-underline {
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 1) 0,
+    rgba(0, 0, 0, 0.42) 33%,
+    mat-color($light-gray) 0
+  ) !important;
+  background-size: 1px 100% !important;
+  background-repeat: repeat-x !important;
+}

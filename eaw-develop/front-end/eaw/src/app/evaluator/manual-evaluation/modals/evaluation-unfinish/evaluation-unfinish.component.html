@@ -1,0 +1,24 @@
+<div class="container l-confirm-dialog">
+  <div class="l-title">
+    <i class="fas fa-times-circle fa-3x icon"></i>
+    <h1 class="c-dialog-title mt-3" translate>{{ translatePath }}.title</h1>
+    <p translate>{{ translatePath }}.text</p>
+  </div>
+  <div class="v-content-list">
+    <ul>
+      <li *ngFor="let element of data.list">{{ element }}</li>
+    </ul>
+  </div>
+  <p
+    class="c-paragraph"
+    [innerHTML]="translatePath + '.subtext' | translate"
+  ></p>
+  <div class="v-buttons">
+    <button mat-raised-button class="c-button b-gray mr-5" (click)="cancel()">
+      {{ translatePath + '.cancelBtn' | translate }}
+    </button>
+    <button mat-raised-button class="c-button b-primary" (click)="confirm()">
+      {{ translatePath + '.confirmBtn' | translate }}
+    </button>
+  </div>
+</div>

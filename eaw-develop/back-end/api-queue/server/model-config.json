@@ -1,0 +1,29 @@
+{
+  "_meta": {
+    "sources": ["loopback/common/models", "loopback/server/models", "../common/models", "./models"],
+    "mixins": ["loopback/common/mixins", "loopback/server/mixins", "../common/mixins", "./mixins"]
+  },
+  "ACL": {
+    "dataSource": "db",
+    "public": false
+  },
+  "container": {
+    "dataSource": "files_local",
+    "public": true
+  },
+  "RoleMapping": {
+    "dataSource": "db",
+    "public": false,
+    "options": {
+      "strictObjectIDCoercion": true
+    }
+  },
+  "Role": {
+    "dataSource": "db",
+    "public": false
+  },
+  "QueueServices": {
+    "dataSource": "db",
+    "public": true
+  }
+}

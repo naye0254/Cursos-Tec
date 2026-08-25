@@ -1,0 +1,95 @@
+@import '../.../../../../../../styles/main-theme.scss';
+
+.l-confirm-dialog {
+  .l-title {
+    text-align: center;
+    padding: 5%;
+    padding-bottom: 0px;
+
+    .c-dialog-title {
+      font-size: 25px;
+      font-weight: bold;
+      color: mat-color($primary);
+    }
+    p {
+      padding-top: 5%;
+      color: mat-color($dark-gray);
+      text-align: left;
+      font-size: 18px;
+    }
+
+    a {
+      margin-left: 5px;
+      font-size: 18px;
+      font-weight: bold;
+      color: mat-color($primary);
+      text-decoration: underline;
+    }
+
+    .icon {
+      color: mat-color($primary);
+    }
+  }
+
+  .v-content-list {
+    max-height: 150px;
+    overflow: auto;
+    margin-bottom: 5%;
+
+    ul {
+      list-style-type: none;
+      li {
+        color: mat-color($dark-gray);
+        font-size: 18px;
+        margin-bottom: 5px;
+      }
+
+      li::before {
+        display: inline-block;
+        padding-right: 0.5rem;
+        color: mat-color($error);
+        font: normal normal normal 20px/1 FontAwesome;
+        content: '\f057';
+      }
+    }
+  }
+
+  .c-paragraph {
+    padding: 0% 5%;
+    color: mat-color($dark-gray);
+    text-align: left;
+    font-size: 18px;
+  }
+
+  .v-buttons {
+    text-align: center;
+    margin-bottom: 5%;
+
+    .c-button {
+      min-width: 175px;
+      border-radius: 33px;
+      border: 1px solid transparent;
+      &:hover {
+        filter: brightness(0.8);
+      }
+    }
+
+    .b-primary {
+      background-color: mat-color($primary);
+      color: mat-color($white);
+      font-weight: bold;
+    }
+
+    .b-gray {
+      background-color: $mercury;
+      color: mat-color($dark-gray);
+      font-weight: bold;
+    }
+
+    .b-primary:disabled {
+      background-color: $mercury;
+      color: mat-color($dark-gray, 100);
+      font-weight: bold;
+    }
+  }
+}

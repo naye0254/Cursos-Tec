@@ -1,0 +1,96 @@
+@import '../../shared.module.scss';
+$graniteGray: #565656;
+
+.col-sm-4 {
+  min-width: 90%;
+}
+
+.c-table {
+  width: 90% !important;
+  ::ng-deep th.mat-header-cell {
+    width: 100px;
+    min-width: 100px;
+    text-align: center;
+  }
+  td {
+    word-wrap: break-word;
+    max-width: 10px;
+    text-align: center;
+    font-size: 15px !important;
+  }
+  .c-action {
+    color: mat-color($primary);
+    .c-link {
+      color: mat-color($primary);
+      text-decoration: underline;
+      margin-left: 2px;
+      cursor: pointer;
+    }
+
+    .c-button-like-link {
+      background: none !important;
+      text-decoration: underline;
+      color: mat-color($primary);
+      border: none;
+      padding: 0 !important;
+      font: inherit;
+      cursor: pointer;
+    }
+  }
+  .c-see-specificatons {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.c-submit-btn {
+  color: #ffffff;
+  background-color: mat-color($primary);
+  margin-left: 5%;
+}
+
+.c-numbers {
+  padding-left: 9vh;
+  display: flex;
+  .c-counter {
+    display: flex;
+    color: $sonic-silver;
+    .counter {
+      font-size: 40px;
+      font-weight: bold;
+    }
+    .c-description {
+      display: grid;
+      .c-title {
+        font-weight: bold;
+        padding-left: 2vh;
+      }
+      .c-description {
+        font-size: 14px;
+        padding-left: 2vh;
+        position: relative;
+        bottom: 9px;
+      }
+    }
+  }
+}
+
+.c-counter-page {
+  padding-right: 1%;
+  font-size: 18px;
+  font-weight: bold;
+  color: $graniteGray;
+}
+
+.c-available-page {
+  padding-bottom: 0;
+  padding-top: 1%;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 16px;
+  color: $graniteGray;
+}
+
+.disabled {
+  cursor: not-allowed !important;
+  opacity: 0.5;
+}

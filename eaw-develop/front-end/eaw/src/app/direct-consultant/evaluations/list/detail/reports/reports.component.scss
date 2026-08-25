@@ -1,0 +1,41 @@
+@import '../../../../../../styles/main-theme.scss';
+.l-report {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  .l-card-report {
+    display: inline-block;
+    border: 1px solid transparent;
+    .l-content {
+      height: 370px;
+      background: $cultured-pearl 0% 0% no-repeat padding-box;
+      box-shadow: 0px 3px 6px $shadow-box;
+      border-radius: 36px;
+      padding: 10%;
+      h3 {
+        color: mat-color($dark-turquoise);
+        font-weight: bold;
+        font-size: 23px;
+        margin-top: 10%;
+      }
+      p {
+        color: mat-color($dark-turquoise);
+        font-size: 16px;
+      }
+    }
+    .l-actions {
+      margin-top: -7%;
+      .c-button {
+        width: 70%;
+        border-radius: 36px;
+      }
+    }
+  }
+  .l-notice {
+    h3 {
+      color: mat-color($dark-turquoise);
+      font-weight: bold;
+      font-size: 23px;
+      margin-top: 10%;
+    }
+  }
+}

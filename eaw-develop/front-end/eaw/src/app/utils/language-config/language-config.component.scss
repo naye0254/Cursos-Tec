@@ -1,0 +1,20 @@
+@import '../../../styles/main-theme.scss';
+
+.l-confirm-dialog {
+  border: 2px solid transparent;
+  .c-dialog-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: mat-color($primary);
+  }
+
+  .c-dialog-text {
+    font-size: 16px;
+    text-align: left;
+    color: mat-color($dark-gray);
+  }
+
+  .c-greeting {
+    color: mat-color($primary);
+  }
+}

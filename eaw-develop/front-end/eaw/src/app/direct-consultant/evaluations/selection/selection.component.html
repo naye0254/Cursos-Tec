@@ -1,0 +1,11 @@
+<div class="l-filter-client container-fluid mb-5">
+  <app-selection-title [subtitle]="subtitle"></app-selection-title>
+  <app-selection-list
+    [list]="list"
+    (selectedItem)="getSelectedItem($event)"
+  ></app-selection-list>
+  <app-selection-step
+    [step]="step"
+    (selectedStep)="getSelectedStep($event)"
+  ></app-selection-step>
+</div>

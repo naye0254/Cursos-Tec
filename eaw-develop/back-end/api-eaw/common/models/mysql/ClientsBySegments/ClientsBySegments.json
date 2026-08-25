@@ -1,0 +1,56 @@
+{
+  "name": "ClientsBySegments",
+  "options": {
+    "idInjection": false,
+    "mysql": {
+      "schema": "DS_EAW",
+      "table": "ClientsBySegments"
+    },
+    "relations": {
+      "clientsBySegmentsClients": {
+        "model": "Clients",
+        "type": "belongsTo",
+        "foreignKey": "clientsId"
+      },
+      "clientsBySegmentsSegments": {
+        "model": "Segments",
+        "type": "belongsTo",
+        "foreignKey": "segmentsId"
+      }
+    }
+  },
+  "properties": {
+    "clientsId": {
+      "type": "Number",
+      "required": true,
+      "length": null,
+      "precision": 10,
+      "scale": 0,
+      "id": 1,
+      "mysql": {
+        "columnName": "clientsId",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      }
+    },
+    "segmentsId": {
+      "type": "Number",
+      "required": true,
+      "length": null,
+      "precision": 10,
+      "scale": 0,
+      "id": 2,
+      "mysql": {
+        "columnName": "segmentsId",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      }
+    }
+  }
+}

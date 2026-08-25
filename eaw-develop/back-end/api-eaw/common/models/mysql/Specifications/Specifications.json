@@ -1,0 +1,199 @@
+{
+  "name": "Specifications",
+  "options": {
+    "idInjection": false,
+    "mysql": {
+      "schema": "DS_EAW",
+      "table": "Specifications"
+    },
+    "relations": {
+      "specificationsBrowsers": {
+        "model": "Browsers",
+        "type": "belongsTo",
+        "foreignKey": "browsersId"
+      },
+      "specificationsDevices": {
+        "model": "Devices",
+        "type": "belongsTo",
+        "foreignKey": "devicesId"
+      },
+      "specificationsEvaluations": {
+        "model": "Evaluations",
+        "type": "belongsTo",
+        "foreignKey": "evaluationsId"
+      },
+      "specificationsOperativeSystems": {
+        "model": "OperativeSystems",
+        "type": "belongsTo",
+        "foreignKey": "operativeSystemsId"
+      },
+      "specificationsSupportTools": {
+        "model": "SupportTools",
+        "type": "belongsTo",
+        "foreignKey": "supportToolsId"
+      },
+      "specificationsDisabilities": {
+        "model": "Disabilities",
+        "type": "belongsTo",
+        "foreignKey": "disabilitiesId"
+      },
+      "specificationsUsers": {
+        "model": "Users",
+        "type": "belongsTo",
+        "foreignKey": "usersId"
+      },
+      "specificationsByManualPages": {
+        "model": "SpecificationsByManualPages",
+        "type": "hasMany",
+        "foreignKey": "specificationsId"
+      }
+    },
+    "acls": [
+      {
+        "accessType": "READ",
+        "principalType": "ROLE",
+        "principalId": "$authenticated",
+        "permission": "ALLOW",
+        "property": "*"
+      }
+    ]
+  },
+  "properties": {
+    "browsersId": {
+      "type": "Number",
+      "required": false,
+      "length": null,
+      "precision": 3,
+      "scale": 0,
+      "mysql": {
+        "columnName": "browsersId",
+        "dataType": "tinyint",
+        "dataLength": null,
+        "dataPrecision": 3,
+        "dataScale": 0,
+        "nullable": "Y"
+      }
+    },
+    "devicesId": {
+      "type": "Number",
+      "required": false,
+      "length": null,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "devicesId",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "Y"
+      }
+    },
+    "evaluationsId": {
+      "type": "Number",
+      "required": false,
+      "length": null,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "evaluationsId",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "Y"
+      }
+    },
+    "id": {
+      "type": "Number",
+      "required": true,
+      "length": null,
+      "precision": 10,
+      "scale": 0,
+      "id": 1,
+      "mysql": {
+        "columnName": "id",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      }
+    },
+    "operativeSystemsId": {
+      "type": "Number",
+      "required": false,
+      "length": null,
+      "precision": 3,
+      "scale": 0,
+      "mysql": {
+        "columnName": "operativeSystemsId",
+        "dataType": "tinyint",
+        "dataLength": null,
+        "dataPrecision": 3,
+        "dataScale": 0,
+        "nullable": "Y"
+      }
+    },
+    "supportToolsId": {
+      "type": "Number",
+      "required": false,
+      "length": null,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "supportToolsId",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "Y"
+      }
+    },
+    "disabilitiesId": {
+      "type": "Number",
+      "required": true,
+      "length": null,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "disabilitiesId",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      }
+    },
+    "usersId": {
+      "type": "Number",
+      "required": true,
+      "length": null,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "usersId",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      }
+    },
+    "state": {
+      "type": "Number",
+      "required": false,
+      "length": null,
+      "precision": 3,
+      "scale": 0,
+      "mysql": {
+        "columnName": "state",
+        "dataType": "tinyint",
+        "dataLength": null,
+        "dataPrecision": 3,
+        "dataScale": 0,
+        "nullable": "Y"
+      }
+    }
+  }
+}

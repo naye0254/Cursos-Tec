@@ -1,0 +1,102 @@
+$color-darkgray: #4B4B4B;
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+$lato-font: 'Lato', sans-serif;
+
+.c-notice-selection-msg{
+  color: $color-darkgray;
+  font-family: $lato-font;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.ngx-pagination {
+  margin-top: 5%;
+  margin-left: 0;
+  margin-bottom: 1rem; 
+}
+
+.ngx-pagination::before, .ngx-pagination::after {
+  content: ' ';
+  display: table; 
+}
+.ngx-pagination::after {
+  clear: both; 
+}
+.ngx-pagination li {
+  width: 80px;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  margin-right: 0.0625rem;
+  border-radius: 0; 
+}
+.ngx-pagination li {
+  display: inline-block; 
+}
+.ngx-pagination a,
+.ngx-pagination button {
+  color: #4B4B4B !important; 
+  display: block;
+  padding: 0.1875rem 0.625rem;
+  border-radius: 0; 
+}
+
+.ngx-pagination a:hover,
+.ngx-pagination button:hover {
+  background: transparent !important; 
+}
+
+.ngx-pagination-fs{
+  font-size: 1.3em;
+}
+
+.ngx-pagination .current {
+  padding: 0.1875rem 0.625rem;
+  font-size: 1.3em;
+  font-weight: bold;
+  background: transparent !important;
+  color: #4B4B4B;
+  cursor: default; 
+}
+.ngx-pagination .disabled {
+  padding: 0.1875rem 0.625rem;
+  color: #cacaca;
+  cursor: default; 
+} 
+.ngx-pagination .disabled:hover {
+  background: transparent; 
+}
+.ngx-pagination a, .ngx-pagination button {
+  cursor: pointer; 
+}
+.ngx-pagination .pagination-previous a::before,
+.ngx-pagination .pagination-previous.disabled::before { 
+  content: '' !important;
+  display: inline-block;
+  margin-right: 0.5rem; 
+}
+.ngx-pagination .pagination-next a::after,
+.ngx-pagination .pagination-next.disabled::after {
+  content: '' !important;
+  display: inline-block;
+  margin-left: 0.5rem; 
+}
+.ngx-pagination .show-for-sr {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0); 
+}
+.ngx-pagination .small-screen {
+  display: none; 
+}
+
+@media screen and (max-width: 601px) {
+  .ngx-pagination.responsive .small-screen {
+    display: inline-block; 
+  } 
+  .ngx-pagination.responsive li:not(.small-screen):not(.pagination-previous):not(.pagination-next) {
+    display: none; 
+  }
+}

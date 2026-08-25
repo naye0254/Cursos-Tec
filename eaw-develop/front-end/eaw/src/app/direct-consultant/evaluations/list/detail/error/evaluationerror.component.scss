@@ -1,0 +1,426 @@
+@import '../../../../../../styles/main-theme.scss';
+
+$color-light-blue: $blue-chill;
+$color-wh: mat-color($white);
+$color-background: mat-color($dark-turquoise);
+$color-error: $apricot;
+$color-gray: $gray;
+$color-darkgray: mat-color($dark-gray);
+$color-ultralight-gray: $cultured-pearl;
+$color-light-gray: $color-light-gray;
+$color-white-gray: $gallery;
+$radioSize: 18px;
+$radioBorder: $radioBorder;
+$radioActive: mat-color($dark-turquoise);
+
+$lato-font: 'Lato', sans-serif;
+
+.c-button-back {
+    margin-left: 5%;
+    margin-top: 1%;
+    color: mat-color($dark-gray);
+  }
+
+.list-paginator-controls .ngx-pagination .current {
+  background: $radioActive;
+  font-size: 20px;
+  border-radius: 5px;
+}
+
+.c-notice-selection-msg {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  color: $color-darkgray;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.c-noutline {
+  outline: none;
+}
+
+.v-loading {
+  min-height: 200px;
+  .loading {
+    color: $color-darkgray;
+    padding-top: 175px;
+  }
+}
+
+.v-especif-container {
+  padding-left: 0%;
+  .v-devices-container {
+    margin-top: 3%;
+    margin-left: 0%;
+    text-align: left;
+    .c-devices-tittle {
+      color: $color-darkgray;
+      font-weight: bold;
+      font-size: 110%;
+      margin-bottom: 10%;
+    }
+
+    p {
+      margin-bottom: 1%;
+      color: $color-darkgray;
+    }
+  }
+}
+
+.v-observation-container {
+  margin-top: 7%;
+  width: auto;
+  background: $color-white-gray 0% 0% no-repeat padding-box;
+  box-shadow: 2px 3px 6px $shadow-box;
+  border-radius: 25px;
+  opacity: 1;
+  padding: 5%;
+
+  .c-tittle-observation {
+    text-align: left;
+    font-weight: bold;
+    color: $color-light-blue;
+    font-size: 130%;
+  }
+
+  .c-p-observation {
+    color: $color-darkgray;
+    text-align: left;
+    font-weight: bold;
+    font-size: 110%;
+  }
+}
+
+.myaccordion {
+  margin: 0px auto;
+
+  .card,
+  .card:last-child .card-header {
+    border: none;
+  }
+
+  .card-header {
+    border-top: 2px solid $radioBorder !important;
+    border-bottom: 0px;
+    background: transparent;
+  }
+
+  .card-body {
+    margin-top: 0%;
+    padding-top: 0%;
+  }
+
+  .fa-stack {
+    font-size: 22px;
+    color: $color-darkgray;
+    pointer-events: none;
+  }
+
+  .btn {
+    width: 100%;
+    color: $color-background;
+    padding: 0;
+    font-weight: bold;
+    font-size: 75%;
+  }
+
+  .btn-link:hover,
+  .btn-link:focus {
+    text-decoration: none;
+  }
+
+  li + li {
+    margin-top: 10px;
+  }
+}
+
+.v-content {
+  text-align: center;
+  .v-box {
+    padding: 0% 0% 0% 0%;
+    width: 90%;
+    height: auto;
+    background-color: $color-wh;
+    display: inline-block;
+    margin-bottom: 5%;
+
+    .nomargin {
+      margin: 0%;
+    }
+
+    .col-no-padding {
+      padding: 0%;
+    }
+
+    .item {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      margin-left: 2%;
+      font-size: 1.5em;
+      width: auto;
+      display: inline-block;
+    }
+
+    .transition {
+      -webkit-transition: opacity 1s ease-in-out;
+      -moz-transition: opacity 1s ease-in-out;
+      -ms-transition: opacity 1s ease-in-out;
+      -o-transition: opacity 1s ease-in-out;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .opacity {
+      zoom: 1;
+      filter: alpha(opacity=0);
+      opacity: 0;
+    }
+
+    thead > tr > th {
+      cursor: pointer;
+    }
+
+    .v-table {
+      text-align: left;
+      th {
+        padding-left: 0%;
+        color: $color-darkgray;
+        border: none;
+        font-weight: 900;
+      }
+
+      td {
+        padding-left: 0%;
+        color: $color-darkgray;
+        border: none;
+        border-bottom: 1px solid $color-gray;
+        word-wrap: break-word;
+        max-width: 300px;
+      }
+
+      .c-th-center {
+        text-align: center !important;
+      }
+
+      .c-a-href {
+        color: $color-light-blue;
+      }
+
+      .v-DynamicalTable {
+        display: contents !important;
+      }
+
+      .c-criterion-td {
+        font-weight: bold;
+        width: 280px;
+      }
+
+      .c-invisible-line {
+        visibility: hidden;
+        height: 1px;
+        margin-bottom: -1px;
+      }
+
+      .c-pathlink {
+        color: $color-light-blue;
+        text-decoration: underline;
+      }
+
+      .c-button-like-link {
+        background: none !important;
+        color: $color-light-blue;
+        border: none;
+        padding: 0 !important;
+        font: inherit;
+        cursor: pointer;
+        font-style: italic;
+        text-decoration: underline;
+      }
+    }
+
+    .c-tittle {
+      color: $color-background;
+      font-weight: bold;
+      text-align: left;
+      font-size: 1.5em;
+    }
+
+    .c-p {
+      margin-top: 2%;
+      color: $color-darkgray;
+      text-align: left;
+      margin-bottom: 5%;
+    }
+
+    .c-a-href {
+      color: $color-light-blue;
+    }
+
+    .c-button-round {
+      margin-top: 5%;
+      margin-left: 5%;
+      background-color: $color-light-blue;
+      color: $color-wh;
+      font-size: 1.5em;
+      font-weight: bold;
+      margin-bottom: 5%;
+      border-radius: 50px;
+      width: 30%;
+      height: 12%;
+    }
+
+    .l-header {
+      .btn-selected {
+        background-color: $color-light-blue;
+        color: $color-wh;
+        border: 4px solid transparent !important;
+      }
+
+      .btn-not-selected {
+        background-color: $color-wh;
+        color: $color-light-blue;
+        border: 2px solid $color-light-blue !important;
+      }
+      .c-evaluation-btn {
+        font-weight: bold;
+        border-radius: 50px;
+        width: 120%;
+        height: 62px;
+      }
+
+      .c-title-section {
+        color: mat-color($dark-turquoise);
+        font-size: 19px !important;
+        font-weight: bold;
+        padding-top: 2%;
+      }
+    }
+
+    .c-button-round-s {
+      margin-top: 3% !important;
+      margin-left: 0% !important;
+    }
+
+    .c-button-bg-transparent {
+      background-color: transparent;
+      color: $color-light-blue !important;
+      border-width: 2px;
+      border-color: $color-light-blue;
+    }
+
+    .c-button-round:disabled {
+      background-color: $color-gray !important;
+    }
+
+    .v-dropdowns {
+      display: -webkit-box;
+      select {
+        -webkit-appearance: none;
+        appearance: none;
+      }
+
+      .c-arrow-select::before {
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        content: '\f078';
+        color: $color-darkgray;
+      }
+
+      .inp {
+        padding-right: 25px;
+        background-color: transparent;
+        border: none;
+        border-bottom: 1.5px solid $color-darkgray;
+        color: $color-darkgray;
+        font-size: 17px;
+        height: 30px;
+        width: 100%;
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .inp:focus {
+        border-bottom: 3px solid $color-light-blue;
+      }
+
+      .input-label {
+        position: absolute;
+        right: 3px;
+        top: calc(30% - 0.5em);
+        color: $color-darkgray;
+        pointer-events: none;
+      }
+
+      .inp-wrapper {
+        position: absolute;
+        width: 90%;
+      }
+
+      .inp-wrapper-little {
+        width: 30%;
+      }
+    }
+  }
+
+  .c-title-card {
+    color: mat-color($dark-turquoise);
+    font-size: 30px;
+    font-weight: bold;
+    text-align: left;
+  }
+}
+
+.v-pagination {
+  margin-top: 5%;
+  color: mat-color($dark-gray);
+  .btn-icon {
+    font-weight: bold;
+  }
+  .btn {
+    padding: 0%;
+  }
+  .active {
+    font-weight: bold;
+    color: mat-color($primary);
+  }
+
+  .active::after {
+    color: mat-color($primary);
+    font: normal normal normal 10px/1 FontAwesome;
+    content: '\f111';
+  }
+  .pages {
+    max-width: 50px !important;
+  }
+}
+
+.l-table {
+  margin-top: 6% !important;
+  .c-table-title {
+    background-color: mat-color($primary);
+    text-align: left;
+    padding-top: 1%;
+    .c-principle-title {
+      color: mat-color($white);
+      font-weight: bold;
+      font-size: 18px;
+    }
+  }
+}
+
+.c-spinner {
+  position: relative;
+  left: 150%;
+  .c-loading {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center;
+  }
+}
+
+.l-criterion {
+  .c-info-button {
+    color: mat-color($primary);
+  }
+}

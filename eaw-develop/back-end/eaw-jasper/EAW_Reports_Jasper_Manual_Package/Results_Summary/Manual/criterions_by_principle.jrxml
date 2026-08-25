@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.15.0.final using JasperReports Library version 6.15.0-dd49bfb94918336b8321d5507193f0169ead4e95  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="criterions_by_principle" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="9a9cd061-09a4-486f-89d3-6659e92f1234">
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[YERTX0VBV2AuYENyaXRlcmlvbnNgICwxNSwxNSw1N2IzOTI3NC0xNDRmLTRlMjYtOTFjYS1kMGIy
+NGZkMzdmMDI7YERTX0VBV2AuYEd1aWRlbGluZXNgICwyMTcsMTEzLDEyYWU1NTM2LWU5YWYtNDRh
+Yi1hNTZlLTk3NzBjNGEzYjQwMjs=]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DA_EAW"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<subDataset name="findingsByCriterion" uuid="fd529c65-6383-45f5-a3dd-3ccecff89b6d">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DA_EAW"/>
+		<parameter name="criterionsId" class="java.lang.Integer"/>
+		<parameter name="specificationsByManualPagesId" class="java.lang.Integer"/>
+		<queryString language="SQL">
+			<![CDATA[SELECT DISTINCT r.descriptionRecommendation FROM DS_EAW.ManualAnswers m
+    INNER JOIN DS_EAW.Recommendations r ON m.recommendationsId = r.id
+WHERE m.criterionsId =  $P{criterionsId}  AND 
+	m.complyState =  '-1' AND
+ 	m.specificationsByManualPagesId =  $P{specificationsByManualPagesId}]]>
+		</queryString>
+		<field name="descriptionRecommendation" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="descriptionRecommendation"/>
+			<property name="com.jaspersoft.studio.field.label" value="descriptionRecommendation"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="Recommendations"/>
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+	</subDataset>
+	<parameter name="principlesId" class="java.lang.Integer"/>
+	<parameter name="specificationsByManualPagesId" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[CALL DS_EAW.SP_failedCriterionsWithRecommendationForManualEvaluation( $P{principlesId} ,  $P{specificationsByManualPagesId})]]>
+	</queryString>
+	<field name="idCriterion" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="idCriterion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Criterions"/>
+	</field>
+	<field name="criterionName" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="criterionName"/>
+		<property name="com.jaspersoft.studio.field.label" value="criterionName"/>
+	</field>
+	<field name="referenceLink" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="referenceLink"/>
+		<property name="com.jaspersoft.studio.field.label" value="referenceLink"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Criterions"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="66" splitType="Stretch">
+			<textField textAdjust="StretchHeight">
+				<reportElement x="0" y="42" width="571" height="18" forecolor="#000000" uuid="4cf92037-ddef-49cd-ad3f-8cdd48d2b4d1">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{referenceLink}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="0" y="0" width="571" height="20" forecolor="#377A81" uuid="efc5982d-404e-4d81-bf31-0e007cc16008"/>
+				<textElement>
+					<font fontName="Lato" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{criterionName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="22" width="571" height="18" uuid="dbf09a6f-4024-4439-b233-91a8c25eb7ea">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato&#xA;" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Para más información acerca de éste criterio, puede visitar el siguiente enlace en:]]></text>
+			</staticText>
+		</band>
+		<band height="20">
+			<componentElement>
+				<reportElement stretchType="ElementGroupHeight" x="16" y="0" width="555" height="20" isRemoveLineWhenBlank="true" uuid="b3326d8a-c077-435a-8a4c-eecc708937f7">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="findingsByCriterion" uuid="39c92194-804a-4233-99c9-c1bc023e7a43">
+						<datasetParameter name="criterionsId">
+							<datasetParameterExpression><![CDATA[$F{idCriterion}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="specificationsByManualPagesId">
+							<datasetParameterExpression><![CDATA[$P{specificationsByManualPagesId}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="20" width="555">
+						<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+							<reportElement x="0" y="0" width="500" height="20" uuid="dd660b43-5489-48e4-ab95-d7d1690e3322">
+								<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							</reportElement>
+							<textElement verticalAlignment="Middle" markup="none"/>
+							<textFieldExpression><![CDATA["• " + $F{descriptionRecommendation}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+		</band>
+	</detail>
+</jasperReport>

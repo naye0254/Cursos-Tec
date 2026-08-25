@@ -1,0 +1,170 @@
+{
+  "name": "ManualPages",
+  "options": {
+    "idInjection": false,
+    "mysql": {
+      "schema": "DS_EAW",
+      "table": "ManualPages"
+    },
+    "relations": {
+      "manualPagesPages": {
+        "model": "Pages",
+        "type": "belongsTo",
+        "foreignKey": "pagesId"
+      }
+    },
+    "acls": [
+      {
+        "accessType": "*",
+        "principalType": "ROLE",
+        "principalId": "$everyone",
+        "permission": "ALLOW"
+      },
+      {
+        "accessType": "EXECUTE",
+        "principalType": "ROLE",
+        "principalId": "$authenticated",
+        "permission": "ALLOW",
+        "property": "*"
+      }
+    ]
+  },
+  "properties": {
+    "distinguishableObservation": {
+      "type": "String",
+      "required": false,
+      "length": 2500,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "distinguishableObservation",
+        "dataType": "varchar",
+        "dataLength": 2500,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "Y"
+      }
+    },
+    "evaluationPageState": {
+      "type": "Number",
+      "required": false,
+      "length": null,
+      "precision": 3,
+      "scale": 0,
+      "mysql": {
+        "columnName": "evaluationPageState",
+        "dataType": "tinyint",
+        "dataLength": null,
+        "dataPrecision": 3,
+        "dataScale": 0,
+        "nullable": "Y"
+      }
+    },
+    "formPage": {
+      "type": "String",
+      "required": false,
+      "length": null,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "formPage",
+        "dataType": "json",
+        "dataLength": null,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "Y"
+      }
+    },
+    "id": {
+      "type": "Number",
+      "required": false,
+      "length": null,
+      "precision": 10,
+      "scale": 0,
+      "id": 1,
+      "mysql": {
+        "columnName": "id",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "Y"
+      }
+    },
+    "operableObservation": {
+      "type": "String",
+      "required": false,
+      "length": 2500,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "operableObservation",
+        "dataType": "varchar",
+        "dataLength": 2500,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "Y"
+      }
+    },
+    "pagesId": {
+      "type": "Number",
+      "required": true,
+      "length": null,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "pagesId",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      }
+    },
+    "percetibleObservation": {
+      "type": "String",
+      "required": false,
+      "length": 2500,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "percetibleObservation",
+        "dataType": "varchar",
+        "dataLength": 2500,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "Y"
+      }
+    },
+    "robustObservation": {
+      "type": "String",
+      "required": false,
+      "length": 2500,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "robustObservation",
+        "dataType": "varchar",
+        "dataLength": 2500,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "Y"
+      }
+    },
+    "finishedAt": {
+      "type": "Date",
+      "required": false,
+      "length": null,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "finishedAt",
+        "dataType": "timestamp",
+        "dataLength": null,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "Y"
+      }
+    }
+  }
+}

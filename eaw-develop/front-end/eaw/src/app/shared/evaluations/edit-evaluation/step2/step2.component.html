@@ -1,0 +1,98 @@
+<div class="l-step">
+  <h2 class="c-title" translate>
+    administrator.evaluations.manage.specifications.title
+  </h2>
+  <p class="c-incomplete-data" *ngIf="hasStepOneProblems" translate>
+    administrator.evaluations.manage.specifications.hasStepOneProblems
+  </p>
+  <div class="row l-list-specifications" *ngIf="!hasStepOneProblems">
+    <form
+      *ngFor="let specification of listSpecification"
+      class="l-form l-specification"
+      [formGroup]="specification.specificationForm"
+    >
+      <fieldset class="c-fieldset-title">
+        {{ specification.disabilityModel.name }} - Especificación
+        {{ specification.countSpecification }}
+      </fieldset>
+      <p class="c-evaluator-name">
+        {{ specification.evaluatorModel.firstName }}
+        {{ specification.evaluatorModel.lastName }}
+      </p>
+      <mat-form-field class="l-form-field" appearance="outline">
+        <mat-label translate>administrator.evaluations.manage.specifications.device</mat-label>
+        <mat-select formControlName="deviceId" name="device">
+          <mat-option *ngFor="let device of listDevices" [value]="device.id">
+            {{ device.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="l-form-field" appearance="outline">
+        <mat-label translate
+          >administrator.evaluations.manage.specifications.operativeSystem</mat-label
+        >
+        <mat-select formControlName="operativeSystemId" name="operativeSystem">
+          <mat-option
+            *ngFor="let operativeSystem of listOperativeSystems"
+            [value]="operativeSystem.id"
+          >
+            {{ operativeSystem.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="l-form-field" appearance="outline">
+        <mat-label translate>administrator.evaluations.manage.specifications.browser</mat-label>
+        <mat-select formControlName="browserId" name="browser">
+          <mat-option *ngFor="let browser of listBrowsers" [value]="browser.id">
+            {{ browser.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="l-form-field" appearance="outline">
+        <mat-label translate
+          >administrator.evaluations.manage.specifications.supportTools</mat-label
+        >
+        <mat-select formControlName="supportToolId" name="supportTool">
+          <mat-option *ngFor="let supportTool of listSupportTools" [value]="supportTool.id">
+            {{ supportTool.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="l-a-add">
+        <a
+          role="button"
+          tabindex="0"
+          aria-label="Crear especificación"
+          class="c-a-add"
+          (click)="buildSpecificationObject(specification)"
+          (click)="buildSpecificationObject(specification)"
+          translate
+        >
+          <i class="fas fa-plus-circle"></i>
+          administrator.evaluations.manage.specifications.addSpecificationLabel
+        </a>
+      </div>
+    </form>
+  </div>
+  <div class="row l-buttons" *ngIf="!hasStepOneProblems">
+    <button
+      class="c-submit-btn"
+      mat-raised-button
+      type="button"
+      (click)="registerEvaluation()"
+      tabindex="0"
+    >
+      Editar
+    </button>
+    <button
+      class="c-delete-btn"
+      mat-button
+      type="button"
+      (click)="deleteEvaluation()"
+      tabindex="1"
+      translate
+    >
+      {{ 'administrator.shared.deleteButton' | translate }}
+    </button>
+  </div>
+</div>

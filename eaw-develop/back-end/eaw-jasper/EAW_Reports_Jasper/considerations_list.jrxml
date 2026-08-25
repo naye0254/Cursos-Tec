@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.15.0.final using JasperReports Library version 6.15.0-dd49bfb94918336b8321d5507193f0169ead4e95  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="considerations_list" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8dcc5602-d9c5-42c0-a93f-eab948a1c6c2">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DA_EAW"/>
+	<queryString language="SQL">
+		<![CDATA[select  `DS_EAW`.`Evaluations`.id from  `DS_EAW`.`Evaluations`  where `DS_EAW`.`Evaluations`.id = 1;]]>
+	</queryString>
+	<detail>
+		<band height="721" splitType="Stretch">
+			<staticText>
+				<reportElement x="18" y="13" width="422" height="30" forecolor="#377A81" uuid="19b9ff0d-0afa-4913-93ee-1a3a8d9a0dfe">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato&#xA;" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[6 CONSIDERACIONES A TOMAR EN CUENTA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="49" width="505" height="51" uuid="6d2c1907-d7d5-4df7-b510-39631562af85">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato" size="12"/>
+				</textElement>
+				<text><![CDATA[A continuación se listan una serie de consideraciones que se deben tener en cuenta a la hora de revisar el sitio web, son errores que comúnmente se podrían cometer en la construcción de páginas web:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="100" width="505" height="310" uuid="0a23cae4-4707-4fa0-97b7-2091aaeb5a86">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato" size="12"/>
+				</textElement>
+				<text><![CDATA[• Revise que el texto alternativo de cada imágen, botón, encabezado, títulos, textos de enlace, etiquetas y entradas de formularios describen e identifican el propósito de cada elemento de forma que sean entendibles para el usuario.
+
+• Si una imagen no se puede describir con un texto alternativo corto, verificar si en la alternativa de texto existe un enlace a donde se especifique a detalle el contenido de imagen.
+
+• Cuando se brinden indicaciones para comprender el contenido, no confíe únicamente en las características sensoriales (como la forma, el tamaño o la ubicación) para describir los objetos.
+
+• Revise que haya un mecanismo disponible para identificar definiciones específicas de palabras o frases utilizadas de forma inusual, modismos, jergas y abreviaturas. Si se requiere una capacidad de lectura superiora secundaria, se recomienda brindar un texto complementario o una versión alternativa.
+
+• Recomendamos colocar un mecanismo, en la página web o el navegador, para que el usuario seleccione los colores de primer plano y de fondo para los bloques de texto.
+
+• Los textos deben poder redimensionarse sin tecnología de asistencia hasta un 200 por ciento sin pérdida de contenido o funcionalidad.
+
+• Revise que el ancho de un bloque de texto no exceda 80 caracteres (40 en escritura china, japonesa o coreana) o exista un mecanismo para reducir dicho acho.
+
+• Se recomienda que el espacio entre párrafos sea al menos 1.5veces el espacio entre líneas, o que haya unmecanismo disponible para lograrlo.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="412" width="505" height="300" uuid="9cc63fcb-f48a-44d4-8922-55bc9a48bcb2">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato" size="12"/>
+				</textElement>
+				<text><![CDATA[• Revise que los bloques de texto no estén completamente justificados, es decir, que el texto se justifique con respecto al borde izquierdo o derecho, o que exista un mecanismo para eliminarla justificación completa.
+
+• Revise que si las imágenes sólo se usan con fines decorativos, o utilizadas sólo para formato visual, estas sean ignoradas por la tecnología asistiva de lectura.
+
+• Si un elemento web contiene audio que se reproduce automáticamente durante más de 3 segundos, compruebe que existe la posibilidad de pausar, detener o silenciarel audio.
+
+• Si hay contenido de audio pregrabado que es principalmente el habla (como la narración), los sonidos defondo deben sermutables, o seral menos 20 dB (Aproximadamente 4 veces más silenciosos) que el habla.
+
+• Revise que los eventos y funcionalidades del ratón estén disponibles a través del teclado: doble clic, mouse encima (evento ”focus”), mouse afuera (evento ”unFocus”), mouse sobre (evento ”hover”), mantener click, soltar el click luego de presionarlo
+
+• Se recomienda que ningún contenido parpadee más de tres veces en un período de 1 segundo; y haya un mecanismo disponible para detener el elemento parpadeante]]></text>
+			</staticText>
+		</band>
+		<band height="721">
+			<staticText>
+				<reportElement x="18" y="13" width="505" height="200" uuid="1d7fdfe6-9fce-4048-9581-82a380d7248b">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato" size="12"/>
+				</textElement>
+				<text><![CDATA[en menos de cinco segundos.
+
+• Revise que el tiempo no sea una parte esencial de una actividad presentada por el contenido, excepto por medios sincronizados no interactivos y los eventos en tiempo real.
+
+• Compruebe que todas las interrupciones (incluidas las actualizaciones de contenido) pueden ser aplazadas o suprimidas por el usuario, excepto las interrupciones relacionadas con una emergencia.
+
+• En la programación web, compruebe que el orden de tabulación especificado por los atributos de tabindex sigue las relaciones en el contenido.
+
+• Mantener el foco en un campo de entrada no debe producir un cambio de contexto.]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

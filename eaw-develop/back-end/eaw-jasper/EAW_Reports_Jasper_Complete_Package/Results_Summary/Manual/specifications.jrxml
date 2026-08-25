@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.15.0.final using JasperReports Library version 6.15.0-dd49bfb94918336b8321d5507193f0169ead4e95  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="specifications" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="298d958e-4161-4889-8b06-bf124fdc4d49">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DA_EAW"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="evaluationsId" class="java.lang.Integer"/>
+	<parameter name="usersId" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT ROW_NUMBER() OVER (
+		ORDER BY st.id
+	) row_num,
+    d.name deviceName,
+    o.name systemName,
+    b.name browserName,
+    st.name toolName,
+    s.id idSpecification
+FROM `DS_EAW`.`Specifications` s
+	inner join DS_EAW.SupportTools st ON
+	 s.supportToolsId = st.id
+    inner join DS_EAW.Devices d ON
+     s.devicesId = d.id
+    inner join DS_EAW.OperativeSystems o ON
+     s.operativeSystemsId = o.id
+    inner join DS_EAW.Browsers b ON
+     s.browsersId = b.id
+WHERE
+	 s.`evaluationsId` =  $P{evaluationsId}  and usersId =  $P{usersId}]]>
+	</queryString>
+	<field name="row_num" class="java.math.BigInteger">
+		<property name="com.jaspersoft.studio.field.name" value="row_num"/>
+		<property name="com.jaspersoft.studio.field.label" value="row_num"/>
+	</field>
+	<field name="deviceName" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="name"/>
+		<property name="com.jaspersoft.studio.field.label" value="deviceName"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Devices"/>
+	</field>
+	<field name="systemName" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="name"/>
+		<property name="com.jaspersoft.studio.field.label" value="systemName"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="OperativeSystems"/>
+	</field>
+	<field name="browserName" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="name"/>
+		<property name="com.jaspersoft.studio.field.label" value="browserName"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Browsers"/>
+	</field>
+	<field name="toolName" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="name"/>
+		<property name="com.jaspersoft.studio.field.label" value="toolName"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SupportTools"/>
+	</field>
+	<field name="idSpecification" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="idSpecification"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Specifications"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="315" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="595" height="20" forecolor="#377A81" uuid="a3f38ffc-4408-4a19-9cf9-f089c4fed3d8">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Especificación]]></text>
+			</staticText>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="0" y="25" width="595" height="20" uuid="ac1b87b5-d2ed-462c-80f7-468ff29e13ea">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement markup="none">
+					<font fontName="Lato" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Dispositivo: " + $F{deviceName}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="0" y="47" width="595" height="20" uuid="df0a3634-4286-42d4-9852-39a5c9e9103e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement markup="none">
+					<font fontName="Lato" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Sistema Operativo: " + $F{systemName}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="0" y="91" width="595" height="20" uuid="7646cfa8-8dcb-413c-b32b-306549fc282d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement markup="none">
+					<font fontName="Lato" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Producto de Apoyo:  " + $F{toolName}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="0" y="69" width="595" height="20" uuid="243a090a-a5b2-4b68-be28-1b662554857a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement markup="none">
+					<font fontName="Lato" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Navegador: " + $F{browserName}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="0" y="115" width="595" height="200" uuid="881aad3e-71e9-46b4-9a3d-64d76ef9fe81">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<subreportParameter name="idSpecification">
+					<subreportParameterExpression><![CDATA[$F{idSpecification}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["/Results_Summary/Manual/manual_page.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

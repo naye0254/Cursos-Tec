@@ -1,0 +1,62 @@
+@import '../../../../styles/main-theme.scss';
+.l-client {
+  .l-head {
+    padding-left: 9vh;
+    padding-top: 4vh;
+    .c-title {
+      align-self: flex-end;
+      font-size: 24px;
+      text-align: left;
+      letter-spacing: 0;
+      font-weight: bold;
+      color: mat-color($primary);
+      opacity: 1;
+    }
+    .c-delimiter {
+      background-color: mat-color($primary);
+      border-top: 3px solid mat-color($primary);
+    }
+  }
+  .l-form {
+    padding-left: 9vh;
+    padding-right: 9vh;
+    .c-title-section {
+      font-size: 17px;
+      font-weight: bold;
+      color: mat-color($dark-turquoise);
+    }
+    .l-form-field {
+      width: 100%;
+      display: block;
+      margin-bottom: 2%;
+      .c-hint {
+        font-size: 14px;
+      }
+    }
+    .c-second-column {
+      margin-left: 10%;
+    }
+    .c-hint {
+      margin-top: 5px;
+      span {
+        font-size: 14px;
+      }
+    }
+  }
+  .c-buttons {
+    font-size: 20px;
+    .c-cancel-button {
+      width: 200px;
+      border-radius: 33px;
+      background-color: mat-color($light-gray);
+    }
+    .c-create-button {
+      width: 200px;
+      border-radius: 33px;
+      font-weight: bold;
+      background-color: mat-color($primary);
+      border: 1px solid transparent;
+      color: mat-color($white);
+    }
+  }
+}

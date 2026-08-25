@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.15.0.final using JasperReports Library version 6.15.0-dd49bfb94918336b8321d5507193f0169ead4e95  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="observations_by_evaluator" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="1f587739-b74f-4937-bb68-1cf2def9e4d9">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DA_EAW"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="principleId" class="java.lang.Integer"/>
+	<parameter name="manualPageId" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[CALL DS_EAW.SP_observationByRecomendation( $P{principleId} ,  $P{manualPageId})]]>
+	</queryString>
+	<field name="evaluatorObservation" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="evaluatorObservation"/>
+		<property name="com.jaspersoft.studio.field.label" value="evaluatorObservation"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="500" height="18" forecolor="#377A81" uuid="247dfc26-0c63-4569-9e53-9a8ff029cd85">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato&#xA;" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Experiencia de usuario del evaluador correspondiente para este principio. ]]></text>
+			</staticText>
+			<textField textAdjust="StretchHeight">
+				<reportElement stretchType="ContainerHeight" x="0" y="18" width="500" height="22" uuid="51b5904e-8a73-43f3-91b3-49ef71b2499a">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement markup="none">
+					<font fontName="Lato" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{evaluatorObservation}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

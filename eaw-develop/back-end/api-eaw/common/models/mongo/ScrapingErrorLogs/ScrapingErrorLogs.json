@@ -1,0 +1,21 @@
+{
+  "name": "ScrapingErrorLogs",
+  "idInjection": false,
+  "properties": {
+    "idEvaluation": {
+      "type": "Number",
+      "required": false,
+      "length": null,
+      "precision": 10,
+      "scale": 0
+    },
+    "log": {
+      "type": "String",
+      "required": false
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

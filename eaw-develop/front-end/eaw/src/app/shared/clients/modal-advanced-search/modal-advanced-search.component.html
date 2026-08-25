@@ -1,0 +1,103 @@
+<div class="container l-confirm-dialog">
+  <div class="row">
+    <div class="col-12 mx-auto text-center">
+      <div mat-dialog-title>
+        <h1 class="c-dialog-title" color="primary">{{ data.title }}</h1>
+        <p class="c-dialog-text" translate>
+          superAdministrator.clients.modalAdvancedSearch.subTitle
+        </p>
+      </div>
+      <div mat-dialog-content class="l-modal-content">
+        <form class="l-form" [formGroup]="advancedSearchForm">
+          <mat-form-field appearance="outline" class="l-form-field">
+            <mat-label translate
+              >superAdministrator.clients.modalAdvancedSearch.inputName</mat-label
+            >
+            <input
+              type="text"
+              matInput
+              #messageName
+              maxLength="{{ formOptions.lengthInputName }}"
+              formControlName="name"
+            />
+            <mat-hint class="mb-3 c-hint" align="end">
+              <span class="sr-only"
+                >{{ formOptions.lengthInputName - messageName.value.length }}
+                caracteres restantes
+              </span>
+              <span aria-hidden="true">
+                {{ messageName.value.length }} /
+                {{ formOptions.lengthInputName }}
+              </span>
+            </mat-hint>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="l-form-field">
+            <mat-label translate
+              >superAdministrator.clients.modalAdvancedSearch.inputEmail</mat-label
+            >
+            <input
+              type="text"
+              matInput
+              #messageEmail
+              maxLength="{{ formOptions.lengthInputEmail }}"
+              formControlName="email"
+            />
+            <mat-hint class="mb-3 c-hint" align="end">
+              <span class="sr-only"
+                >{{ formOptions.lengthInputEmail - messageEmail.value.length }}
+                caracteres restantes
+              </span>
+              <span aria-hidden="true">
+                {{ messageEmail.value.length }} /
+                {{ formOptions.lengthInputEmail }}
+              </span>
+            </mat-hint>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="l-form-field">
+            <mat-label translate
+              >superAdministrator.clients.modalAdvancedSearch.inputCreatedAt</mat-label
+            >
+            <input matInput type="date" formControlName="createdAt" />
+          </mat-form-field>
+
+          <mat-form-field class="l-form-field" appearance="outline">
+            <mat-label translate
+              >superAdministrator.clients.modalAdvancedSearch.inputCreatedBy</mat-label
+            >
+            <mat-select formControlName="createdBy" name="createdBy">
+              <mat-option
+                *ngFor="let promoter of promoterList"
+                [value]="promoter.id"
+              >
+                {{ promoter.firstName }} {{ promoter.lastName }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="row" class="l-buttons">
+    <button
+      class="c-cancel-btn"
+      mat-raised-button
+      type="button"
+      (click)="cancel()"
+    >
+      {{ data.cancel }}
+    </button>
+    <button
+      class="c-submit-btn"
+      mat-raised-button
+      type="button"
+      (click)="confirmFunction()"
+      attr.aria-disabled="{{ !advancedSearchForm.valid }}"
+      tabindex="0"
+      [ngClass]="{disabled: !advancedSearchForm.valid}"
+    >
+      {{ data.next }}
+    </button>
+  </div>
+</div>

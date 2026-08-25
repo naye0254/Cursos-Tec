@@ -1,0 +1,17 @@
+<div class="l-list-evaluator">
+  <p class="c-select">
+    {{ 'administrator.tracking.listEvaluators.title' | translate }}
+  </p>
+  <div class="row l-list-evaluator">
+    <div
+      class="l-evaluator"
+      *ngFor="let evaluator of listEvaluators"
+      (click)="goToTrackingEvaluator(evaluator.id)"
+    >
+      <p>
+        <i class="fas fa-user"></i><br aria-hidden="true" />
+        {{ evaluator.firstName }} {{ evaluator.lastName }}
+      </p>
+    </div>
+  </div>
+</div>

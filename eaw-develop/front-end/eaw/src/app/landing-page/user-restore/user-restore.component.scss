@@ -1,0 +1,136 @@
+@import '../../../styles/main-theme.scss';
+
+.col-centered {
+  float: none;
+  margin: 0 auto;
+}
+
+.v-message {
+  border-radius: 5px;
+  padding: 2%;
+  font-weight: bold;
+  span {
+    font-size: 17px;
+  }
+  .c-icon {
+    font-size: 1.5em;
+    margin-right: 2%;
+    margin-left: 1%;
+  }
+}
+
+.v-message-send {
+  background-color: $algae-green;
+  color: mat-color($black);
+}
+
+.v-message-reject {
+  background-color: $totem-pole;
+  color: mat-color($white);
+}
+
+.v-login {
+  background-color: $firefly;
+  color: mat-color($white);
+  border-radius: 10px;
+
+  .v-input-form {
+    text-align: left;
+    padding: 10% 20% 5% 20%;
+
+    .c-label {
+      font-size: 17px;
+    }
+
+    .inp-wrapper {
+      position: relative;
+      .inp {
+        background-color: mat-color($white);
+        border-radius: 10px;
+        border: 1px solid mat-color($dark-gray, 300);
+        color: mat-color($black);
+        font-size: 17px;
+        height: 40px;
+        position: relative;
+        top: 50%;
+        width: 100%;
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .inp-padding-label {
+        padding-right: 40px;
+        padding-left: 15px;
+      }
+
+      .input-label {
+        position: absolute;
+        right: 10px;
+        top: calc(45% - 0.5em);
+        color: mat-color($dark-turquoise);
+        transition: opacity 0.3s linear;
+        pointer-events: none;
+        i {
+          font-size: 22px;
+        }
+      }
+    }
+  }
+
+  .v-top-form {
+    text-align: center;
+    color: mat-color($white);
+    h1 {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    p {
+      margin-top: 20px;
+      margin-bottom: 35px;
+      font-size: 14px;
+    }
+  }
+
+  .v-bottom-form {
+    text-align: center;
+    .c-button-round {
+      text-align: center !important;
+      background-color: $blue-chill;
+      color: mat-color($white);
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 50px;
+      width: 30%;
+      padding: 5px 20px 5px 20px;
+    }
+
+    .c-link {
+      text-decoration: underline;
+      color: mat-color($white);
+      font-size: 15px;
+      font-style: italic;
+    }
+  }
+
+  .errormsg {
+    color: $apricot;
+    text-align: left;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  .c-span {
+    text-align: left;
+    height: 2px;
+    span {
+      color: $apricot;
+      padding-top: 8px;
+      border: none;
+      .svg-inline--fa {
+        margin-top: 8px;
+      }
+    }
+  }
+}

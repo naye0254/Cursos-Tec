@@ -1,0 +1,1301 @@
+{
+  "administrator": {
+    "clients": {
+      "listClients": {
+        "advancedSearch": "Búsqueda avanzada",
+        "modalAdvancedSearch": {
+          "inputCreatedAt": "Fecha de creación",
+          "inputCreatedBy": "Promotor encargado",
+          "inputEmail": "Correo del cliente",
+          "inputName": "Nombre del Cliente",
+          "subTitle": "Complete los campos en los que desea filtrar su búsqueda"
+        },
+        "searchLabel": "Buscar",
+        "subTitle": "Seleccione el país al que pertenece el cliente que desea visualizar",
+        "table": {
+          "country": "País",
+          "createdAt": "Fecha (YYYY/MM/DD)",
+          "createdBy": "Creados",
+          "edit": "Editar",
+          "email": "Correo",
+          "evaluationsNumber": "Evaluaciones",
+          "name": "Nombre",
+          "segment": "Segmento"
+        },
+        "title": "Ver Clientes"
+      },
+      "manage": {
+        "address": {
+          "address": "Dirección Exacta",
+          "addressError": "La dirección exacta es requerida",
+          "city": "Ciudad",
+          "cityError": "La ciudad es requerida",
+          "code": "Código Postal",
+          "codeError": "El código postal es requerido",
+          "country": "País",
+          "countryError": "El país es requerido",
+          "region": "Estado / Provincia / Región",
+          "regionError": "La región es requerida",
+          "segment": "Segmento",
+          "segmentError": "El segmento es requerido",
+          "title": "Dirección"
+        },
+        "generalInfo": {
+          "email": "Correo electrónico",
+          "errorEmail": "El correo electrónico es requerido",
+          "errorName": "El nombre del cliente es requerido",
+          "errorPassword": "La contraseña es obligatoria",
+          "errorPhone": "El número telefónico es requerido",
+          "name": "Nombre",
+          "password": "Contraseña",
+          "phone": "Teléfono",
+          "title": "Información General"
+        },
+        "titleEdit": "Editar Cliente",
+        "titleNew": "Nuevo Cliente"
+      },
+      "tracing": {
+        "statistics": {
+          "finishedEvaluations": "Evaluaciones Finalizadas",
+          "graphic": "Gráfico",
+          "inProgressEvaluations": "Evaluaciones en Progreso",
+          "pendingEvaluations": "Evaluaciones Pendientes",
+          "table": "Tabla"
+        }
+      }
+    },
+    "evaluations": {
+      "checkpoint": {
+        "basedOn": "Basado en la fecha actual",
+        "basedOn2": "han pasado:",
+        "btnAccept": "Aceptar",
+        "btnFinish": "Terminar scraping",
+        "btnRestart": "Reiniciar scraping",
+        "hours": "horas,",
+        "minutes": "minutos y",
+        "seconds": "segundos.",
+        "text1": "El último checkpoint registrado del web scraping fue el",
+        "text2": "con una cantidad de ",
+        "text3": "páginas"
+      },
+      "detail": {
+        "absoluteLinks": "Rutas Absolutas",
+        "alertSaveError": {
+          "text": "Se ha generado un error al intentar guardar la selección de páginas.",
+          "title": "Error en la selección de páginas"
+        },
+        "alertSaveSuccess": {
+          "text": "Se ha guardado la selección de páginas.",
+          "title": "Selección de páginas éxitosa"
+        },
+        "ariaCounter": "{{count}} páginas seleccionadas de 32",
+        "back": "Atrás",
+        "brokenLinks": "Enlaces Rotos",
+        "deep": "Nivel de profundidad",
+        "desertedLinks": "Abandonos",
+        "domain": "Dominio",
+        "downloadButton": "Descargar mapa",
+        "exceptions": "Excepciones",
+        "files": "Archivos",
+        "mainURL": "URL Padre",
+        "modalCounterList": {
+          "absolute": {
+            "text": "Las rutas absolutas incluyen todas las partes de la URL (protocolo, servidor y ruta) por lo que no se necesita más información para obtener el recurso enlazado. Se podría decir que la ruta completa.",
+            "title": "Rutas Absolutas"
+          },
+          "broken": {
+            "text": "Un enlace roto es cuando un sitio web ya no puede ser consultado en la Internet; cuyo contenido ya no está almacenado en los servidores u otros recursos de manera permanente.",
+            "title": "Enlaces Rotos"
+          },
+          "button": "Continuar",
+          "deserted": {
+            "text": "Un abandono es un enlace del sitio web el cual no pertece al mismo dominio o sitio, es un enlace ajeno al sitio, estos pueden ser enlaces a otros sitios web como redes sociales, entre otros.",
+            "title": "Abandonos"
+          },
+          "exceptions": {
+            "text": "Las excepciones son otro tipo de enlaces que no son links, pero que dentro del código HTML se utilizan de una manera muy similar a los links ya que utilizan el mismo elemento \"<a>\" pero con otro fin, estos pueden ser correos electrónicos, teléfonos, anclajes, entre otros.",
+            "title": "Excepciones"
+          },
+          "files": {
+            "text": "Los archivos son enlaces que llevan a un archivo, no es una página web como tal, tienen otro tipo de contenido generalmente archivos zip, pdfs, documentos.",
+            "title": "Archivos"
+          },
+          "noResults": "No hay resultados",
+          "relative": {
+            "text": "Las rutas relativas prescinden de algunas partes de las URL para hacerlas más breves. Como se trata de URL incompletas, es necesario disponer de información adicional para obtener el recurso enlazado. En concreto, para que una ruta relativa sea útil es necesario conocer la URL del origen del enlace.",
+            "title": "Rutas Relativas"
+          }
+        },
+        "openLink": "Abrir página web",
+        "optionSelectedPages": "Páginas Seleccionadas",
+        "optionSiteMap": "Mapa Sitio",
+        "relativeLinks": "Rutas Relativas",
+        "saveButton": "Guardar Selección",
+        "see": "Ver",
+        "selectPages": "Seleccione las páginas que desea evaluar.",
+        "selectedPages": "Páginas <br/> Seleccionadas",
+        "stats": "Estadísticas",
+        "subtitle": "Evaluaciones Pendientes - {{value}}",
+        "subtitleWithPackage": "Evaluaciones Pendientes - {{package}} - {{value}}",
+        "title": "Selección de Páginas",
+        "totalPages": "Páginas encontradas"
+      },
+      "list": {
+        "evaluating": "Evaluando",
+        "finishState": "Finalizadas",
+        "generateReport": "Generar informe",
+        "generateSelection": "Generar Selección",
+        "generatingReport": "Generando Informe",
+        "initEvaluation": "Iniciar Evaluación",
+        "pendingState": "Pendientes",
+        "progresState": "En progreso",
+        "failedState": "Fallidas",
+        "reportError": "Reportar Error",
+        "see": "Ver",
+        "seeCheckpoint": "Ver checkpoint",
+        "seeResults": "Ver resultados",
+        "selectPages": "Seleccionar Páginas",
+        "sendReport": "Enviar informe",
+        "specifications": {
+          "title": "Especificaciones"
+        },
+        "table": {
+          "endDate": "Fecha de finalización",
+          "initDate": "Fecha de inicio",
+          "map": "Mapa del sitio",
+          "name": "Nombre",
+          "package": "Paquete",
+          "remainingDays": "Días Restantes",
+          "seeSpecificationsLabel": "Ver Especificaciones",
+          "segment": "Segmento",
+          "specifications": "Especificaciones",
+          "state": "Estado"
+        },
+        "title": "Evaluaciones",
+        "edit": "Editar"
+      },
+      "manage": {
+        "discapacityRoles": {
+          "title": "3. Asignar Roles de discapacidad"
+        },
+        "evaluators": {
+          "evaluatorInput": "Seleccionar usuario evaluador",
+          "hasNotEvaluator": "Esta discapacidad no tiene evaluadores activos",
+          "title": "4. Asignar Evaluadores"
+        },
+        "generalInformation": {
+          "client": "Seleccionar cliente asociado *",
+          "expirationDate": "Plazo de evaluación *",
+          "package": "Seleccionar paquete *",
+          "title": "1. Información General"
+        },
+        "site": {
+          "addExcelLabel": "Agregar lista de Excel",
+          "addFileLabel": "Agregar Archivo",
+          "addManualLabel": "Agregar Manual",
+          "addNewLabel": "Agregar sitio a evaluar",
+          "country": "País",
+          "deleteSite": "Eliminar sitio a evaluar",
+          "deleteSiteLabel": "Eliminar sitio",
+          "link": "Link del sitio *",
+          "name": "Nombre del sitio *",
+          "segment": "Segmento del sitio *",
+          "tag": "Etiqueta del sitio *",
+          "title": "2. Sitios a evaluar",
+          "downloadTemplate": "Descargar plantilla"
+        },
+        "specifications": {
+          "addSpecificationLabel": "Nueva especificación",
+          "browser": "Seleccione navegador",
+          "device": "Seleccione dispositivo",
+          "evaluatorNameLabel": "Nombre",
+          "hasStepOneProblems": "¡Datos incompletos o sin formato en el paso anterior!",
+          "operativeSystem": "Seleccione el sistema operativo",
+          "specificationCounterLabel": "Especificación",
+          "supportTools": "Seleccione la herramientos de apoyo",
+          "title": "5. Asignar Especificaciones",
+          "version": "Versión"
+        },
+        "subTitle": "Los campos marcados con * son obligatorios",
+        "title": "Nueva Evaluación"
+      },
+      "searchLabel": "Buscar",
+      "selectionPage": {
+        "mapSite": {
+          "noselected": "No seleccionado",
+          "pagesChoosed": "Páginas Seleccionadas",
+          "selected": "Seleccionado",
+          "title": "Seleccione las páginas a evaluar"
+        }
+      }
+    },
+    "shared": {
+      "cancelButton": "Cancelar",
+      "continueButton": "Continuar",
+      "deleteButton": "Eliminar",
+      "createButton": "Crear",
+      "editButton": "Guardar",
+      "stepOne": "Paso 1",
+      "stepTwo": "Paso 2"
+    },
+    "tracking": {
+      "dashboard": {
+        "finishedEvaluation": "Evaluaciones terminadas",
+        "pendigEvaluation": "Evaluaciones pendientes",
+        "progressEvaluation": "Evaluaciones en progreso"
+      },
+      "graphPageEvaluated": {
+        "subTitle": "Nombre del sitio :",
+        "table": {
+          "browser": "Navegador",
+          "device": "Dispositivo",
+          "disability": "Discapacidad",
+          "finishedAt": "Fecha de Fin",
+          "operativeSystem": "Sistema Operativo",
+          "supportTool": "Herramienta de apoyo",
+          "url": "Url"
+        },
+        "title": "Páginas completadas por evaluación"
+      },
+      "listEvaluations": {
+        "menuState": {
+          "finishedLabel": "Terminadas",
+          "pendingLabel": "Pendientes",
+          "progressLabel": "En progreso"
+        },
+        "table": {
+          "endDate": "Fecha de fin",
+          "name": "Nombre",
+          "segment": "Segmento",
+          "specificiation": "Especificaciones",
+          "startDate": "Fecha de inicio",
+          "stats": "Estadísticas"
+        }
+      },
+      "listEvaluators": {
+        "title": "Seleccione un Evaluador de Accesibilidad"
+      }
+    }
+  },
+  "directClient": {
+    "evaluations": {
+      "requesEvaluation": {
+        "cancelButton": "Cancelar",
+        "description": "Con el propósito de simplificar el proceso de solicitud de una evaluación puede completar el espacio en la parte inferior de la pantalla, detallando la evaluación requerida. Una vez enviada, será contactado por uno de nuestros colaboradores en menos de 5 días.",
+        "descriptionLabel": "Descripión del mensaje",
+        "descriptionMaxLengthError": "La descripción es muy extensa",
+        "descriptionRequiredError": "La descripción es obligatoria",
+        "sendButton": "Enviar",
+        "title": "Solicitar Evaluación"
+      },
+      "seeEvaluations": {
+        "backButton": "Atrás",
+        "list": {
+          "searchLabel": "Buscar",
+          "table": {
+            "URL": "URL",
+            "name": "Nombre del sitio",
+            "package": "Paquete",
+            "responsible": "Encargado",
+            "see": "Ver",
+            "seeResults": "Resultados",
+            "specifications": "Especificaciones"
+          }
+        },
+        "results": {
+          "header": {
+            "dialog": {
+              "addEmail": "Agregar nuevo correo",
+              "cancelBtn": "Cancelar",
+              "confirmBtn": "Enviar",
+              "deleteEmail": "Eliminar correo",
+              "description": "Con el propósito de ayudar en la retroalimentación de la Evaluación al cliente, introduzca el correo electrónico al que desea enviar los resultados del proceso de evaluación.",
+              "email": "Correo",
+              "emailInvalid": "El correo es inválido",
+              "emailRequired": "El correo es obligatorio",
+              "title": "Enviar Resultados"
+            },
+            "issues": "Hallazgos",
+            "reports": "Informes",
+            "sendResultsButton": "Enviar Resultados",
+            "sendedResultsLabel": "Resultados Enviados",
+            "statistics": "Estadísticas",
+            "viewDetails": {
+              "URL": "URL",
+              "domain": "Dominio",
+              "title": "Detalles",
+              "titlePage": "Título"
+            }
+          },
+          "visualzation": {
+            "all": "Todas",
+            "automatic": "Automática",
+            "issues": {
+              "automaticEvaluation": {
+                "chooseGuideline": "Seleccione la pauta",
+                "choosePage": "Seleccionar la página",
+                "criteria": "Criterio",
+                "description": "A continuación se muestra la descripción de accesibilidad según criterio de la página seleccionada, así como el código HTML donde se identificó el error y la ruta de acceso específica.",
+                "guideline": "Pauta",
+                "table": {
+                  "criteria": "Criterio",
+                  "description": "Descripción",
+                  "htmlCode": "Código HTML",
+                  "htmlPath": "HTML Path"
+                },
+                "title": "Hallazgos Evaluación Automática"
+              },
+              "automaticEvaluationButton": "Evaluación Automática",
+              "chooseEvaluationLabel": "Seleccione la evaluación a visualizar",
+              "choosePageLabel": "Seleccione una página para desplegar los hallazgos.",
+              "loading": "Cargando",
+              "manualEvaluation": {
+                "choosePage": "Seleccionar la página",
+                "chooseRolLabel": "Seleccione un rol",
+                "description": "En esta sección se muestran los hallazgos dados por el evaluador de accesibilidad, realizada de forma manual.",
+                "noResults": "No se encontraron hallazgos",
+                "recomendationsEvaluatorLabel": "Recomendaciones del evaluador",
+                "table": {
+                  "criteria": "Criterio",
+                  "issues": "Hallazgos",
+                  "specifications": "Especificaciones",
+                  "specificiationDef": {
+                    "browser": "Navegador",
+                    "device": "Dispositivo",
+                    "operativeSystem": "Sistema Operativo"
+                  }
+                },
+                "title": "Hallazgos Evaluación Manual "
+              },
+              "manualEvaluationButton": "Evaluación Manual",
+              "noFindings": "No se encontraron hallazgos en esta página."
+            },
+            "manual": "Manual",
+            "pageLabel": "Página",
+            "reports": {
+              "downloadButton": "Descargar",
+              "managerialReport": {
+                "description": "El informe gerencial provee un informe estadístico de los resultados de la evaluación.",
+                "title": "Reporte Gerencial"
+              },
+              "noReports": "Los reportes aún no están disponibles, por favor revise más tarde",
+              "technicalReport": {
+                "description": "El informe técnico añade al informe gerencial todos los hallazgos con su detalle y recomendación a solucionar.",
+                "title": "Reporte Técnico"
+              }
+            },
+            "selected": "Selecionado",
+            "statistics": {
+              "allSpecifications": "Todas",
+              "applyContrast": "Activar alto contraste",
+              "applyPatterns": "Aplicar patrones",
+              "bar": "Barras",
+              "chooseGraphicLabel": "Seleccione tipo de gráfico",
+              "column": "Columnas",
+              "connectionError": "Error de conexión",
+              "contrast": "Contraste",
+              "graphicButton": "Gráfico",
+              "levelAAAButton": "Nivel AAA",
+              "levelAAButton": "Nivel AA",
+              "levelAButton": "Nivel A",
+              "line": "Líneas",
+              "noResults": "¡Felicidades! No se encontraron hallazgos para los filtros seleccionados.",
+              "package": "Paquete",
+              "pattern": "Patrones",
+              "seeGraphicLabel": "Seleccione una opción para desplegar el gráfico",
+              "seeTable": "Ver Tabla",
+              "specificationLabel": "Especificación",
+              "specifications": "Especificaciones",
+              "stackedBar": "Barras apiladas",
+              "stackedColumn": "Columnas apiladas",
+              "tableButton": "Tabla",
+              "title": "Estadísticas Evaluación"
+            }
+          }
+        },
+        "evaluationErrors":{
+          "id": "Id",
+          "errorDescription": "Descripción de error",
+          "errorDateAt": "Fecha",
+          "evaluationsId": "Evaluación",
+          "fixed": "Reparado",
+          "locationName": "Llamada",
+          "evaluation": "Evaluación"
+        },
+        "selecction": {
+          "stepOne": "Paso 1",
+          "stepThree": "Paso 3",
+          "stepTwo": "Paso 2",
+          "subTitleStepOne": "Seleccione el año a visualizar",
+          "subTitleStepThree": "Seleccione cliente a visualizar",
+          "subTitleStepTwo": "Seleccione el segmento a visualizar"
+        },
+        "title": "Evaluaciones"
+      }
+    }
+  },
+  "evaluator": {
+    "evaluations": {
+      "evaluatePage": {
+        "content": {
+          "buttons": {
+            "addCommentButton": "Agregar Comentario",
+            "evalutionFinishedButton": "Terminar Evaluación"
+          },
+          "filter": {
+            "all": "Ver Todo",
+            "byCriteria": "Filtrar por criterios no evaluados"
+          },
+          "saveButton": {
+            "altSaveButton": "Guardar",
+            "stateNonSaved": "No Guardado",
+            "stateSaved": "Guardado"
+          },
+          "table": {
+            "complies": "Cumple",
+            "criteria": "Criterio",
+            "evaluatorProfile": "Perfil del evaluador",
+            "fail": "No Cumple",
+            "issues": "Hallazgos",
+            "levelA": "Nivel A",
+            "levelAA": "Nivel AA",
+            "levelAAA": "Nivel AAA",
+            "notApply": "No Aplica",
+            "selectIssueLabel": "Seleccione el hallazgo"
+          },
+          "title": "Especificaciones de la evaluación"
+        },
+        "sidebar": {
+          "choosePageButton": "Seleccionar Página",
+          "domain": "Dominio",
+          "goToEvaluationsButton": "Todas las Evaluaciones",
+          "subtitle": "Evaluación Manual",
+          "title": "Evaluaciones en progreso",
+          "titlePage": "Título",
+          "url": "URL"
+        }
+      },
+      "revisionModal": {
+        "subtitle1": "Seleccione la especificación a evaluar",
+        "subtitle2": "Seleccione la página a evaluar",
+        "table": {
+          "URL": "URL",
+          "percentage": "Porcentaje",
+          "selection": "Selección",
+          "state": "Estado",
+          "title": "Título"
+        },
+        "title": "Revisión: Selección de página"
+      },
+      "searchLabel": "Buscar",
+      "state": {
+        "finishedEvaluations": "Evaluaciones Finalizadas",
+        "inProgress": "Evaluaciones En progreso",
+        "pending": "Evaluaciones Pendientes"
+      },
+      "table": {
+        "URL": "URL",
+        "action": "Acción",
+        "continueRevision": "Continuar Revisión",
+        "deliveryDate": "Fecha de entrega",
+        "inCharge": "Encargado",
+        "name": "Nombre",
+        "pendingReport": "Informe Pendiente",
+        "specifications": "Especificaciones",
+        "startRevision": "Iniciar Revisión"
+      },
+      "tooltip": {
+        "browser": "Navegador",
+        "device": "Dispositivo",
+        "labelCounter": "Especificación",
+        "operativeSystem": "Sistema Operativo",
+        "supportTool": "Producto de Apoyo",
+        "title": "Especificaciones"
+      }
+    },
+    "manualEvaluation": {
+      "addRecommendation": "Añadir Recomendación",
+      "allEvaluations": "Todas las Evaluaciones",
+      "domain": "Dominio",
+      "evaluationProgress": "Evaluaciones en Progreso",
+      "manualEvaluation": "Evaluación Manual",
+      "modals": {
+        "addRecommendation": {
+          "cancelBtn": "Cancelar",
+          "confirmBtn": "Comentar",
+          "label": "Comentario",
+          "text": "Con el propósito de ayudar en la retroalimentación de la Evaluación al cliente, introduzca un comentario sobre la experiencia en la página contemplando el",
+          "title": "Comentario o Recomendación"
+        },
+        "criteriaInfo": {
+          "seeWCAG": "Ver definición en sitio oficial WCAG 2.1"
+        },
+        "evaluationUnfinish": {
+          "cancelBtn": "Continuar",
+          "confirmBtn": "Revisar",
+          "subtext": "Por favor <b>corrija este error para finalizar la Evaluación.</b>",
+          "text": "La Evaluación no esta completada al 100%. En los siguientes criterios se deben revisar los Perfiles de Evaluación y/o la selección de los Hallazgos correctamente.",
+          "title": "Evaluación Incompleta"
+        }
+      },
+      "paginationAhead": "Adelante",
+      "paginationBehind": "Atrás",
+      "saveBtn": "Guardar",
+      "saved": "Guardado",
+      "seeAll": "Ver todo",
+      "seeNotAll": "Filtrar por criterios no evaluados",
+      "selectPages": "Seleccionar Páginas",
+      "spectsEvaluation": "Especificaciones de la Evaluación",
+      "table": {
+        "comply": "Cumple",
+        "criteria": "Criterio",
+        "finding": "Hallazgo",
+        "levelA": "Nivel A",
+        "levelAA": "Nivel AA",
+        "levelAAA": "Nivel AAA",
+        "noApply": "No aplica",
+        "noComply": "No cumple",
+        "profile": "Perfil Evaluador",
+        "required": "Requerido",
+        "seeInfo": "Ver información del criterio",
+        "selectFindings": "-Seleccione los hallazgos-",
+        "selectOption": "Seleccione una opción"
+      },
+      "title": "Título",
+      "url": "URL"
+    }
+  },
+  "landingPage": {
+    "contact": {
+      "errorAlert": {
+        "text": "Se ha producido un error al envíar el mensaje.",
+        "title": "Error al envíar"
+      },
+      "form": {
+        "buttonText": "Enviar Mensaje",
+        "company": "Empresa",
+        "companyError": "El nombre de la empresa debe contener un máximo de 60 caracteres.",
+        "email": "Correo electrónico",
+        "emailError": "El correo electrónico debe contener un máximo de 60 caracteres.",
+        "emailError2": "El formato de correo electrónico es incorrecto.",
+        "message": "Deja un mensaje (opcional)",
+        "messageError": "El mensaje debe contener un máximo de 2000 caracteres.",
+        "name": "Nombre",
+        "nameError": "El nombre debe contener un máximo de 60 caracteres.",
+        "phone": "Teléfono",
+        "phoneError": "El número de teléfono digitado no es válido."
+      },
+      "happyToHelp": "¡Estamos felices de ayudarte a mejorar!",
+      "pageName": "Página Contacto",
+      "successAlert": {
+        "text": "Se ha enviado con éxito el mensaje. Pronto se te contactará.",
+        "title": "Enviado"
+      },
+      "text": "¿Estás interesado en evaluar tu sitio web? Nosotros te ayudamos. Utiliza el siguiente formulario y nos pondremos en contacto con tu equipo.",
+      "title": "Contáctanos"
+    },
+    "footer": {
+      "aboutUs": "Sobre nosotros",
+      "contact": "Contacto",
+      "eaw": "Evaluador de Accesibilidad Web",
+      "facebook": "Inclutec Facebook",
+      "home": "Inicio",
+      "inclutec": "Inclutec Tecnologías Inclusivas",
+      "linkedin": "Inclutec Linkedin",
+      "otai": "Observatorio de Tecnologías Accesibles e Inclusivas",
+      "packages": "Paquetes",
+      "phone": "Teléfono",
+      "tec": "Tecnológico de Costa Rica",
+      "youtube": "Inclutec Youtube"
+    },
+    "home": {
+      "aboutUs": {
+        "aboutSectionName": "Sobre nosotros",
+        "altImage": "Ilustración de personas en equipo.",
+        "text": "Somos un equipo multidisciplinario conformado por desarrolladores, diseñadores y profesionales con discapacidad encargados de realizar las evaluaciones web en accesibilidad. Somos parte del Centro de Investigaciones en Computación de la Escuela de Computación dentro del Tecnológico de Costa Rica.",
+        "title": "Sobre nosotros"
+      },
+      "altHomeImage": "Ilustración de una persona realizando una evaluación.",
+      "brandsSectionName": "Logos",
+      "compoundTitleOne": "Evaluador",
+      "compoundTitleTwo": "Accesibilidad Web",
+      "description": "Servicios de evaluación automática y manual para sitios web, bajo el cumplimiento de estándares de accesibilidad y usabilidad.",
+      "developedBy": "Desarrollado por:",
+      "inclutec": "Inclutec Tecnologías Inclusivas",
+      "miscellanySection": {
+        "consulting": {
+          "description": "Damos acompañamiento a equipos de trabajo para desarrollar ambientes digitales accesibles, permitiendo el acceso a la mayor cantidad de personas posibles. <b>Te guiamos en el proceso.</b>",
+          "title": "Asesorías en accesibilidad"
+        },
+        "miscellanySectionName": "Experiencia",
+        "standards": {
+          "contact": "Contáctanos",
+          "description": "Realizamos evaluaciones bajo estándares internacionales en accesibilidad web como lo es la W3C, asegurándonos de darte los mejores resultados. <b>Accesibilidad para todos.</b>",
+          "title": "Estándares internacionales"
+        },
+        "title": "Ayudamos a remover barreras",
+        "userXp": {
+          "description": "Brindamos una experiencia real al evaluar tu plataforma. Contamos con profesionales con discapacidad que cuentan con basta experiencia. <b>Te damos la mejor retroalimentación.</b>",
+          "title": "Experiencia de Usuario"
+        }
+      },
+      "otai": "Observatorio de Tecnologías Accesibles e Inclusivas",
+      "packages": {
+        "askInformation": "Solicitar Información",
+        "packagesSectionName": "Paquetes",
+        "randomAutomatic": {
+          "alt": "Ícono paquete evaluación Automática Aleatoria.",
+          "description": "Utilizando nuestro confiable sistema de evaluación automática obtendrás un reporte de accesibilidad acerca de secciones de tu sitio web seleccionadas aleatoriamente.",
+          "title": "Automática Aleatoria"
+        },
+        "randomComplete": {
+          "alt": "Ícono paquete evaluación Completa Aleatoria.",
+          "description": "Te ofrecemos una evaluación completa utilizando nuestro confiable sistema para realizar una evaluación automática y al mismo tiempo nuestros experimentados evaluadores lo harán de forma manual sobre una muestra aleatoria de secciones en tu sitio web.",
+          "title": "Completa Aleatoria"
+        },
+        "specificAutomatic": {
+          "alt": "Ícono paquete evaluación Automática Específica.",
+          "description": "Podrás seleccionar las secciones de tu sitio web en las que deseas evaluar el nivel de accesibilidad, obteniendo un reporte de la evaluación.",
+          "title": "Automática Específica"
+        },
+        "specificManual": {
+          "alt": "Ícono paquete evaluación Manual Específica.",
+          "description": "Nuestros experimentados evaluadores de accesibilidad realizarán un análisis a fondo de tu sitio web, en aquellas secciones que hayas seleccionado, obteniendo retroalimentación y puntos de mejora.",
+          "title": "Manual Específica"
+        },
+        "title": "Paquetes de evaluación"
+      },
+      "pageName": "Página Inicio",
+      "productOf": "Un producto del:",
+      "requestEvaluation": "Solicitar Evaluación",
+      "tec": "Tecnológico de Costa Rica",
+      "through": "A través de: ",
+      "title": "Evaluador de Accesibilidad Web"
+    },
+    "login": {
+      "byURL": "Por URL",
+      "byUser": "Por Usuario",
+      "code": "Código de inscripción",
+      "codeError": "El código debe contener un máximo de 50 caracteres.",
+      "email": "Correo electrónico",
+      "emailError": "El correo electrónico debe contener un máximo de 60                   caracteres.",
+      "emailError2": "El formato de correo electrónico es incorrecto.",
+      "forgetPassword": "¿Olvidó su contraseña?",
+      "loginButton": "Ingresar",
+      "pageName": "Página Inicio de sesión",
+      "password": "Contraseña",
+      "passwordError": "La contraseña debe contener un máximo de 50 caracteres.",
+      "rejectedURL": "URL o código incorrecto",
+      "rejectedUser": "Contraseña o correo electrónico incorrecto",
+      "url": "URL",
+      "urlError": "El formato del URL es incorrecto"
+    },
+    "navbar": {
+      "aboutUs": "Sobre nosotros",
+      "altLogo": "Evaluador de Accesibilidad Web",
+      "contact": "Contacto",
+      "home": "Inicio",
+      "login": "Ingresar",
+      "packages": "Paquetes"
+    },
+    "userRestore": {
+      "changePassword": {
+        "button": "Reestablecer",
+        "confirmPassword": "Repetir Nueva Contraseña",
+        "errorAlert": {
+          "text": "No se ha podido cambiar la contraseña, da click en continuar.",
+          "title": "¡Error al cambiar contraseña!"
+        },
+        "newPassword": "Nueva Contraseña",
+        "passwordError": "La contraseña debe contener un máximo de 50 caracteres.",
+        "passwordError2": "Las contraseñas no coinciden.",
+        "successAlert": {
+          "text": "Haz cambiado la contraseña con éxito, da click en aceptar para Iniciar Sesión.",
+          "title": "¡Contraseña cambiada con éxito!"
+        },
+        "title": "Restablecer contraseña"
+      },
+      "expiredAlert": {
+        "text": "Lo sentimos, pero el enlace que intentó usar ya ha expirado, por favor vuelva a enviar el correo de cambio de contraseña.",
+        "title": "¡Enlace expirado!"
+      },
+      "pageName": "Página restaurar contraseña",
+      "verifyEmail": {
+        "button": "Enviar correo",
+        "confirmationMessage": "Se ha enviado un correo electrónico con los pasos a seguir",
+        "email": "Correo electrónico",
+        "emailError": "El correo electrónico debe contener un máximo de 60 caracteres.",
+        "emailError2": "El formato del correo electrónico es incorrecto",
+        "rejectedMessage": "No existe un usuario asociado a este correo electrónico",
+        "text": "No te preocupes, reestablecer tu contraseña es fácil. Ingresa el correo electrónico asociado a tu cuenta.",
+        "title": "¿Olvidaste tu contraseña?"
+      }
+    }
+  },
+  "layout": {
+    "footer": {
+      "otai": "Observatorio de Tecnologías Accesibles e Inclusivas",
+      "tec": "Tecnológico de Costa Rica",
+      "title": "Pie de página"
+    },
+    "navbar": {
+      "exit": "Salir",
+      "language": "Idioma",
+      "logo": "Evaluador de accesibilidad web",
+      "navigation-menu": "Menú de navegación",
+      "notifications": "Notificaciones",
+      "notificationsAlert": "Notificaciones pendientes",
+      "profile": "Mi Perfil",
+      "see-all-notifications": "Ver todas las Notificaciones",
+      "signoff": "Cerrar Sesión"
+    },
+    "not-result": {
+      "img-alt": "Imagen de caja con moscas"
+    },
+    "not-result-filter": {
+      "img-alt": "Imagen de caja lupa dormida"
+    },
+    "sidebar": {}
+  },
+  "shared": {
+    "profile": {
+      "cardInformation": {
+        "email": "Correo electrónico",
+        "profileAlt": "Icono de perfil",
+        "role": "Rol",
+        "telephone": "Teléfono"
+      },
+      "changePasswordModal": {
+        "cancelButton": "Cancelar",
+        "charactersRemaining": "caracteres restantes",
+        "currentPassword": "Ingrese la contraseña actual",
+        "currentPasswordError": "La contraseña actual es requerida.",
+        "hidePassword": "Ocultar contraseña",
+        "newPassword": "Ingrese la nueva contraseña",
+        "newPasswordError": "La contraseña nueva es requerida.",
+        "repeatPassword": "Repita la nueva contraseña",
+        "repeatPasswordError": " Las contraseñas no coinciden.",
+        "saveButton": "Guardar",
+        "showPassword": "Mostrar contraseña",
+        "title": "Cambiar contraseña"
+      },
+      "editInformation": {
+        "cancelButton": "Cancelar",
+        "changePasswordButton": "Cambiar Contraseña",
+        "charactersRemaining": "caracteres restantes",
+        "editButton": "Editar",
+        "email": "Correo electrónico",
+        "emailError": "El correo electrónico es requerido.",
+        "emailError2": "Ingrese un email valido.",
+        "emailExample": "Ejemplo. usuario@itcr.ac.cr",
+        "language": "Idioma preferente",
+        "languageHint": "El idioma preferente seleccionado será en el que los correos llegarán.",
+        "lastName": "Apellidos",
+        "lastNameError": "Los apellidos son requeridos.",
+        "name": "Nombre",
+        "nameError": "El nombre es requerido.",
+        "phone": "Teléfono",
+        "phoneError": "El teléfono es requerido.",
+        "role": "Rol",
+        "saveButton": "Guardar Cambios",
+        "title": "Información",
+        "username": "Nombre de usuario",
+        "usernameError": "El nombre de usuario es requerido."
+      },
+      "notifications": {
+        "checkAsSeen": "Marcar como visto",
+        "checkedAsSeen": "Marcado como visto",
+        "notseen": "No visto",
+        "pallyEvaluationFailed": {
+          "text": "La evaluación automática de {{name}} ha fallado.",
+          "title": "Evaluación automática fallida"
+        },
+        "pallyEvaluationFinished": {
+          "text": "La evaluación automática {{name}} ha finalizado con éxito.",
+          "title": "Evaluación automática finalizada"
+        },
+        "reportFailed": {
+          "text": "El reporte del sitio {{siteName}} del cliente {{name}} ha fallado.",
+          "title": "Reporte fallido"
+        },
+        "reportFinished": {
+          "text": "El reporte del sitio {{siteName}} del cliente {{name}} ha finalizado con éxito.",
+          "title": "Reporte finalizado"
+        },
+        "scrapingFailed": {
+          "text": "El scraping de {{name}} ha fallado.",
+          "title": "Scraping fallido"
+        },
+        "scrapingFinished": {
+          "text": "El scraping de {{name}} ha finalizado con éxito.",
+          "title": "Scraping finalizado"
+        },
+        "seen": "Visto",
+        "title": "Notificaciones"
+      }
+    }
+  },
+  "superAdministrator": {
+    "clients": {
+      "advancedSearch": "Búsqueda Avanzada",
+      "modalAdvancedSearch": {
+        "inputCreatedAt": "Fecha de creación",
+        "inputCreatedBy": "Promotor acargo",
+        "inputEmail": "Correo electrónico del cliente",
+        "inputName": "Nombre del cliente",
+        "subTitle": "Complete los campos en los que desea filtrar su búsqueda"
+      },
+      "table": {
+        "country": "País",
+        "createdAt": "Fecha (YYYY/MM/DD)",
+        "createdBy": "Creador",
+        "email": "Correo Electrónico",
+        "evaluationsNumber": "Evaluaciones",
+        "name": "Nombre",
+        "state": "Editar"
+      },
+      "title": "Clientes"
+    },
+    "statistics": {
+      "evaluationsQuantity": {
+        "title": "Cantidad de Evaluaciones"
+      }
+    },
+    "evaluations": {
+      "evaluationsYear": "Seleccione el año de la evaluación",
+      "table": {
+        "action": "Acción",
+        "evaluator": "Evaluador",
+        "inCharge": "Encargado",
+        "name": "Nombre",
+        "remainingDays": "Días Restantes",
+        "specifications": "Especificaciones",
+        "state": "Estado",
+        "url": "Url",
+        "edit": "Editar"
+      },
+      "title": "Evaluaciones"
+    },
+    "evaluations-reports": {
+      "title": "Informes"
+    },
+    "manage": {
+      "alerts": {
+        "browser": {
+          "error": {
+            "createTitle": "Navegador no creado",
+            "text": "Ocurrió un error al administrar el navegador ",
+            "updateTitle": "Navegador no actualizado"
+          },
+          "success": {
+            "createTitle": "Navegador Creado",
+            "text1": "El navegador",
+            "text2": "fue administrado con <b >éxito</b>",
+            "updateTitle": "Navegador Actualizado"
+          }
+        },
+        "device": {
+          "error": {
+            "createTitle": "Dispositivo no creado",
+            "text": "Ocurrió un error al administrar el dispositivo ",
+            "updateTitle": "Dispositivo no actualizado"
+          },
+          "success": {
+            "createTitle": "Dispositivo Creado",
+            "text1": "El dispositivo",
+            "text2": "fue administrado con <b >éxito</b>",
+            "updateTitle": "Dispositivo Actualizado"
+          }
+        },
+        "disabilityType": {
+          "error": {
+            "createTitle": "Tipo de discapacidad no creado",
+            "text": "Ocurrió un error al administrar el tipo de discapacidad ",
+            "updateTitle": "Tipo de discapacidad no actualizado"
+          },
+          "success": {
+            "createTitle": "Tipo de discapacidad Creado",
+            "text1": "El tipo de discapacidad",
+            "text2": "fue administrado con <b >éxito</b>",
+            "updateTitle": "Tipo de discapacidad Actualizado"
+          }
+        },
+        "evaluator": {
+          "error": {
+            "createTitle": "Evaluador no creado",
+            "text": "Ocurrió un error al administrar el evaluador ",
+            "updateTitle": "Evaluador no actualizado"
+          },
+          "success": {
+            "createTitle": "Evaluador Creado",
+            "text1": "El evaluador",
+            "text2": "fue administrado con <b >éxito</b>",
+            "updateTitle": "Evaluador Actualizado"
+          }
+        },
+        "package": {
+          "error": {
+            "createTitle": "Paquete no creado",
+            "text": "Ocurrió un error al administrar el paquete ",
+            "updateTitle": "Paquete no actualizado"
+          },
+          "success": {
+            "createTitle": "Paquete Creado",
+            "text1": "El paquete",
+            "text2": "fue administrado con <b >éxito</b>",
+            "updateTitle": "Paquete Actualizado"
+          }
+        },
+        "promoter": {
+          "error": {
+            "createTitle": "Promotor no creado",
+            "text": "Ocurrió un error al administrar el promotor ",
+            "updateTitle": "Promotor no actualizado"
+          },
+          "success": {
+            "createTitle": "Promotor Creado",
+            "text1": "El promotor",
+            "text2": "fue administrado con <b >éxito</b>",
+            "updateTitle": "Promotor Actualizado"
+          }
+        },
+        "segment": {
+          "error": {
+            "createTitle": "Segmento de organización no creado",
+            "text": "Ocurrió un error al administrar el segmento de organización ",
+            "updateTitle": "Segmento de organización no actualizado"
+          },
+          "success": {
+            "createTitle": "Segmento de organización Creado",
+            "text1": "El segmento de organización",
+            "text2": "fue administrado con <b >éxito</b>",
+            "updateTitle": "Segmento de organización Actualizado"
+          }
+        },
+        "supportTools": {
+          "error": {
+            "createTitle": "La herramienta de apoyo no creado",
+            "text": "Ocurrió un error al administrar la herramienta de apoyo ",
+            "updateTitle": "La herramienta de apoyo no actualizado"
+          },
+          "success": {
+            "createTitle": "La herramienta de apoyo Creado",
+            "text1": "La herramienta de apoyo",
+            "text2": "fue administrado con <b >éxito</b>",
+            "updateTitle": "La herramienta de apoyo Actualizado"
+          }
+        },
+        "wcagRule": {
+          "error": {
+            "createTitle": "Criterio no creado",
+            "text": "Ocurrió un error al administrar el criterio ",
+            "updateTitle": "Criterio no actualizado"
+          },
+          "success": {
+            "createTitle": "Criterio Creado",
+            "text1": "El criterio",
+            "text2": "fue administrado con <b >éxito</b>",
+            "updateTitle": "Criterio Actualizado"
+          }
+        }
+      },
+      "disability": {
+        "support-tools": {
+          "list": {
+            "new": "Nueva herramienta de apoyo",
+            "sub-title": "Herramientas de apoyo",
+            "table": {
+              "edit": "Editar",
+              "state": "Estado",
+              "support-tool": "Herramientas de apoyo",
+              "type-disability": "Tipos de discapacidad",
+              "version": "Versión"
+            },
+            "title": "Discapacidad"
+          },
+          "modal-manage": {
+            "btn-cancel": "Cancelar",
+            "disability-label": "Discapacidad(es) ligada(s)",
+            "error-disability-input": "Discapacidad(es) ligada(s) es requerida",
+            "error-name-input": "El nombre es requerido",
+            "error-version-input": "La versión es requerida",
+            "name-input": "Nombre",
+            "state-active-value": "Activo",
+            "state-inactive-value": "Inactivo",
+            "state-label": "Estado :",
+            "version-input": "Versión"
+          }
+        },
+        "type-disability": {
+          "list": {
+            "new": "Nuevo tipo de discapacidad",
+            "sub-title": "Tipos de Discapacidad",
+            "table": {
+              "edit": "Editar",
+              "name": "Nombre",
+              "state": "Estado"
+            },
+            "title": "Discapacidad"
+          },
+          "modal-manage": {
+            "active-input": "Activo",
+            "btn-cancel": "Cancelar",
+            "btn-ok": "{{confirmText}}!",
+            "error-name-input": "El nombre es requerido",
+            "inactive-input": "Inactivo",
+            "name-input": "Nombre del tipo de discapacidad",
+            "state-label": "Estado :",
+            "sub-title": "Introduzca la información solicitada",
+            "title": "Crear Tipo de Discapacidad"
+          }
+        }
+      },
+      "evaluations": {
+        "browsers": {
+          "list": {
+            "new": "Nuevo Navegador",
+            "sub-title": "Navegadores",
+            "table": {
+              "browser-version": "Versión del Navegador",
+              "edit": "Editar",
+              "name": "Nombre",
+              "state": "Estado"
+            },
+            "title": "Evaluaciones"
+          },
+          "modal-manage": {
+            "error-input-browser-version": "La versión del navegador es requerida",
+            "error-input-name": "El nombre es requerido",
+            "input-browser-version": "Versión del navegador",
+            "input-name": "Nombre",
+            "input-state": "Estado",
+            "input-state-active": "Activo",
+            "input-state-inactive": "Inactivo"
+          }
+        },
+        "devices": {
+          "list": {
+            "new": "Nuevo Dispositivo",
+            "sub-title": "Dispositivos",
+            "table": {
+              "brand": "Marca",
+              "edit": "Editar",
+              "name": "Dispositivo",
+              "operativeSystem": "Sistema Operativo",
+              "state": "Estado",
+              "version": "Versión"
+            },
+            "title": "Evaluaciones"
+          },
+          "modal-manage": {
+            "error-input-brand": "La marca es requerida",
+            "error-input-name": "El nombre es requerido",
+            "error-input-operative-system": "El sitema operativo es requerido",
+            "error-input-version": "La versión es requerida",
+            "input-brand": "Marca",
+            "input-name": "Nombre",
+            "input-operative-system": "Sistema Operativo",
+            "input-state": "Estado",
+            "input-state-active": "Activo",
+            "input-state-inactive": "Inactivo",
+            "input-version": "Versión"
+          }
+        },
+        "packages": {
+          "list": {
+            "new": "Nuevo Paquete",
+            "sub-title": "Paquetes",
+            "table": {
+              "edit": "Editar",
+              "name": "Nombre",
+              "state": "Estado"
+            },
+            "title": "Evaluaciones"
+          },
+          "modal-manage": {
+            "error-input-name": "El nombre es requerido",
+            "input-name": "Nombre",
+            "state-input": "Estado :",
+            "state-input-active": "Activo",
+            "state-input-inactive": "Inactivo",
+            "sub-title": "Introduzca la información solicitada"
+          }
+        },
+        "wcagRules": {
+          "list": {
+            "new": "Nueva WCAG",
+            "subTitle": "Normas WCAG",
+            "table": {
+              "description": "Descripción",
+              "edit": "Editar",
+              "name": "Criterio WCAG",
+              "pattern": "Pauta",
+              "principle": "Principio",
+              "state": "Estado"
+            },
+            "title": "Evaluaciones"
+          },
+          "modalManage": {
+            "errorDisabilityInput": "Las discapacidades son requeridas",
+            "errorInputCriterionDescription": "La descripción es requerida",
+            "errorInputLevel": "El nivel es requerido",
+            "errorInputName": "El nombre es requerido",
+            "errorInputNumberCriterion": "El número del criterio es requerido",
+            "errorInputReferenceLink": "El link de la wcag es requerido",
+            "input-state": "Estado",
+            "input-state-active": "Activo",
+            "input-state-inactive": "Inactivo",
+            "inputCriterionDescription": "Descripción",
+            "inputDisabilitiesAssocied": "Discapacidades Asociadas",
+            "inputDisability": "Discapacidades asociadas",
+            "inputLevel": "Nivel de cumplimiento",
+            "inputName": "Nombre del criterio",
+            "inputNumberCriterion": "Número del criterio",
+            "inputPattern": "Pauta",
+            "inputPrinciple": "Principio",
+            "inputReferenceLink": "Link de la WCAG"
+          }
+        }
+      },
+      "evaluators": {
+        "list": {
+          "new": "Nuevo evaluador",
+          "table": {
+            "edit": "Editar",
+            "evaluationsCounter": "Evaluaciones Realizadas",
+            "name": "Nombre",
+            "state": "Estado",
+            "typesOfDiscapacity": "Tipos de discapacidad"
+          },
+          "title": "Evaluadores"
+        },
+        "modalManage": {
+          "activeInputLabel": "Activo",
+          "btnCancel": "Cancelar",
+          "emailInput": "Correo Electrónico",
+          "errorEmailInput": "El correo es requerido",
+          "errorLastNameInput": "Los apellidos son requeridos",
+          "errorNameInput": "El nombre es requerido",
+          "errorPasswordInput": "La contraseña es requerida",
+          "errorPhoneInput": "El teléfono es requerido",
+          "errorTypesOfDiscapacity": "Los tipos de discapacidad son requeridos",
+          "errorUserNameInput": "El nombre del usuario es requerido",
+          "inactiveInputLabel": "Inactivo",
+          "lastNameInput": "Apellidos",
+          "nameInput": "Nombre",
+          "passwordInput": "Contraseña",
+          "phoneInput": "Teléfono",
+          "sexInput": "Sexo",
+          "stateInput": "Estado :",
+          "subTitle": "Introduzca la información solicitada",
+          "typesOfDiscapacity": "Tipos de discapacidad",
+          "userNameInput": "Nombre de usuario"
+        }
+      },
+      "promoters": {
+        "list": {
+          "new": "Nuevo promotor",
+          "table": {
+            "customers-created": "Clientes Creados",
+            "edit": "Editar",
+            "email": "Correo Electrónico",
+            "name": "Nombre",
+            "phone": "Teléfono",
+            "state": "Estado"
+          },
+          "title": "Promotores"
+        },
+        "modal-manage": {
+          "active-input-label": "Activo",
+          "btn-cancel": "Cancelar",
+          "email-input": "Correo Electrónico",
+          "error-email-input": "El correo es requerido",
+          "error-last-name-input": "Los apellidos son requeridos",
+          "error-name-input": "El nombre es requerido",
+          "error-password-input": "La contraseña es requerida",
+          "error-phone-input": "El teléfono es requerido",
+          "error-user-name-input": "El nombre del usuario es requerido",
+          "inactive-input-label": "Inactivo",
+          "last-name-input": "Apellidos",
+          "name-input": "Nombre",
+          "password-input": "Contraseña",
+          "phone-input": "Teléfono",
+          "sex-input": "Sexo",
+          "state-input": "Estado :",
+          "sub-title": "Introduzca la información solicitada",
+          "user-name-input": "Nombre de usuario"
+        }
+      },
+      "searchInput": "Buscar",
+      "segments": {
+        "list": {
+          "new": "Nuevo Segmento",
+          "table": {
+            "country": "País",
+            "edit": "Editar",
+            "segment": "Segmento",
+            "state": "Estado"
+          },
+          "title": "Segmentos de Organizaciones"
+        },
+        "modal-manage": {
+          "error-input-country": "El país es requerido",
+          "error-input-name": "El nombre es requerido",
+          "input-country": "País Asociado",
+          "input-name": "Nombre del Segmento",
+          "input-state": "Estado : ",
+          "state-input-active": "Activo",
+          "state-input-inactive": "Inactivo"
+        }
+      },
+      "stateMenu": {
+        "active": "Activos",
+        "all": "Todos",
+        "inactive": "Inactivos"
+      }
+    }
+  },
+  "utils": {
+    "alerts": {
+      "btnOk": "Continuar"
+    },
+    "languageConfig": {
+      "altImage": "Imagen de reloj",
+      "description": "Por favor espere un momento a que toda la información del sitio se configure al idioma que seleccionó.",
+      "greeting": "¡Gracias por su paciencia!",
+      "title": "¡Espere unos segundos!"
+    },
+    "principles": {
+      "operable": {
+        "text": "Los componentes de la interfaz de usuario y la navegación deben ser operables.",
+        "title": "Principio Operable"
+      },
+      "perceivable": {
+        "text": "La información y los componentes de la interfaz de usuario deben ser presentados a los usuarios de modo que ellos puedan percibirlos.",
+        "title": "Principio Perceptible"
+      },
+      "robust": {
+        "text": "El contenido debe ser suficientemente robusto como para poder ser interpretado de forma fiable por una amplia variedad de agentes de usuario, incluyendo las ayudas técnicas.",
+        "title": "Principio Robusto"
+      },
+      "understandable": {
+        "text": "La información y la operativa del interfaz de usuario debe ser comprensible.",
+        "title": "Principio Comprensible"
+      }
+    },
+    "sessionExpired": {
+      "buttonText": "Iniciar Sesión",
+      "eaw": "Evaluador de Accesibilidad Web",
+      "imageAlt": "Sesión expirada",
+      "text": "Si desea volver a ingresar al Evaluador Web presione el botón <b>Iniciar Sesión</b> e introduzca sus credenciales.",
+      "title": "¡Su sesión ha expirado!"
+    }
+  },
+  "paginatorLabels": {
+    "previousLabel": "Anterior",
+    "nextLabel": "Siguiente",
+    "screenReaderPaginationLabel": "Paginador",
+    "screenReaderPageLabel": "Página",
+    "screenReaderCurrentLabel": "Página actual"
+  }
+}

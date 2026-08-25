@@ -1,0 +1,114 @@
+<footer
+  class="page-footer font-small v-footer"
+  [attr.aria-label]="'layout.footer.title' | translate"
+>
+  <div class="container-fluid text-center text-md-left mt-1">
+    <div class="row pt-4">
+      <div class="col-md-3 col-lg-4 col-xl-2 mx-auto mb-5 mt-4 no-margin-r">
+        <div class="row">
+          <div class="col-lg-12">
+            <img
+              src="./assets/img/landing-page/TEC_blanco.png"
+              class="mb-4 mt-4"
+              width="auto"
+              height="35"
+              [attr.alt]="translatePath + '.tec' | translate"
+            />
+          </div>
+          <div class="col-lg-12">
+            <img
+              src="./assets/img/landing-page/inclutec_blanco.png"
+              class="mb-4"
+              width="auto"
+              height="45"
+              [attr.alt]="translatePath + '.inclutec' | translate"
+            />
+          </div>
+          <div class="col-lg-12">
+            <img
+              src="./assets/img/landing-page/OTAI_blanco.png"
+              class="mb-4"
+              width="auto"
+              height="50"
+              [attr.alt]="translatePath + '.otai' | translate"
+            />
+          </div>
+          <div class="col-lg-12">
+            <img
+              src="./assets/img/landing-page/Evaluador_blanco.png"
+              class="mb-4"
+              width="auto"
+              height="55"
+              [attr.alt]="translatePath + '.eaw' | translate"
+            />
+          </div>
+        </div>
+      </div>
+      <hr class="hr-vertical" />
+      <div class="col-md-2 col-lg-7 col-xl-8 mx-auto mb-4 mt-5 no-margin-l">
+        <p>
+          <a
+            class="c-footer-link"
+            (click)="setIdDiv('top')"
+            [routerLink]="['']"
+            translate
+            >{{ translatePath }}.home</a
+          >
+        </p>
+        <p>
+          <a
+            class="c-footer-link"
+            (click)="setIdDiv('packages')"
+            [routerLink]="['']"
+            translate
+            >{{ translatePath }}.packages</a
+          >
+        </p>
+        <p>
+          <a
+            class="c-footer-link"
+            (click)="setIdDiv('aboutUs')"
+            [routerLink]="['']"
+            translate
+            >{{ translatePath }}.aboutUs</a
+          >
+        </p>
+        <p>
+          <a class="c-footer-link" [routerLink]="['/contact']" translate
+            >{{ translatePath }}.contact</a
+          >
+        </p>
+        <div class="row external-links">
+          <div class="col-sm-1 mr-2 no-padding-right">
+            <a class="c-footer-link" href="{{ facebookLink }}" target="_blank"
+              ><i class="fab fa-facebook-square"></i
+              ><span class="sr-only" translate
+                >{{ translatePath }}.facebook</span
+              ></a
+            >
+          </div>
+          <div class="col-sm-1 mr-2 no-padding-right">
+            <a class="c-footer-link" href="{{ linkedinLink }}" target="_blank"
+              ><i class="fab fa-linkedin"></i
+              ><span class="sr-only" translate
+                >{{ translatePath }}.linkedin</span
+              ></a
+            >
+          </div>
+          <div class="col-sm-1 mr-2 no-padding-right">
+            <a class="c-footer-link" href="{{ youtubeLink }}" target="_blank"
+              ><i class="fab fa-youtube"></i
+              ><span class="sr-only" translate
+                >{{ translatePath }}.youtube</span
+              ></a
+            >
+          </div>
+        </div>
+        <p class="c-footer-link">
+          <span class="sr-only" translate>{{ translatePath }}.phone</span> (506)
+          2250 9254
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>

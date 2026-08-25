@@ -1,0 +1,40 @@
+@import '../../../../styles/main-theme.scss';
+
+.no-margin-r {
+  margin-right: 0% !important;
+  text-align: center;
+}
+
+.no-margin-l {
+  margin-left: 0% !important;
+}
+
+.v-footer {
+  background-color: $firefly;
+
+  .c-footer-link {
+    color: mat-color($white) !important;
+    font-size: 16px;
+  }
+
+  .hr-vertical {
+    border: none;
+    border-left: 2px solid mat-color($white);
+    height: auto;
+    width: 1px;
+  }
+
+  .p-nothing {
+    padding: 0px;
+    margin: 0px;
+  }
+
+  .external-links {
+    width: 15%;
+    height: 13%;
+
+    .no-padding-right {
+      padding-right: 0%;
+    }
+  }
+}

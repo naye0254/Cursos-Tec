@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.15.0.final using JasperReports Library version 6.15.0-dd49bfb94918336b8321d5507193f0169ead4e95  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="technical_report_resultSummary" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="94b79dd2-f0d2-4179-b8ff-cfd520ef643a">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DA_EAW"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="summaryGraphicDS" uuid="d1934776-3adf-4ea2-bfad-00830a4abd13">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DA_EAW"/>
+		<parameter name="evaluationId" class="java.lang.Integer"/>
+		<queryString language="SQL">
+			<![CDATA[CALL SP_generalEvaluationStateForManual( $P{evaluationId} );]]>
+		</queryString>
+		<field name="Incumplimiento" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.name" value="Incumplimiento"/>
+			<property name="com.jaspersoft.studio.field.label" value="Incumplimiento"/>
+		</field>
+		<field name="Cumplimiento" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.name" value="Cumplimiento"/>
+			<property name="com.jaspersoft.studio.field.label" value="Cumplimiento"/>
+		</field>
+	</subDataset>
+	<subDataset name="automaticFindingsByGuideline" uuid="e4ca14e0-6d89-448c-aa7b-81e2a478fd96">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DA_EAW"/>
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<parameter name="evaluationId" class="java.lang.Integer"/>
+		<queryString>
+			<![CDATA[select  `DS_EAW`.`Evaluations`.`evaluationCode` 
+ from  `DS_EAW`.`Evaluations` 
+ where  `DS_EAW`.`Evaluations`.id  = $P{evaluationId};]]>
+		</queryString>
+		<field name="evaluationCode" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="evaluationCode"/>
+			<property name="com.jaspersoft.studio.field.label" value="evaluationCode"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="Evaluations"/>
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+	</subDataset>
+	<parameter name="g_evaluationId" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[select id from  `DS_EAW`.`Evaluations` limit 1;]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Evaluations"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<detail>
+		<band height="530" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement x="0" y="0" width="515" height="30" forecolor="#377A81" uuid="4e855fbc-74dc-4921-ac7f-9a3235b07016">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[5  RESUMEN DE RESULTADOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="30" width="555" height="45" uuid="9621352f-f887-47df-9c5c-dce52a940a5c">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato&#xA;" size="12"/>
+				</textElement>
+				<text><![CDATA[Esta sección presenta gráficos y tablas con los resultados de las evaluaciones, mostrando así el estado del sitio en general, por cantidad de hallazgos encontrados por página y por pauta.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="75" width="516" height="30" forecolor="#377A81" uuid="1f2d10a4-7dd0-48e7-be03-c102f409531d">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[5.1  CRITERIOS DEL EVALUADOR MANUAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="104" width="555" height="60" uuid="7ef0279f-291f-4a2b-8193-e875a0b78d40">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato&#xA;" size="12"/>
+				</textElement>
+				<text><![CDATA[El siguiente gráfico con ene el porcentaje de cumplimiento e incumplimiento de accesibilidad según los criterios de la WCAG2.1 evaluados por la evaluadores profesionales y la muestra de páginas obtenida.]]></text>
+			</staticText>
+			<pieChart>
+				<chart isShowLegend="true" evaluationTime="Report" renderType="draw">
+					<reportElement x="1" y="163" width="553" height="290" uuid="b94d5de3-4e16-477c-b87a-adb9b5d91900"/>
+					<box bottomPadding="0"/>
+					<chartTitle position="Bottom">
+						<font fontName="Lato" size="14"/>
+						<titleExpression><![CDATA["Gráfico 1: Porcentaje de accesibilidad del sitio"]]></titleExpression>
+					</chartTitle>
+					<chartSubtitle/>
+					<chartLegend>
+						<font fontName="Lato" size="12" isBold="true"/>
+					</chartLegend>
+				</chart>
+				<pieDataset minPercentage="0.0">
+					<dataset resetType="Report">
+						<datasetRun subDataset="summaryGraphicDS" uuid="cec10f0d-5656-432a-9dd7-d662b89f00e4">
+							<datasetParameter name="evaluationId">
+								<datasetParameterExpression><![CDATA[$P{g_evaluationId}]]></datasetParameterExpression>
+							</datasetParameter>
+						</datasetRun>
+					</dataset>
+					<pieSeries>
+						<keyExpression><![CDATA[$F{Incumplimiento}]]></keyExpression>
+						<valueExpression><![CDATA[$F{Incumplimiento}]]></valueExpression>
+						<labelExpression><![CDATA["Incumplimiento"]]></labelExpression>
+						<sectionHyperlink>
+							<hyperlinkTooltipExpression><![CDATA["Incumplimiento"]]></hyperlinkTooltipExpression>
+						</sectionHyperlink>
+					</pieSeries>
+					<pieSeries>
+						<keyExpression><![CDATA[$F{Cumplimiento}]]></keyExpression>
+						<valueExpression><![CDATA[$F{Cumplimiento}]]></valueExpression>
+						<labelExpression><![CDATA["Cumplimiento"]]></labelExpression>
+						<sectionHyperlink>
+							<hyperlinkTooltipExpression><![CDATA["Cumplimiento"]]></hyperlinkTooltipExpression>
+						</sectionHyperlink>
+					</pieSeries>
+				</pieDataset>
+				<piePlot isCircular="true">
+					<plot>
+						<seriesColor seriesOrder="0" color="#860E35"/>
+						<seriesColor seriesOrder="1" color="#305833"/>
+						<seriesColor seriesOrder="2" color="#EDB44F"/>
+					</plot>
+					<itemLabel>
+						<font fontName="Lato" size="12"/>
+					</itemLabel>
+				</piePlot>
+			</pieChart>
+			<staticText>
+				<reportElement x="0" y="462" width="555" height="68" uuid="1b847782-82f5-49cf-b8da-86cbfd82527e">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Lato" size="12"/>
+				</textElement>
+				<text><![CDATA[El gráfico anterior se muestra un gráfico tipo pastel, donde la fracción de color rojo indica el porcentaje de incumplimiento y la verde el porcetaje de cumplimiento. En caso de presentar sólo color verde, indica que no se encontraron barreras de accesibilidad en el sitio.]]></text>
+			</staticText>
+		</band>
+		<band height="190">
+			<break>
+				<reportElement x="0" y="2" width="100" height="1" uuid="e163f23b-7c5e-4400-9ee2-a9da18243741">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+			</break>
+			<staticText>
+				<reportElement x="0" y="3" width="516" height="30" forecolor="#377A81" uuid="c91092af-0aa5-4dc6-9b05-cdc54085a432">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Lato" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tabla de cantidad de hallazgos manuales por pauta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="30" width="555" height="60" uuid="66e0b326-03f6-4dc8-accb-31ef8b733a32">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato" size="12"/>
+				</textElement>
+				<text><![CDATA[La siguiente tabla contiene dos cabeceras de columnas: Categoría y Porcentaje. La primer columna de la tabla corresponde a las categorías mostradas, en este caso cumplimientos e incumplimientos, y la segunda columna es el porcentaje correspondiente a la categoría de la misma fila.]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement x="108" y="100" width="300" height="90" uuid="077a4b66-446b-4bf9-812a-2650b555baf6">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.HorizontalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="summaryGraphicDS" uuid="327eb0e8-bd1a-45ab-a89c-d21646a0245a">
+						<datasetParameter name="evaluationId">
+							<datasetParameterExpression><![CDATA[$P{g_evaluationId}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="150" uuid="02867f4d-0c24-4071-91c3-0a96163c7f55">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+						<jr:tableHeader style="Table_TH" height="30">
+							<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+							<staticText>
+								<reportElement x="0" y="0" width="150" height="30" forecolor="#377A81" uuid="2d3ad230-8c62-4965-863b-83ee144dbea8"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Categoría de cumplimiento]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="150" height="30" forecolor="#002D2E" uuid="00ec3286-1b1d-4826-bbf6-ffeb1ac6b1fd"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Incumplimiento]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="150" height="30" forecolor="#002D2E" uuid="263d8f81-b7e6-46af-ba2c-78cf52743220"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Cumplimiento]]></text>
+							</staticText>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="150" uuid="7da62f8c-0399-475a-9084-35096a76b1d7">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+						<jr:tableHeader style="Table_TH" height="30">
+							<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+							<staticText>
+								<reportElement x="0" y="0" width="150" height="30" forecolor="#377A81" uuid="28fe47f0-76bd-4726-a7fe-57e244cc7576"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Porcentaje]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="150" height="30" forecolor="#002D2E" uuid="777d2dbb-0d5a-4d70-8343-8b7d5cfb1b50"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{Incumplimiento}]]></textFieldExpression>
+							</textField>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="150" height="30" forecolor="#002D2E" uuid="ce580a04-b050-4566-ba14-b668eb4dd32c"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{Cumplimiento}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+</jasperReport>
